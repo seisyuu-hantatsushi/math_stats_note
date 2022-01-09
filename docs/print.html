@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/introduction.html"><strong aria-hidden="true">1.</strong> 準備</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/introduction.html"><strong aria-hidden="true">1.</strong> 準備</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="introduction/set_theory.html"><strong aria-hidden="true">1.1.</strong> 集合論</a></li><li class="chapter-item expanded "><a href="introduction/measure.html"><strong aria-hidden="true">1.2.</strong> 測度</a></li></ol></li><li class="chapter-item expanded "><a href="probability/probability.html"><strong aria-hidden="true">2.</strong> 確率</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/probability_space.html"><strong aria-hidden="true">2.1.</strong> 確率空間</a></li></ol></li><li class="chapter-item expanded "><a href="statistics/statistics.html"><strong aria-hidden="true">3.</strong> 統計</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -146,6 +146,50 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="準備"><a class="header" href="#準備">準備</a></h1>
+<p>対象を数学である使うためには,<strong>集合</strong>にて対象を扱う準備が要る.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="集合論"><a class="header" href="#集合論">集合論</a></h1>
+<h2 id="集合の定義"><a class="header" href="#集合の定義">集合の定義</a></h2>
+<p>数学で扱う対象の集まりを<strong>集合</strong>といい,その集合を構成する対象を<strong>元</strong>,<strong>要素</strong>と言う.集合\( A \)に要素\( a \)が属するとき,
+\[
+a \in A
+\]
+と表す.<br />
+集合\( A \)に要素\( a \)が属さないときは,
+\[
+a \notin A
+\]
+と表す.
+何も要素を持たない集合を<strong>空集合</strong>といい,\( \emptyset \)で表す.
+\[
+\forall a \notin \emptyset
+\]</p>
+<h2 id="集合の演算"><a class="header" href="#集合の演算">集合の演算</a></h2>
+<h3 id="集合の等しさ"><a class="header" href="#集合の等しさ">集合の等しさ</a></h3>
+<h2 id="写像関数"><a class="header" href="#写像関数">写像・関数</a></h2>
+<h3 id="写像関数-1"><a class="header" href="#写像関数-1">写像・関数</a></h3>
+<p>2つの集合の\(X,Y\)の要素\( \forall x \in X, \forall y \in Y \)において,\(x\)に\(y\)を唯一つ対応させる<strong>写像(関数)</strong>\(f\)を
+\[
+f: X \mapsto Y
+\]
+で定義する.\(X\)を<strong>定義域</strong>,\(Y\)を<strong>値域</strong>という.
+\[
+y = f(x)
+\]
+と書いたとき,\(y\)を\(f\)による\(x\)の<strong>像</strong>という.</p>
+<h3 id="グラフ"><a class="header" href="#グラフ">グラフ</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="測度"><a class="header" href="#測度">測度</a></h1>
+<p>数学において,対象を<strong>測る</strong>ということは,集合の大きさ得るということである.
+そのための関数を<strong>測度</strong>と言う. 測る対象の集合が測ることが可能なら<strong>可測</strong>といい,
+その集合を<strong>可測集合</strong>と言う.</p>
+<p>測度
+: 集合\( S \)の冪集合\( \mathfrak{P}(S) \)から集合\(\overline{\mathbb{R}^{+}} = \{x| 0 \leq x \leq \infty \} = [0,\infty]\)の部分集合\(D \subset \overline{\mathbb{R}^{+}} \)への写像である.
+\[
+m: \mathfrak{P}(S) \mapsto D
+\]
+集合\(E \in \mathfrak{P}(S) \)が可測なら,\(m(E)\)は集合\(D\)に属する値(要素)が定まる.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="確率"><a class="header" href="#確率">確率</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="確率-1"><a class="header" href="#確率-1">確率</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="統計"><a class="header" href="#統計">統計</a></h1>
 
                     </main>
 
