@@ -1,0 +1,12 @@
+[book]
+authors = ["Kazushige Taniguchi"]
+language = "en"
+multilingual = false
+src = "src"
+title = "数理統計学ノート"
+
+[build]
+build-dir = "../docs"
+
+[output.html]
+mathjax-support = true
