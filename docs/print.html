@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/introduction.html"><strong aria-hidden="true">1.</strong> 準備</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="introduction/set_theory.html"><strong aria-hidden="true">1.1.</strong> 集合論</a></li><li class="chapter-item expanded "><a href="introduction/measure.html"><strong aria-hidden="true">1.2.</strong> 測度</a></li></ol></li><li class="chapter-item expanded "><a href="probability/probability.html"><strong aria-hidden="true">2.</strong> 確率</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/probability_space.html"><strong aria-hidden="true">2.1.</strong> 確率空間</a></li></ol></li><li class="chapter-item expanded "><a href="statistics/statistics.html"><strong aria-hidden="true">3.</strong> 統計</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/introduction.html"><strong aria-hidden="true">1.</strong> 準備</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="introduction/set_theory.html"><strong aria-hidden="true">1.1.</strong> 集合論</a></li><li class="chapter-item expanded "><a href="introduction/space.html"><strong aria-hidden="true">1.2.</strong> 空間</a></li><li class="chapter-item expanded "><a href="introduction/measure.html"><strong aria-hidden="true">1.3.</strong> 測度</a></li></ol></li><li class="chapter-item expanded "><a href="probability/probability.html"><strong aria-hidden="true">2.</strong> 確率</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/events.html"><strong aria-hidden="true">2.1.</strong> 事象</a></li><li class="chapter-item expanded "><a href="probability/probability_space.html"><strong aria-hidden="true">2.2.</strong> 確率空間</a></li><li class="chapter-item expanded "><a href="probability/random_variable.html"><strong aria-hidden="true">2.3.</strong> 確率変数</a></li></ol></li><li class="chapter-item expanded "><a href="statistics/statistics.html"><strong aria-hidden="true">3.</strong> 統計</a></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">4.</strong> 参考文献</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -177,19 +177,167 @@ y = f(x)
 \]
 と書いたとき,\(y\)を\(f\)による\(x\)の<strong>像</strong>という.</p>
 <h3 id="グラフ"><a class="header" href="#グラフ">グラフ</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="空間"><a class="header" href="#空間">空間</a></h1>
+<p>集合に<strong>構造</strong>を与えたものを<strong>空間</strong>という.構造とは,集合の要素間の関係性を定めたものである.<br />
+集合\(X\)の部分集合\(X_i\)を取り出す.そこから,同じ関係性を持った部分集合\(Y_i=\{X_i|i \in I\}\)を作成し,この\(Y_i\)を集めた集合\(\mathcal{Y}\)を作る.<br />
+構造は,\(X \mapsto \mathcal{Y}\)となる写像である.\((X,\mathcal{Y}\)と書き,\(\mathcal{Y}\)を\(X\)上の構造と言い,\((X,\mathcal{Y})\)を空間と言う.</p>
+<h2 id="空間の例"><a class="header" href="#空間の例">空間の例</a></h2>
+<h3 id="順序空間"><a class="header" href="#順序空間">順序空間</a></h3>
+<h3 id="位相空間"><a class="header" href="#位相空間">位相空間</a></h3>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="測度"><a class="header" href="#測度">測度</a></h1>
 <p>数学において,対象を<strong>測る</strong>ということは,集合の大きさ得るということである.
 そのための関数を<strong>測度</strong>と言う. 測る対象の集合が測ることが可能なら<strong>可測</strong>といい,
 その集合を<strong>可測集合</strong>と言う.</p>
+<h2 id="測度-1"><a class="header" href="#測度-1">測度</a></h2>
 <p>測度
 : 集合\( S \)の冪集合\( \mathfrak{P}(S) \)から集合\(\overline{\mathbb{R}^{+}} = \{x| 0 \leq x \leq \infty \} = [0,\infty]\)の部分集合\(D \subset \overline{\mathbb{R}^{+}} \)への写像である.
 \[
 m: \mathfrak{P}(S) \mapsto D
 \]
 集合\(E \in \mathfrak{P}(S) \)が可測なら,\(m(E)\)は集合\(D\)に属する値(要素)が定まる.</p>
+<h2 id="可測集合"><a class="header" href="#可測集合">可測集合</a></h2>
+<ul>
+<li>完全加法族\(\mathcal{F}\)
+<ol>
+<li>\( \emptyset \in \mathcal{F} \)</li>
+<li>\( \forall A \in \mathcal{F} \to  A^c \in \mathcal{F} \)</li>
+<li>\(A_i \in \mathcal{F},i \in I=\{1,2,\dots\} \to \displaystyle \bigcup_{i \in I} A_i \in \mathcal{F} \)</li>
+</ol>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="確率"><a class="header" href="#確率">確率</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="確率-1"><a class="header" href="#確率-1">確率</a></h1>
+<p>偶然性を数学で扱うための定式化が確率論である.
+数学で定式化するには,偶然性を伴う事象を集合論に割り当てないと行けない.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="事象"><a class="header" href="#事象">事象</a></h1>
+<h2 id="集合論との対応付"><a class="header" href="#集合論との対応付">集合論との対応付</a></h2>
+<p>集合論で扱うためには,偶然性を含む行為で得られる結果を対象としないといけない.
+偶然性を含む行為で対象を得ることを<strong>試行</strong>と言う.偶然性を含む行為とは具体的には,実験,調査,観測である.1回の試行から得られた結果の値を,<strong>単一事象</strong>,<strong>観測値</strong>などと言う.これが,集合の要素に当たり,単一事象の集合を<strong>事象</strong>という.
+試行により得られる全単一事象の集合を<strong>標本空間</strong>,<strong>全事象</strong>といい,\(\Omega\)で表す.ある事象\(A\)は全事象の部分空間である.
+\[
+A \subset \Omega
+\]</p>
+<h3 id="事象の演算"><a class="header" href="#事象の演算">事象の演算</a></h3>
+<p>事象も集合と同じ演算が行える.</p>
+<ul>
+<li>積事象 \( A \cap B \)   事象\( A, B\)がともに起こる.</li>
+<li>和事象 \( A \cup B \)   事象\( A, B\)どちらかが起こる.</li>
+<li>余事象 \( A^c \)   事象\( A \)ではない事象が起こる.</li>
+<li>空事象 \( \emptyset \)   単一事象を全く含まない事象.</li>
+</ul>
+<p>これらから,以下を定義する.</p>
+<ul>
+<li>差事象 \(A \backslash B = A \cap B^c\)</li>
+<li>対称差 \(A \Delta B = (A \backslash B) \cup (B \backslash A)\)</li>
+</ul>
+<p>事象\(A,B\)にて,\( A \cap B = \emptyset \)ならば,事象\(A,B\)は互いに<strong>排反</strong>である.</p>
+<p>集合の演算と同様,<strong>交換律</strong>,<strong>結合律</strong>,<strong>分配律</strong>が成立する.</p>
+<ul>
+<li>交換律
+<ul>
+<li>\( A \cap B = B \cap A,  A \cup B = B \cup A \)</li>
+</ul>
+</li>
+<li>結合律
+<ul>
+<li>\( A \cap B \cap C = (A \cap B) \cap C = A \cap (B \cap C) \)</li>
+<li>\( A \cup B \cup C = (A \cup B) \cup C = A \cup (B \cup C) \)</li>
+</ul>
+</li>
+<li>分配律
+<ul>
+<li>\( A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \)</li>
+<li>\( A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \)</li>
+</ul>
+</li>
+</ul>
+<p>集合の演算と同様,<strong>ド・モルガン則</strong>が成立する.</p>
+<ul>
+<li>\( (A \cap B)^c = A^c \cup B^c \)</li>
+<li>\( (A \cup B)^c = A^c \cap B^c \)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="確率空間"><a class="header" href="#確率空間">確率空間</a></h1>
+<p>事象の確率は,全事象の内でその事象が発生,観測できる割合で表される.なので,\([0,1]\)の間の値で表される.なので,事象の確率を得る関数\(P(\cdot)\)は,
+\[
+P: \mathfrak{P}(\Omega) \mapsto [0,1]
+\]
+で定義される写像である.\(P(A)\)は事象\(A\)の確率である.</p>
+<p>関数\(P(\cdot)\)は集合の大きさを測る関数なので,<strong>測度</strong>となる.なので,事象は可測集合だけで構成されているのが良い.可測集合にするには,可測なるような構造を与えないといけない.
+以下のような,完全加法族,(\(\sigma\)-加法族)をあたえると,集合は可測となる.</p>
+<h2 id="標本空間"><a class="header" href="#標本空間">標本空間</a></h2>
+<p>全事象\(\Omega\)に完全加法族\(\mathcal{F}\)を与えると,<strong>標本空間</strong>\((\Omega,\mathcal{F})\)得る.したがって,以下の条件を満たす.
+\[
+\emptyset \in \mathcal{F} \tag{O.1}
+\]
+\[
+\forall A \in \mathcal{F} \land A \subset \Omega \to  A^c \in \mathcal{F} \tag{O.2}
+\]
+\[
+A_i \in \mathcal{F},i \in I=\{1,2,\dots\} \to \displaystyle \bigcup_{i \in I} A_i \in \mathcal{F} \tag{O.3}
+\]</p>
+<p>上記条件より</p>
+<ol>
+<li>\( \mathcal{F} \subset \mathfrak{P}(\Omega) \) (\(\mathcal{F}\)は全事象\(\Omega\)の部分集合全体の内,可測であるものだけから構成される.)</li>
+<li>\(\emptyset^c \in \mathcal{F} \to \Omega \in \mathcal{F} \)</li>
+</ol>
+<h2 id="確率測度"><a class="header" href="#確率測度">確率測度</a></h2>
+<p>事象から確率を得る関数を<strong>確率測度</strong>と言う. 確率測度は以下の条件を満たす.
+\[
+\begin{align}
+&amp; \forall A \in \mathcal{F} \to P(A) \in [0,1] \tag{M.1} \\
+&amp; P(\Omega) = 1 \tag{M.2} \\
+&amp; \forall i,j \in I, \forall A_i, A_j ( A_i, A_j \in \mathcal{F}, i \not = j \to A_i \cap A_j = \emptyset) \to P(\displaystyle \bigcup_{i \in I} A_i) = \sum_{i \in I} P(A_i) \tag{M.3}
+\end{align}
+\]</p>
+<h3 id="確率測度の演算"><a class="header" href="#確率測度の演算">確率測度の演算</a></h3>
+<p>\(\forall A,B \in \mathcal{F}\)に対して,以下が成立する.</p>
+<p>\[
+\begin{align}
+&amp; P(A^c) = 1 - P(A) \tag{P.1} \\
+&amp; A \subset B \to P(A) \leq P(B) \tag{P.2} \\
+&amp; P(A \cup B) = P(A) + P(B) - P(A \cap B) \tag{P.3} 
+\end{align}
+\]</p>
+<p>証明は以下の通り,</p>
+<ul>
+<li>
+<p>(P.1)
+\[
+\begin{align}
+&amp;({\rm O}.2) \to A \cup A^c = \Omega \Rightarrow \\
+&amp; ({\rm M}.2) \to P(A \cup A^c) = P(\Omega) = 1 \Rightarrow \\
+&amp; ({\rm M}.3) \to P(A)+P(A^c) = 1 \Rightarrow \\
+&amp; P(A^c) = 1-P(A)
+\end{align}
+\]</p>
+</li>
+<li>
+<p>(P.2)
+\[
+\begin{align}
+&amp; A \subset B \to B = A \cup (B \cap A^c) \land \emptyset = A \cap (B \cap A^c) \Rightarrow \\
+&amp; P(B) = P(A \cup (B \cap A^c)) = P(A) + P(B \cap A^c) \Rightarrow\\
+&amp; ({\rm M}.1) \to P(A) \leq P(B)
+\end{align}
+\]</p>
+</li>
+<li>
+<p>(P.3)</p>
+</li>
+</ul>
+<h2 id="確率空間-1"><a class="header" href="#確率空間-1">確率空間</a></h2>
+<p>標本空間と確率測度をまとめたものを<strong>確率空間</strong>と言う.\((\Omega,\mathcal{F},P)\)で表す.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="確率変数"><a class="header" href="#確率変数">確率変数</a></h1>
+<p>全事象に属する単一事象は,実数値とは限らない.
+であるので,単一事象から実数値に対応付ける関数を用意する.これを<strong>確率変数</strong>という.
+(関数なのに変数という...)</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="統計"><a class="header" href="#統計">統計</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="参考文献"><a class="header" href="#参考文献">参考文献</a></h1>
+<p>伊藤清(2004) 確率論の基礎[新版] 岩波書店 (ISBN4-00-005194-6)<br />
+黒木学(2020) 数理統計学 共立出版 (ISBN978-4-320-11429-6)<br />
+久保川達也(2017) 現代数理統計学の基礎 共立出版 (ISBN978-4-320-11166-0)<br />
+小倉久直(1978) 物理・工学のための確率過程論 コロナ社 (ISBN4-339-00422-7)<br />
+吉田伸生(2021) [新装版]ルベーグ積分入門 日本評論社 (ISBN978-4-535-78941-8)<br />
+齋藤正彦(2002) 数学の基礎 集合・数・位相 東京大学出版 (ISBN4-13-062909-3)</p>
 
                     </main>
 
