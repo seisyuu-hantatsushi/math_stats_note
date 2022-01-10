@@ -17,3 +17,7 @@
   1. \\( \emptyset \in \mathcal{F} \\)
   1. \\( \forall A \in \mathcal{F} \to  A^c \in \mathcal{F} \\)
   1. \\(A_i \in \mathcal{F},i \in I=\\{1,2,\dots\\} \to \displaystyle \bigcup_{i \in I} A_i \in \mathcal{F} \\)
+
+## 可測関数
+
+## 収束定理

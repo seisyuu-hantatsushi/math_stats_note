@@ -11,5 +11,6 @@
   - [確率変数](./probability/random_variable.md)
 
 - [統計](./statistics/statistics.md)
-
+  - [標本分布](./statistics/sample_distribution.md)
+  - [統計的推定](./statistics/statisical_inference.md)
 - [参考文献](./reference.md)
