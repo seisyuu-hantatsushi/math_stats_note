@@ -3,20 +3,36 @@
 そのための関数を**測度**と言う. 測る対象の集合が測ることが可能なら**可測**といい,
 その集合を**可測集合**と言う.
 
+## 準備
+以下のように自然数,実数などの集合を定義する.
+- \\(\mathbb{N} = \\{0,1,2,\dots\\} \\)
+- \\(\mathbb{R} = \\{x|実数\\} \\)
+- \\(\mathbb{R}^d = \prod_{i=1}^{d} \mathbb{R} \\)
+- \\(\mathbb{R}_+ = \\{x|x \geq 0 の実数\\} \\)
+- \\(\overline{\mathbb{R}} = \\{x|実数\\}\cup\{-\infty,+\infty\} \\)
+- \\(\overline{\mathbb{R}\_{+}} = \\mathbb{R}\_{+} \cup \\{+\infty\\} \\)
+
 ## 測度
 測度
-: 集合\\( S \\)の冪集合\\( \mathfrak{P}(S) \\)から集合\\(\overline{\mathbb{R}^{+}} = \\{x| 0 \leq x \leq \infty \\} = [0,\infty]\\)の部分集合\\(D \subset \overline{\mathbb{R}^{+}} \\)への写像である.
+: 集合\\( S \\)から集合\\(\overline{\mathbb{R}_{+}} = \\{x| 0 \leq x \leq \infty \\} = [0,\infty]\\)の
+部分集合\\(D \subset \overline{ \mathbb{R} } \\)への写像である.
 \\[
-	m: \mathfrak{P}(S) \mapsto D
+	m: S \mapsto D
 \\]
 集合\\(E \in \mathfrak{P}(S) \\)が可測なら,\\(m(E)\\)は集合\\(D\\)に属する値(要素)が定まる.
 
 ## 可測集合
+可測である集合を**可測集合**という.
 
-- 完全加法族\\(\mathcal{F}\\)
+### 完全加法族
+- 完全加法族\\(\mathcal{F}\\) (\\(\sigma\\)-加法族)
   1. \\( \emptyset \in \mathcal{F} \\)
   1. \\( \forall A \in \mathcal{F} \to  A^c \in \mathcal{F} \\)
   1. \\(A_i \in \mathcal{F},i \in I=\\{1,2,\dots\\} \to \displaystyle \bigcup_{i \in I} A_i \in \mathcal{F} \\)
+
+### ボレル集合体
+
+### ルベーグ可測集合
 
 ## 可測関数
 
