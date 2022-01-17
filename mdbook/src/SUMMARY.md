@@ -9,7 +9,12 @@
   - [事象](./probability/events.md)
   - [確率空間](./probability/probability_space.md)
   - [確率変数](./probability/random_variable.md)
-
+    - [確率密度関数](./probability/density_function.md)
+    - [平均・分散・モーメント](./probability/average.md)
+    - [特性関数](./probability/characteristic.md)
+  - [確率変数列](./probability/random_variable_serise.md)
+    - [確率変数列の収束](./probability/convergence.md)
+    - [大数の法則](./probability/law_of_large_number.md)
 - [統計](./statistics/statistics.md)
   - [標本分布](./statistics/sample_distribution.md)
   - [統計的推定](./statistics/statisical_inference.md)
