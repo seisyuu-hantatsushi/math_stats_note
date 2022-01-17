@@ -54,3 +54,19 @@ P(\\{\omega | \lim_{n \to \infty} | X_n(\omega) - X(\omega) | = 0 \\}) = 1
 \\[
 \lim_{n \to \infty} E[(X_n-X)^2] = \lim_{n \to \infty} \left(\int_{\Omega} (X_n(\omega)-X(\omega))^2 P(X(d\omega))\right)^2 = 0
 \\]
+平均2乗収束は確率収束より弱い条件である.
+- 定理
+  平均2乗収束ならば確率収束である.
+  - 証明
+  Chebyshevの不等式より,
+  \\[
+	  P(|X_n-X| > \varepsilon) \leq \frac{E[(X_n-X)^2]}{\varepsilon^2}
+  \\]
+  から\\(n \to \infty\\)としたとき
+  \\[
+  \begin{align}
+  \lim_{n \to \infty} P(|X_n-X| > \varepsilon) &\leq \lim_{n \to \infty} \frac{E[(X_n-X)^2]}{\varepsilon^2} \\\\
+  &\leq 0
+  \end{align}
+  \\]
+  より,平均2乗収束ならば確率収束する.

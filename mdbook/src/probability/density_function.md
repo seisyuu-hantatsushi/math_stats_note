@@ -39,6 +39,18 @@ P(a < X) &= P(\\{\omega | a < X(\omega) \\}) \\\\
 
 \\( F_X(x) \\)が微分可能ならば\\( \frac{dF_X(x)}{dx} = f_X(x) \\)として,\\(f_X(x)\\)を**確率密度関数**と言う.
 
+定義から,
+\\[
+\begin{align}
+P(a < X \leq b) &= F_X(b) - F_X(a) \\\\
+	&= \int^b_{-\infty} f_X(x)dx - \int^a_{-\infty} f_X(x)dx \\\\
+	&= \int^b_{a} f_X(x)dx \\\\
+	& \\\\
+	f(x) &\geq 0 \\\\
+	\int^{\infty}_{-\infty} f_X(x) dx &= 1
+\end{align}
+\\]
+
 ## 離散的確率変数
 
 ## 確率質量関数
