@@ -7,7 +7,9 @@
 
 - [確率](./probability/probability.md)
   - [事象](./probability/events.md)
-  - [確率空間](./probability/probability_space.md)
+  - [確率空間](./probability/probability_space_intro.md)
+    - [確率測度](./probability/probability_measure.md)
+    - [確率空間](./probability/probability_space.md)
   - [確率変数](./probability/random_variable.md)
     - [確率密度関数](./probability/density_function.md)
     - [期待値](./probability/expected_value.md)
