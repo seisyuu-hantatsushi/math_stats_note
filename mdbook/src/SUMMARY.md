@@ -4,7 +4,8 @@
   - [集合論](./introduction/set_theory.md)
   - [空間](./introduction/space.md)
   - [測度](./introduction/measure.md)
-
+    - [可測](./introduction/measure/measurable.md)
+    - [測度空間](./introduction/measure/measure_space.md)
 - [確率](./probability/probability.md)
   - [事象](./probability/events.md)
   - [確率空間](./probability/probability_space_intro.md)
