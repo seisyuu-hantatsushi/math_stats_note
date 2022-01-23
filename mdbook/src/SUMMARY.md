@@ -6,6 +6,8 @@
   - [測度](./introduction/measure.md)
     - [可測](./introduction/measure/measurable.md)
     - [測度空間](./introduction/measure/measure_space.md)
+      - [測度空間の性質](./introduction/measure/measure_space_prop.md)
+      - [極限](./introduction/measure/limit.md)
 - [確率](./probability/probability.md)
   - [事象](./probability/events.md)
   - [確率空間](./probability/probability_space_intro.md)
