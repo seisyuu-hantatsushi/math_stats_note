@@ -1,6 +1,6 @@
 ## 測度空間の性質
 
-空間\\((X,\mathcal{X})\\)は以下の性質を持つ.ここでは,\\(\mathcal{X}\\)を完全加法族と制約しない.
+空間\\((X,\mathcal{X})\\)は以下の性質を持つ.ここでは,\\(\mathcal{X}\\)を可測であるが完全加法族と制約しない.
 
 #### 有限加法性
 \\(i,n \in \mathbb{N},\\;\\{X_i\\}_{0 \leq i \leq n} \subset \mathcal{X}\\)としたとき,
@@ -120,12 +120,31 @@ m(\bigcup^{n} _{i=0} Y_i) = m(\bigcup^{n} _{i=0} X_i) = m(X_n)
 \\]
 - 証明  
   \\[
-	  Y_0 = X_0,\\;Y_i = (\bigcup^{i-1} _{k=0} X_k) \backslash X_i,\\;i\geq1 (m.5)
+	  Y_0 = X_0,\\;Y_i = (\bigcup^{i-1} _{k=0} X_k) \backslash X_i,\\;i\geq 1
   \\]
 
 のように,\\(Y_i\\)を構成する.\\(i \not= j\\)なら,\\(Y_i \cap Y_j = \emptyset\\).  
 
-\\( X_i \supset X_{i+1} \\)なので,\\(Y_i = X_0 \backslash X_i\\).  
+まず,
+\\[
+	X_0 = \left( X_0 \cap \left( \bigcap^{\infty} _{i=1} X_i \right)^c \right) \cup \left( \bigcap^{\infty} _{i=1} X_i \right)
+\\]
+から,
+\\[
+    \begin{align}
+	m(X_0) &= m\left(\left( X_0 \cap \left( \bigcap^{\infty} _{i=1} X_i \right)^c \right) \cup \left( \bigcap^{\infty} _{i=1} X_i \right)\right) \\\\
+	&= m\left( X_0 \cap \left( \bigcap^{\infty} _{i=1} X_i \right)^c \right) + m\left( \bigcap^{\infty} _{i=1} X_i \right)
+	\end{align}
+\\]
+
+\\( X_i \supset X_{i+1} \\)なので,\\(Y_i = X_0 \backslash X_i\\).
+\\[
+    \begin{align}
+	m\left( X_0 \cap \left( \bigcap^{\infty} _{i=1} X_i \right)^c \right) + m\left( \bigcap^{\infty} _{i=1} X_i \right) &= m(Y_i) + m\left( \bigcap^{\infty} _{i=1} X_i \right) \\\\
+	m(X_0) &= m(Y_i) + m\left( \bigcap^{\infty} _{i=1} X_i \right)
+\end{align}
+\\]
+
 さらに,\\( X_{i+1} \subset X_{i} \subset X_0 \\)なので,\\(Y_{i+1} = X_0 \backslash X_{i+1} \supset  X_0 \backslash X_{i} = Y_{i} \\)
 から,上方連続性より
 \\[
@@ -133,9 +152,8 @@ m(\bigcup^{n} _{i=0} Y_i) = m(\bigcup^{n} _{i=0} X_i) = m(X_n)
 	m(\bigcup ^{\infty} _{i=0} Y _i) &= \lim _{i \to \infty} m(Y _i) \\\\
 	&= \lim _{i \to \infty} m(X_0 \backslash X_i) \\\\
 	&= m(X_0) - \lim _{i \to \infty} m(X_i) \\\\
-	&= m(X_0) - \lim _{i \to \infty} m(\bigcap^{i} _{j=0} X _j) \\\\
-    &= m(X_0) - m(\bigcap^{\infty} _{i=0} X _i)
-	\\end{align}
+    m(X_0) &= m(\bigcup ^{\infty} _{i=0} Y _i) + \lim _{i \to \infty} m(X_i)
+\\end{align}
 \\]
 より,
 

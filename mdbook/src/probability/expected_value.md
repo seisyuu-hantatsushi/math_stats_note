@@ -57,4 +57,5 @@ E[ag(X)+bh(X)+c] &= \int^{\infty} _{-\infty} (ag(x)+bh(x)+c)f_X(x) dx \\\\
 	 &\geq a \int_{g(x) \geq a} f _ X(x) dx = aP(g(x) \geq a)
 \end{align}
 \\]
-証明終わり.
+証明終わり.  
+(2.3.2.1)式を**Markovの不等式**と言う.

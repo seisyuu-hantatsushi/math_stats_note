@@ -26,7 +26,7 @@
 が成立する.  
 
 -証明  
-式(2.3.2.1)で\\(g(X)=(X-\mu)^2,\\,a=\varepsilon^2\\)と置くと,
+Markovの不等式にて\\(g(X)=(X-\mu)^2,\\,a=\varepsilon^2\\)と置くと,
 \\[
 E[(X-\mu)^2] \geq \varepsilon^2 P(|X-\mu| \geq \varepsilon)
 \\]
