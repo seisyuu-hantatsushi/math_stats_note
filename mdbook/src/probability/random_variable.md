@@ -16,9 +16,17 @@ X : \Omega \mapsto \mathbb{R}
 \begin{align}
 & P(X \in A)  := P(\\{\omega \in \Omega | X(\omega) \in A\\}) \\\\
 & P(X \leq x) := P(\\{\omega \in \Omega | X(\omega) \leq x \\}) \\\\
-& P(a \leq X < b) := P(\\{\omega \in \Omega | a \leq X(\omega) < b\\}
+& P(a \leq X < b) := P(\\{\omega \in \Omega | a \leq X(\omega) < b\\})
 \end{align}
 \\]
 と略記する.
 
+また,微小事象\\(d\omega\\)とすると,
+\\[
+\begin{align}
+P(d\omega) &:= \lim _{dx \to 0} P(\\{\omega \in \Omega | x < X(\omega) \leq x+dx\\}) \\\\
+&= \lim _{dx \to 0} \\{ P(X  \leq x+dx) - P(X \leq x) \\}
+\end{align}
+\\]
+と表記し,微小事象の確率と表す.
 
