@@ -8,11 +8,25 @@
 を用いて,
 \\[
 \begin{align}
-E[g(X)] &= \int^{\infty} _{-\infty} g(x)dP(x) \\\\
+E[g(X)] &= \int_{\Omega} g(X(\omega))P(d\omega) \\\\
+ &=\int^{\infty} _{-\infty} g(x)dP(x) \\\\
  &= \int^{\infty} _{-\infty} g(x)\\, f_X(x) dx
 \end{align}
 \\]
 を\\(g(X)\\)の期待値と言う.
+期待値は実測値と実測値が発生する確率の積分を事象全体で行ったもので,
+一回の試行で得られる見込みの値となる.
+
+事象を制限した期待値は
+\\[
+E[X:A] = \int _{A} X(\omega) P(d\omega)
+\\]
+
+と表し,\\(I _{A} : \Omega \mapsto \\{0,1\\}\\)なる集合\\(A\\)の指示関数を用意すると
+\\[
+E[X:A] = E[X \cdot I _{A}] = \int _{\Omega} X(\omega) I _A(\omega) P(d\omega) = \int _{A} X(\omega) P(d\omega)
+\\]
+と書くことができる.
 
 ### 期待値の性質
 期待値は線形性を持つ.\\(a,b,c\\)を定数とし,\\(g(X),h(X)\\)を確率変数をとる関数とすると,以下が成立する.

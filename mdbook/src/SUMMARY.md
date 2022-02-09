@@ -25,6 +25,7 @@
   - [確率変数列](./probability/random_variable_serise.md)
     - [確率変数列の収束](./probability/convergence.md)
     - [独立確率変数の和](./probability/sum_of_random_variable.md)
+      - [Kolmogorovの不等式](./probability/sum_of_random_variable/Kolmogorov_inequ.md)
     - [大数の法則](./probability/law_of_large_number.md)
 - [統計](./statistics/statistics.md)
   - [標本分布](./statistics/sample_distribution.md)
