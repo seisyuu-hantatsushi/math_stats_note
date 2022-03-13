@@ -18,7 +18,7 @@
 	E[(X-\mu)^2]=E[X^2-2\mu X+\mu^2] = E[X^2]-\mu^2 = E[X^2]-E[X]^2
 \\]
 
-## Chebyshevの不等式
+### Chebyshevの不等式
 確率変数\\(X\\)の平均を\\(\mu\\),分散を\\(\sigma^2\\)とする.\\(\varepsilon \geq 0\\)に対して,
 \\[
 	P(|X-\mu| \geq \varepsilon) \leq \frac{\sigma^2}{\varepsilon^2} \tag{Chebyshev}
@@ -34,3 +34,11 @@ E[(X-\mu)^2] \geq \varepsilon^2 P(|X-\mu| \geq \varepsilon)
 \\[
 P(|X-\mu| \geq \varepsilon) \leq \frac{\sigma^2}{\varepsilon^2} \\\\
 \\]
+
+## モーメント
+\\(k \in \mathbb{N},k \geq 1\\\)に対して,
+\\[
+E[(X-\mu)^k] = \int ^{\infty} _{-\infty} (x-\mu)^k f_X(x) dx
+\\]
+を**平均値周りの\\(k\\)次モーメント**と言う.\\(k=2\\)の場合は分散となる.
+モーメントは**積率**とも言う.
