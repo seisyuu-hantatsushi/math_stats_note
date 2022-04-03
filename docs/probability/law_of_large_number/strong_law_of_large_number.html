@@ -171,19 +171,15 @@ x _i = b _i (s _i - s _{i-1})
 \[
 \begin{align}
 \frac{1}{b _i} \sum ^{i} _{k=1} x _k &amp;= \frac{1}{b _i} \sum ^{i} _{k=1} b _k (s _k - s _{k-1}) \\
-&amp;= \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _k - b _k s _{k-1} \\
+&amp;= \frac{1}{b _i} \sum ^{i} _{k=1} (b _k s _k - b _k s _{k-1}) \\
 &amp;= \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _k - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\
-&amp;= s _i - \frac{1}{b _i} \sum ^{i-1} _{k=1} b _k s _k - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\
+&amp;= s _i + \frac{1}{b _i} \sum ^{i-1} _{k=1} b _k s _k - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\
 &amp;= s _i + \frac{1}{b _i} \sum ^{i} _{k=1} b _{k-1} s _{k-1} - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\
 &amp;= s _i - \frac{1}{b _i} \sum ^{i} _{k=1} (b _k - b _{k-1}) s _{k-1}
 \end{align}
 \]</li>
 </ul>
-<p>\(\{b _i\}\)は,増加正数列なので,
-\[
-b _k - b _{k-1} \geq 0, b _n = \sum^{n} _{k=1} b _k - b _{k-1} \; (b _0 = 0)
-\]
-\(\lim _{i \to \infty} s _i = s _{\infty}\)とし,
+<p>\(\lim _{i \to \infty} s _i = s _{\infty}\)とし,
 \[
 \begin{align}
 \frac{1}{b _i} \sum ^{i} _{k=1} x _k &amp;= s _i - \frac{1}{b _i} \sum ^{i} _{k=1} (b _k - b _{k-1}) s _{k-1} \\
@@ -215,7 +211,7 @@ b _k - b _{k-1} \geq 0, b _n = \sum^{n} _{k=1} b _k - b _{k-1} \; (b _0 = 0)
 &amp;= - \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) \\
 \end{align}
 \]
-最後の式は,\(\varepsilon = \max _{k} (s _{k-1} - s _{\infty}) \)とすると,
+最後の式は,\(\varepsilon = \max _{I \leq k \leq i} (s _{k-1} - s _{\infty}) \)とすると,
 \[
 \begin{align}
 \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) &amp; \leq \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})\varepsilon \\
@@ -224,7 +220,7 @@ b _k - b _{k-1} \geq 0, b _n = \sum^{n} _{k=1} b _k - b _{k-1} \; (b _0 = 0)
 &amp; = \varepsilon
 \end{align}
 \]
-なので,\(i \to 0\)とすれば,\(\varepsilon \to 0\)となる.
+なので,\(i \to \infty\)とすれば,\(\max _{I \leq k} (s _{k-1} - s _{\infty}) \)は,\(\max _{I \leq k} (s _{k-1} - s _{\infty}) \to 0\)とするような,\(I\)を任意に選べるので,\(\varepsilon \to 0\).
 より,\(\sum ^{\infty} _{i=1} \frac{x _i}{b _i}\)が収束するならば,\(\frac{1}{b _i} \sum ^{i} _{k=1} x _k \to 0\)</p>
 <h3 id="kolmogrovの大数の強法則"><a class="header" href="#kolmogrovの大数の強法則">Kolmogrovの大数の強法則</a></h3>
 <p>平均\(\mu &lt; \infty\),分散\(\sigma^2 &lt; \infty\)とし,互いに独立な確率変数\(\{X_i\} \subset L^2\)が\((\mu,\sigma^2)\)に従うとする.その時,

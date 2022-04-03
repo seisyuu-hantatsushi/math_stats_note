@@ -26,18 +26,14 @@ s _0 = 0, \\; s _i = \sum ^{i} _{k=1} \frac{x _k}{b _k}
 \\[
 \begin{align}
 \frac{1}{b _i} \sum ^{i} _{k=1} x _k &= \frac{1}{b _i} \sum ^{i} _{k=1} b _k (s _k - s _{k-1}) \\\\
-&= \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _k - b _k s _{k-1} \\\\
+&= \frac{1}{b _i} \sum ^{i} _{k=1} (b _k s _k - b _k s _{k-1}) \\\\
 &= \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _k - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\\\
-&= s _i - \frac{1}{b _i} \sum ^{i-1} _{k=1} b _k s _k - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\\\
+&= s _i + \frac{1}{b _i} \sum ^{i-1} _{k=1} b _k s _k - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\\\
 &= s _i + \frac{1}{b _i} \sum ^{i} _{k=1} b _{k-1} s _{k-1} - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\\\
 &= s _i - \frac{1}{b _i} \sum ^{i} _{k=1} (b _k - b _{k-1}) s _{k-1}
 \end{align}
 \\]
 
-\\(\\{b _i\\}\\)は,増加正数列なので,
-\\[
-b _k - b _{k-1} \geq 0, b _n = \sum^{n} _{k=1} b _k - b _{k-1} \\; (b _0 = 0)
-\\]
 \\(\lim _{i \to \infty} s _i = s _{\infty}\\)とし,
 \\[
 \begin{align}
@@ -70,7 +66,7 @@ b _k - b _{k-1} \geq 0, b _n = \sum^{n} _{k=1} b _k - b _{k-1} \\; (b _0 = 0)
 &= - \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) \\\\
 \end{align}
 \\]
-最後の式は,\\(\varepsilon = \max _{k} (s _{k-1} - s _{\infty}) \\)とすると,
+最後の式は,\\(\varepsilon = \max _{I \leq k \leq i} (s _{k-1} - s _{\infty}) \\)とすると,
 \\[
 \begin{align}
 \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) & \leq \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})\varepsilon \\\\
@@ -79,7 +75,7 @@ b _k - b _{k-1} \geq 0, b _n = \sum^{n} _{k=1} b _k - b _{k-1} \\; (b _0 = 0)
 & = \varepsilon
 \end{align}
 \\]
-なので,\\(i \to 0\\)とすれば,\\(\varepsilon \to 0\\)となる.
+なので,\\(i \to \infty\\)とすれば,\\(\max _{I \leq k} (s _{k-1} - s _{\infty}) \\)は,\\(\max _{I \leq k} (s _{k-1} - s _{\infty}) \to 0\\)とするような,\\(I\\)を任意に選べるので,\\(\varepsilon \to 0\\).
 より,\\(\sum ^{\infty} _{i=1} \frac{x _i}{b _i}\\)が収束するならば,\\(\frac{1}{b _i} \sum ^{i} _{k=1} x _k \to 0\\)
 
 ### Kolmogrovの大数の強法則
