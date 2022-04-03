@@ -24,7 +24,7 @@
     \end{align}
   \\]
   構成すると,\\(A' _{k-1} \\)までで\\(\max _{1 \leq j \leq k-1} | \sum^{j} _{i=1} X _i| \geq \lambda\\)を満たさなかった見本点\\(\omega\\)の中から,
-  \\(|\sum ^{k} _{i=1} X _i| \geq \lambda\\)を満たす\\(\omega\\)を集めて\\(A'_k\\)を作るので\\(A'_k\\)は互いに排他で,\\(A_n=\bigcup^{n} _{k=1} A'_k\\)となる.   
+  \\(|\sum ^{k} _{i=1} X _i| \geq \lambda\\)を満たす\\(\omega\\)を集めて\\(A'_k\\)を作るので\\(A'_k\\)は互いに排他で,\\(A_n=\bigcup^{n} _{k=1} A'_k\\)となる.  
   \\[
 	P(A _n) = \sum ^{n} _{k=1} P(A' _k)
   \\]
