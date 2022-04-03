@@ -1204,7 +1204,66 @@ P(A _n) &amp;= \sum ^{n} _{k=1} P(A' _k) \\
 P(\max _{1 \leq k \leq n}| \sum^{k} _{i=1} X _i| \geq \lambda) \leq \frac{1}{\lambda^2} \sum^{n} _{i=1} {\rm var}(X_i)
 \]
 証明終わり.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="kolmogorovの定理"><a class="header" href="#kolmogorovの定理">Kolmogorovの定理</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="kolmogorovの定理"><a class="header" href="#kolmogorovの定理">Kolmogorovの定理</a></h2>
+<p>\(\{X_i\}_{1 \leq i \leq \infty}\)を\((\Omega,\mathcal{F},P)\)上の独立な確率変数列とする.
+\(\sum ^{\infty} _{i=1} E[X _i] &lt; \infty,\sum ^{\infty} _{i=1} {\rm var}(X _i)&lt; \infty\)でともに収束するなら,
+\(\sum ^{\infty} _{i=1} X _i\)は概収束する.</p>
+<ul>
+<li>証明<br />
+Kolmogorovの不等式
+\[
+P(\max _{1 \leq k \leq n}| \sum^{k} _{i=1} X _i| \geq \lambda) \leq \frac{1}{\lambda^2} \sum^{n} _{i=1} {\rm var}(X_i)
+\]
+に,\(\{X _{n+i}\} _{1 \leq i \leq \infty} \)を適用する.
+\[
+\begin{align}
+P(\max _{1 \leq k \leq m}| \sum ^{k} _{i=1} X _{n+i}| \geq \lambda) &amp;\leq \frac{1}{\lambda^2} \sum ^{m} _{i=1} {\rm var}(X _{n+i}) \\
+P(\max _{1 \leq k \leq m}| \sum ^{k+n} _{i=1} X _{i} -  \sum ^{n} _{i=1} X _{i}| \geq \lambda) &amp;\leq \frac{1}{\lambda^2} \sum ^{m} _{i=1} {\rm var}(X _{n+i})
+\end{align}
+\]
+\[
+| \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | \leq | \sum ^{k+n} _{i=1} X _{i} -  \sum ^{n} _{i=1} X _{i}| + |\sum ^{n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i}|
+\]
+上式より,
+\[
+\max _{1 \leq k,l \leq m} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | \leq 2 \max _{1 \leq k \leq m} | \sum ^{k+n} _{i=1} X _{i} -  \sum ^{n} _{i=1} X _{i}|
+\]
+から,
+\[
+\begin{align}
+P( \max _{1 \leq k,l \leq m} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | &gt; 2\lambda ) &amp;\leq P(\max _{1 \leq k \leq m} | \sum ^{k+n} _{i=1} X _{i} -  \sum ^{n} _{i=1} X _{i}| &gt; \lambda) \\
+&amp; \leq \frac{1}{\lambda^2} \sum ^{m} _{i=1} {\rm var}(X _{n+i})
+\end{align}
+\]
+事象\(\{\omega| \max _{1 \leq k,l \leq m} | \sum ^{k+n} _{i=1} X _{i}(\omega) - \sum ^{l+n} _{i=1} X _{i}(\omega) | &gt; 2 \lambda \} \)は\(m\)が増大すると
+\( \{ \omega| \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i}(\omega) - \sum ^{l+n} _{i=1} X _{i}(\omega) | &gt; 2 \lambda \} \)に近づくので,</li>
+</ul>
+<p>\[
+\begin{align}
+\lim _{m \to \infty} P( \max _{1 \leq k,l \leq m} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | &gt; 2\lambda ) &amp;\leq  \lim _{m \to \infty} \frac{1}{\lambda^2} \sum ^{m} _{i=1} {\rm var}(X _{n+i}) \\
+P( \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | &gt; 2 \lambda ) &amp;\leq \frac{1}{\lambda^2} \sum ^{\infty} _{i=1} {\rm var}(X _{n+i})
+\end{align}
+\]
+事象\(\{\omega| \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | &gt; 2 \lambda \} \)は\(n\)が増大すると,減少するので,</p>
+<p>\[
+\begin{align}
+\lim _{n \to \infty} P( \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | &gt; 2 \lambda ) &amp;\leq  \lim _{n \to \infty} \frac{1}{\lambda^2} \sum ^{\infty} _{i=1} {\rm var}(X _{n+i}) \\
+P( \lim _{n \to \infty} \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | &gt; 2 \lambda ) &amp;\leq \lim _{n \to \infty} \frac{1}{\lambda^2} \left \{ \sum ^{\infty} _{i=1} {\rm var}(X _{i}) -  \sum ^{n} _{i=1} {\rm var}(X _{i}) \right\} \\
+\end{align}
+\]
+仮定にて,\(\sum ^{\infty} _{i=1} {\rm var}(X _i)\)は収束するので,
+\[
+P( \lim _{n \to \infty} \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | &gt; 2 \lambda ) = 0
+\]
+ここで,\(\lambda \to 0\)とすると,
+\[
+P( \lim _{n \to \infty} \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | = 0 ) = 1
+\]
+から,
+\[
+\lim _{n \to \infty} \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | = 0 \; P \text{-a.s}
+\]
+となり,\(\sum ^{\infty} _{i=1} X _i\)が概収束することになる.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="大数の法則"><a class="header" href="#大数の法則">大数の法則</a></h1>
 <p>試行の回数が多く取ると平均が真の平均に近づくことを保証したのが,大数の法則である.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="大数の弱法則"><a class="header" href="#大数の弱法則">大数の弱法則</a></h2>
@@ -1256,8 +1315,77 @@ s _0 = 0, \; s _i = \sum ^{i} _{k=1} \frac{x _k}{b _k}
 と置くと,
 \[
 x _i = b _i (s _i - s _{i-1})
+\]
+より,
+\[
+\begin{align}
+\frac{1}{b _i} \sum ^{i} _{k=1} x _k &amp;= \frac{1}{b _i} \sum ^{i} _{k=1} b _k (s _k - s _{k-1}) \\
+&amp;= \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _k - b _k s _{k-1} \\
+&amp;= \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _k - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\
+&amp;= s _i - \frac{1}{b _i} \sum ^{i-1} _{k=1} b _k s _k - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\
+&amp;= s _i + \frac{1}{b _i} \sum ^{i} _{k=1} b _{k-1} s _{k-1} - \frac{1}{b _i} \sum ^{i} _{k=1} b _k s _{k-1} \\
+&amp;= s _i - \frac{1}{b _i} \sum ^{i} _{k=1} (b _k - b _{k-1}) s _{k-1}
+\end{align}
 \]</li>
 </ul>
+<p>\(\{b _i\}\)は,増加正数列なので,
+\[
+b _k - b _{k-1} \geq 0, b _n = \sum^{n} _{k=1} b _k - b _{k-1} \; (b _0 = 0)
+\]
+\(\lim _{i \to \infty} s _i = s _{\infty}\)とし,
+\[
+\begin{align}
+\frac{1}{b _i} \sum ^{i} _{k=1} x _k &amp;= s _i - \frac{1}{b _i} \sum ^{i} _{k=1} (b _k - b _{k-1}) s _{k-1} \\
+&amp;=  s _i - \frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1}) s _{k-1} - \frac{1}{b _i} \sum ^{I} _{k=1} (b _k - b _{k-1}) s _{k-1} \\
+&amp;=  s _i - \frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1}) s _{\infty} - \frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) - \frac{1}{b _i} \sum ^{I} _{k=1} (b _k - b _{k-1}) s _{k-1} \\
+&amp;=  s _i - \frac{(b _i - b _{I-1})}{b _i}s _{\infty} - \frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) - \frac{1}{b _i} \sum ^{I} _{k=1} (b _k - b _{k-1}) s _{k-1} \\
+\end{align}
+\]
+上式の\(i \to \infty\)を取る.
+\[
+\begin{align}
+\frac{1}{b _i} \sum ^{\infty} _{k=1} x _k  &amp;=  s _{\infty} - \lim _{i \to \infty}\frac{(b _i - b _{I-1})}{b _i}s _{\infty} - \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) - \lim _{i \to \infty} \frac{1}{b _i} \sum ^{I} _{k=1} (b _k - b _{k-1}) s _{k-1} \\
+\end{align}
+\]
+第2項は
+\[
+\lim _{i \to \infty}\frac{(b _i - b _{I-1})}{b _i}s _{\infty} = \lim _{i \to \infty} (1 - \frac{b _{I-1}}{b _i})s _{\infty}
+\]
+\(\{b _i\}\)は正に発散する増加数列なので,
+\[
+\lim _{i \to \infty}\frac{(b _i - b _{I-1})}{b _i}s _{\infty} = s _{\infty}
+\]
+第4項は\(\{b _i\}\)は正に発散する増加数列なので,\(i \to \infty\)ならば0になる.
+から,もとの式は
+\[
+\begin{align}
+\frac{1}{b _i} \sum ^{\infty} _{k=1} x _k  &amp;=  s _{\infty} - \lim _{i \to \infty}\frac{(b _i - b _{I-1})}{b _i}s _{\infty} - \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) - \lim _{i \to \infty} \frac{1}{b _i} \sum ^{I} _{k=1} (b _k - b _{k-1}) s _{k-1} \\
+&amp;= s _{\infty} -s _{\infty} - \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) \\
+&amp;= - \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) \\
+\end{align}
+\]
+最後の式は,\(\varepsilon = \max _{k} (s _{k-1} - s _{\infty}) \)とすると,
+\[
+\begin{align}
+\lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})(s _{k-1} - s _{\infty}) &amp; \leq \lim _{i \to \infty}\frac{1}{b _i} \sum ^{i} _{k=I} (b _k - b _{k-1})\varepsilon \\
+&amp; = \lim _{i \to \infty}\frac{1}{b _i} (b _i - b _{I-1})\varepsilon \\
+&amp; = \lim _{i \to \infty}(1 - \frac{b _{I-1}}{b _i})\varepsilon \\
+&amp; = \varepsilon
+\end{align}
+\]
+なので,\(i \to 0\)とすれば,\(\varepsilon \to 0\)となる.
+より,\(\sum ^{\infty} _{i=1} \frac{x _i}{b _i}\)が収束するならば,\(\frac{1}{b _i} \sum ^{i} _{k=1} x _k \to 0\)</p>
+<h3 id="kolmogrovの大数の強法則"><a class="header" href="#kolmogrovの大数の強法則">Kolmogrovの大数の強法則</a></h3>
+<p>平均\(\mu &lt; \infty\),分散\(\sigma^2 &lt; \infty\)とし,互いに独立な確率変数\(\{X_i\} \subset L^2\)が\((\mu,\sigma^2)\)に従うとする.その時,
+\[
+\overline{X} = \frac{1}{n}\sum^{n} _{i=1} X_i \xrightarrow{P \text{-a.s}} \mu
+\]</p>
+<ul>
+<li>証明<br />
+まず,\(\sum {\rm var}(X_i)\)が収束するなら,Kolmogorovの定理から,題意は満たされる.
+次に,\(\sum {\rm var}(X_i)\)が発散する場合,</li>
+</ul>
+<h3 id="同分布でのkolmogrovの大数の強法則"><a class="header" href="#同分布でのkolmogrovの大数の強法則">同分布でのKolmogrovの大数の強法則</a></h3>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="統計"><a class="header" href="#統計">統計</a></h1>
 <p>統計の目的は<strong>母集団</strong>から得た<strong>標本</strong>から母集団と特徴づける<strong>パラメータ</strong>(母数)を得て,母集団の性質を調べるにある.<br />
 標本は集合であり,標本の要素は<strong>標本点</strong>である.
@@ -1347,20 +1475,6 @@ E[\sum ^{n} _{i=1} (X_i - \overline{X})^2] &amp;= E[\sum^{n} _{i=1} (X_i - \mu +
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

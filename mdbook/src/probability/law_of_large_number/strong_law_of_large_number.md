@@ -81,3 +81,16 @@ b _k - b _{k-1} \geq 0, b _n = \sum^{n} _{k=1} b _k - b _{k-1} \\; (b _0 = 0)
 \\]
 なので,\\(i \to 0\\)とすれば,\\(\varepsilon \to 0\\)となる.
 より,\\(\sum ^{\infty} _{i=1} \frac{x _i}{b _i}\\)が収束するならば,\\(\frac{1}{b _i} \sum ^{i} _{k=1} x _k \to 0\\)
+
+### Kolmogrovの大数の強法則
+平均\\(\mu < \infty\\),分散\\(\sigma^2 < \infty\\)とし,互いに独立な確率変数\\(\\{X_i\\} \subset L^2\\)が\\((\mu,\sigma^2)\\)に従うとする.その時,
+\\[
+	\\overline{X} = \frac{1}{n}\sum^{n} _{i=1} X_i \xrightarrow{P \text{-a.s}} \mu
+\\]
+
+- 証明  
+まず,\\(\sum {\rm var}(X_i)\\)が収束するなら,Kolmogorovの定理から,題意は満たされる.
+次に,\\(\sum {\rm var}(X_i)\\)が発散する場合,
+
+
+### 同分布でのKolmogrovの大数の強法則
