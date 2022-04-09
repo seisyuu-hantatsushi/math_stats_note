@@ -85,8 +85,44 @@ s _0 = 0, \\; s _i = \sum ^{i} _{k=1} \frac{x _k}{b _k}
 \\]
 
 - 証明  
-まず,\\(\sum {\rm var}(X_i)\\)が収束するなら,Kolmogorovの定理から,題意は満たされる.
-次に,\\(\sum {\rm var}(X_i)\\)が発散する場合,
+  まず,\\(\sum {\rm var}(X_i)\\)が収束するなら,Kolmogorovの定理から,題意は満たされる.
 
+  次に,\\(\sum {\rm var}(X_i)\\)が発散する場合,\\(\sum _{i=1} ^{n} {\rm var}(X_i)\\)が有界かを考える.
+  仮定で\\( {\rm var}(X_i) < \infty \\)であるので,\\({\rm var}(X_i)\\)には上界があり,\\( a = \sup {\rm var}(X_i) \\)とすると,
+  \\(\sum _{i=1} ^{n} {\rm var}(X_i) \leq na \\).なので,
+  \\[
+	  \frac{\sum _{i=1} ^{n} X_i - E[\sum _{i=1} ^{n} X_i]}{\sum _{i=1} ^{n} {\rm var}(X_i)} = \frac{\sum _{i=1} ^{n} (X_i - E[X_i])}{\sum _{i=1} ^{n} {\rm var}(X_i)} \xrightarrow{P \text{-a.s}} 0
+  \\]
+  であると,題意が満たされる.
+  
+  - 補題1  
+    \\(\\{b _i\\} _{1 \leq i \leq \infty}\\)を\\( \infty \\)に発散する増加正数列とする.
+	\\[
+		\sum ^{\infty} _{i=1} \frac{{\rm var}(X_i)}{{b _i}^2} < \infty
+	\\]
+	ならば,\\(n \to \infty\\)の時,
+	\\[
+		\frac{\sum _{i=1} ^{n} X _i - E[\sum _{i=1} ^{n} X _i]}{b_n} = \frac{\sum _{i=1} ^{n} (X _i - E[X _i])}{b_n} \xrightarrow{P \text{-a.s}} 0
+	\\]
+	  - 証明  
+	    \\(Y _i = (X _i - E[X _i])/b _i \\)と置く.
+		\\[
+			E[Y _i] = E\left[\frac{X _i - E[X _i]}{b _i}\right] = \frac{E[X _i] - E[X _i]}{b _i} = 0
+		\\]
+		から,
+		\\[
+			\begin{align}
+			\sum ^{\infty} _{i=1} {\rm var}(Y _i) &= \sum ^{\infty} _{i=1} {\rm var}\left(\frac{X _i - E[X _i]}{b _i}\right) \\\\
+			&= \sum ^{\infty} _{i=1} E\left[ \left(\frac{X _i - E[X _i]}{b _i}\right)^2\right] \\\\
+			&= \sum ^{\infty} _{i=1} \frac{1}{{b _i}^2} E[ (X _i - E[X _i])^2 ] \\\\
+			&= \sum ^{\infty} _{i=1} \frac{{\rm var}(X _i)}{{b _i}^2}  \\\\
+			\end{align}
+		\\]
+		仮定の\\(\sum ^{\infty} _{i=1} \frac{{\rm var}(X_i)}{{b _i}^2} < \infty\\)から,\\(\sum ^{\infty} _{i=1} {\rm var}(Y _i) < \infty\\).
+		から,\\(\\{Y _i \\}\\)は,Kolmogrovの定理により\\(\sum ^{\infty} _{i=1} Y _i  = \sum ^{\infty} _{i=1} (X _i - E[X _i])/b _i \\)は概収束する.
+		さらにKroneckerの補題により
+		\\[
+			\frac{1}{b _n} \sum ^{n} _{i=1} (X _i - E[X _i]) \xrightarrow{P \text{-a.s}} 0
+		\\]
 
 ### 同分布でのKolmogrovの大数の強法則
