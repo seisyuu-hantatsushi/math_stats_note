@@ -91,12 +91,12 @@ s _0 = 0, \\; s _i = \sum ^{i} _{k=1} \frac{x _k}{b _k}
   仮定で\\( {\rm var}(X_i) < \infty \\)であるので,\\({\rm var}(X_i)\\)には上界があり,\\( a = \sup {\rm var}(X_i) \\)とすると,
   \\(\sum _{i=1} ^{n} {\rm var}(X_i) \leq na \\).なので,
   \\[
-	  \frac{\sum _{i=1} ^{n} X_i - E[\sum _{i=1} ^{n} X_i]}{\sum _{i=1} ^{n} {\rm var}(X_i)} = \frac{\sum _{i=1} ^{n} (X_i - E[X_i])}{\sum _{i=1} ^{n} {\rm var}(X_i)} \xrightarrow{P \text{-a.s}} 0
+	  \frac{\sum _{i=1} ^{n} X_i - E[\sum _{i=1} ^{n} X_i]}{\sum _{i=1} ^{n} {\rm var}(X_i)} = \frac{\sum _{i=1} ^{n} (X_i - E[X_i])}{\sum _{i=1} ^{n} {\rm var}(X_i)} \xrightarrow{P \text{-a.s}} 0 \tag{1}
   \\]
   であると,題意が満たされる.
-  
+
   - 補題1  
-    \\(\\{b _i\\} _{1 \leq i \leq \infty}\\)を\\( \infty \\)に発散する増加正数列とする.
+    \\(\\{X_i\\} \subset L^2\\)を互いに独立な確率変数とし,\\(\\{b _i\\} _{1 \leq i \leq \infty}\\)を\\( \infty \\)に発散する増加正数列とする.
 	\\[
 		\sum ^{\infty} _{i=1} \frac{{\rm var}(X_i)}{{b _i}^2} < \infty
 	\\]
@@ -124,5 +124,32 @@ s _0 = 0, \\; s _i = \sum ^{i} _{k=1} \frac{x _k}{b _k}
 		\\[
 			\frac{1}{b _n} \sum ^{n} _{i=1} (X _i - E[X _i]) \xrightarrow{P \text{-a.s}} 0
 		\\]
+
+  - 補題2  
+    \\(\\{X_i\\} \subset L^2\\)を互いに独立な確率変数とする.\\(\sum ^{\infty} _{i=1} {\rm var}(X _i)\\)が発散するならば,\\(\varepsilon > 0\\)に対して,
+	\\[
+		\frac{\sum ^{n} _{i=1} (X _i - E[X _i])}{(\sum^{n} _{i=1} {\rm var}(X _i))^{1/2+\varepsilon}} \xrightarrow{P \text{-a.s}} 0. \\;(n \to \infty)
+	\\]
+	- 証明  
+	  補題1で\\(b _i = (\sum^{i} _{j=1} {\rm var}(X _j))^{1/2+\varepsilon} \\)とおくと,
+	  \\[
+			\sum ^{\infty} _{i=1} \frac{{\rm var}(X_i)}{{b _i}^2} = \sum ^{\infty} _{i=1} \frac{{\rm var}(X_i)}{((\sum^{i} _{j=1} {\rm var}(X _j))^{1/2+\varepsilon})^2}< \infty
+	  \\]
+	  ならば,
+	  \\[
+		  \frac{\sum _{i=1} ^{n} (X _i - E[X _i])}{b_n} = \frac{\sum _{i=1} ^{n} (X _i - E[X _i])}{(\sum^{n} _{i=1} {\rm var}(X _i))^{1/2+\varepsilon}}\xrightarrow{P \text{-a.s}} 0. \\; (n \to \infty)
+	  \\]
+	  なので,\\(\sum ^{\infty} _{i=1} \frac{{\rm var}(X_i)}{((\sum^{i} _{j=1} {\rm var}(X _j))^{1/2+\varepsilon})^2}< \infty\\)であることを確かめればよい.
+	  \\( \{\rm var}(X _i) = \sum ^{i} _{j=1} {\rm var}(X _j) - \sum ^{i-1} _{j=1} {\rm var}(X _j),\\;i>1 \\)なので
+	  \\[
+		\begin{align}
+		  \sum ^{\infty} _{i=2} \frac{{\rm var}(X_i)}{((\sum^{i} _{j=1} {\rm var}(X _j))^{1/2+\varepsilon})^2} &= 
+			\sum ^{\infty} _{i=2} \frac{\sum ^{i} _{j=1} {\rm var}(X _j) - \sum ^{i-1} _{j=1} {\rm var}(X _j)}{(\sum^{i} _{j=1} {\rm var}(X _j))^{1+2\varepsilon}} \\\\
+			&\leq \sum ^{\infty} _{i=2} \int^{\sum ^{i} _{j=1} {\rm var}(X _j)} _{\sum ^{i-1} _{j=1} {\rm var}(X _j)} \frac{dx}{x^{1+2\varepsilon}} \\\\
+			&= \int ^{\infty} _{{\rm var}(X _1)} \frac{dx}{x^{1+2\varepsilon}} = \left[ \frac{1}{-2\varepsilon} \frac{1}{x^{2\varepsilon}}\right]^{\infty} _{{\rm var}(X _1)}< \infty
+		\end{align}
+	  \\]
+	  証明終わり.
+  式(1)は,補題2において,\\(\varepsilon=1/2\\)とすると成立し,よって大数の強法則が証明される.
 
 ### 同分布でのKolmogrovの大数の強法則
