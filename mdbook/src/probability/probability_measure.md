@@ -18,6 +18,7 @@ A_i \in \mathcal{F},i \in I=\\{1,2,\dots\\} \to \displaystyle \bigcup_{i \in I} 
 
 ## 確率測度
 事象から確率を得る関数を**確率測度**と言う. 確率測度は以下の条件を満たす.
+
 \\[
 \begin{align}
  & \forall A \in \mathcal{F} \to P(A) \in [0,1] \tag{M.1} \\\\
@@ -26,3 +27,4 @@ A_i \in \mathcal{F},i \in I=\\{1,2,\dots\\} \to \displaystyle \bigcup_{i \in I} 
 \end{align}
 \\]
 
+確率測度に事象を入れると確率が得られる.事象に対する分布が得られるので,**確率分布**とも言う.
