@@ -9,6 +9,7 @@
       - [測度空間の性質](./introduction/measure/measure_space_prop.md)
       - [極限](./introduction/measure/limit.md)
   - [Lebesgue積分](./introduction/lebesgue_integral/lebesgue_integral.md)
+      - [Fubiniの定理](./introduction/lebesgue_integral/fubinis_theorem.md)
 - [確率](./probability/probability.md)
   - [事象](./probability/events.md)
   - [確率空間](./probability/probability_space_intro.md)
