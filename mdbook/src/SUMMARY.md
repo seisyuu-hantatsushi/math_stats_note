@@ -24,6 +24,8 @@
     - [平均・分散・モーメント](./probability/average.md)
     - [確率母関数・積率母関数](./probability/generate_function.md)
     - [特性関数](./probability/characteristic.md)
+      - [Levyの反転定理](./probability/characteristic/levy_inverse_them.md)
+      - [Levyの収束定理](./probability/characteristic/levy_convergence_them.md)
   - [確率変数ベクトル](./probability/random_variable_vector.md)
   - [確率変数列](./probability/random_variable_serise.md)
     - [確率変数列の収束](./probability/convergence.md)
