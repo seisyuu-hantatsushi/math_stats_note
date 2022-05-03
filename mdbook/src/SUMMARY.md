@@ -39,6 +39,6 @@
 - [統計](./statistics/statistics.md)
   - [標本分布](./statistics/sample_distribution.md)
     - [標本平均・標本分散の性質](./statistics/sample_distribution/props.md)
-  - [統計的推定](./statistics/statisical_inference.md)
-    - [十分統計量](./statistics/statistics_inference/sufficient_statisics.md)
+  - [統計的推定](./statistics/statistical_inference.md)
+    - [十分統計量](./statistics/statistical_inference/sufficient_statisics.md)
 - [参考文献](./reference.md)
