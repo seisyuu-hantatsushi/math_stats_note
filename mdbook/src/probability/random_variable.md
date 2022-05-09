@@ -25,7 +25,8 @@ X : \Omega \mapsto \mathbb{R}
 \\[
 \begin{align}
 P(d\omega) &:= \lim _{dx \to 0} P(\\{\omega \in \Omega | x < X(\omega) \leq x+dx\\}) \\\\
-&= \lim _{dx \to 0} \\{ P(X  \leq x+dx) - P(X \leq x) \\}
+&= \lim _{dx \to 0} \\{ P(X \leq x+dx) - P(X \leq x) \\} \\\\
+&= P(\\{ \omega|X(\omega) = x) \\})
 \end{align}
 \\]
 と表記し,微小事象の確率と表す.
