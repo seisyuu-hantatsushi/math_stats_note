@@ -22,3 +22,13 @@ P(\Omega|B) = \frac{P(\Omega \cap B)}{P(B)} = 1
 \\[
 \int ^{\infty} _{-\infty} f _{X|Y}(x,y) dx = \int ^{\infty} _{-\infty} \frac{f _{X,Y}(x,y)}{f _{Y} (y)} dx = \frac{f _{Y} (y)}{f _{Y} (y)} = 1
 \\]
+
+### 条件付き期待値
+同時確率密度関数&nbsp;\\(f_{X,Y}: X \times Y \mapsto [0,1]\\),
+確率変数\\(Y,X\\)をとる関数を&nbsp;\\(g: Y \times X \mapsto \mathbb{R} \\)と定義し,
+確率変数\\(X\\)が事象\\(A\\)のときの値の場合の\\(g(Y,X)\\)の**条件付き期待値**(conditional expectation)を
+以下のように定義する.
+\\[
+E[g(Y,X)|X \in A] = \int_{-\infty}^{\infty} g(y,x) f _{Y|X}(x,y) dy
+\\]
+とくに,条件付き確率密度関数で表現する期待値を\\(E^{Y|X}[\cdot|\cdot]\\)と書く.

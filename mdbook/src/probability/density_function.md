@@ -55,6 +55,10 @@ P(a < X \leq b) &= F_X(b) - F_X(a) \\\\
 	&= \int^b_{-\infty} f_X(x)dx - \int^a_{-\infty} f_X(x)dx \\\\
 	&= \int^b_{a} f_X(x)dx \\\\
 	& \\\\
+P(X=x) &= P(\\{\omega|X(\omega) = x\\}) \\\\
+       &= \lim_{\Delta x \to 0} \frac{F_X(x+\Delta x)-F_X(x)}{\Delta x} \\\\
+	   &= \frac{dF_X(x)}{dx} \\\\
+	   &= f_X(x)\\\\
 	f(x) &\geq 0 \\\\
 	\int^{\infty}_{-\infty} f_X(x) dx &= 1
 \end{align}
