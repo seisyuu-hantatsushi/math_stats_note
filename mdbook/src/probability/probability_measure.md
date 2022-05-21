@@ -9,7 +9,7 @@
 \forall A \in \mathcal{F} \land A \subset \Omega \to  A^c \in \mathcal{F} \tag{O.2}
 \\]
 \\[
-A_i \in \mathcal{F},i \in I=\\{1,2,\dots\\} \to \displaystyle \bigcup_{i \in I} A_i \in \mathcal{F} \tag{O.3}
+A_i \in \mathcal{F},i \in \overline{\mathbb{N}} \to \displaystyle \bigcup_{i}^{\infty} A_i \in \mathcal{F} \tag{O.3}
 \\]
 
 上記条件より
@@ -17,14 +17,16 @@ A_i \in \mathcal{F},i \in I=\\{1,2,\dots\\} \to \displaystyle \bigcup_{i \in I} 
 1. \\(\emptyset^c \in \mathcal{F} \to \Omega \in \mathcal{F} \\)
 
 ## 確率測度
-事象から確率を得る関数を**確率測度**と言う. 確率測度は以下の条件を満たす.
+事象から確率を得る関数\\(P:\Omega \mapsto [0,1]\\)を**確率測度**と言う. 確率測度は以下の条件を満たす.
 
 \\[
 \begin{align}
- & \forall A \in \mathcal{F} \to P(A) \in [0,1] \tag{M.1} \\\\
- & P(\Omega) = 1 \tag{M.2} \\\\
- & \forall i,j \in I, \forall A_i, A_j ( A_i, A_j \in \mathcal{F}, i \not = j \to A_i \cap A_j = \emptyset) \to P(\displaystyle \bigcup_{i \in I} A_i) = \sum_{i \in I} P(A_i) \tag{M.3}
+ & \forall A \in \mathcal{F} \to P(A) \in [0,1] \tag{PM.1} \\\\
+ & P(\Omega) = 1 \tag{PM.2} \\\\
+ & \forall i,j \in \overline{\mathbb{N}}, \forall A_i, A_j ( A_i, A_j \in \mathcal{F}, i \not = j \to A_i \cap A_j = \emptyset) \to P(\displaystyle \bigcup_{i}^{\infty} A_i) = \sum_{i}^{\infty} P(A_i) \tag{PM.3}
 \end{align}
 \\]
+
+(PM.3)は確率測度での**完全加法性**,**\\(\sigma\\)-加法性**という.
 
 確率測度に事象を入れると確率が得られる.事象に対する分布が得られるので,**確率分布**とも言う.

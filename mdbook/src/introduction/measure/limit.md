@@ -5,11 +5,28 @@
 \\[
 	\limsup _{i \to \infty} X_i = \bigcap ^{\infty} _{i=0} \bigcup^{\infty} _{j=i} X_j
 \\]
-を**上極限集合**,
+を**上極限集合**と言う.
+\\[
+  \begin{align}
+   \bigcap ^{\infty} _{i=0} \bigcup^{\infty} _{j=i} X_j &= \\{x|\forall i \geq 0, x \in \\{x| \exists j \geq i, x \in X_j \\}\\} \\\\
+   &= \\{x|\forall i \geq 0, \exists j \geq i, x \in X_j \\}\\}
+  \end{align}
+\\]
+であり,上極限集合の元は,\\(\forall i \in \mathbb{N},\\; X_i\\)のすべてに含まれる元である.
+
 \\[
 	\liminf _{i \to \infty} X_i = \bigcup ^{\infty} _{i=0} \bigcap^{\infty} _{j=i} X_j
 \\]
 を**下極限集合**と言う.
+\\[
+  \begin{align}
+   \bigcup ^{\infty} _{i=0} \bigcap^{\infty} _{j=i} X_j &= \\{x|\exists i \geq 0, x \in \\{x| \forall j \geq i, x \in X_j \\}\\} \\\\
+   &= \\{x|\exists i \geq 0, \forall j \geq i, x \in X_j \\}\\}
+  \end{align}
+\\]
+であり,下極限集合の元はとある\\(i\\)が存在し,\\(\forall j \geq i, X_j\\)のすべてに含まれる元である.
+\\(\forall k < i, X_k\\)なる\\(X_k\\)に,対象の元が含まれるかどうかは問わない.
+
 \\[
 	\liminf _{i \to \infty} X_i = \limsup _{i \to \infty} X_i
 \\]
