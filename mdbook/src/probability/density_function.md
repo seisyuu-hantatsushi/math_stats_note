@@ -36,9 +36,10 @@ P(a < X \leq b) &= P(\\{\omega | X(\omega) \leq b\\} \backslash \\{\omega | X(\o
 
 \\[
 \begin{align}
-\frac{dP(\\{\omega| X(\omega) < x\\})}{dx} &= \lim _ {dx \to 0} \frac{P(\\{\omega| X(\omega) < x+dx\\})- P(\\{\omega| X(\omega) < x\\}) }{dx} \\\\
-&= \lim _ {dx \to 0} \frac{F_X(x+dx) - F_X(x)}{dx} \\\\
-&= \frac{dF_X(x)}{dx}
+P(d\omega) &= \lim _ {dx \to 0} P(\\{\omega| X(\omega) < x+dx\\} \backslash \\{\omega| X(\omega) < x\\}) \\\\
+&= \lim _ {dx \to 0} P(\\{\omega| X(\omega) < x+dx\\})- P(\\{\omega| X(\omega) < x\\}) \\\\
+&= \lim _ {dx \to 0} F_X(x+dx) - F_X(x) \\\\
+&= dF_X(x)
 \end{align}
 \\]
 
@@ -53,14 +54,7 @@ P( X \leq a ) = F_X(a) = \int^a_{-\infty} f_X(x) dx
 \begin{align}
 P(a < X \leq b) &= F_X(b) - F_X(a) \\\\
 	&= \int^b_{-\infty} f_X(x)dx - \int^a_{-\infty} f_X(x)dx \\\\
-	&= \int^b_{a} f_X(x)dx \\\\
-	& \\\\
-P(X=x) &= P(\\{\omega|X(\omega) = x\\}) \\\\
-       &= \lim_{\Delta x \to 0} \frac{F_X(x+\Delta x)-F_X(x)}{\Delta x} \\\\
-	   &= \frac{dF_X(x)}{dx} \\\\
-	   &= f_X(x)\\\\
-	f(x) &\geq 0 \\\\
-	\int^{\infty}_{-\infty} f_X(x) dx &= 1
+	&= \int^b_{a} f_X(x)dx
 \end{align}
 \\]
 
