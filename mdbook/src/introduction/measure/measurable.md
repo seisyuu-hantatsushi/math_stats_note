@@ -3,7 +3,7 @@
 ### 指示関数(定義関数)
 \\(A \subset X\\)に対して,以下のように定義される関数\\(I_A: A \mapsto \\{0,1\\}\\)を**指示関数**(定義関数)と言う.
 \\[
-I_A(a) = \left\\{ 
+I_A(a) = \left\\{
 	\begin{array}{ll}
 	1 & a \in A \\\\
 	0 & a \not \in A

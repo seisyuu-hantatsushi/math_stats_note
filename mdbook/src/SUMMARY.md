@@ -39,6 +39,8 @@
     - [独立確率変数の和](./probability/sum_of_random_variable.md)
       - [Kolmogorovの不等式](./probability/sum_of_random_variable/Kolmogorov_inequ.md)
       - [Kolmogorovの定理](./probability/sum_of_random_variable/Kolmogorov_them.md)
+  - [確率分布](./probability/probability_distribution/probability_distribution.md)
+    - [正規分布](./probability/probability_distribution/normal_distribution.md)
   - [大数の法則](./probability/law_of_large_number.md)
     - [大数の弱法則](./probability/law_of_large_number/weak_law_of_large_number.md)
     - [大数の強法則](./probability/law_of_large_number/strong_law_of_large_number.md)

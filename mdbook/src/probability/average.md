@@ -23,9 +23,9 @@
 \\[
 	P(|X-\mu| \geq \varepsilon) \leq \frac{\sigma^2}{\varepsilon^2} \tag{Chebyshev}
 \\]
-が成立する.  
+が成立する.
 
--証明  
+- 証明  
 Markovの不等式にて\\(g(X)=(X-\mu)^2,\\,a=\varepsilon^2\\)と置くと,
 \\[
 E[(X-\mu)^2] \geq \varepsilon^2 P(|X-\mu| \geq \varepsilon)

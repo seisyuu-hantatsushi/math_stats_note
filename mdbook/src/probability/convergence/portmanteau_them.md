@@ -143,3 +143,25 @@
      \left| E[f(X_n)] - E[f(X)] - \left( \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right) \right| \to 0
   \\]
   となり,\\(n \to \infty\\)とすると \\(E[f(X_n)] \to E[f(X)]\\).
+
+  \\(3 \Rightarrow 4\\)を示す.  
+  \\(A \subset A_\varepsilon, P(A_\varepsilon)-P(A) \leq \varepsilon\\)であるような,
+  事象\\(A,A_\varepsilon\\)を用意する. それに対して,次のような有界一様連続関数を用意する.
+  \\[
+  f(x) = \left\\{
+	\begin{array}{ll}
+	1 & x \in A \\\\
+	1 - \frac{\inf_{y \in A} |x - y|}{\varepsilon} & x \in A_\varepsilon \backslash \\; A \\\\
+	0 & x \not \in A \cup A_\varepsilon
+	\end{array}
+  \right.
+  \\]
+  仮定の&thinsp;\\(\lim_{n \to \infty} E[f(X_n)] = E[f(X)]\\)から,
+  \\[
+  \limsup_{n \to \infty} P_{n}(A) \leq \limsup_{n \to \infty} E[f(X_n)] = E[f(X)] \leq P(A_\varepsilon)
+  \\]
+  ここで,\\(\varepsilon \to 0\\)とすると,\\(A_\varepsilon\\)が閉集合なので,\\(P(\bigcap_{\varepsilon \to 0} A_\varepsilon)=P(A)\\)から,
+  \\[
+  \limsup_{n \to \infty} P_{n}(A) = P(A)
+  \\]
+  証明おわり.
