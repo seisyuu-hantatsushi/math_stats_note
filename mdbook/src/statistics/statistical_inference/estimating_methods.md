@@ -8,7 +8,7 @@
 
 ### モーメント法
 \\(f(x;\boldsymbol{\theta})\\)なる確率変数\\(X\\)に対して,\\(E[X^k]={\mu_k}'(\boldsymbol{\theta})\\)と表されるとする.
-\\(\\{X _i\\} _{i \in \mathbb{N} _+,i \leq n} i,i,d \sim f(x;\boldsymbol{\theta})\\)なる無作為標本について,
+\\(\\{X _i\\} _{i \in \mathbb{N} _+,i \leq n} &thinsp; i,i,d \sim f(x;\boldsymbol{\theta})\\)なる無作為標本について,
 大数の弱法則より\\(\frac{1}{n} \sum ^{n} _{i=1} {X_i}^r \xrightarrow{p} E[X^r] \\)となることを利用して,
 
 \\[
@@ -21,6 +21,8 @@
 	\end{array}
   \right.
 \\]
+となる同時方程式を,\\(\theta_1,\dots,\theta_k\\)について解くことにより,推定量\\(\hat{\boldsymbol{\theta}}\\)を得る.
+これを**モーメント推定量**(moment estimator)という.
 
 ### 最尤法
 
