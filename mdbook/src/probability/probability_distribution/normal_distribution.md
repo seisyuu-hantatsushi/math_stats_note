@@ -51,3 +51,29 @@ Gauss分布とも言う.確率変数\\(X\\)が平均\\(\mu\\),分散\\(\sigma^2\
 	&= \sigma^2
   \end{align}
 \\]
+
+### 積率母関数
+\\[
+  \begin{align}
+	M_X(t) &= E[e^{tX}] \\\\
+	&= \int^{\infty}_{-\infty}\exp(tx)\frac{1}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right)dx \\\\
+   \end{align}
+\\]
+まず,\\(\displaystyle z=\frac{x-\mu}{\sqrt{2}\sigma}\\)と変数変換する.
+\\[
+  \begin{align}
+  \int ^{\infty} _{-\infty}\exp(tx)\frac{1}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right)dx &= \int ^{\infty} _{-\infty}\exp(t(\sqrt{2}\sigma z+\mu))\frac{1}{\sqrt{2\pi}\sigma} \exp\left( -z^2\right)\sqrt{2} \sigma dz \\\\
+	&= \frac{e^{\mu t}}{\sqrt{\pi}} \int ^{\infty} _{-\infty} \exp(\sqrt{2} \sigma tz) \exp( -z^2 )dz \\\\
+	&= \frac{e^{\mu t}}{\sqrt{\pi}} \int ^{\infty} _{-\infty} \exp( -z^2+\sqrt{2} \sigma tz)dz \\\\
+	&= \frac{e^{\mu t}}{\sqrt{\pi}} \int ^{\infty} _{-\infty} \exp\left( -z^2+ 2 \left( \frac{\sigma tz}{\sqrt{2}} \right) \right) dz \\\\
+	&= \frac{e^{\mu t}}{\sqrt{\pi}} \int ^{\infty} _{-\infty} \exp\left( - \left(z^2 - 2 \left( \frac{\sigma tz}{\sqrt{2}} \right) + \left( \frac{\sigma t}{\sqrt{2}} \right)^2 \right) + \left( \frac{\sigma t}{\sqrt{2}} \right)^2 \right) dz \\\\
+	&= \frac{e^{\mu t}}{\sqrt{\pi}} \int ^{\infty} _{-\infty} \exp\left( -\left(z +  \frac{\sigma t}{\sqrt{2}} \right)^2 + \left( \frac{\sigma t}{\sqrt{2}} \right)^2 \right) dz \\\\
+	&= \frac{e^{\mu t + \left( \frac{\sigma t}{\sqrt{2}} \right)^2 }}{\sqrt{\pi}} \int ^{\infty} _{-\infty} \exp\left( -\left(z +  \frac{\sigma t}{\sqrt{2}} \right)^2 \right) dz \\\\
+	&= e^{\mu t + \left( \frac{\sigma t}{\sqrt{2}} \right)^2}
+  \end{align}
+\\]
+
+### 特性関数
+\\[
+	\varphi_X(t) = E[e^{itX}] = e^{i \mu t - \left( \frac{\sigma t}{\sqrt{2}} \right)^2}
+\\]

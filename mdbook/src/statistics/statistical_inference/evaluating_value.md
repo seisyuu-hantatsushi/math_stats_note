@@ -84,8 +84,30 @@ E[\hat{\mu} _c] = E\left[ \sum ^{n} _{i=1} c _i X _i \right] = \sum ^{n} _{i=1} 
   =& E\left[\left(\sum ^{n} _{i=1} c _i X _i - \sum ^{n} _{i=1} c _i E[ X _i ]\right)^2\right] \\\\
   =& E\left[\left(\sum ^{n} _{i=1} c _i (X _i - E[ X _i ])\right)^2\right] \\\\
   =& E\left[\left(\sum ^{n} _{i=1} c _i (X _i - \mu)\right)^2\right] \\\\
-  =& \sum ^{n} _{i=1} c _i \sigma^2
+  =& \sum ^{n} _{i=1} {c _i}^2 \sigma^2
   \end{align}
 \\]
 
 ### 最良線形不偏推定量
+線形で不偏な推定量の中で分散を最小にする推定量を,**最良線形不偏推定量**(best linear unbiased estimator, BLUE)という.
+前述の&thinsp;\\(\hat{\mu} _c\\)に置いて,不偏になる条件\\(\sum ^{n} _{i=1} c _i = 1\\)の下で,
+\\({\rm var}(\hat{\mu} _c) = \sum ^{n} _{i=1} {c _i}^2 \sigma^2\\)が最小になる\\(c_i\\)は,ラグランジュの未定乗数法を用いると求められる.
+\\(\mathbf{c}=(c_1,c_2,\dots,c_n)\\)と置き,ラグランジュ関数を,
+\\[
+	{\mathscr L}(\mathbf{c},\lambda) =  \sum ^{n} _{i=1} {c _i}^2 \sigma^2 - \lambda \left\\{ \sum ^{n} _{i=1} c _i - 1 \right\\}
+\\]
+とする.これを各変数について便微分すると,
+\\[
+	\left\\{
+	\begin{array}{ll}
+		\sum ^{n} _{i=1} c _i - 1 &= 0 \\\\
+		\displaystyle \frac{\partial}{\partial c_i} \sum ^{n} _{i=1} {c _i}^2 \sigma^2 - \lambda \frac{\partial}{\partial c_i} \sum ^{n} _{i=1} c _i &= 2c_i - \lambda = 0
+	\end{array}
+	\right.
+\\]
+から,\\(c_i = \frac{\lambda}{2}\\)となる.これから,\\(\sum ^{n} _{i=1} c _i - 1 = 0\\)に代入すると,\\(c _i = \frac{1}{n}\\).
+この結果より,
+\\[
+	\hat{\mu} _c = \sum ^{n} _{i=1} c _i X _i = \sum ^{n} _{i=1} \frac{1}{n} X _i = \overline{X}
+\\]
+となり,標本平均が最良線形不偏推定量となる.
