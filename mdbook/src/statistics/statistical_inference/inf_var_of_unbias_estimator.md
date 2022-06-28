@@ -23,7 +23,6 @@
 となり,下限が得られる.であるので,この\\(g(\mathbf{X})\\)を得たい.
 この下限を得るための定理が**クラメール-ラオの不等式**(Cramer-Rao's inequality)である.
 
-
 ### クラメール-ラオの不等式
 以下を仮定する.
 1. \\(f_{\mathbf{X}}(\mathbf{x}:\theta)\\)の台\\(\\{\mathbf{x}|f_{\mathbf{X}}(\mathbf{x};\theta) > 0\\}\\)は\\(\theta\\)に依存しない.
@@ -100,57 +99,46 @@
 
 ### スコア関数とフィッシャー情報量
 \\[
-	{\mathscr S} _{\mathbf{X}}(\theta,\mathbf{X}) = \frac{d}{d \theta} \log f(\mathbf{x};\theta)
+	{\mathscr S} _{\mathbf{X}}(\theta,\mathbf{X}) = \frac{\partial}{\partial \theta} \log f _{\mathbf{X}}(\mathbf{x}:\theta)
 \\]
 これを**スコア関数**(score function)という.このスコア関数の2乗の期待値
 \\[
-	{\mathscr I} _{\mathbf{X}}(\theta) = E[\\{{\mathscr S}(\theta,\mathbf{X})\\}^2] = E\left[\left\\{\frac{d}{d \theta} \log f(\mathbf{x};\theta) \right\\}^2 \right]
+	{\mathscr I} _{\mathbf{X}}(\theta) = E[\\{{\mathscr S}  _{\mathbf{X}}(\theta,\mathbf{X})\\}^2] = E\left[\left(\frac{\partial }{\partial \theta} \log f _{\mathbf{X}} (\mathbf{X}:\theta) \right)^2 \right]
 \\]
 を**フィッシャー情報量**(Fisher information)という.
 
-フィッシャー情報量の性質を調べるために次の条件を仮定する.
-
-1. \\(f(\mathbf{x}:\theta)\\)の台\\(\\{\mathbf{x}|f(\mathbf{x};\theta) > 0\\}\\)は\\(\theta\\)に依存しない.
-1. \\(f(\mathbf{x}:\theta)\\)は\\(\theta\\)に関して2階まで微分可能で,\\(k=1,2\\)に対して,
-   \\[
-   \frac{d^k}{d\theta^k} \int f(\mathbf{x};\theta) dx = \int \frac{d^k}{d\theta^k} f(\mathbf{x};\theta) dx
-   \\]
-   が成立する.
-1. フィッシャー情報量\\({\mathscr I} _{X _1}(\theta)\\)に対して,\\(0 < {\mathscr I} _{X _1}(\theta) < 1\\)
-
 ### フィッシャー情報量の性質
-上述の仮定を置くと,次の性質が成り立つ.
+フィッシャー情報量の性質は,以下の性質が成り立つ.
 
-1. \\( E[{\mathscr S}_{X _1}(\theta,X_i)] = 0 \\)
-1. \\({\mathscr I} _{\mathbf{X}}(\theta) = n {\mathscr I} _{X _1}(\theta) \\)
-1. \\(\displaystyle {\mathscr I} _{X _1}(\theta) = -E\left[ \frac{d^2}{d\theta^2} \log f(X_i ; \theta) \right] \\)
+1. \\( E[{\mathscr S}_{X}(\theta,X)] = 0 \\)
+1. \\({\mathscr I} _{\mathbf{X}}(\theta) = n {\mathscr I} _{X}(\theta) \\)
+1. \\(\displaystyle {\mathscr I} _{X}(\theta) = -E\left[ \frac{\partial^2}{\partial \theta^2} \log f_X (X : \theta) \right] \\)
 
 - 証明  
-1は \\[
-   {\mathscr S} _{X _1}(\theta,x) = \frac{d}{d \theta} \log f(x;\theta) = \left( \frac{d}{d \theta} f(x;\theta) \right) \frac{1}{f(x;\theta)}
-   \\]
-   から,
-   \\[
-     \begin{align}
-	    E[{\mathscr S} _{X _1}(\theta,X _i)] &= \displaystyle \int \left( \frac{d}{d \theta} f(x;\theta) \right) \frac{1}{f(x;\theta)} f(x;\theta) dx \\\\
-	   &= \displaystyle \int \left( \frac{d}{d \theta} f(x;\theta) \right) dx \\\\
-	   &= \displaystyle  \frac{d}{d \theta} \int f(x;\theta) dx = \frac{d}{d \theta} 1 = 0
-     \end{align}
-   \\]
-2は
-   \\[
-    \begin{align}
-	{\mathscr S} _{\mathbf{X}}(\theta,\mathbf{X}) &= \frac{d}{d \theta} \log f(\mathbf{x};\theta) \\\\
-	&= \frac{d}{d \theta} \log \prod^n _{i=1} f(x _i;\theta) \\\\
-	&= \frac{d}{d \theta} \sum ^n _{i=1}  \log f(x _i;\theta) \\\\
-	&= \sum ^n _{i=1} {\mathscr S} _{X _1}(\theta,x)
-	\end{align}
-   \\]
-   と,\\(E[{\mathscr S} _{X _1}(\theta,X _i)] = 0 \\)から
-   \\[
-   \begin{align}
-    {\mathscr I} _{\mathbf{X}}(\theta) &= E\left[\left\\{{\mathscr S} _{\mathbf{X}}(\theta,\mathbf{X})\right\\}^2\right] \\\\
-	&= E\left[\left\\{\sum ^n _{i=1} {\mathscr S} _{X _1}(\theta,x) \right\\}^2\right] + \sum ^n _{i=1} \sum ^n _{j=1,j\not=i} E[{\mathscr S} _{X _1}(\theta,X_i)] E[{\mathscr S} _{X _1}(\theta,X_j)] \\\\
-	&= E\left[\left\\{\sum ^n _{i=1} {\mathscr S} _{X _1}(\theta,x) \right\\}^2\right] = n {\mathscr I} _{X _1}(\theta)
-   \end{align}
-   \\]
+  1,2はクラメール-ラオの不等式の証明で得られる.
+
+  3は,
+  \\[
+  \begin{align}
+  \frac{\partial^2}{\partial \theta^2} \log f_X (x : \theta) &= \frac{\partial}{\partial \theta}\left(\frac{1}{f _X(x:\theta)} \left(\frac{\partial}{\partial \theta} f_X(x:\theta) \right) \right) \\\\
+  &= -\left(\frac{1}{f _X(x:\theta)^2} \right) \left(\frac{\partial}{\partial \theta} f _X(x:\theta) \right)^2 + \frac{1}{f _X(x:\theta)} \left( \frac{\partial ^2}{\partial \theta ^2} f _X(x:\theta) \right) \\\\
+  &= - \left(\frac{\partial}{\partial \theta} \log f_X(x:\theta) \right)^2 + \frac{1}{f _X(x:\theta)} \left( \frac{\partial ^2}{\partial \theta ^2} f _X(x:\theta) \right)
+  \end{align}
+  \\]
+  から,
+  \\[
+  \begin{align}
+  E\left[ \frac{\partial^2}{\partial \theta^2} \log f_X (X : \theta) \right] &= - E\left[ \left(\frac{\partial}{\partial \theta} \log f_X(X:\theta) \right)^2 \right] + E \left[ \frac{1}{f _X(X:\theta)} \left( \frac{\partial ^2}{\partial \theta ^2} f _X(X:\theta) \right) \right] \\\\
+  \end{align}
+  \\]
+  \\[
+  \begin{align}
+  E \left[ \frac{1}{f _X(X:\theta)} \left( \frac{\partial ^2}{\partial \theta ^2} f _X(X:\theta) \right) \right] &= \int _{\Omega} \frac{1}{f _X(X:\theta)} \left( \frac{\partial ^2}{\partial \theta ^2} f _X(X:\theta) \right) f _X(X:\theta) dx \\\\
+  &= \int _{\Omega} \frac{\partial ^2}{\partial \theta ^2} f _X(X:\theta) dx \\\\
+  &= \frac{\partial ^2}{\partial \theta ^2} \int _{\Omega} f _X(X:\theta) dx = 0
+  \end{align}
+  \\]
+  より,
+  \\[
+  E\left[ \left(\frac{\partial}{\partial \theta} \log f_X(X:\theta) \right)^2 \right] = {\mathscr I} _{X}(\theta) = -E\left[ \frac{\partial^2}{\partial \theta^2} \log f_X (X : \theta) \right]
+  \\]
