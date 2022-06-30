@@ -18,3 +18,29 @@ p & (x = 1) \\\\
 \\[
 	E[X] = \int_{\Omega} x f_X(x) dx = p
 \\]
+
+#### 分散
+\\[
+\begin{align}
+	{\rm var}(X) &= E[(X-\mu)^2] = E[X^2] - E[X]^2 = \int_{\Omega} x^2 f_X(x) dx - p^2 \\\\
+	&= p - p^2 = p(1-p)
+\end{align}
+\\]
+
+#### 積率母関数
+\\[
+\begin{align}
+	M_X(t) &= E[e^{tX}] =\int_{\Omega} e^{tx} f_X(x) dx \\\\
+	&= (1-p) + pe^t
+\end{align}
+\\]
+
+#### 特性関数
+\\[
+\begin{align}
+	\varphi_X(t) &= E[e^{itX}] =\int_{\Omega} e^{itx} f_X(x) dx \\\\
+	&= (1-p) + pe^{it}
+\end{align}
+\\]
+
+### 二項分布
