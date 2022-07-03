@@ -1,0 +1,17 @@
+## ガウス積分
+### \\(\int e^{-ax^2} dx\\)
+\\[
+  \begin{align}
+	\int ^{\infty} _{-\infty} e^{-ax^2} dx &= \sqrt{\frac{\pi}{a}} \\\\
+	\int ^{\infty} _{0} e^{-ax^2} dx &= \frac{1}{2}\sqrt{\frac{\pi}{a}}
+  \end{align}
+\\]
+- 証明  
+  \\(I = \int ^{\infty} _{0} e^{-ax^2} dx\\)と置く,
+  \\[
+  \begin{align}
+  I^2 &= \left(\int ^{\infty} _{0} e^{-ax^2} dx\right)^2 \\\\
+  &= \left(\int ^{\infty} _{0} e^{-ax^2} dx\right)\left(\int ^{\infty} _{0} e^{-ay^2} dy\right) \\\\
+  &= \int ^{\infty} _{0} e^{-a(x^2+y^2)} dx
+  \end{align}
+  \\]
