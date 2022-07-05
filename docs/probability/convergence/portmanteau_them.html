@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Portmanteau定理 - 数理統計学ノート</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../introduction/introduction.html"><strong aria-hidden="true">1.</strong> 準備</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../introduction/set_theory.html"><strong aria-hidden="true">1.1.</strong> 集合論</a></li><li class="chapter-item expanded "><a href="../../introduction/space.html"><strong aria-hidden="true">1.2.</strong> 空間</a></li><li class="chapter-item expanded "><a href="../../introduction/measure.html"><strong aria-hidden="true">1.3.</strong> 測度</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../introduction/measure/measurable.html"><strong aria-hidden="true">1.3.1.</strong> 可測</a></li><li class="chapter-item expanded "><a href="../../introduction/measure/measure_space.html"><strong aria-hidden="true">1.3.2.</strong> 測度空間</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../introduction/measure/measure_space_prop.html"><strong aria-hidden="true">1.3.2.1.</strong> 測度空間の性質</a></li><li class="chapter-item expanded "><a href="../../introduction/measure/limit.html"><strong aria-hidden="true">1.3.2.2.</strong> 極限</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../introduction/lebesgue_integral/lebesgue_integral.html"><strong aria-hidden="true">1.4.</strong> Lebesgue積分</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../introduction/lebesgue_integral/fubinis_theorem.html"><strong aria-hidden="true">1.4.1.</strong> Fubiniの定理</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../probability/probability.html"><strong aria-hidden="true">2.</strong> 確率</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/events.html"><strong aria-hidden="true">2.1.</strong> 事象</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/events/limits.html"><strong aria-hidden="true">2.1.1.</strong> 事象の極限</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/probability_space_intro.html"><strong aria-hidden="true">2.2.</strong> 確率空間</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/probability_measure.html"><strong aria-hidden="true">2.2.1.</strong> 確率測度</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/measure/property.html"><strong aria-hidden="true">2.2.1.1.</strong> 確率測度の性質</a></li><li class="chapter-item expanded "><a href="../../probability/measure/operation.html"><strong aria-hidden="true">2.2.1.2.</strong> 確率の演算</a></li><li class="chapter-item expanded "><a href="../../probability/measure/conditional.html"><strong aria-hidden="true">2.2.1.3.</strong> 条件付き確率</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/probability_space.html"><strong aria-hidden="true">2.2.2.</strong> 確率空間</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/probability_space/borel_cantelli_them.html"><strong aria-hidden="true">2.2.2.1.</strong> Borel-Cantelliの定理</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../probability/random_variable.html"><strong aria-hidden="true">2.3.</strong> 確率変数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/density_function.html"><strong aria-hidden="true">2.3.1.</strong> 確率密度関数</a></li><li class="chapter-item expanded "><a href="../../probability/expected_value.html"><strong aria-hidden="true">2.3.2.</strong> 期待値</a></li><li class="chapter-item expanded "><a href="../../probability/average.html"><strong aria-hidden="true">2.3.3.</strong> 平均・分散・モーメント</a></li><li class="chapter-item expanded "><a href="../../probability/generate_function.html"><strong aria-hidden="true">2.3.4.</strong> 確率母関数・積率母関数</a></li><li class="chapter-item expanded "><a href="../../probability/characteristic.html"><strong aria-hidden="true">2.3.5.</strong> 特性関数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/characteristic/levy_inverse_them.html"><strong aria-hidden="true">2.3.5.1.</strong> Levyの反転定理</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/random_variable_trans.html"><strong aria-hidden="true">2.3.6.</strong> 変数変換</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/random_variable_vector.html"><strong aria-hidden="true">2.4.</strong> 確率変数ベクトル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/random_variable_2dvector/random_variable_2dvector.html"><strong aria-hidden="true">2.4.1.</strong> 確率変数2次元ベクトル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/random_variable_2dvector/random_variable_2dvector_cond.html"><strong aria-hidden="true">2.4.1.1.</strong> 条件付き確率</a></li><li class="chapter-item expanded "><a href="../../probability/random_variable_2dvector/random_variable_2dvector_indep.html"><strong aria-hidden="true">2.4.1.2.</strong> 確率変数の独立性</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../probability/random_variable_serise.html"><strong aria-hidden="true">2.5.</strong> 確率変数列</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/convergence.html"><strong aria-hidden="true">2.5.1.</strong> 確率変数列の収束</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/convergence/portmanteau_them.html" class="active"><strong aria-hidden="true">2.5.1.1.</strong> Portmanteau定理</a></li><li class="chapter-item expanded "><a href="../../probability/convergence/levy_convergence_them.html"><strong aria-hidden="true">2.5.1.2.</strong> Levyの収束定理</a></li><li class="chapter-item expanded "><a href="../../probability/convergence/cont_mapping_them.html"><strong aria-hidden="true">2.5.1.3.</strong> 連続写像定理</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/sum_of_random_variable.html"><strong aria-hidden="true">2.5.2.</strong> 独立確率変数の和</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/sum_of_random_variable/Kolmogorov_inequ.html"><strong aria-hidden="true">2.5.2.1.</strong> Kolmogorovの不等式</a></li><li class="chapter-item expanded "><a href="../../probability/sum_of_random_variable/Kolmogorov_them.html"><strong aria-hidden="true">2.5.2.2.</strong> Kolmogorovの定理</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../probability/probability_distribution/probability_distribution.html"><strong aria-hidden="true">2.6.</strong> 確率分布</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/probability_distribution/binomial_distribution.html"><strong aria-hidden="true">2.6.1.</strong> 二項分布</a></li><li class="chapter-item expanded "><a href="../../probability/probability_distribution/uniform_distribution.html"><strong aria-hidden="true">2.6.2.</strong> 一様分布</a></li><li class="chapter-item expanded "><a href="../../probability/probability_distribution/normal_distribution.html"><strong aria-hidden="true">2.6.3.</strong> 正規分布</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/law_of_large_number.html"><strong aria-hidden="true">2.7.</strong> 大数の法則</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/law_of_large_number/weak_law_of_large_number.html"><strong aria-hidden="true">2.7.1.</strong> 大数の弱法則</a></li><li class="chapter-item expanded "><a href="../../probability/law_of_large_number/strong_law_of_large_number.html"><strong aria-hidden="true">2.7.2.</strong> 大数の強法則</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/central_limit_theorem/central_limit_theorem.html"><strong aria-hidden="true">2.8.</strong> 中心極限定理</a></li></ol></li><li class="chapter-item expanded "><a href="../../statistics/statistics.html"><strong aria-hidden="true">3.</strong> 統計</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/sample_distribution.html"><strong aria-hidden="true">3.1.</strong> 標本分布</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/sample_distribution/props.html"><strong aria-hidden="true">3.1.1.</strong> 標本平均・標本分散の性質</a></li></ol></li><li class="chapter-item expanded "><a href="../../statistics/statistical_inference.html"><strong aria-hidden="true">3.2.</strong> 統計的推定</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/sufficient_statisics.html"><strong aria-hidden="true">3.2.1.</strong> 十分統計量</a></li><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/estimating_methods.html"><strong aria-hidden="true">3.2.2.</strong> 推定の方法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/evaluating_estimator.html"><strong aria-hidden="true">3.2.2.1.</strong> 推定量の評価</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/evaluating_value.html"><strong aria-hidden="true">3.2.2.1.1.</strong> 各種評価値</a></li><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/inf_var_of_unbias_estimator.html"><strong aria-hidden="true">3.2.2.1.2.</strong> 不偏推定量の分散の下限</a></li></ol></li><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/introducing_estimator.html"><strong aria-hidden="true">3.2.2.2.</strong> 推定量の導出</a></li></ol></li><li class="chapter-item expanded "><a href="../../statistics/hypothesis_testing/hypothesis_testing.html"><strong aria-hidden="true">3.2.3.</strong> 統計的仮説検定</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../appendix/appendix.html"><strong aria-hidden="true">4.</strong> 付録</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../appendix/gauss_integral.html"><strong aria-hidden="true">4.1.</strong> ガウス積分</a></li><li class="chapter-item expanded "><a href="../../appendix/method_of_lagrange_multiplier.html"><strong aria-hidden="true">4.2.</strong> ラグランジュの未定乗数法</a></li></ol></li><li class="chapter-item expanded "><a href="../../reference.html"><strong aria-hidden="true">5.</strong> 参考文献</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">数理統計学ノート</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="portmanteau定理"><a class="header" href="#portmanteau定理">Portmanteau定理</a></h2>
+<p>分布収束と同値な定義を示した定理を<strong>Portmanteau(両開き旅行かばん語)定理</strong>という.</p>
+<h3 id="portmanteau定理-1"><a class="header" href="#portmanteau定理-1">Portmanteau定理</a></h3>
+<p>確率変数\(X\),確率変数列 \( \{X _n \} _{n \in \mathbb{N} _+} \)を用意し,
+それそれに対応する分布関数を,\(F _X,F _{X_n}\)とする.<br />
+\(F _X\)に対応する確率測度を\(P\),\(F _{X_n}\)に対応する確率測度を\(P_n\)とする.<br />
+以下の定義は同値である.</p>
+<ol>
+<li>\(X_n \xrightarrow{d} X\)</li>
+<li>任意の有界連続関数 \(f:\mathbb{R} \mapsto \mathbb{R}\)に対して
+\[
+E[f(X _n)] \to E[f(X)]
+\]</li>
+<li>任意の有界一様連続関数 \(f:\mathbb{R} \mapsto \mathbb{R}\)に対して
+\[
+E[f(X _n)] \to E[f(X)]
+\]</li>
+<li>任意の閉集合Aに対して, \(\limsup_{n \to \infty} P_{n}(A) \leq P(A)\)</li>
+<li>任意の開集合Aに対して, \(\liminf_{n \to \infty} P_{n}(A) \geq P(A)\)</li>
+</ol>
+<ul>
+<li>
+<p>証明<br />
+\(2 \Rightarrow 3\)は,関数\(f\)が有界連続関数なら,有界一様連続関数なので成立.<br />
+\(4 \Leftrightarrow 5\)を示す. 任意の開集合\(A\)の補集合\(A^c\)は閉集合.<br />
+\[
+\begin{align}
+\limsup_{n \to \infty} P_{n}(A^c) \leq P(A^c) &amp;\Leftrightarrow \\
+\limsup_{n \to \infty} (1-P_{n}(A)) \leq 1-P(A) &amp;\Leftrightarrow \\
+\limsup_{n \to \infty} (-P_{n}(A)) \leq -P(A) &amp;\Leftrightarrow \\
+\liminf_{n \to \infty} (P_{n}(A)) \geq P(A)
+\end{align}
+\]
+から,\(4 \Rightarrow 5\)が成立.\(5 \Rightarrow 4\)も同様.<br />
+\(4,5 \Rightarrow 1\)を示す. \(A = \{\omega| X(\omega) \leq x \}\)は閉集合で,
+\[
+\limsup _{n \to \infty} F _{X _n}(x) = \limsup _{n \to \infty} P _n(A) \leq P(A) = F _X(x)
+\]</p>
+<p>任意の正数\(\varepsilon &gt; 0\)を用意して,\(\overline{A'} = \{\omega| X(\omega) \leq x-\varepsilon \}\)と,\(A' = \{\omega| X(\omega) &lt; x-\varepsilon/2 \}\)
+を作ることができる. \(\overline{A'} \subset A'\)から
+\[
+F_X(x-\varepsilon) = P(\overline{A'}) \leq P(A') \leq \liminf _{n \to \infty} P _n(A')
+\]
+\(A' \subset A\)から
+\[
+\liminf _{n \to \infty} P _n(A') \leq \liminf _{n \to \infty} P _n(A) = \liminf _{n \to \infty} F _{X_n}(x) \leq \limsup _{n \to \infty} F _{X_n}(x)
+\]
+なので,
+\[
+F_X(x-\varepsilon) \leq \liminf _{n \to \infty} F _{X_n}(x) \leq \limsup _{n \to \infty} F _{X_n}(x) \leq F_X(x)
+\]
+\(F_X\)は連続関数なので,\(\forall \delta, \exists \varepsilon |F_X(x)-F_X(x-\varepsilon)| &lt; \delta\)から,
+\(\varepsilon \to 0\)としても収束し,
+\[
+\liminf _{n \to \infty} F _{X_n}(x) = \limsup _{n \to \infty} F _{X_n}(x) = F_X(x) \\
+\lim _{n \to \infty} F _{X_n}(x) = F_X(x) \\
+\]</p>
+<p>\(1 \Rightarrow 2\)を示す.任意の正数\(\delta\)と\(M\)を用意する.
+\[
+F_X(-M) &lt; \delta, 1-F_X(M) &lt; \delta
+\]
+として,\(M\)を十分大きくすると,\(\delta\)は十分小さくできる.
+\(F\)の不連続点は可算なので,\(-M,M\)は\(F\)の連続点に取ることができる.<br />
+閉区間\([-M,M]\)で,\(-M=m_0 &lt; m_1 &lt; \cdots &lt; m_{k-1} &lt; m_k = M\)なる分点\(\{m_i\} _{0 \leq i \leq k}\)を取る.
+分点\(\{m_i\} _{0 \leq i \leq k}\)も\(F\)の連続点に取ることができ,数列\(\{m_i\} _{0 \leq i \leq k}\)は\(\forall i \geq 1, |m _i - m _{i-1}| &lt; \delta\)となるように取ることができる.</p>
+<p>仮定で\(F_n\)が分布収束から,\(\lim _{n \to \infty} F_n(x) = F(x)\).なので,十分大きな\(N\)を取ってきて,
+\[
+\forall n &gt; N, | F _n(m _j) - F(m _j) | &lt; \delta
+\]
+とすることができる. \(-M=m _0, M=m _k\)なので,
+\[
+\forall n &gt; N, F _{X _n}(-M) &lt; 2 \delta, 1 - F _{X _n}(M) &lt; 2 \delta
+\]</p>
+<p>これから,
+\[
+\forall n &gt; N, F _{X _n}(-M) + 1 - F _{X _n}(M) + F _{X}(-M) + 1 - F _{X}(M) &lt; 6 \delta \\
+\forall n &gt; N, F _{X _n}(-M) + 1 - F _{X _n}(M) - (F _{X}(-M) +  1 - F _{X}(M)) \leq F _{X _n}(-M) + 1 - F _{X _n}(M) + F _{X}(-M) + 1 - F _{X}(M)
+\]</p>
+<p>\[
+\begin{align}
+&amp; \left| \int^{\infty} _{M} f(x) dF _{X_n}(x) - \int^{\infty} _{M} f(x) dF _{X}(x) + \int^{-M} _{-\infty} f(x) dF _{X_n}(x) - \int^{-M} _{-\infty} f(x) dF _{X}(x) \right|\\
+= &amp; \left| \int^{\infty} _{-\infty} f(x) dF _{X_n}(x) - \int^{\infty} _{-\infty} f(x) dF _{X}(x) - \left( \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right) \right|\\
+= &amp;  \left| \int _{\Omega} f(x) P(d\omega) - \int _{\Omega} f(x) P(d\omega) - \left( \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right) \right|\\
+= &amp;  \left| E[f(X_n)] - E[f(X)] - \left( \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right) \right|
+\end{align}
+\]
+\(f(x)\)は有界関数なので,\(\sup _{-\infty \leq x \leq \infty} f(x) = a\)と置くと,
+\[
+\left| \int^{\infty} _{M} f(x) dF _{X_n}(x) - \int^{\infty} _{M} f(x) dF _{X}(x) + \int^{-M} _{-\infty} f(x) dF _{X_n}(x) - \int^{-M} _{-\infty} f(x) dF _{X}(x) \right| &lt; a \cdot 6 \delta
+\]
+\[
+\left| E[f(X_n)] - E[f(X)] - \left( \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right) \right| &lt; a \cdot 6 \delta
+\]</p>
+<p>\(\left| \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right|\)の区間を評価する.
+\(f\)は連続関数なので,閉区間\([-M,M]\)にて一様連続関数で, 
+\[
+\exists \delta |y - x| &lt; \delta \Rightarrow \forall \varepsilon |f(y) - f(x)| &lt; \varepsilon
+\]
+なので,閉区間\([-M,M]\)の分点,\(\{m_i\} _{0 \leq i \leq k}\)で,
+\[
+\exists \delta |m_i - x| &lt; \delta \Rightarrow \forall \varepsilon |f(m_i) - f(x)| &lt; \varepsilon
+\]
+とすることができる,\(m _{i-1} &lt; x \leq m _i\)なる\(x\)と\(\varepsilon\)が用意できる.
+ここで, \(a_i = f(m _i)\)として以下の単関数を用意する.</p>
+<p>\[
+\begin{align}
+g _{\varepsilon}(x) &amp;= \sum ^{k-1} _{i=0} a _i I _{m _{i} \leq x &lt; m _{i+1}}(x) \\
+&amp;= \sum ^{k-1} _{i=0} a _i (I _{-\infty &lt; x \leq m _{i+1}}(x) - I _{ -\infty &lt; x \leq m _{i}}(x))
+\end{align}
+\]</p>
+</li>
+</ul>
+<p>ここで,\(g _{\varepsilon}(x)-f(x) &lt; \varepsilon\)
+\[
+\left| \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} g _{\varepsilon}(x) dF _{X_n}(x) \right| = \left| \int^{M} _{-M} (f(x) - g _{\varepsilon}(x)) dF _{X_n}(x) \right| &lt; \varepsilon \left| \int^{M} _{-M} dF _{X_n}(x) \right| &lt; \varepsilon
+\]
+\[
+\left| \int^{M} _{-M} f(x) dF _X(x) - \int^{M} _{-M} g _{\varepsilon}(x) dF _X (x) \right| = \left| \int^{M} _{-M} (f(x) - g _{\varepsilon}(x)) dF _X(x) \right| &lt; \varepsilon \left| \int^{M} _{-M} dF _X(x)\right| &lt; \varepsilon
+\]</p>
+<p>\[
+\begin{align}
+&amp; \left| \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right| = \\
+&amp; \left| \int^{M} _{-M} f(x) dF _{X_n}(x) + \int^{M} _{-M} g _{\varepsilon}(x) dF _{X_n}(x) - \int^{M} _{-M} g _{\varepsilon}(x) dF _{X_n}(x) + \int^{M} _{-M} g _{\varepsilon}(x) dF _X(x) - \int^{M} _{-M} g _{\varepsilon}(x) dF _X(x)  - \int^{M} _{-M} f(x) dF _{X}(x)\right| = \\
+&amp;  \left| \int^{M} _{-M} (f(x) - g _{\varepsilon}(x)) dF _{X_n}(x) + \int^{M} _{-M} g _{\varepsilon}(x) dF _{X_n}(x) - \int^{M} _{-M} g _{\varepsilon}(x) dF _X(x)  - \int^{M} _{-M} (f(x)-g _{\varepsilon}(x)) dF _{X}(x)\right|
+\end{align}
+\]
+\(g _{\varepsilon}(x)-f(x) &gt; 0\),分布関数は単調増加関数なので,
+\[
+\begin{align}
+&amp;  \left| \int^{M} _{-M} (f(x) - g _{\varepsilon}(x)) dF _{X_n}(x) + \int^{M} _{-M} g _{\varepsilon}(x) dF _{X_n}(x) - \int^{M} _{-M} g _{\varepsilon}(x) dF _X(x)  - \int^{M} _{-M} (f(x)-g _{\varepsilon}(x)) dF _{X}(x)\right| \leq \\
+&amp; \left| \int^{M} _{-M} (f(x) - g _{\varepsilon}(x)) dF _{X_n}(x)\right| + \left| \int^{M} _{-M} g _{\varepsilon}(x) dF _{X_n}(x) - \int^{M} _{-M} g _{\varepsilon}(x) dF _X(x) \right| + \left|  \int^{M} _{-M} (f(x)-g _{\varepsilon}(x)) dF _{X}(x)\right| &lt; 2\varepsilon
+\end{align}
+\]
+ここで,\(n \to \infty\)を取ると分布収束と\(\varepsilon \to 0\)から\(\left| \int^{M} _{-M} f(x) dF _{X _n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right| \to 0 \)
+なので,\(n \to \infty\)とすると
+\[
+\left| E[f(X_n)] - E[f(X)] - \left( \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right) \right| \to 0
+\]
+となり,\(n \to \infty\)とすると \(E[f(X_n)] \to E[f(X)]\).</p>
+<p>\(3 \Rightarrow 4\)を示す.<br />
+\(A \subset A_\varepsilon, P(A_\varepsilon)-P(A) \leq \varepsilon\)であるような,
+事象\(A,A_\varepsilon\)を用意する. それに対して,次のような有界一様連続関数を用意する.
+\[
+f(x) = \left\{
+\begin{array}{ll}
+1 &amp; x \in A \\
+1 - \frac{\inf_{y \in A} |x - y|}{\varepsilon} &amp; x \in A_\varepsilon \backslash \; A \\
+0 &amp; x \not \in A \cup A_\varepsilon
+\end{array}
+\right.
+\]
+仮定の \(\lim_{n \to \infty} E[f(X_n)] = E[f(X)]\)から,
+\[
+\limsup_{n \to \infty} P_{n}(A) \leq \limsup_{n \to \infty} E[f(X_n)] = E[f(X)] \leq P(A_\varepsilon)
+\]
+ここで,\(\varepsilon \to 0\)とすると,\(A_\varepsilon\)が閉集合なので,\(P(\bigcap_{\varepsilon \to 0} A_\varepsilon)=P(A)\)から,
+\[
+\limsup_{n \to \infty} P_{n}(A) = P(A)
+\]
+証明おわり.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../probability/convergence.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../probability/convergence/levy_convergence_them.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../probability/convergence.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../probability/convergence/levy_convergence_them.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
