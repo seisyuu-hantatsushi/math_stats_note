@@ -85,3 +85,11 @@ P(\\{\omega | \lim_{n \to \infty} | X_n(\omega) - X(\omega) | = 0 \\}) = 1
 	X_n \xrightarrow{d} X
 \\]
 と表記する.
+
+#### 緊密
+確率変数列\\( \\{X_n\\} _{n \in \overline{\mathbb{N} _+}} \\)が**緊密**(tight)であるとは,
+\\[
+	\forall \varepsilon > 0, \exists M > 0, s.t. \\:  \sup _n P(|X _n| \geq M) < \varepsilon
+\\]
+となっていることである.  
+緊密な確率変数列は\\(|X _n|\\)が大きな値を取ることが確率上低いということである.

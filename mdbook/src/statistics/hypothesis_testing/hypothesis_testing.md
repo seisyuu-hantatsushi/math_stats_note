@@ -1,4 +1,4 @@
-## 仮説検定
+## 統計的仮説検定
 **仮説検定**(hypothesis testing)とは,関心のある仮説が発生事象に
 因果関係があるかどうかを判定することである.
 ここで,仮説は標本の母集団の母数や確率分布である.
@@ -37,3 +37,34 @@
 複数の要素から構成されるときは,**複合仮説**(composite hypothesis)という.
 
 ![test_graph_s1](./test_graph_s1.png)
+
+帰無仮説のパラメータに従う確率密度関数を&thinsp;\\(f_X(x:\theta_0)\\),
+対立仮説のパラメータに従う確率密度関数を&thinsp;\\(f_X(x:\theta_1)\\)とする.
+ここで,標本\\(X_i\\)から\\(\theta\\)が,\\(\Theta _0, \Theta _1\\)どちらに属するかを判定する問題が仮説検定である.
+
+上図で,標本\\(X_i\\)が\\(a\\)の位置にあるなら&thinsp;\\(H_0\\)を支持し,\\(b\\)の位置にあるなら&thinsp;\\(H_1\\)を支持し,
+\\(c\\)の位置にあるなら判定を保留したいと考えたい.しかし,仮説検定では判断を保留すると言う態度を取らない.
+標本空間\\(\Omega\\)の中に集合\\(R,A=\Omega \backslash R\\)を設定し,\\(X_i \in R\\)である時&thinsp;対立仮説が成立すると設定する.
+
+#### 仮説検定方式
+**仮説検定方式**(hypothesis testing procedure)とは,標本空間\\(\Omega\\)を帰無仮説\\(H_0\\)を**棄却**(reject)する空間と,**受容**(accept)する空間に分割し,設定を行うことである.
+\\[
+	R = \\{x \in \Omega | H_0を棄却する \\} \\\\
+	A = \Omega \backslash R = \\{x \in \Omega | H_0を受容する \\}
+\\]
+\\(R\\)を\\(H _0\\)の**棄却域**(rejection region),\\(A\\)を\\(H _0\\)の**受容域**(acceptance region)と言う.
+\\(R,A\\)を決定する,標本\\(\\{X_i\\} _{i \in \mathbb{N} _+,i \leq n}\\)に基づいた統計量\\(T=T(\mathbf{X})\\)を検定統計量と言う.
+
+#### 検定関数
+\\[
+	\phi (\mathbf{X}) = I _R(\mathbf{X}) = \left \\{
+		\begin{array}{ll}
+		1 & \mathbf{X} \in R \\\\
+		0 & \mathbf{X} \not \in R
+		\end{array}
+	\right.
+\\]
+と棄却域に関しての指示関数を**検定関数**(testing function)と言う.
+
+### 設定された検出の評価
+![test_graph_s2](./test_graph_s2.png)

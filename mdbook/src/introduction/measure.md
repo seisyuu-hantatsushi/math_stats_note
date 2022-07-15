@@ -7,7 +7,8 @@
 以下のように自然数,実数などの集合を定義する.
 - \\(\mathbb{N} = \\{0,1,2,\dots\\} \\)
 - \\(\mathbb{N}_+ = \\{1,2,\dots\\} \\)
-- \\(\overline{\mathbb{N}} = \mathbb{N}\cup \\{+\infty \\} \\)
+- \\(\overline{\mathbb{N}} = \mathbb{N} \cup \\{ +\infty \\} \\)
+- \\(\overline{\mathbb{N}_+} = \\{1,2,\dots\\} \cup \\{ +\infty \\} \\)
 - \\(\mathbb{R} = \\{x|実数\\} \\)
 - \\(\mathbb{R}^d = \prod_{i=1}^{d} \mathbb{R} \\)
 - \\(\mathbb{R}_+ = \\{x|x \geq 0 の実数\\} \\)

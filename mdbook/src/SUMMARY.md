@@ -58,7 +58,7 @@
         - [各種評価値](./statistics/statistical_inference/evaluating_value.md)
         - [不偏推定量の分散の下限](./statistics/statistical_inference/inf_var_of_unbias_estimator.md)
       - [推定量の導出](./statistics/statistical_inference/introducing_estimator.md)
-    - [仮説検定](./statistics/hypothesis_testing/hypothesis_testing.md)
+    - [統計的仮説検定](./statistics/hypothesis_testing/hypothesis_testing.md)
 - [付録](./appendix/appendix.md)
   - [ガウス積分](./appendix/gauss_integral.md)
   - [ラグランジュの未定乗数法](./appendix/method_of_lagrange_multiplier.md)

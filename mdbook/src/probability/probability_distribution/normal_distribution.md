@@ -31,7 +31,7 @@ Gauss分布とも言う.確率変数\\(X\\)が平均\\(\mu\\),分散\\(\sigma^2\
 \\[
   \begin{align}
 \int ^{\infty} _{-\infty} \mu \exp\left( -\frac{{y}^2}{2\sigma^2}\right) &= \mu \int ^{\infty} _{-\infty}\exp\left( -z^2 \right) \cdot \sqrt{2}\sigma \cdot dz \\\\
-	&= \mu \sigma \sqrt{2\pi} 
+	&= \mu \sigma \sqrt{2\pi}
   \end{align}
 \\]
 から,
@@ -69,9 +69,25 @@ Gauss分布とも言う.確率変数\\(X\\)が平均\\(\mu\\),分散\\(\sigma^2\
 	&= \frac{e^{\mu t}}{\sqrt{\pi}} \int ^{\infty} _{-\infty} \exp\left( - \left(z^2 - 2 \left( \frac{\sigma tz}{\sqrt{2}} \right) + \left( \frac{\sigma t}{\sqrt{2}} \right)^2 \right) + \left( \frac{\sigma t}{\sqrt{2}} \right)^2 \right) dz \\\\
 	&= \frac{e^{\mu t}}{\sqrt{\pi}} \int ^{\infty} _{-\infty} \exp\left( -\left(z +  \frac{\sigma t}{\sqrt{2}} \right)^2 + \left( \frac{\sigma t}{\sqrt{2}} \right)^2 \right) dz \\\\
 	&= \frac{e^{\mu t + \left( \frac{\sigma t}{\sqrt{2}} \right)^2 }}{\sqrt{\pi}} \int ^{\infty} _{-\infty} \exp\left( -\left(z +  \frac{\sigma t}{\sqrt{2}} \right)^2 \right) dz \\\\
-	&= e^{\mu t + \left( \frac{\sigma t}{\sqrt{2}} \right)^2}
+	&= e^{\mu t + \left( \frac{\sigma t}{\sqrt{2}} \right)^2} \\\\
+	&= e^{\mu t + \frac{\sigma^2 t^2}{2}}
   \end{align}
 \\]
+
+### k次モーメント
+積率母関数を微分することに原点周りのk次モーメントを得る.
+\\[
+	\left. \frac{d}{dt} M_X(t) \right| _{t=0} = \left. \frac{d}{dt} e^{\mu t + \frac{\sigma^2 t^2}{2}} \right| _{t=0} = \left. \left( \mu + \sigma^2 t \right) \left( e^{\mu t + \frac{\sigma^2 t^2}{2}} \right) \right| _{t=0} = \mu
+\\]
+\\[
+  \begin{align}
+	\left. \frac{d^2}{dt^2} M_X(t) \right| _{t=0} &= \left. \frac{d^2}{dt^2} e^{\mu t + \frac{\sigma^2 t^2}{2}} \right| _{t=0} \\\\
+	&= \left. \frac{d}{dt} \left( \mu + \sigma^2 t \right) \left( e^{\mu t + \frac{\sigma^2 t^2}{2}} \right) \right| _{t=0} \\\\
+	&= \left. \sigma^2 \left( e^{\mu t + \frac{\sigma^2 t^2}{2}} \right) + ( \mu + \sigma^2 t )^2 \left( e^{\mu t + \frac{\sigma^2 t^2}{2}} \right) \right| _{t=0} \\\\
+	&= \sigma^2 + \mu^2
+  \end{align}
+\\]
+
 
 ### 特性関数
 \\[
