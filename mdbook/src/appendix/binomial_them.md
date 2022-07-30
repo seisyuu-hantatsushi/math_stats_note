@@ -101,32 +101,70 @@
 	\end{array} \right) a^{k+1} b^{l-k} + \sum ^{l} _{k=0} \left(  \begin{array}{c}
 		l \\\\
 		k
-	\end{array} \right) a^k b^{l-k+1} \\\\
-	&= \sum ^{l} _{k=0} \left(  \begin{array}{c}
+	\end{array} \right) a^k b^{l+1-k} \\\\
+	&= \left(  \begin{array}{c}
+		l \\\\
+		l
+		\end{array} \right)a^{l+1} b^{l-l} +
+	\sum ^{l-1} _{k=0} \left(  \begin{array}{c}
 		l \\\\
 		k
 	\end{array} \right) a^{k+1} b^{l-k} +
-	\sum ^{l} _{k=0} \left(  \begin{array}{c}
-		l \\\\
-		k
-	\end{array} \right) a^k b^{l-k+1} \\\\
-	&= \sum ^{l+1} _{k'=1} \left(  \begin{array}{c}
-		l \\\\
-		k'-1
-	\end{array} \right) a^{k'} b^{l-(k'-1)} +
-	\sum ^{l} _{k=0} \left(  \begin{array}{c}
+	\sum ^{l} _{k=1} \left(  \begin{array}{c}
 		l \\\\
 		k
 	\end{array} \right) a^k b^{l+1-k} +
 	\left(  \begin{array}{c}
+		l \\\\
+		0
+	\end{array} \right) a^0 b^{l+1-0} \\\\
+	&= \left(  \begin{array}{c}
 		l+1 \\\\
 		l+1
-	\end{array} \right) a^{l+1} b^{l+1-(l+1)} -
+		\end{array} \right)a^{l+1} +
+	\sum ^{l} _{k=1} \left(  \begin{array}{c}
+		l \\\\
+		k-1
+	\end{array} \right) a^{k} b^{l-(k-1)} +
+	\sum ^{l} _{k=1} \left(  \begin{array}{c}
+		l \\\\
+		k
+	\end{array} \right) a^{k} b^{l+(k-1)} +
 	\left(  \begin{array}{c}
 		l+1 \\\\
+		0
+	\end{array} \right) b^{l+1} \\\\
+	&= \left(  \begin{array}{c}
+		l+1 \\\\
 		l+1
-	\end{array} \right) a^{l+1} b^{l+1-(l+1)}
-	\\\\
+		\end{array} \right)a^{l+1} +
+	\sum ^{l} _{k=0} \left \\{ \left(  \begin{array}{c}
+		l \\\\
+		k
+	\end{array} \right)  + \left(  \begin{array}{c}
+		l \\\\
+		k-1
+	\end{array} \right) \right \\}a^{k} b^{l+1-k} +
+	\left(  \begin{array}{c}
+		l+1 \\\\
+		0
+	\end{array} \right) b^{l+1} \\\\
+	&= \left(  \begin{array}{c}
+		l+1 \\\\
+		l+1
+		\end{array} \right)a^{l+1} +
+	\sum ^{l} _{k=1} \left(  \begin{array}{c}
+		l + 1 \\\\
+		k
+	\end{array} \right) a^{k} b^{l+1-k} +
+	\left(  \begin{array}{c}
+		l+1 \\\\
+		0
+	\end{array} \right) b^{l+1} \\\\
+	&= \sum ^{l+1} _{k=0} \left(  \begin{array}{c}
+		l + 1 \\\\
+		k
+	\end{array} \right) a^{k} b^{l+1-k} = (a+b)^{l+1}
 	\end{align}
   \\]
-
+から,  \\(n=l+1\\)のときも成立し,二項定理が成立することが証明された.
