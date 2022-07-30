@@ -202,6 +202,20 @@ F_1(x _1) = \int _{X _2} f(x _1,x _2)m _2 (dx_2), F_2(x _2) = \int _{X _1} f(x _
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

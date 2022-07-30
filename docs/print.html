@@ -3369,34 +3369,73 @@ k
 \end{array} \right) a^{k+1} b^{l-k} + \sum ^{l} _{k=0} \left(  \begin{array}{c}
 l \\
 k
-\end{array} \right) a^k b^{l-k+1} \\
-&amp;= \sum ^{l} _{k=0} \left(  \begin{array}{c}
+\end{array} \right) a^k b^{l+1-k} \\
+&amp;= \left(  \begin{array}{c}
+l \\
+l
+\end{array} \right)a^{l+1} b^{l-l} +
+\sum ^{l-1} _{k=0} \left(  \begin{array}{c}
 l \\
 k
 \end{array} \right) a^{k+1} b^{l-k} +
-\sum ^{l} _{k=0} \left(  \begin{array}{c}
-l \\
-k
-\end{array} \right) a^k b^{l-k+1} \\
-&amp;= \sum ^{l+1} _{k'=1} \left(  \begin{array}{c}
-l \\
-k'-1
-\end{array} \right) a^{k'} b^{l-(k'-1)} +
-\sum ^{l} _{k=0} \left(  \begin{array}{c}
+\sum ^{l} _{k=1} \left(  \begin{array}{c}
 l \\
 k
 \end{array} \right) a^k b^{l+1-k} +
 \left(  \begin{array}{c}
+l \\
+0
+\end{array} \right) a^0 b^{l+1-0} \\
+&amp;= \left(  \begin{array}{c}
 l+1 \\
 l+1
-\end{array} \right) a^{l+1} b^{l+1-(l+1)} -
+\end{array} \right)a^{l+1} +
+\sum ^{l} _{k=1} \left(  \begin{array}{c}
+l \\
+k-1
+\end{array} \right) a^{k} b^{l-(k-1)} +
+\sum ^{l} _{k=1} \left(  \begin{array}{c}
+l \\
+k
+\end{array} \right) a^{k} b^{l+(k-1)} +
 \left(  \begin{array}{c}
 l+1 \\
+0
+\end{array} \right) b^{l+1} \\
+&amp;= \left(  \begin{array}{c}
+l+1 \\
 l+1
-\end{array} \right) a^{l+1} b^{l+1-(l+1)}
-\\
+\end{array} \right)a^{l+1} +
+\sum ^{l} _{k=0} \left \{ \left(  \begin{array}{c}
+l \\
+k
+\end{array} \right)  + \left(  \begin{array}{c}
+l \\
+k-1
+\end{array} \right) \right \}a^{k} b^{l+1-k} +
+\left(  \begin{array}{c}
+l+1 \\
+0
+\end{array} \right) b^{l+1} \\
+&amp;= \left(  \begin{array}{c}
+l+1 \\
+l+1
+\end{array} \right)a^{l+1} +
+\sum ^{l} _{k=1} \left(  \begin{array}{c}
+l + 1 \\
+k
+\end{array} \right) a^{k} b^{l+1-k} +
+\left(  \begin{array}{c}
+l+1 \\
+0
+\end{array} \right) b^{l+1} \\
+&amp;= \sum ^{l+1} _{k=0} \left(  \begin{array}{c}
+l + 1 \\
+k
+\end{array} \right) a^{k} b^{l+1-k} = (a+b)^{l+1}
 \end{align}
-\]</li>
+\]
+から,  \(n=l+1\)のときも成立し,二項定理が成立することが証明された.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="ガウス積分"><a class="header" href="#ガウス積分">ガウス積分</a></h2>
 <h3 id="int-e-ax2-dx"><a class="header" href="#int-e-ax2-dx">\(\int e^{-ax^2} dx\)</a></h3>
@@ -3663,6 +3702,20 @@ Achim Klenke(2014) Probability Theory. A Comprehensive Course. Springer.(ISBN978
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

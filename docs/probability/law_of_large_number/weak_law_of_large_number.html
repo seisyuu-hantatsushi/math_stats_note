@@ -201,6 +201,20 @@ E[(\overline{X}-\mu)^2] &amp;=  E[(\frac{1}{n} \sum^{n} _ {i=1} X_i-\mu)^2] \\
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
