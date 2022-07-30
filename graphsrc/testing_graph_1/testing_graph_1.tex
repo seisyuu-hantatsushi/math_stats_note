@@ -9,12 +9,12 @@
       \draw [thick, -stealth](-6.3,0)--(6.3,0) node [anchor=north]{$$};
 
       % 正規分布
-      \draw [very thick, domain=-6:6, samples=200] plot(\x, {1.5*exp((-(\x+1.5)^2)/2)/(sqrt(2*pi))});
+      \draw [very thick, domain=-6:6, samples=200] plot(\x, {exp((-(\x+1.2)^2)/(2*0.25))/(sqrt(2*pi*0.25))});
       \draw [very thick, domain=-6:6, samples=200] plot(\x, {exp((-(\x-1.5)^2)/2)/(sqrt(2*pi))});
 
       % 補助線
-      \draw [dashed](-2.5,0) node [anchor=north]{$a$} -- (-2.5,{1.5*exp((-(-2.5+1.5)^2)/2)/(sqrt(2*pi))});
-      \draw [dashed](0.135,0) node [anchor=north]{$c$} -- (0.135,{exp((-(0.135-1.5)^2)/2)/(sqrt(2*pi))});
+      \draw [dashed](-1.8,0) node [anchor=north]{$a$} -- (-1.8,{exp((-(-1.8+1.2)^2)/(2*0.25))/(sqrt(2*pi*0.25))});
+      \draw [dashed](-0.176,0) node [anchor=north]{$c$} -- (-0.176,{exp((-(-0.176-1.5)^2)/2)/(sqrt(2*pi))});
       \draw [dashed](2.5,0) node [anchor=north]{$b$} -- (2.5,{exp((-(1.0)^2)/2)/(sqrt(2*pi))});
 
       % 説明
