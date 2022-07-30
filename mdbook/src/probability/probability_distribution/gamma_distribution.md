@@ -52,3 +52,35 @@ f _{T|X \geq x}(t) = \frac{t^{\alpha-1}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{t
 として,ガンマ分布を表す.\\(\alpha\\)は**形状母数**(shape parameter),\\(\beta\\)は**尺度母数**(scale parameter)と呼ばれる.
 ともに,形状母数は発生回数,尺度母数は発生間隔を元にするので,\\(\alpha > 0,\beta > 0\\)である.
 
+![gamma_dist_graph_1](./gamma_dist_graph_1.png)
+![gamma_dist_graph_2](./gamma_dist_graph_2.png)
+
+### 平均
+\\[
+\begin{align}
+	E[X] &= \int ^{\infty} _{0} \frac{x^{\alpha}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{x}{\beta}} dx \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha}e^{-\frac{x}{\beta}} dx \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha}\left\\{ \int ^{\infty} _{0} x^{\alpha} \left(-\beta e^{-\frac{x}{\beta}} \right)' dx \right\\} \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha}\left\\{ \left[ x^{\alpha}\left(-\beta e^{-\frac{x}{\beta}} \right) \right] ^{\infty} _{0} + \int ^{\infty} _{0} \alpha x^{\alpha-1} \beta e^{-\frac{x}{\beta}} dx \right\\} \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha}\left\\{ \alpha\beta \int ^{\infty} _{0} x^{\alpha-1} \left(-\beta e^{-\frac{x}{\beta}} \right)' dx \right\\} \\\\
+	&\vdots \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha}\left\\{ \alpha!\beta^{\alpha} \int ^{\infty} _{0} e^{-\frac{x}{\beta}} dx \right\\} \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha} \alpha!\beta^{\alpha + 1} = \alpha\beta
+\end{align}
+\\]
+
+### 分散
+\\[
+\begin{align}
+E[X^2] &= \int ^{\infty} _{0} \frac{x^2 x^{\alpha-1}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{x}{\beta}} dx \\\\
+	&= \int ^{\infty} _{0} \frac{x^{\alpha+1}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{x}{\beta}} dx \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha+1} e^{-\frac{x}{\beta}} dx \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha} \left\\{ \int ^{\infty} _{0} x^{\alpha+1} \left( -\beta e^{-\frac{x}{\beta}} \right)' dx \right\\} \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha} \left\\{ \left[ x^{\alpha+1} \left( -\beta e^{-\frac{x}{\beta}} \right) \right] ^{\infty} _{0} + (\alpha+1)\beta \int ^{\infty} _{0}  x^{\alpha} e^{-\frac{x}{\beta}} dx \right\\} \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha} \\{ (\alpha+1)\beta \alpha!\beta^{\alpha + 1} \\} = (\alpha+1)\alpha\beta^2
+\end{align}
+\\]
+から,
+\\[
+	{\rm var}(X) = E[X^2] - E[X]^2 = (\alpha+1)\alpha\beta^2 - \alpha^2\beta^2 = (\alpha^2+\alpha - \alpha^2) \beta^2 = \alpha\beta^2
+\\]
