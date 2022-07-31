@@ -84,3 +84,33 @@ E[X^2] &= \int ^{\infty} _{0} \frac{x^2 x^{\alpha-1}}{\Gamma(\alpha) \beta^\alph
 \\[
 	{\rm var}(X) = E[X^2] - E[X]^2 = (\alpha+1)\alpha\beta^2 - \alpha^2\beta^2 = (\alpha^2+\alpha - \alpha^2) \beta^2 = \alpha\beta^2
 \\]
+
+### 積率母関数
+\\[
+\begin{align}
+M_X(t) = E[e^{tX}] &= \int ^{\infty} _{0} \frac{e^{tx} x^{\alpha-1}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{x}{\beta}} dx \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha-1} e^{\left(t-\frac{1}{\beta}\right)x} dx \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha-1} e^{-\left(\frac{1-\beta t}{\beta}\right)x} dx \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha-1} \left( -\frac{\beta}{1-\beta t} e^{-\left(\frac{1-\beta t}{\beta}\right)x} \right)' dx \\\\
+	&= \frac{1}{\Gamma(\alpha) \beta^\alpha} (\alpha-1)! \left( \frac{\beta}{1-\beta t} \right)^{\alpha-1} \int ^{\infty} _{0} \left( -\frac{\beta}{1-\beta t} e^{-\left(\frac{1-\beta t}{\beta}\right)x} \right)' dx \\\\
+	&= \frac{1}{\beta^\alpha} \left( \frac{\beta}{1-\beta t} \right)^{\alpha-1} \left[-\frac{\beta}{1-\beta t} e^{-\left(\frac{1-\beta t}{\beta}\right)x}\right] ^{\infty} _{0} \\\\
+	&= \frac{1}{\beta^\alpha} \left( \frac{\beta}{1-\beta t} \right)^\alpha = \left(\frac{1}{1-\beta t}\right)^\alpha
+	\end{align}
+\\]
+
+### k次モーメント
+\\[
+\begin{align}
+\left. \frac{d^k}{dt^k} M_X(t) \right| _{t=0} &= \left. \frac{d^k}{dt^k} \left(\frac{1}{1-\beta t}\right)^\alpha \right| _{t=0} \\\\
+&= \left. \frac{d^k}{dt^k} (1-\beta t)^{-\alpha} \right| _{t=0} \\\\
+&= \left. \frac{d^{k-1}}{dt^{k-1}} \alpha \beta (1-\beta t)^{-\alpha-1} \right| _{t=0} \\\\
+&= \left. \frac{d^{k-2}}{dt^{k-2}} \alpha(\alpha+1) \beta^2 (1-\beta t)^{-\alpha-2} \right| _{t=0} \\\\
+&= \left. \prod^{k} _{i=0}(\alpha+i) \beta^k (1-\beta t)^{-\alpha-k} \right| _{t=0} \\\\
+&= \prod^{k} _{i=0}(\alpha+i) \beta^k
+\end{align}
+\\]
+
+### 特性関数
+\\[
+\varphi_X(t) = E[e^{itX}] = \left(\frac{1}{1 - i \beta t}\right)^\alpha
+\\]
