@@ -18,6 +18,23 @@
 	E[(X-\mu)^2]=E[X^2-2\mu X+\mu^2] = E[X^2]-\mu^2 = E[X^2]-E[X]^2
 \\]
 
+### 分散の性質
+分散は尺度に影響されるが,平行移動はしない.
+\\[
+	\forall a,b \in \mathbb{R}, {\rm var}(aX+b)=a^2{\rm var}(X)
+\\]
+
+- 証明
+\\[
+	\begin{align}
+	{\rm var}(aX+b) &= E[(aX+b)^2]-E[(aX+b)]^2 \\\\
+	&= E[(aX)^2+2abX+b^2] - (E[aX]^2+2E[aX]E[b]+E[b]^2) \\\\
+	&= E[(aX)^2]+2abE[X]+b^2 - a^2E[X]^2-2E[aX]E[b]-b^2 \\\\
+	&= a^2E[X^2] - a^2E[X]^2 \\\\
+	&= a^2 {\rm var}(X) \\\\
+	\end{align}
+\\]
+
 ### Chebyshevの不等式
 確率変数\\(X\\)の平均を\\(\mu\\),分散を\\(\sigma^2\\)とする.\\(\varepsilon \geq 0\\)に対して,
 \\[
