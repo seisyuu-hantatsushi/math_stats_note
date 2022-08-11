@@ -30,7 +30,6 @@
     - [変数変換](./probability/random_variable_trans.md)
   - [確率変数ベクトル](./probability/random_variable_vector.md)
     - [確率変数2次元ベクトル](./probability/random_variable_2dvector/random_variable_2dvector.md)
-      - [期待値と分散](./probability/random_variable_2dvector/expected_value_and_variance.md)
       - [条件付き確率](./probability/random_variable_2dvector/random_variable_2dvector_cond.md)
       - [確率変数の独立性](./probability/random_variable_2dvector/random_variable_2dvector_indep.md)
       - [共分散と相関係数](./probability/random_variable_2dvector/covariance_correlation.md)
