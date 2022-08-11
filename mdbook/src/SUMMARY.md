@@ -34,6 +34,7 @@
       - [条件付き確率](./probability/random_variable_2dvector/random_variable_2dvector_cond.md)
       - [確率変数の独立性](./probability/random_variable_2dvector/random_variable_2dvector_indep.md)
       - [共分散と相関係数](./probability/random_variable_2dvector/covariance_correlation.md)
+      - [変数変換](./probability/random_variable_2dvector/trans_variable.md)
   - [確率変数列](./probability/random_variable_serise.md)
     - [確率変数列の収束](./probability/convergence.md)
       - [Portmanteau定理](./probability/convergence/portmanteau_them.md)
