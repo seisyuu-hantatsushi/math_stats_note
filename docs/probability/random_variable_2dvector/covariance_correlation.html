@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>共分散と相関係数 - 数理統計学ノート</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../introduction/introduction.html"><strong aria-hidden="true">1.</strong> 準備</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../introduction/set_theory.html"><strong aria-hidden="true">1.1.</strong> 集合論</a></li><li class="chapter-item expanded "><a href="../../introduction/space.html"><strong aria-hidden="true">1.2.</strong> 空間</a></li><li class="chapter-item expanded "><a href="../../introduction/measure.html"><strong aria-hidden="true">1.3.</strong> 測度</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../introduction/measure/measurable.html"><strong aria-hidden="true">1.3.1.</strong> 可測</a></li><li class="chapter-item expanded "><a href="../../introduction/measure/measure_space.html"><strong aria-hidden="true">1.3.2.</strong> 測度空間</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../introduction/measure/measure_space_prop.html"><strong aria-hidden="true">1.3.2.1.</strong> 測度空間の性質</a></li><li class="chapter-item expanded "><a href="../../introduction/measure/limit.html"><strong aria-hidden="true">1.3.2.2.</strong> 極限</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../introduction/lebesgue_integral/lebesgue_integral.html"><strong aria-hidden="true">1.4.</strong> Lebesgue積分</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../introduction/lebesgue_integral/fubinis_theorem.html"><strong aria-hidden="true">1.4.1.</strong> Fubiniの定理</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../probability/probability.html"><strong aria-hidden="true">2.</strong> 確率</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/events.html"><strong aria-hidden="true">2.1.</strong> 事象</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/events/limits.html"><strong aria-hidden="true">2.1.1.</strong> 事象の極限</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/probability_space_intro.html"><strong aria-hidden="true">2.2.</strong> 確率空間</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/probability_measure.html"><strong aria-hidden="true">2.2.1.</strong> 確率測度</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/measure/property.html"><strong aria-hidden="true">2.2.1.1.</strong> 確率測度の性質</a></li><li class="chapter-item expanded "><a href="../../probability/measure/operation.html"><strong aria-hidden="true">2.2.1.2.</strong> 確率の演算</a></li><li class="chapter-item expanded "><a href="../../probability/measure/conditional.html"><strong aria-hidden="true">2.2.1.3.</strong> 条件付き確率</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/probability_space.html"><strong aria-hidden="true">2.2.2.</strong> 確率空間</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/probability_space/borel_cantelli_them.html"><strong aria-hidden="true">2.2.2.1.</strong> Borel-Cantelliの定理</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../probability/random_variable.html"><strong aria-hidden="true">2.3.</strong> 確率変数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/density_function.html"><strong aria-hidden="true">2.3.1.</strong> 確率密度関数</a></li><li class="chapter-item expanded "><a href="../../probability/expected_value.html"><strong aria-hidden="true">2.3.2.</strong> 期待値</a></li><li class="chapter-item expanded "><a href="../../probability/average.html"><strong aria-hidden="true">2.3.3.</strong> 平均・分散・モーメント</a></li><li class="chapter-item expanded "><a href="../../probability/generate_function.html"><strong aria-hidden="true">2.3.4.</strong> 確率母関数・積率母関数</a></li><li class="chapter-item expanded "><a href="../../probability/characteristic.html"><strong aria-hidden="true">2.3.5.</strong> 特性関数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/characteristic/levy_inverse_them.html"><strong aria-hidden="true">2.3.5.1.</strong> Levyの反転定理</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/random_variable_trans.html"><strong aria-hidden="true">2.3.6.</strong> 変数変換</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/random_variable_vector.html"><strong aria-hidden="true">2.4.</strong> 確率変数ベクトル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/random_variable_2dvector/random_variable_2dvector.html"><strong aria-hidden="true">2.4.1.</strong> 確率変数2次元ベクトル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/random_variable_2dvector/random_variable_2dvector_cond.html"><strong aria-hidden="true">2.4.1.1.</strong> 条件付き確率</a></li><li class="chapter-item expanded "><a href="../../probability/random_variable_2dvector/random_variable_2dvector_indep.html"><strong aria-hidden="true">2.4.1.2.</strong> 確率変数の独立性</a></li><li class="chapter-item expanded "><a href="../../probability/random_variable_2dvector/covariance_correlation.html" class="active"><strong aria-hidden="true">2.4.1.3.</strong> 共分散と相関係数</a></li><li class="chapter-item expanded "><a href="../../probability/random_variable_2dvector/trans_variable.html"><strong aria-hidden="true">2.4.1.4.</strong> 変数変換</a></li><li class="chapter-item expanded "><a href="../../probability/random_variable_2dvector/sum_of_trans_variable.html"><strong aria-hidden="true">2.4.1.5.</strong> 確率変数の和の分布</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../probability/random_variable_serise.html"><strong aria-hidden="true">2.5.</strong> 確率変数列</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/convergence.html"><strong aria-hidden="true">2.5.1.</strong> 確率変数列の収束</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/convergence/portmanteau_them.html"><strong aria-hidden="true">2.5.1.1.</strong> Portmanteau定理</a></li><li class="chapter-item expanded "><a href="../../probability/convergence/levy_convergence_them.html"><strong aria-hidden="true">2.5.1.2.</strong> Levyの収束定理</a></li><li class="chapter-item expanded "><a href="../../probability/convergence/cont_mapping_them.html"><strong aria-hidden="true">2.5.1.3.</strong> 連続写像定理</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/sum_of_random_variable.html"><strong aria-hidden="true">2.5.2.</strong> 独立確率変数の和</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/sum_of_random_variable/Kolmogorov_inequ.html"><strong aria-hidden="true">2.5.2.1.</strong> Kolmogorovの不等式</a></li><li class="chapter-item expanded "><a href="../../probability/sum_of_random_variable/Kolmogorov_them.html"><strong aria-hidden="true">2.5.2.2.</strong> Kolmogorovの定理</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../probability/probability_distribution/probability_distribution.html"><strong aria-hidden="true">2.6.</strong> 確率分布</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/probability_distribution/binomial_distribution.html"><strong aria-hidden="true">2.6.1.</strong> 二項分布</a></li><li class="chapter-item expanded "><a href="../../probability/probability_distribution/poisson_distribution.html"><strong aria-hidden="true">2.6.2.</strong> ポアソン分布</a></li><li class="chapter-item expanded "><a href="../../probability/probability_distribution/hypergeometric_distribution.html"><strong aria-hidden="true">2.6.3.</strong> 超幾何分布</a></li><li class="chapter-item expanded "><a href="../../probability/probability_distribution/uniform_distribution.html"><strong aria-hidden="true">2.6.4.</strong> 一様分布</a></li><li class="chapter-item expanded "><a href="../../probability/probability_distribution/normal_distribution.html"><strong aria-hidden="true">2.6.5.</strong> 正規分布</a></li><li class="chapter-item expanded "><a href="../../probability/probability_distribution/exponential_distribution.html"><strong aria-hidden="true">2.6.6.</strong> 指数分布</a></li><li class="chapter-item expanded "><a href="../../probability/probability_distribution/gamma_distribution.html"><strong aria-hidden="true">2.6.7.</strong> ガンマ分布</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/law_of_large_number.html"><strong aria-hidden="true">2.7.</strong> 大数の法則</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../probability/law_of_large_number/weak_law_of_large_number.html"><strong aria-hidden="true">2.7.1.</strong> 大数の弱法則</a></li><li class="chapter-item expanded "><a href="../../probability/law_of_large_number/strong_law_of_large_number.html"><strong aria-hidden="true">2.7.2.</strong> 大数の強法則</a></li></ol></li><li class="chapter-item expanded "><a href="../../probability/central_limit_theorem/central_limit_theorem.html"><strong aria-hidden="true">2.8.</strong> 中心極限定理</a></li></ol></li><li class="chapter-item expanded "><a href="../../statistics/statistics.html"><strong aria-hidden="true">3.</strong> 統計</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/sample_distribution.html"><strong aria-hidden="true">3.1.</strong> 標本分布</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/sample_distribution/props.html"><strong aria-hidden="true">3.1.1.</strong> 標本平均・標本分散の性質</a></li></ol></li><li class="chapter-item expanded "><a href="../../statistics/statistical_inference.html"><strong aria-hidden="true">3.2.</strong> 統計的推定</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/sufficient_statisics.html"><strong aria-hidden="true">3.2.1.</strong> 十分統計量</a></li><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/estimating_methods.html"><strong aria-hidden="true">3.2.2.</strong> 推定の方法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/evaluating_estimator.html"><strong aria-hidden="true">3.2.2.1.</strong> 推定量の評価</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/evaluating_value.html"><strong aria-hidden="true">3.2.2.1.1.</strong> 各種評価値</a></li><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/inf_var_of_unbias_estimator.html"><strong aria-hidden="true">3.2.2.1.2.</strong> 不偏推定量の分散の下限</a></li></ol></li><li class="chapter-item expanded "><a href="../../statistics/statistical_inference/introducing_estimator.html"><strong aria-hidden="true">3.2.2.2.</strong> 推定量の導出</a></li></ol></li><li class="chapter-item expanded "><a href="../../statistics/hypothesis_testing/hypothesis_testing.html"><strong aria-hidden="true">3.2.3.</strong> 統計的仮説検定</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/hypothesis_testing/evalutation_of_testing.html"><strong aria-hidden="true">3.2.3.1.</strong> 検定の評価</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../statistics/hypothesis_testing/neyman_pearson_lemma.html"><strong aria-hidden="true">3.2.3.1.1.</strong> ネイマン・ピアソンの補題</a></li></ol></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../appendix/appendix.html"><strong aria-hidden="true">4.</strong> 付録</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../appendix/binomial_them.html"><strong aria-hidden="true">4.1.</strong> 二項定理</a></li><li class="chapter-item expanded "><a href="../../appendix/gauss_integral.html"><strong aria-hidden="true">4.2.</strong> ガウス積分</a></li><li class="chapter-item expanded "><a href="../../appendix/method_of_lagrange_multiplier.html"><strong aria-hidden="true">4.3.</strong> ラグランジュの未定乗数法</a></li><li class="chapter-item expanded "><a href="../../appendix/gamma_function.html"><strong aria-hidden="true">4.4.</strong> ガンマ関数</a></li></ol></li><li class="chapter-item expanded "><a href="../../reference.html"><strong aria-hidden="true">5.</strong> 参考文献</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">数理統計学ノート</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="共分散と相関係数"><a class="header" href="#共分散と相関係数">共分散と相関係数</a></h2>
+<p>2つの確率変数\(X\)と\(Y\)が独立でない時,その関係を捉えるために共分散と相関係数を使う.</p>
+<h3 id="共分散"><a class="header" href="#共分散">共分散</a></h3>
+<p>\[
+\sigma_{xy} = {\rm Cov}(X,Y) = E[(X-\mu_X)(Y-\mu_Y)]
+\]
+を<strong>共分散</strong>(covariance)と言う.</p>
+<h3 id="相関係数"><a class="header" href="#相関係数">相関係数</a></h3>
+<p>\[
+\rho_{xy} = {\rm Corr}(X,Y) = \frac{{\rm Cov}(X,Y)}{\sqrt{{\rm Var}(X){\rm Var}(Y)}} = \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
+\]
+を<strong>相関係数</strong>(correlation coefficient)と言う.</p>
+<p>\[
+{\rm Cov}(aX+b,cY+d) = E[(aX+b-(a\mu_X-b))(cY+d-(c\mu_Y+d))]=E[a(X-\mu_X)c(Y-\mu_Y)]=ac{\rm Cov}(X,Y)
+\]
+\[
+{\rm Corr}(aX+b,cY+d) = \frac{ac{\rm Cov}(X,Y)}{\sqrt{{\rm Var}(aX+b){\rm Var}(bY+d)}} = \frac{ac{\rm Cov}(X,Y)}{|ac| \sqrt{{\rm Var}(X){\rm Var}(Y)}}
+\]
+から,共分散は尺度に影響を受けるが,相関係数は尺度に影響を受けない.</p>
+<h3 id="コーシーシュワルツの不等式"><a class="header" href="#コーシーシュワルツの不等式">コーシー・シュワルツの不等式</a></h3>
+<p>確率変数ベクトル\(X,Y\)の同時確率密度関数\(f_{X,Y}(x,y) &gt; 0\)で与えられているとき,それに対応する実数値関数\(g(x),h(x)\)に対して,
+\(E^{X,Y}[g(X)^2]&lt;\infty,E^{X,Y}[h(Y)^2]&lt;\infty\)であるならば,
+\[
+E^{X,Y}[g(X)h(Y)]^2 \leq E^{X,Y}[g(X)^2]E^{X,Y}[h(Y)^2]
+\]
+が成立する. 等号は\(g(X) = ah(Y)\)が成立するときである.
+ここで,\(a\)は定数である.</p>
+<ul>
+<li>
+<p>証明
+まず,
+\[
+E^{X,Y}[(g(X)-ah(Y))^2] = \int \int (g(x)-ah(x))^2 f_{X,Y}(x,y) dx dy \geq 0
+\]</p>
+<p>\[
+\begin{align}
+E^{X,Y}[(g(X)-ah(Y))^2] &amp;= E^{X,Y}[g(X)^2-2ag(X)h(Y)+a^2h(Y)^2] \\
+&amp;= E^{X,Y}[g(X)^2]-2aE^{X,Y}[g(X)h(Y)]+a^2E^{X,Y}[h(Y)^2] \geq 0
+\end{align}
+\]
+上式を\(a\)に関する2次関数と考えた時,
+\[
+F(a) = a^2E^{X,Y}[h(Y)^2]-2aE^{X,Y}[g(X)h(Y)]+E^{X,Y}[g(X)^2]
+\]
+\(F(a) \geq 0\)なので,\(F(a) = 0\)としたときの二次方程式の解の判別式は,重解,若しくは虚数解と持つことになるので,
+\[
+4E^{X,Y}[g(X)h(Y)]^2-4E^{X,Y}[h(Y)^2]E^{X,Y}[g(X)^2] \leq 0
+\]
+となり,
+\[
+E^{X,Y}[g(X)h(Y)]^2 \leq E^{X,Y}[h(Y)^2]E^{X,Y}[g(X)^2]
+\]
+となる.等号が成立する時は,\(g(x)=ah(x)\)であるときである.</p>
+</li>
+</ul>
+<h3 id="相関係数の性質"><a class="header" href="#相関係数の性質">相関係数の性質</a></h3>
+<p>\({\rm Corr}(X,Y) &gt; 0\)のとき<strong>正の相関</strong>と言い,\({\rm Corr}(X,Y) &lt; 0\)のとき<strong>負の相関</strong>と言い,\({\rm Corr}(X,Y) = 0\)を<strong>無相関</strong>という.</p>
+<h4 id="無相関と独立"><a class="header" href="#無相関と独立">無相関と独立</a></h4>
+<p>無相関の時は確率変数は独立とは限らないが,確率変数が独立ならば無相関である.
+2つの確率変数\(X\)と\(Y\)が独立の時,
+\[
+{\rm Cov}(X,Y) = E[(X-\mu_X)(Y-\mu_Y)] = E[XY]-E[X\mu_Y]-E[Y\mu_X]+\mu_X\mu_Y = 0
+\]
+から,
+\[
+{\rm Corr}(X,Y) = \frac{{\rm Cov}(X,Y)}{\sqrt{{\rm Var}(X){\rm Var}(Y)}} = \frac{0}{\sqrt{{\rm Var}(X){\rm Var}(Y)}} = 0
+\]
+であり,無相関になる.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../probability/random_variable_2dvector/random_variable_2dvector_indep.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../probability/random_variable_2dvector/trans_variable.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../probability/random_variable_2dvector/random_variable_2dvector_indep.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../probability/random_variable_2dvector/trans_variable.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
