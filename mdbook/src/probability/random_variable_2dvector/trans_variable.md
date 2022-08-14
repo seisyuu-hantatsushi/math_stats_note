@@ -6,18 +6,18 @@
 まず,関数\\(s,t\\)は偏微分可能であり,逆関数が存在するとする.
 重積分の変数変換の公式から,
 \\[
-    \int \int f_{X,Y}(x,y)dxdy = \int \int f_{S,T}(s(x,y),t(x,y))|J(s,t)|dsdt
+    \int \int f_{X,Y}(x,y)dxdy = \int \int f_{X,Y}(s^{-1}(s,t),t^{-1}(s,t))|J(s,t)| dsdt
 \\]
 \\[
 J(s,t) = \det \left( \begin{array}{c} \frac{\partial s(x,y)}{\partial x}  & \frac{\partial s(x,y)}{\partial y} \\\\
-\frac{\partial t(x,y)}{\partial x}  & \frac{\partial t(x,y)}{\partial y} 
+\frac{\partial t(x,y)}{\partial x}  & \frac{\partial t(x,y)}{\partial y}
 \end{array} \right) = \frac{\partial s(x,y)}{\partial x}\frac{\partial t(x,y)}{\partial y} - \frac{\partial s(x,y)}{\partial y}\frac{\partial t(x,y)}{\partial x}
 \\]
 から
 \\[
-    f_{X,Y}(x,y) = f_{S,T}(s(x,y),t(x,y))|J(s,t)|
+    f_{S,T}(s,t) = f_{X,Y}(s^{-1}(s,t),t^{-1}(s,t))|J(s,t)|
 \\]
 となり,
 \\[
-     f_{S,T}(s(x,y),t(x,y)) = \frac{f_{X,Y}(x,y)}{|J(s,t)|}
+    f_{X,Y}(x,y) = \frac{f_{S,T}(s,t)}{|J(s,t)|}
 \\]
