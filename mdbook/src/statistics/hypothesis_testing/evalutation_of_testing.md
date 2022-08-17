@@ -30,3 +30,4 @@
 この時検定\\(T \in \mathcal{T} _{\alpha}\\)が**一様最強力検定**とは
 1. \\(\beta _T (\theta)\\)を\\(T\\)の検出力関数とすると,\\(\forall \theta \in \Theta_0\\)に対して,\\(\\; \beta _T (\theta) < \alpha \\).
 1. \\(\forall S \in \mathcal{T} _{\alpha}\\)の検出力関数\\(\beta _{S}(\theta)\\)とすると,すべての\\(\theta \in \Theta ^{c} _{0}\\)に対して,\\(\beta _{T}(\theta) \geq \beta _{S}(\theta)\\).
+

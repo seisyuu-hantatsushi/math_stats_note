@@ -65,6 +65,7 @@
         - [各種評価値](./statistics/statistical_inference/evaluating_value.md)
         - [不偏推定量の分散の下限](./statistics/statistical_inference/inf_var_of_unbias_estimator.md)
       - [推定量の導出](./statistics/statistical_inference/introducing_estimator.md)
+      - [最尤推定量](./statistics/statistical_inference/likelihood_estimator.md)
     - [統計的仮説検定](./statistics/hypothesis_testing/hypothesis_testing.md)
       - [検定の評価](./statistics/hypothesis_testing/evalutation_of_testing.md)
         - [ネイマン・ピアソンの補題](./statistics/hypothesis_testing/neyman_pearson_lemma.md)
