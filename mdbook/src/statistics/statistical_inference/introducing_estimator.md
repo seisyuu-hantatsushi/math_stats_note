@@ -51,3 +51,5 @@
 となり扱いやすい.これを数値計算により解いて,最尤推定量を得る.
 
 ### ベイズ法
+同時確率密度関数\\(f(\boldsymbol{x}|\boldsymbol{\theta})\\)にて\\(\boldsymbol{\theta}\\)を確率変数とみなして,確率分布を仮定する.
+この確率分布を\\(\pi(\boldsymbol{\theta}|\boldsymbol{\xi})\\)と書いて,\\(\boldsymbol{\theta}\\)の事前分布(priordistribution)という
