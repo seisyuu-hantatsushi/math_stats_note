@@ -13,5 +13,29 @@
 
 - 証明
 
+確率変数列\\(X _n\\)は,確率収束するので,
+\\[
+	\lim _{n \to \infty} P(|X _n-x| < \delta) = 1
+\\]
+
+関数\\(g\\)が連続関数ということは,任意の正数\\(\varepsilon,\delta\\)に対して,
+
+\\[
+	|X _n - x| < \delta ならば, |g(X _n) - g(x)| < \varepsilon
+\\]
+
+であるので,
+
+\\[
+	P(|X _n - x| < \delta) < P(|g(X _n) - g(x)| < \varepsilon) <= 1
+\\]
+
+から,
+
+\\[
+	\lim_{n \to \infty} P(|g(X _n) - g(x)| < \varepsilon) = 1
+\\]
+が成立する.
+
 ### スラツキーの定理
 

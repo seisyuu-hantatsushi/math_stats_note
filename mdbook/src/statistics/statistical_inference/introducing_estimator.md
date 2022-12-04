@@ -1,4 +1,4 @@
-ccccccccccccccccccccccccccccccccccccccccccccc## 推定量の導出
+## 推定量の導出
 
 ### モーメント法
 \\(f(x;\boldsymbol{\theta})\\)なる確率変数\\(X\\)に対して,\\(E[X^k]={\mu_k}'(\boldsymbol{\theta})\\)と表されるとする.
@@ -77,3 +77,10 @@ ccccccccccccccccccccccccccccccccccccccccccccc## 推定量の導出
 \\]
 
 ベイズ法は事後分布をから推定量を導く方法で,ここでは事後分布の平均\\(E[\boldsymbol{\Theta}|\boldsymbol{X}]\\)を**ベイズ推定量**(Bayes estimator)という.
+事後分布\\(\pi(\boldsymbol{\theta}|\boldsymbol{x},\boldsymbol{\xi})\\)のモードを**ベイズ的最尤推定量**(Bayesian maximun likelihood estimator)という.
+\\(\theta\\)に対する十分統計量を\\(T(\boldsymbol{X})\\)とすると,
+\\(f(\boldsymbol{x}|\boldsymbol{\theta})=h(\boldsymbol{x})g(T(\boldsymbol{x}|\boldsymbol{\theta}))\\)と書けるので,
+\\[
+\pi(\boldsymbol{\theta}|\boldsymbol{x},\boldsymbol{\xi}) =\frac{h(\boldsymbol{x})g(T(\boldsymbol{x}|\boldsymbol{\theta}))\pi(\boldsymbol{\theta}|\boldsymbol{\xi})}{\int h(\boldsymbol{x})g(T(\boldsymbol{x}|\boldsymbol{\theta}))\pi(\boldsymbol{\theta}|\boldsymbol{\xi})d\boldsymbol{\theta}} = \frac{g(T(\boldsymbol{x}|\boldsymbol{\theta}))\pi(\boldsymbol{\theta}|\boldsymbol{\xi})}{\int g(T(\boldsymbol{x}|\boldsymbol{\theta}))\pi(\boldsymbol{\theta}|\boldsymbol{\xi})d\boldsymbol{\theta}}
+\\]
+となる
