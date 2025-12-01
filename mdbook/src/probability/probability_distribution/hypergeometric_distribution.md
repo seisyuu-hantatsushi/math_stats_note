@@ -13,3 +13,10 @@
 となりこれを**超幾何分布**(hypergeometric distribution)と言う.
 
 まず,\\(\sum^{K} _{x=0} P(X=x:N,M,K) = 1\\)を確かめる.
+\\[
+(a+b)^N = (a+b)^{N-M}(a+b)^M
+\\]
+から
+\\[
+\sum_{x=0}^N a^xb^{x-M} = \sum_{y=0}^{N-M} a^y b^{N-M-y} \sum_{z=0}^{M} a^z b^{M-z} 
+\\]
