@@ -38,10 +38,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-d8392618.js";
+            window.path_to_searchindex_js = "searchindex-19d52eba.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-4a96e28e.js"></script>
+        <script src="toc-7b4bb585.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -2439,64 +2439,7 @@ M_X(t) &amp;= E[e^{Xt}] \\
 \end{align}
 \]</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="幾何分布-1"><a href="#幾何分布-1" class="header">幾何分布</a></h1>
-<h2 id="幾何分布"><a class="header" href="#幾何分布">幾何分布</a></h2>
-<p>Xを確率\(p\)の事象がx回目に成功する確率の確率変数とする.
-この確率密度関数は,成功が1回,失敗がx-1回発生する確率なので,
-\[
-P(X=x) = p(1-p)^{x-1}
-\]
-となる.これを確率\(p\)の幾何分布といい.\(\mathcal{Geo}(p)\)と表す.</p>
-<h3 id="平均-3"><a class="header" href="#平均-3">平均</a></h3>
-<p>\[
-\begin{align}
-E[X] &amp;= \sum_{x=1}^{\infty} xp(1-p)^{x-1} \\
-&amp;= \sum_{x=1}^{\infty} xpq^{x-1} \quad (q=(1-p)) \\
-&amp;= p + 2pq + 3pq^2 + … + npq^{n-1} + …
-\end{align}
-\]
-\[
-\begin{align}
-S_n &amp;= \sum_{x=1}^{n} xp(1-p)^{x-1} \\
-&amp;= p + 2pq + 3pq^2 + … + npq^{n-1} \\
-qS_{n} &amp;= pq + 2pq^2 + 3pq^3 + … +(n-1)pq^{n-1} + npq^n  \\
-(1-q)S_{n} &amp;= p+pq+pq^2+pq^3 + … + pq^{n-1} - npq^n \\
-&amp;= \sum_{k=0}^{n-1} pq^{k} - npq^n \\
-T_{n} &amp;= \sum_{k=0}^{n} pq^{k}  = p+pq+pq^2+…+pq^n\\
-qT_{n} &amp;= \sum_{k=0}^{n} pq^{k+1} = pq+pq^2+…+pq^n+pq^{n+1} \\
-(1-q)T_{n} &amp;= p - pq^{n+1} \\
-T_{n} &amp;= \frac{p - pq^{n+1}}{1-q} \\
-(1-q)S_{n} &amp;= T_{n-1} - npq^n\\
-S_{n} &amp;= \frac{T_{n-1} - npq^n}{1-q} \\
-\end{align}
-\]
-\[
-\begin{align}
-\sum_{x=1}^{\infty} xp(1-p)^{x-1} &amp;= \lim_{n \to \infty} \sum_{x=1}^{n} xp(1-p)^{x-1} \\
-&amp;= \lim_{n \to \infty} S_{n} \\
-&amp;= \lim_{n \to \infty} \frac{T_{n-1} - npq^n}{1-q} \\
-&amp;= \frac{p}{1-q}\frac{1}{1-q} \\
-&amp;= \frac{1}{p}
-\end{align}
-\]
-より
-\[
-E[X] = \frac{1}{p}
-\]</p>
-<h3 id="分散-3"><a class="header" href="#分散-3">分散</a></h3>
-<p>\[
-V[X] = E[X(X-1)]+E[X]-E[X]^2
-\]
-\[
-\begin{align}
-E[X(X-1)] &amp;= \sum_{x=1}^{\infty} x(x-1)p(1-p)^{x-1} \\
-&amp;= \sum_{x=2}^{\infty} x(x-1)pq^{x-1} \quad (q=(1-p)) \\
-S_n &amp;= 	\sum_{x=1}^{n} xp(1-p)^{x-1} \\
-&amp;= \sum_{x=1}^{n} x(1-q)q^{x-1} \\
-&amp;= \sum_{x=1}^{n} xq^{x-1} - \sum_{x=1}^{n} xq^x \\
-\frac{d}{dq} S_n &amp;= \sum_{x=1}^{n} x(x-1)q^{x-2} - \sum_{x=1}^{n} x^2q^{x-1}
-\end{align}
-\]</p>
+<h1 id="幾何分布"><a class="header" href="#幾何分布">幾何分布</a></h1>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="超幾何分布-1"><a href="#超幾何分布-1" class="header">超幾何分布</a></h1>
 <h2 id="超幾何分布"><a class="header" href="#超幾何分布">超幾何分布</a></h2>
@@ -2574,7 +2517,7 @@ P(X=x:N,M,K) = \frac{\left(\begin{array}{c} M \\ x \end{array}\right)\left(\begi
 f_X(x:\mu,\sigma^2) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right), (x \in \overline{\mathbb{R}})
 \]
 で与えられることであり,\(\mathcal{N}(\mu,\sigma^2)\)と表す.</p>
-<h3 id="平均-4"><a class="header" href="#平均-4">平均</a></h3>
+<h3 id="平均-3"><a class="header" href="#平均-3">平均</a></h3>
 <p>\[
 E[X] = \int^{\infty}_{-\infty} \frac{x}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right) dx
 \]</p>
@@ -2604,7 +2547,7 @@ E[X] = \int^{\infty}_{-\infty} \frac{x}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-
 \[
 E[X] = \int^{\infty} _{-\infty} \frac{x}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right) dx = \frac{1}{\sqrt{2\pi}\sigma} \cdot \mu \sigma \sqrt{2\pi} = \mu
 \]</p>
-<h3 id="分散-4"><a class="header" href="#分散-4">分散</a></h3>
+<h3 id="分散-3"><a class="header" href="#分散-3">分散</a></h3>
 <p>\[
 E[(X-\mu)^2] = \int^{\infty}_{-\infty} \frac{(x-\mu)^2}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right) dx
 \]
@@ -2705,7 +2648,7 @@ f _T(t) = \frac{1}{\theta} e^{-\frac{t}{\theta}}
 \mathcal{Ex}(\lambda) = f _T(t:\lambda) = \lambda e^{-\lambda t}
 \]
 という,確率密度関数として表される.</p>
-<h3 id="平均-5"><a class="header" href="#平均-5">平均</a></h3>
+<h3 id="平均-4"><a class="header" href="#平均-4">平均</a></h3>
 <p>\[
 \begin{align}
 E[T] &amp;= \int ^{\infty} _{0} t f _T(t) dt \\
@@ -2722,7 +2665,7 @@ E[T] &amp;= \int ^{\infty} _{0} t f _T(t) dt \\
 &amp;= \frac{1}{\lambda} \left\{ \left[ -xe^{-x} \right] ^{\infty} _{0} - [ e^{-x} ]^{\infty} _{0} \right\} = \frac{1}{\lambda}
 \end{align}
 \]</p>
-<h3 id="分散-5"><a class="header" href="#分散-5">分散</a></h3>
+<h3 id="分散-4"><a class="header" href="#分散-4">分散</a></h3>
 <p>\[
 E[T^2] = \int ^{\infty} _{0} t^2 \lambda e^{-\lambda t} dt
 \]
@@ -2821,7 +2764,7 @@ f _{T|X \geq x}(t) = \frac{t^{\alpha-1}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{t
 ともに,形状母数は発生回数,尺度母数は発生間隔を元にするので,\(\alpha &gt; 0,\beta &gt; 0\)である.</p>
 <p><img src="probability/probability_distribution/gamma_dist_graph_1.png" alt="gamma_dist_graph_1">
 <img src="probability/probability_distribution/gamma_dist_graph_2.png" alt="gamma_dist_graph_2"></p>
-<h3 id="平均-6"><a class="header" href="#平均-6">平均</a></h3>
+<h3 id="平均-5"><a class="header" href="#平均-5">平均</a></h3>
 <p>\[
 \begin{align}
 E[X] &amp;= \int ^{\infty} _{0} \frac{x^{\alpha}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{x}{\beta}} dx \\
@@ -2834,7 +2777,7 @@ E[X] &amp;= \int ^{\infty} _{0} \frac{x^{\alpha}}{\Gamma(\alpha) \beta^\alpha}e^
 &amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \alpha!\beta^{\alpha + 1} = \alpha\beta
 \end{align}
 \]</p>
-<h3 id="分散-6"><a class="header" href="#分散-6">分散</a></h3>
+<h3 id="分散-5"><a class="header" href="#分散-5">分散</a></h3>
 <p>\[
 \begin{align}
 E[X^2] &amp;= \int ^{\infty} _{0} \frac{x^2 x^{\alpha-1}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{x}{\beta}} dx \\
