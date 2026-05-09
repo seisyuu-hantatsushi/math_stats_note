@@ -1,52 +1,66 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>数理統計学ノート</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
 
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
         <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-d8392618.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-4a96e28e.js"></script>
     </head>
     <body>
-        <!-- Provide site root to javascript -->
-        <script type="text/javascript">
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -59,57 +73,70 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
-            var theme;
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            html.classList.add("js");
         </script>
 
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/introduction.html"><strong aria-hidden="true">1.</strong> 準備</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="introduction/set_theory.html"><strong aria-hidden="true">1.1.</strong> 集合論</a></li><li class="chapter-item expanded "><a href="introduction/space.html"><strong aria-hidden="true">1.2.</strong> 空間</a></li><li class="chapter-item expanded "><a href="introduction/measure.html"><strong aria-hidden="true">1.3.</strong> 測度</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="introduction/measure/measurable.html"><strong aria-hidden="true">1.3.1.</strong> 可測</a></li><li class="chapter-item expanded "><a href="introduction/measure/measure_space.html"><strong aria-hidden="true">1.3.2.</strong> 測度空間</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="introduction/measure/measure_space_prop.html"><strong aria-hidden="true">1.3.2.1.</strong> 測度空間の性質</a></li><li class="chapter-item expanded "><a href="introduction/measure/limit.html"><strong aria-hidden="true">1.3.2.2.</strong> 極限</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="introduction/lebesgue_integral/lebesgue_integral.html"><strong aria-hidden="true">1.4.</strong> Lebesgue積分</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="introduction/lebesgue_integral/fubinis_theorem.html"><strong aria-hidden="true">1.4.1.</strong> Fubiniの定理</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="probability/probability.html"><strong aria-hidden="true">2.</strong> 確率</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/events.html"><strong aria-hidden="true">2.1.</strong> 事象</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/events/limits.html"><strong aria-hidden="true">2.1.1.</strong> 事象の極限</a></li></ol></li><li class="chapter-item expanded "><a href="probability/probability_space_intro.html"><strong aria-hidden="true">2.2.</strong> 確率空間</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/probability_measure.html"><strong aria-hidden="true">2.2.1.</strong> 確率測度</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/measure/property.html"><strong aria-hidden="true">2.2.1.1.</strong> 確率測度の性質</a></li><li class="chapter-item expanded "><a href="probability/measure/operation.html"><strong aria-hidden="true">2.2.1.2.</strong> 確率の演算</a></li><li class="chapter-item expanded "><a href="probability/measure/conditional.html"><strong aria-hidden="true">2.2.1.3.</strong> 条件付き確率</a></li></ol></li><li class="chapter-item expanded "><a href="probability/probability_space.html"><strong aria-hidden="true">2.2.2.</strong> 確率空間</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/probability_space/borel_cantelli_them.html"><strong aria-hidden="true">2.2.2.1.</strong> Borel-Cantelliの定理</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="probability/random_variable.html"><strong aria-hidden="true">2.3.</strong> 確率変数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/density_function.html"><strong aria-hidden="true">2.3.1.</strong> 確率密度関数</a></li><li class="chapter-item expanded "><a href="probability/expected_value.html"><strong aria-hidden="true">2.3.2.</strong> 期待値</a></li><li class="chapter-item expanded "><a href="probability/average.html"><strong aria-hidden="true">2.3.3.</strong> 平均・分散・モーメント</a></li><li class="chapter-item expanded "><a href="probability/generate_function.html"><strong aria-hidden="true">2.3.4.</strong> 確率母関数・積率母関数</a></li><li class="chapter-item expanded "><a href="probability/characteristic.html"><strong aria-hidden="true">2.3.5.</strong> 特性関数</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/characteristic/levy_inverse_them.html"><strong aria-hidden="true">2.3.5.1.</strong> Levyの反転定理</a></li></ol></li><li class="chapter-item expanded "><a href="probability/random_variable_trans.html"><strong aria-hidden="true">2.3.6.</strong> 変数変換</a></li></ol></li><li class="chapter-item expanded "><a href="probability/random_variable_vector.html"><strong aria-hidden="true">2.4.</strong> 確率変数ベクトル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/random_variable_2dvector/random_variable_2dvector.html"><strong aria-hidden="true">2.4.1.</strong> 確率変数2次元ベクトル</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/random_variable_2dvector/random_variable_2dvector_cond.html"><strong aria-hidden="true">2.4.1.1.</strong> 条件付き確率</a></li><li class="chapter-item expanded "><a href="probability/random_variable_2dvector/random_variable_2dvector_indep.html"><strong aria-hidden="true">2.4.1.2.</strong> 確率変数の独立性</a></li><li class="chapter-item expanded "><a href="probability/random_variable_2dvector/covariance_correlation.html"><strong aria-hidden="true">2.4.1.3.</strong> 共分散と相関係数</a></li><li class="chapter-item expanded "><a href="probability/random_variable_2dvector/trans_variable.html"><strong aria-hidden="true">2.4.1.4.</strong> 変数変換</a></li><li class="chapter-item expanded "><a href="probability/random_variable_2dvector/sum_of_trans_variable.html"><strong aria-hidden="true">2.4.1.5.</strong> 確率変数の和の分布</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="probability/random_variable_serise.html"><strong aria-hidden="true">2.5.</strong> 確率変数列</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/convergence.html"><strong aria-hidden="true">2.5.1.</strong> 確率変数列の収束</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/convergence/portmanteau_them.html"><strong aria-hidden="true">2.5.1.1.</strong> Portmanteau定理</a></li><li class="chapter-item expanded "><a href="probability/convergence/levy_convergence_them.html"><strong aria-hidden="true">2.5.1.2.</strong> Levyの収束定理</a></li><li class="chapter-item expanded "><a href="probability/convergence/cont_mapping_them.html"><strong aria-hidden="true">2.5.1.3.</strong> 連続写像定理</a></li></ol></li><li class="chapter-item expanded "><a href="probability/sum_of_random_variable.html"><strong aria-hidden="true">2.5.2.</strong> 独立確率変数の和</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/sum_of_random_variable/Kolmogorov_inequ.html"><strong aria-hidden="true">2.5.2.1.</strong> Kolmogorovの不等式</a></li><li class="chapter-item expanded "><a href="probability/sum_of_random_variable/Kolmogorov_them.html"><strong aria-hidden="true">2.5.2.2.</strong> Kolmogorovの定理</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="probability/probability_distribution/probability_distribution.html"><strong aria-hidden="true">2.6.</strong> 確率分布</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/probability_distribution/binomial_distribution.html"><strong aria-hidden="true">2.6.1.</strong> 二項分布</a></li><li class="chapter-item expanded "><a href="probability/probability_distribution/poisson_distribution.html"><strong aria-hidden="true">2.6.2.</strong> ポアソン分布</a></li><li class="chapter-item expanded "><a href="probability/probability_distribution/hypergeometric_distribution.html"><strong aria-hidden="true">2.6.3.</strong> 超幾何分布</a></li><li class="chapter-item expanded "><a href="probability/probability_distribution/uniform_distribution.html"><strong aria-hidden="true">2.6.4.</strong> 一様分布</a></li><li class="chapter-item expanded "><a href="probability/probability_distribution/normal_distribution.html"><strong aria-hidden="true">2.6.5.</strong> 正規分布</a></li><li class="chapter-item expanded "><a href="probability/probability_distribution/exponential_distribution.html"><strong aria-hidden="true">2.6.6.</strong> 指数分布</a></li><li class="chapter-item expanded "><a href="probability/probability_distribution/gamma_distribution.html"><strong aria-hidden="true">2.6.7.</strong> ガンマ分布</a></li></ol></li><li class="chapter-item expanded "><a href="probability/law_of_large_number.html"><strong aria-hidden="true">2.7.</strong> 大数の法則</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="probability/law_of_large_number/weak_law_of_large_number.html"><strong aria-hidden="true">2.7.1.</strong> 大数の弱法則</a></li><li class="chapter-item expanded "><a href="probability/law_of_large_number/strong_law_of_large_number.html"><strong aria-hidden="true">2.7.2.</strong> 大数の強法則</a></li></ol></li><li class="chapter-item expanded "><a href="probability/central_limit_theorem/central_limit_theorem.html"><strong aria-hidden="true">2.8.</strong> 中心極限定理</a></li></ol></li><li class="chapter-item expanded "><a href="statistics/statistics.html"><strong aria-hidden="true">3.</strong> 統計</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="statistics/sample_distribution.html"><strong aria-hidden="true">3.1.</strong> 標本分布</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="statistics/sample_distribution/props.html"><strong aria-hidden="true">3.1.1.</strong> 標本平均・標本分散の性質</a></li></ol></li><li class="chapter-item expanded "><a href="statistics/statistical_inference.html"><strong aria-hidden="true">3.2.</strong> 統計的推定</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="statistics/statistical_inference/sufficient_statisics.html"><strong aria-hidden="true">3.2.1.</strong> 十分統計量</a></li><li class="chapter-item expanded "><a href="statistics/statistical_inference/estimating_methods.html"><strong aria-hidden="true">3.2.2.</strong> 推定の方法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="statistics/statistical_inference/evaluating_estimator.html"><strong aria-hidden="true">3.2.2.1.</strong> 推定量の評価</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="statistics/statistical_inference/evaluating_value.html"><strong aria-hidden="true">3.2.2.1.1.</strong> 各種評価値</a></li><li class="chapter-item expanded "><a href="statistics/statistical_inference/inf_var_of_unbias_estimator.html"><strong aria-hidden="true">3.2.2.1.2.</strong> 不偏推定量の分散の下限</a></li></ol></li><li class="chapter-item expanded "><a href="statistics/statistical_inference/introducing_estimator.html"><strong aria-hidden="true">3.2.2.2.</strong> 推定量の導出</a></li></ol></li><li class="chapter-item expanded "><a href="statistics/hypothesis_testing/hypothesis_testing.html"><strong aria-hidden="true">3.2.3.</strong> 統計的仮説検定</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="statistics/hypothesis_testing/evalutation_of_testing.html"><strong aria-hidden="true">3.2.3.1.</strong> 検定の評価</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="statistics/hypothesis_testing/neyman_pearson_lemma.html"><strong aria-hidden="true">3.2.3.1.1.</strong> ネイマン・ピアソンの補題</a></li></ol></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="appendix/appendix.html"><strong aria-hidden="true">4.</strong> 付録</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix/binomial_them.html"><strong aria-hidden="true">4.1.</strong> 二項定理</a></li><li class="chapter-item expanded "><a href="appendix/gauss_integral.html"><strong aria-hidden="true">4.2.</strong> ガウス積分</a></li><li class="chapter-item expanded "><a href="appendix/method_of_lagrange_multiplier.html"><strong aria-hidden="true">4.3.</strong> ラグランジュの未定乗数法</a></li><li class="chapter-item expanded "><a href="appendix/gamma_function.html"><strong aria-hidden="true">4.4.</strong> ガンマ関数</a></li></ol></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">5.</strong> 参考文献</a></li></ol>
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -117,44 +144,49 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="準備"><a class="header" href="#準備">準備</a></h1>
 <p>対象を数学である使うためには,<strong>集合</strong>にて対象を扱う準備が要る.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="集合論"><a class="header" href="#集合論">集合論</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="集合論"><a class="header" href="#集合論">集合論</a></h1>
 <h2 id="集合の定義"><a class="header" href="#集合の定義">集合の定義</a></h2>
 <p>数学で扱う対象の集まりを<strong>集合</strong>といい,その集合を構成する対象を<strong>元</strong>,<strong>要素</strong>と言う.集合\( A \)に要素\( a \)が属するとき,
 \[
 a \in A
 \]
-と表す.<br />
-集合\( A \)に要素\( a \)が属さないときは,
+と表す.<br>集合\( A \)に要素\( a \)が属さないときは,
 \[
 a \notin A
 \]
@@ -198,14 +230,14 @@ B = f(A)
 \sum _{i \in I} X_i := \bigcup _{i \in I} X_i
 \]
 などと表す,上記演算子が集合に適用されているとき,暗黙に対象の集合は互いに素である.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="空間"><a class="header" href="#空間">空間</a></h1>
-<p>集合に<strong>構造</strong>を与えたものを<strong>空間</strong>という.構造とは,集合の要素間の関係性を定めたものである.<br />
-集合\(X\)の部分集合\(X_i\)を取り出す.そこから,同じ関係性を持った部分集合\(Y_i=\{X_i|i \in I\}\)を作成し,この\(Y_i\)を集めた集合\(\mathcal{Y}\)を作る.<br />
-構造は,\(X \mapsto \mathcal{Y}\)となる写像である.\((X,\mathcal{Y}\)と書き,\(\mathcal{Y}\)を\(X\)上の構造と言い,\((X,\mathcal{Y})\)を空間と言う.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="空間"><a class="header" href="#空間">空間</a></h1>
+<p>集合に<strong>構造</strong>を与えたものを<strong>空間</strong>という.構造とは,集合の要素間の関係性を定めたものである.<br>集合\(X\)の部分集合\(X_i\)を取り出す.そこから,同じ関係性を持った部分集合\(Y_i=\{X_i|i \in I\}\)を作成し,この\(Y_i\)を集めた集合\(\mathcal{Y}\)を作る.<br>構造は,\(X \mapsto \mathcal{Y}\)となる写像である.\((X,\mathcal{Y}\)と書き,\(\mathcal{Y}\)を\(X\)上の構造と言い,\((X,\mathcal{Y})\)を空間と言う.</p>
 <h2 id="空間の例"><a class="header" href="#空間の例">空間の例</a></h2>
 <h3 id="順序空間"><a class="header" href="#順序空間">順序空間</a></h3>
 <h3 id="位相空間"><a class="header" href="#位相空間">位相空間</a></h3>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="測度"><a class="header" href="#測度">測度</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="測度"><a class="header" href="#測度">測度</a></h1>
 <p>数学において,対象を<strong>測る</strong>ということは,集合の大きさ得るということである.
 そのための関数を<strong>測度</strong>と言う. 測る対象の集合が測ることが可能なら<strong>可測</strong>といい,
 その集合を<strong>可測集合</strong>と言う.</p>
@@ -223,14 +255,18 @@ B = f(A)
 <li>\(\overline{\mathbb{R}_{+}} = \mathbb{R}_{+} \cup \{+\infty\} \)</li>
 </ul>
 <h2 id="測度-1"><a class="header" href="#測度-1">測度</a></h2>
-<p>測度
-: 集合\( S \)から集合\(\overline{\mathbb{R}_{+}} = \{x| 0 \leq x \leq \infty \} = [0,\infty]\)の
+<dl>
+<dt id="測度-2"><a class="header" href="#測度-2">測度</a></dt>
+<dd>集合\( S \)から集合\(\overline{\mathbb{R}_{+}} = \{x| 0 \leq x \leq \infty \} = [0,\infty]\)の
 部分集合\(D \subset \overline{ \mathbb{R} } \)への写像である.
 \[
 m: S \mapsto D
 \]
-集合\(E \in \mathfrak{P}(S) \)が可測なら,\(m(E)\)は集合\(D\)に属する値(要素)が定まる.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="可測"><a class="header" href="#可測">可測</a></h2>
+集合\(E \in \mathfrak{P}(S) \)が可測なら,\(m(E)\)は集合\(D\)に属する値(要素)が定まる.</dd>
+</dl>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="可測-1"><a href="#可測-1" class="header">可測</a></h1>
+<h2 id="可測"><a class="header" href="#可測">可測</a></h2>
 <h3 id="指示関数定義関数"><a class="header" href="#指示関数定義関数">指示関数(定義関数)</a></h3>
 <p>\(A \subset X\)に対して,以下のように定義される関数\(I_A: A \mapsto \{0,1\}\)を<strong>指示関数</strong>(定義関数)と言う.
 \[
@@ -268,7 +304,8 @@ I_A(a) = \left\{
 <h3 id="ルベーグ可測集合"><a class="header" href="#ルベーグ可測集合">ルベーグ可測集合</a></h3>
 <h2 id="可測関数"><a class="header" href="#可測関数">可測関数</a></h2>
 <h2 id="収束定理"><a class="header" href="#収束定理">収束定理</a></h2>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="測度空間"><a class="header" href="#測度空間">測度空間</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="測度空間"><a class="header" href="#測度空間">測度空間</a></h1>
 <p>\(X\)を集合, \(\emptyset \in \mathcal{X} \subset \mathfrak{B}(X)\), \(m:\mathcal{X} \to \overline{\mathbb{R}_{+}}\) とする.
 空間\((X,\mathcal{X})\)で,以下の性質を定義する.</p>
 <h4 id="非負性"><a class="header" href="#非負性">非負性</a></h4>
@@ -296,7 +333,9 @@ X_n \subset X_{n+1}
 X_n \supset X_{n+1}
 \]</p>
 <p>であるような集合列を<strong>単調減少列</strong>という.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="測度空間の性質"><a class="header" href="#測度空間の性質">測度空間の性質</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="測度空間の性質-1"><a href="#測度空間の性質-1" class="header">測度空間の性質</a></h1>
+<h2 id="測度空間の性質"><a class="header" href="#測度空間の性質">測度空間の性質</a></h2>
 <p>空間\((X,\mathcal{X})\)は以下の性質を持つ.ここでは,\(\mathcal{X}\)を可測であるが完全加法族と制約しない.</p>
 <h4 id="有限加法性"><a class="header" href="#有限加法性">有限加法性</a></h4>
 <p>\(i,n \in \mathbb{N},\;\{X_i\}_{0 \leq i \leq n} \subset \mathcal{X}\)としたとき,
@@ -304,8 +343,7 @@ X_n \supset X_{n+1}
 m(\bigcup^{n} _{i=0} X_i) = m(\coprod^{n} _{i=0} X_i) = \sum^{n} _{i=0} m(X_i) \tag{m.3}
 \]</p>
 <ul>
-<li>証明<br />
-\(X_n = \emptyset, n &gt; i \)としたとき,
+<li>証明<br>\(X_n = \emptyset, n &gt; i \)としたとき,
 \[
 \bigcup^{\infty} _{i=0} X_i = \left(\bigcup^{n} _{i=0} X_i\right) \cup \left( \bigcup^{\infty} _{i = n} \emptyset \right) = \coprod^{n} _{i=0} X_i
 \]
@@ -319,8 +357,7 @@ m(\bigcup^{n} _{i=0} X_i) = \sum^{n} _{i=0} m(X_i)
 X_1,X_2 \in \mathcal{X}かつ X_1 \subset X_2 なら, m(X_1) \leq m(X_2)
 \]</p>
 <ul>
-<li>証明<br />
-\(X_1 \subset X_2\)なら,
+<li>証明<br>\(X_1 \subset X_2\)なら,
 \[
 X_2 = (X_2 \backslash X_1) \cup X_1
 \]
@@ -346,8 +383,7 @@ Y_0 = X_0,\;Y_i = X_i \backslash (\bigcup^{i-1} _{k=0} X_k),\;i\geq1
 \[
 \forall n \in \mathbb{N}, Y_i \subset X_i, \bigcup^{n} _{i=0} Y_i = \bigcup^{n} _{i=0} X_i
 \]
-なぜならば,\(\bigcup^{n} _{i=0} Y_i = \bigcup^{n} _{i=0} X_i\)に関して,\(n=0\)のときは自明,<br />
-\(n=1\)のとき
+なぜならば,\(\bigcup^{n} _{i=0} Y_i = \bigcup^{n} _{i=0} X_i\)に関して,\(n=0\)のときは自明,<br>\(n=1\)のとき
 \[
 \begin{align}
 \bigcup^{1} _{i=0} Y_i &amp;= \left( X_1 \backslash (\bigcup^{i-1} _{k=0} X_k) \right) \cup X_0 \\
@@ -413,8 +449,7 @@ m(\bigcup^{n} _{i=0} Y_i) = m(\bigcup^{n} _{i=0} X_i) = m(X_n)
 \lim_{i \to \infty} m(X_i) = m(\bigcap^{\infty} _{i=1} X_i) \tag{m.4}
 \]</p>
 <ul>
-<li>証明<br />
-\[
+<li>証明<br>\[
 Y_0 = X_0,\;Y_i = (\bigcup^{i-1} _{k=0} X_k) \backslash X_i,\;i\geq 1
 \]</li>
 </ul>
@@ -451,7 +486,9 @@ m(X_0) &amp;= m(\bigcup ^{\infty} _{i=0} Y _i) + \lim _{i \to \infty} m(X_i)
 <p>\[
 m(\bigcap^{\infty} _{i=0} X _i) = \lim _{i \to \infty} m(X_i)
 \]</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="極限"><a class="header" href="#極限">極限</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="極限-1"><a href="#極限-1" class="header">極限</a></h1>
+<h2 id="極限"><a class="header" href="#極限">極限</a></h2>
 <h3 id="上極限集合下極限集合"><a class="header" href="#上極限集合下極限集合">上極限集合・下極限集合</a></h3>
 <p>\(\forall i \in \mathbb{N},\; X_i \in \mathcal{X}\)としたとき,
 \[
@@ -486,8 +523,7 @@ m(\bigcap^{\infty} _{i=0} X _i) = \lim _{i \to \infty} m(X_i)
 <li>
 <p>\(\liminf _{i \to \infty} X_i \subset \limsup _{i \to \infty} X_i\)</p>
 <ul>
-<li>証明<br />
-\[
+<li>証明<br>\[
 \begin{align}
 \liminf _{i \to \infty} X_i &amp; \subset \limsup _{i \to \infty} X_i \\
 \bigcup ^{\infty} _{i=0} \bigcap^{\infty} _{j=i} X_j &amp; \subset \bigcap ^{\infty} _{i=0} \bigcup^{\infty} _{j=i} X_j \\
@@ -504,8 +540,7 @@ x \in \bigcap^{\infty} _{j=i} X_j &amp;\to x \in \bigcup^{\infty} _{j=i} X_j \\
 <p>\(X_i\)が単調増大列のとき,\(\lim _{i \to \infty} X_i = \bigcup ^{\infty} _{i=0} X_i\), \(X_i\)が単調減少列のとき,\(\lim _{i \to \infty} X_i = \bigcap ^{\infty} _{i=0} X_i\).</p>
 <ul>
 <li>
-<p>証明<br />
-\(X_i\)が単調増大列のとき,
+<p>証明<br>\(X_i\)が単調増大列のとき,
 \[
 \limsup _{i \to \infty} X _i = \bigcup ^{\infty} _{i=0} X_i
 \]
@@ -560,8 +595,7 @@ x \in \bigcap^{\infty} _{j=i} X_j &amp;\to x \in \bigcup^{\infty} _{j=i} X_j \\
 \( \sum _{i \geq i _0} m(X _i) &lt; \infty \)なら, 
 \(m(\limsup _{i \to \infty} X_i)=0\)
 <ul>
-<li>証明<br />
-劣加法性より,
+<li>証明<br>劣加法性より,
 \[
 m(\bigcup^{\infty}_{i = i_0} X_i) \leq \sum _{i \geq i_0} m(X_i)
 \]
@@ -581,8 +615,11 @@ m(\bigcap ^{\infty} _{i=0} \bigcup ^{\infty} _{j=i} X_j) &amp;= m(\bigcap ^{\inf
 </ul>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="lebesgue積分"><a class="header" href="#lebesgue積分">Lebesgue積分</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="fubiniの定理"><a class="header" href="#fubiniの定理">Fubiniの定理</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="lebesgue積分"><a class="header" href="#lebesgue積分">Lebesgue積分</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="fubiniの定理-1"><a href="#fubiniの定理-1" class="header">Fubiniの定理</a></h1>
+<h2 id="fubiniの定理"><a class="header" href="#fubiniの定理">Fubiniの定理</a></h2>
 <ol>
 <li>
 <p>\(f: X _1 \times X _2 \mapsto \overline{\mathbb{R} _{+}} \)を\(\mathcal{F} _{X _1} \times \mathcal{F} _{X _2}\)可測関数とする時,
@@ -610,10 +647,12 @@ F_1(x _1) = \int _{X _2} f(x _1,x _2)m _2 (dx_2), F_2(x _2) = \int _{X _1} f(x _
 \]</p>
 </li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="確率"><a class="header" href="#確率">確率</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率"><a class="header" href="#確率">確率</a></h1>
 <p>偶然性を数学で扱うための定式化が確率論である.
 数学で定式化するには,偶然性を伴う事象を集合論に割り当てないと行けない.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="事象"><a class="header" href="#事象">事象</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="事象"><a class="header" href="#事象">事象</a></h1>
 <h2 id="集合論との対応付"><a class="header" href="#集合論との対応付">集合論との対応付</a></h2>
 <p>集合論で扱うためには,偶然性を含む行為で得られる結果を対象としないといけない.
 偶然性を含む行為で対象を得ることを<strong>試行</strong>と言う.偶然性を含む行為とは具体的には,実験,調査,観測である.1回の試行から得られた結果の値を,<strong>単一事象</strong>,<strong>観測値</strong>などと言う.これが,集合の要素に当たり,単一事象の集合を<strong>事象</strong>という.
@@ -660,7 +699,9 @@ A \subset \Omega
 <li>\( (A \cap B)^c = A^c \cup B^c \)</li>
 <li>\( (A \cup B)^c = A^c \cap B^c \)</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="事象の極限"><a class="header" href="#事象の極限">事象の極限</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="事象の極限-1"><a href="#事象の極限-1" class="header">事象の極限</a></h1>
+<h2 id="事象の極限"><a class="header" href="#事象の極限">事象の極限</a></h2>
 <p>集合の極限同様,事象にも極限がある.
 \( \{A _i\} _{i \in \overline{\mathbb{N}}}, A _i \in \Omega \)と事象列とする.</p>
 <h3 id="上極限事象"><a class="header" href="#上極限事象">上極限事象</a></h3>
@@ -674,7 +715,8 @@ A \subset \Omega
 \]</p>
 <p>と定義し,無限回の試行で,\(\forall i \in \overline{\mathbb{N}}, A _i\)である事象が
 有限回で発生する事象である.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="確率空間"><a class="header" href="#確率空間">確率空間</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率空間"><a class="header" href="#確率空間">確率空間</a></h1>
 <p>事象の確率は,全事象の内でその事象が発生,観測できる割合で表される.なので,\([0,1]\)の間の値で表される.なので,事象の確率を得る関数\(P(\cdot)\)は,
 \[
 P: \Omega \mapsto [0,1]
@@ -683,7 +725,8 @@ P: \Omega \mapsto [0,1]
 <p>関数\(P(\cdot)\)は集合の大きさを測る関数なので,<strong>測度</strong>となる.なので,事象は可測集合だけで構成されているのが良い.可測集合にするには,可測なるような構造を与えないといけない.
 以下のような,完全加法族,(\(\sigma\)-加法族)をあたえると,集合は可測となる.
 \(\Omega\)に測度\(P\)を与えた空間を確率空間と言う.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="確率測度"><a class="header" href="#確率測度">確率測度</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率測度"><a class="header" href="#確率測度">確率測度</a></h1>
 <h2 id="標本空間"><a class="header" href="#標本空間">標本空間</a></h2>
 <p>全事象\(\Omega\)に完全加法族\(\mathcal{F}\)を与えると,<strong>標本空間</strong>\((\Omega,\mathcal{F})\)得る.したがって,以下の条件を満たす.
 \[
@@ -711,7 +754,9 @@ A_i \in \mathcal{F},i \in \overline{\mathbb{N}} \to \displaystyle \bigcup_{i}^{\
 \]</p>
 <p>(PM.3)は確率測度での<strong>完全加法性</strong>,<strong>\(\sigma\)-加法性</strong>という.</p>
 <p>確率測度に事象を入れると確率が得られる.事象に対する分布が得られるので,<strong>確率分布</strong>とも言う.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="確率測度の性質"><a class="header" href="#確率測度の性質">確率測度の性質</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率測度の性質-1"><a href="#確率測度の性質-1" class="header">確率測度の性質</a></h1>
+<h2 id="確率測度の性質"><a class="header" href="#確率測度の性質">確率測度の性質</a></h2>
 <p>確率測度は一般の測度性質を受け継ぐ.
 以下,\(\mathcal{F}\)を完全加法族,\(P\)を</p>
 <h3 id="有限加法性-1"><a class="header" href="#有限加法性-1">有限加法性</a></h3>
@@ -720,16 +765,14 @@ A_i \in \mathcal{F},i \in \overline{\mathbb{N}} \to \displaystyle \bigcup_{i}^{\
 P(\bigcup^{n} _{k=1} A_k) = P(\coprod^{n} _{k=1} A_k) = \sum^{n} _{k=1} P(A_k) \tag{PM.4}
 \]</p>
 <ul>
-<li>証明<br />
-測度空間の有限加法性の証明と同様</li>
+<li>証明<br>測度空間の有限加法性の証明と同様</li>
 </ul>
 <h3 id="単調性-1"><a class="header" href="#単調性-1">単調性</a></h3>
 <p>\[
 A_1,A_2 \in \mathcal{F} \land A_1 \subset A_2 \to P(A_1) \leq P(A_2) \tag{PM.5}
 \]</p>
 <ul>
-<li>証明<br />
-測度空間の単調性の証明と同様</li>
+<li>証明<br>測度空間の単調性の証明と同様</li>
 </ul>
 <p>事象の列\(A_k \in \mathcal{F},k=1,2,\dots\)について,
 \[
@@ -756,8 +799,7 @@ P(\bigcup^{\infty} _ {k=1} A_k) =\lim_{k \to \infty} P(A_k) \tag{PM.7}
 \]
 が成立しこれを上方連続性という.</p>
 <ul>
-<li>証明<br />
-測度空間の上方連続性の証明と同様</li>
+<li>証明<br>測度空間の上方連続性の証明と同様</li>
 </ul>
 <h3 id="下方連続性-1"><a class="header" href="#下方連続性-1">下方連続性</a></h3>
 <p>事象の列\(A_k \in \mathcal{F},k=1,2,\dots\)が単調減少列のとき
@@ -766,17 +808,17 @@ P(\bigcap^{\infty} _ {k=1} A_k) = \lim_{k \to \infty} P(A_k) \tag{PM.8}
 \]
 が成立しこれを下方連続性という.</p>
 <ul>
-<li>証明<br />
-測度空間の下方連続性の証明と同様</li>
+<li>証明<br>測度空間の下方連続性の証明と同様</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="確率の演算"><a class="header" href="#確率の演算">確率の演算</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率の演算"><a class="header" href="#確率の演算">確率の演算</a></h1>
 <h3 id="確率測度の演算"><a class="header" href="#確率測度の演算">確率測度の演算</a></h3>
 <p>\(\forall A,B \in \mathcal{F}\)に対して,以下が成立する.</p>
 <p>\[
 \begin{align}
 &amp; P(A^c) = 1 - P(A) \tag{P.1} \\
 &amp; A \subset B \to P(A) \leq P(B) \tag{P.2} \\
-&amp; P(A \cup B) = P(A) + P(B) - P(A \cap B) \tag{P.3} 
+&amp; P(A \cup B) = P(A) + P(B) - P(A \cap B) \tag{P.3}
 \end{align}
 \]</p>
 <p>証明は以下の通り,</p>
@@ -819,7 +861,9 @@ P(A \cup B) &amp;= P(((A \cup B) \cap (A \cap B)^c) \cup (A \cap B)) \\
 \]</p>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h4 id="条件付き確率"><a class="header" href="#条件付き確率">条件付き確率</a></h4>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="条件付き確率-1"><a href="#条件付き確率-1" class="header">条件付き確率</a></h1>
+<h4 id="条件付き確率"><a class="header" href="#条件付き確率">条件付き確率</a></h4>
 <p>2つの事象\(A,B\)にて\(P(B) &gt; 0 \)のとき
 \[
 P(A|B) = \frac{P(A \cap B)}{P(B)}
@@ -840,9 +884,7 @@ P(A_1 \cap A_2 \cap \dots \cap A_n) = P(A_n|A_1 \cap A_2 \cap \dots \cap A_{n-1}
 \]
 となり,これを<strong>乗法定理</strong>という</p>
 <ul>
-<li>証明<br />
-\(n = 1\)のときは自明<br />
-\(n = 2\)のとき
+<li>証明<br>\(n = 1\)のときは自明<br>\(n = 2\)のとき
 \[
 P(A_2 \cap A_1) = P(A_2 | A_1)P(A_1)
 \]
@@ -850,8 +892,7 @@ P(A_2 \cap A_1) = P(A_2 | A_1)P(A_1)
 \[
 P(A_1 \cap A_2 \cap \dots \cap A_k) = P(A_k|A_1 \cap A_2 \cap \dots \cap A_{k-1}) \cdots P(A_2|A_1) P(A_1)
 \]
-が成立すると仮定する.<br />
-\(n = k+1\)のとき
+が成立すると仮定する.<br>\(n = k+1\)のとき
 \[
 \begin{align}
 P(A_{k+1}|A_1 \cap A_2 \cap \dots \cap A_{k}) &amp;= \frac{P(A_1 \cap A_2 \cap \dots \cap A_{k+1})}{P(A_1 \cap A_2 \cap \dots \cap A_{k})} \\
@@ -872,8 +913,7 @@ P(A) = \sum^{\infty}_{i=1} P(A|B_i)P(B_i)
 \]
 が成立する.これを<strong>全確率の公式</strong>という.</p>
 <ul>
-<li>証明<br />
-\(A = A \cap \Omega = A \cap \bigcup^{n} _ {i=1} B_i = \bigcup^{n} _ {i=1} A \cap B_i \)で\(B_i\)が互いに排反なので,
+<li>証明<br>\(A = A \cap \Omega = A \cap \bigcup^{n} _ {i=1} B_i = \bigcup^{n} _ {i=1} A \cap B_i \)で\(B_i\)が互いに排反なので,
 \[
 \begin{align}
 P(\bigcup^{n} _ {i=1} A \cap B_i) &amp;= \sum^{n}_{i=1} P(A \cap B_i) \\
@@ -888,8 +928,7 @@ P(B_j|A) = \frac{P(A|B_j)P(B_j)}{\sum^{n} _{i=1} P(A|B_i)P(B_i)}
 \]
 となる.</p>
 <ul>
-<li>証明<br />
-\[
+<li>証明<br>\[
 \begin{align}
 \frac{P(A|B_j)P(B_j)}{\sum^{n} _{i=1} P(A|B_i)P(B_i)} &amp;= \frac{P(A|B_j)P(B_j)}{P(A)} \\
 &amp;= \frac{P(A \cap B_j)}{P(B_j)}\frac{P(B_j)}{P(A)} \\
@@ -903,11 +942,15 @@ P(B_j|A) = \frac{P(A|B_j)P(B_j)}{\sum^{n} _{i=1} P(A|B_i)P(B_i)}
 P(A \cap B) = P(A)P(B)
 \]
 が成立するとき,事象\(A,B\)は<strong>独立</strong>していると言い.事象\(A,B\)の独立性とも言う.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="確率空間-1"><a class="header" href="#確率空間-1">確率空間</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率空間-2"><a href="#確率空間-2" class="header">確率空間</a></h1>
+<h2 id="確率空間-1"><a class="header" href="#確率空間-1">確率空間</a></h2>
 <p>標本空間と確率測度をまとめたものを<strong>確率空間</strong>と言う.\((\Omega,\mathcal{F},P)\)で表す.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="borel-cantelliの定理-1"><a class="header" href="#borel-cantelliの定理-1">Borel-Cantelliの定理</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="borel-cantelliの定理-3"><a href="#borel-cantelliの定理-3" class="header">Borel-Cantelliの定理</a></h1>
+<h2 id="borel-cantelliの定理-1"><a class="header" href="#borel-cantelliの定理-1">Borel-Cantelliの定理</a></h2>
 <p>\(\{A_i\} _{i \in \overline{\mathbb{N}}} \)を\((\Omega,\mathcal{F},P)\)上の事象とする.</p>
-<h3 id="borel-cantelliの定理-1"><a class="header" href="#borel-cantelliの定理-1">Borel-Cantelliの定理 1</a></h3>
+<h3 id="borel-cantelliの定理-1-1"><a class="header" href="#borel-cantelliの定理-1-1">Borel-Cantelliの定理 1</a></h3>
 <p>\[
 \sum _{i \in \overline{\mathbb{N}}} P(A_i) &lt; \infty \to P(\limsup _{i \to \infty} A_i) = 0 \land P(\liminf _{i \to \infty} (\Omega \backslash A_i)) = 1
 \]</p>
@@ -985,10 +1028,11 @@ P(\limsup _{i \to \infty} A_i) &amp;= P(((\limsup _{i \to \infty} A_i)^c)^c) \\
 <li>無限回の試行で,事象\(A_i\)以外の事象が有限回発生する確率は0である.</li>
 </ul>
 <p>ということを保証する.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="確率変数"><a class="header" href="#確率変数">確率変数</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率変数"><a class="header" href="#確率変数">確率変数</a></h1>
 <p>全事象に属する単一事象は,実数値とは限らない.
 であるので,単一事象から実数値に対応付ける関数を用意する.これを<strong>確率変数</strong>という.
-(関数なのに変数という...)</p>
+(関数なのに変数という…)</p>
 <p>\[
 X : \Omega \mapsto \mathbb{R}
 \]</p>
@@ -1014,7 +1058,8 @@ P(d\omega) &amp;:= \lim _{dx \to 0} P(\{\omega \in \Omega | x &lt; X(\omega) \le
 \end{align}
 \]
 と表記し,微小事象の確率と表す.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="確率密度関数"><a class="header" href="#確率密度関数">確率密度関数</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率密度関数"><a class="header" href="#確率密度関数">確率密度関数</a></h1>
 <h2 id="累積分布関数"><a class="header" href="#累積分布関数">累積分布関数</a></h2>
 <p>\[
 F_X(x) := P(X \leq x) = P(\{\omega|X(\omega) \leq x\})
@@ -1070,7 +1115,8 @@ P(a &lt; X \leq b) &amp;= F_X(b) - F_X(a) \\
 \]</p>
 <h2 id="離散的確率変数"><a class="header" href="#離散的確率変数">離散的確率変数</a></h2>
 <h2 id="確率質量関数"><a class="header" href="#確率質量関数">確率質量関数</a></h2>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="期待値"><a class="header" href="#期待値">期待値</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="期待値"><a class="header" href="#期待値">期待値</a></h1>
 <h2 id="期待値-1"><a class="header" href="#期待値-1">期待値</a></h2>
 <p>確率変数を引数に取る関数を考える.\(X=\{x | x = X(\omega) \land \omega \in \Omega \}\)と定義する.
 \(X\)は確率変数の取りうる値の集合となる.
@@ -1118,8 +1164,7 @@ E[ag(X)+bh(X)+c] &amp;= \int^{\infty} _{-\infty} (ag(x)+bh(x)+c)f_X(x) dx \\
 \forall a &gt; 0, E[g(x)] \geq a \int _ {g(x) \geq a} f_X(x) dx = aP(g(x) \geq a) \tag{2.3.2.1}
 \]</p>
 <ul>
-<li>証明<br />
-\(\forall a &gt; 0\)に対して,
+<li>証明<br>\(\forall a &gt; 0\)に対して,
 \[
 \begin{align}
 E[g(x)] &amp;= \int ^{\infty} _ {-\infty} g(x) f _ X(x) dx \\
@@ -1141,10 +1186,10 @@ E[g(x)] &amp;= \int ^{\infty} _ {-\infty} g(x) f _ X(x) dx \\
 &amp;\geq a \int_{g(x) \geq a} f _ X(x) dx = aP(g(x) \geq a)
 \end{align}
 \]
-証明終わり.<br />
-(2.3.2.1)式を<strong>Markovの不等式</strong>と言う.</li>
+証明終わり.<br>(2.3.2.1)式を<strong>Markovの不等式</strong>と言う.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="平均分散モーメント"><a class="header" href="#平均分散モーメント">平均・分散・モーメント</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="平均分散モーメント"><a class="header" href="#平均分散モーメント">平均・分散・モーメント</a></h1>
 <p>平均・分散・モーメントは,確率変数の特性を表す値である.</p>
 <h2 id="平均値分散"><a class="header" href="#平均値分散">平均値・分散</a></h2>
 <p>\(g(X)=X\)としたときの期待値を<strong>平均</strong>といい,
@@ -1184,8 +1229,7 @@ P(|X-\mu| \geq \varepsilon) \leq \frac{\sigma^2}{\varepsilon^2} \tag{Chebyshev}
 \]
 が成立する.</p>
 <ul>
-<li>証明<br />
-Markovの不等式にて\(g(X)=(X-\mu)^2,\,a=\varepsilon^2\)と置くと,
+<li>証明<br>Markovの不等式にて\(g(X)=(X-\mu)^2,\,a=\varepsilon^2\)と置くと,
 \[
 E[(X-\mu)^2] \geq \varepsilon^2 P(|X-\mu| \geq \varepsilon)
 \]
@@ -1201,7 +1245,9 @@ E[(X-\mu)^k] = \int ^{\infty} _{-\infty} (x-\mu)^k f_X(x) dx
 \]
 を<strong>平均値周りの\(k\)次モーメント</strong>と言う.\(k=2\)の場合は分散となる.
 モーメントは<strong>積率</strong>とも言う.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="確率母関数積率母関数"><a class="header" href="#確率母関数積率母関数">確率母関数・積率母関数</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率母関数積率母関数-1"><a href="#確率母関数積率母関数-1" class="header">確率母関数・積率母関数</a></h1>
+<h2 id="確率母関数積率母関数"><a class="header" href="#確率母関数積率母関数">確率母関数・積率母関数</a></h2>
 <p>確率関数,モーメントを生成できる関数,母関数というものを考える.</p>
 <h3 id="確率母関数"><a class="header" href="#確率母関数">確率母関数</a></h3>
 <p>\[
@@ -1235,7 +1281,8 @@ M_X(t) &amp;= E[e^{tX}] \\
 \left. \frac{d^2}{dt^2}M_X(t) \right| _{t=0} = \left. \frac{d^2}{dt^2} \int ^{\infty} _{-\infty} e^{tx} f_X(x) dx \right| _{t=0} = \int ^{\infty} _{-\infty} x^2 f_X(x) dx = E[X^2] \\
 \left. \frac{d^k}{dt^k}M_X(t) \right| _{t=0} = \left. \frac{d^k}{dt^k} \int ^{\infty} _{-\infty} e^{tx} f_X(x) dx \right| _{t=0} = \int ^{\infty} _{-\infty} x^k f_X(x) dx = E[X^k]
 \]</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="特性関数"><a class="header" href="#特性関数">特性関数</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="特性関数"><a class="header" href="#特性関数">特性関数</a></h1>
 <p>分布関数のフーリエ変換を特性関数と言う.</p>
 <h2 id="特性関数-1"><a class="header" href="#特性関数-1">特性関数</a></h2>
 <p>確率変数\(X\)の特性関数を以下のように定義する.
@@ -1250,15 +1297,16 @@ M_X(t) &amp;= E[e^{tX}] \\
 同じように,分布関数と特性関数は1対1対応するはずである.
 分布関数が微分可能なら,確率密度関数も特性関数に1対1対応する.
 それを保証するのがLevyの反転定理である.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="levyの反転定理"><a class="header" href="#levyの反転定理">Levyの反転定理</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="levyの反転定理-1"><a href="#levyの反転定理-1" class="header">Levyの反転定理</a></h1>
+<h2 id="levyの反転定理"><a class="header" href="#levyの反転定理">Levyの反転定理</a></h2>
 <p>\(P(\cdot)\)を確率測度とし,その特性関数を\( \varphi _X (t) \)とすると
 以下が成立する.</p>
 <p>\[
 P(a &lt; X &lt; b) + \frac{1}{2}(P(X=a)+P(X=b)) = \lim_{T \to \infty} \frac{1}{2 \pi} \int ^{T} _{-T} \frac{e^{-ita}-e^{-itb}}{it} \varphi _X(t) dt
 \]</p>
 <ul>
-<li>証明<br />
-\[
+<li>証明<br>\[
 \begin{align}
 F(T) &amp;= \int ^{T} _{-T} \frac{e^{-ita}-e^{-itb}}{it} \varphi _X(t) dt \\
 &amp;= \int ^{T} _{-T} \frac{e^{-ita}-e^{-itb}}{it} \int ^{\infty} _{-\infty} e^{itx} dF_X(x) dt \\
@@ -1323,13 +1371,11 @@ F_{X_1}(x) = F_{X_2}(x),\;\forall x \in \overline{\mathbb{R}} \Leftrightarrow
 <ol>
 <li>
 <p>\(F_{X_1}(x) = F_{X_2}(x),\;\forall x \in \overline{\mathbb{R}} \Rightarrow
-\varphi_{X_1}(t)=\varphi_{X_2}(t),\;\forall t \in \overline{\mathbb{R}}\)<br />
-特性関数の定義より自明.</p>
+\varphi_{X_1}(t)=\varphi_{X_2}(t),\;\forall t \in \overline{\mathbb{R}}\)<br>特性関数の定義より自明.</p>
 </li>
 <li>
 <p>\(F_{X_1}(x) = F_{X_2}(x),\;\forall x \in \overline{\mathbb{R}} \Leftarrow
-\varphi_{X_1}(t)=\varphi_{X_2}(t),\;\forall t \in \overline{\mathbb{R}}\)<br />
-Levyの反転定理で,\(a,b\)が連続点ならば,\(P(a) = 0, P(b) = 0\)なので,
+\varphi_{X_1}(t)=\varphi_{X_2}(t),\;\forall t \in \overline{\mathbb{R}}\)<br>Levyの反転定理で,\(a,b\)が連続点ならば,\(P(a) = 0, P(b) = 0\)なので,
 \[
 \begin{align}
 P(a &lt; X &lt; b) &amp;= F_X(b) - F_X(a) \\
@@ -1341,18 +1387,19 @@ P(a &lt; X &lt; b) &amp;= F_X(b) - F_X(a) \\
 \(\varphi_{X_1}(t)=\varphi_{X_2}(t)\)ならば,\( F_{X_1}(x) = F_{X_2}(x) \)</p>
 </li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="変数変換"><a class="header" href="#変数変換">変数変換</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="変数変換-3"><a href="#変数変換-3" class="header">変数変換</a></h1>
+<h2 id="変数変換"><a class="header" href="#変数変換">変数変換</a></h2>
 <p>関数 \(g:{\mathbb R} \mapsto {\mathbb R}\)にて,確率変数\(X\)が\(Y=g(X)\)と確率変数\(Y\)に
 変換されたときの\(Y\)の確率分布を確率変数\(X\)から得る方法を考える.</p>
 <h3 id="変数変換-1"><a class="header" href="#変数変換-1">変数変換</a></h3>
 <p>確率変数\(X\)の確率密度関数を\(f_X(x)\)とし,関数\(g\)が単調増加関数で逆関数を持つとした時,
 確率変数\(Y\)が,\(Y=g(X)\)と確率変数\(X\)の変換により得られる時,\(Y\)の確率密度関数は,
 \[
-f_Y(g(x)) = \frac{f_X(x)}{g'(x)}
+f_Y(g(x)) = \frac{f_X(x)}{g’(x)}
 \]</p>
 <ul>
-<li>証明<br />
-\(Y=g(X)\)とした時,\(P(\{X \leq x\}) = P(\{Y \leq g(x)\})\)であるので,
+<li>証明<br>\(Y=g(X)\)とした時,\(P(\{X \leq x\}) = P(\{Y \leq g(x)\})\)であるので,
 \(P(\{X \leq x\}) = F_X(x), P(\{Y \leq g(x)\}) = F_Y(g(x))\)とした時,
 \[
 \begin{align}
@@ -1366,21 +1413,22 @@ F _Y(g(x)) &amp;= \int^{g(x)} _{-\infty} f_Y(g(x)) dy \\
 \]
 \(y=g(x)\)として右辺の置換積分を行うと,
 \[
-\int^{x} _{-\infty} f_X(x) dx = \int^{g(x)} _{-\infty} f_Y(g(x)) g'(x) dx
+\int^{x} _{-\infty} f_X(x) dx = \int^{g(x)} _{-\infty} f_Y(g(x)) g’(x) dx
 \]
 両辺を\(x\)について微分すると,
 \[
-f_X(x) = f_Y(g(x)) g'(x)
+f_X(x) = f_Y(g(x)) g’(x)
 \]
 確率変数\(X\)から,確率変数\(Y\)の分布を求めたいので,
 \[
 \begin{align}
-f_Y(g(x)) &amp;= \frac{f_X(x)}{g'(x)} \\
-f_Y(y) &amp;= \frac{f_X(x)}{g'(x)} = \frac{f_X(g^{-1}(y))}{g'(g^{-1}(y))}
+f_Y(g(x)) &amp;= \frac{f_X(x)}{g’(x)} \\
+f_Y(y) &amp;= \frac{f_X(x)}{g’(x)} = \frac{f_X(g^{-1}(y))}{g’(g^{-1}(y))}
 \end{align}
 \]</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="確率変数ベクトル"><a class="header" href="#確率変数ベクトル">確率変数ベクトル</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率変数ベクトル"><a class="header" href="#確率変数ベクトル">確率変数ベクトル</a></h1>
 <p>確率変数のベクトルを以下のように表す.
 \[
 {\mathbf X} = (X_1,\dots,X_n)
@@ -1397,7 +1445,9 @@ X_n
 \right)
 \]
 と書く.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="確率変数2次元ベクトル"><a class="header" href="#確率変数2次元ベクトル">確率変数2次元ベクトル</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率変数2次元ベクトル-1"><a href="#確率変数2次元ベクトル-1" class="header">確率変数2次元ベクトル</a></h1>
+<h2 id="確率変数2次元ベクトル"><a class="header" href="#確率変数2次元ベクトル">確率変数2次元ベクトル</a></h2>
 <p>まず,2次元の場合を考える.2つの確率変数\(X,Y\)を用意する.  \(X=x,Y=y\)である時の確率を,
 \[
 P(\{\omega|X(\omega)=x\} \cap \{\omega|Y(\omega)=y\}) = P(X=x,Y=y), \; x \in D_X, y \in D_Y
@@ -1495,7 +1545,9 @@ f_{X,Y}(x,y) \geq 0
 \int ^{\infty} _{-\infty} f _{X,Y}(x,y) dy  = f _{X}(x)
 \]
 これを\(X\)の周辺確率密度関数という.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="条件付き確率密度関数"><a class="header" href="#条件付き確率密度関数">条件付き確率密度関数</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="条件付き確率-2"><a href="#条件付き確率-2" class="header">条件付き確率</a></h1>
+<h2 id="条件付き確率密度関数"><a class="header" href="#条件付き確率密度関数">条件付き確率密度関数</a></h2>
 <p>確率変数\(X\)がとる微小事象を\(dA=\{\omega| x &lt; X(\omega) &lt; x + dx\}\),確率変数\(Y\)がとる微小事象を\(dB=\{\omega| y &lt; Y(\omega) &lt; y + dy\}\)とすると,
 \(P(dB)=f_Y(y)dy,P(dA \cap dB)=f_{X,Y}(x,y)dxdy\)となるので,
 \[
@@ -1528,7 +1580,9 @@ P(\Omega|B) = \frac{P(\Omega \cap B)}{P(B)} = 1
 E[g(Y,X)|X \in A] = \int_{-\infty}^{\infty} g(y,x) f _{Y|X}(x,y) dy
 \]
 とくに,条件付き確率密度関数で表現する期待値を\(E^{Y|X}[\cdot|\cdot]\)と書く.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="確率変数の独立性"><a class="header" href="#確率変数の独立性">確率変数の独立性</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率変数の独立性-1"><a href="#確率変数の独立性-1" class="header">確率変数の独立性</a></h1>
+<h2 id="確率変数の独立性"><a class="header" href="#確率変数の独立性">確率変数の独立性</a></h2>
 <p>確率の独立性から確率変数の独立性が得られる.
 事象\(A,B\)とその事象をとる確率変数\(X,Y\)とすると,
 \[
@@ -1561,7 +1615,9 @@ E^{X,Y}[g(X)h(Y)] &amp;= \int \int g(x)h(y)f_{X,Y}(x,y) d\mu_X(x) d\mu_Y(y) \\
 \]</li>
 </ul>
 <p>確率変数\(X,Y\)が独立でないとき,\(X,Y\)は従属しているという.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="共分散と相関係数"><a class="header" href="#共分散と相関係数">共分散と相関係数</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="共分散と相関係数-1"><a href="#共分散と相関係数-1" class="header">共分散と相関係数</a></h1>
+<h2 id="共分散と相関係数"><a class="header" href="#共分散と相関係数">共分散と相関係数</a></h2>
 <p>2つの確率変数\(X\)と\(Y\)が独立でない時,その関係を捉えるために共分散と相関係数を使う.</p>
 <h3 id="共分散"><a class="header" href="#共分散">共分散</a></h3>
 <p>\[
@@ -1629,7 +1685,9 @@ E^{X,Y}[g(X)h(Y)]^2 \leq E^{X,Y}[h(Y)^2]E^{X,Y}[g(X)^2]
 {\rm Corr}(X,Y) = \frac{{\rm Cov}(X,Y)}{\sqrt{{\rm Var}(X){\rm Var}(Y)}} = \frac{0}{\sqrt{{\rm Var}(X){\rm Var}(Y)}} = 0
 \]
 であり,無相関になる.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="変数変換-2"><a class="header" href="#変数変換-2">変数変換</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="変数変換-4"><a href="#変数変換-4" class="header">変数変換</a></h1>
+<h2 id="変数変換-2"><a class="header" href="#変数変換-2">変数変換</a></h2>
 <p>２つの確率変数\(X,Y\)を用意し,この二つの確率変数から新たに確率変数を
 生成する関数\(S=s(X,Y),T=t(X,Y)\)を用意する.
 では,２つの確率変数の同時確率密度関数を\(f_{X,Y}(x,y)\)としたとき,
@@ -1652,7 +1710,9 @@ f_{S,T}(s,t) = f_{X,Y}(s^{-1}(s,t),t^{-1}(s,t))|J(s,t)|
 \[
 f_{X,Y}(x,y) = \frac{f_{S,T}(s,t)}{|J(s,t)|}
 \]</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="確率変数の和の分布"><a class="header" href="#確率変数の和の分布">確率変数の和の分布</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率変数の和の分布-1"><a href="#確率変数の和の分布-1" class="header">確率変数の和の分布</a></h1>
+<h2 id="確率変数の和の分布"><a class="header" href="#確率変数の和の分布">確率変数の和の分布</a></h2>
 <p>2つの確率変数\(X\)と\(Y\)が独立で,それぞれの確率密度関数を\(f _X(x),f _Y(y)\)とする.
 このときの,\(S=X+Y\)の分布を求める場合,畳み込みを行う,確率母関数,特性関数を利用する方法がある.</p>
 <h3 id="畳み込み"><a class="header" href="#畳み込み">畳み込み</a></h3>
@@ -1687,7 +1747,8 @@ f _S(s) = \int _{\Omega} f _{S,T}(s,t) dt = \int _{\Omega} f _X(s-t) f _Y(t)  dt
 \varphi _Z(t) = E[e^{itZ}] = E[e^{it(X+Y)}] = E[e^{itX} e^{itY}] = E[e^{itX}] E[e^{itY}] = \varphi _X(t) \varphi _Y(t)
 \]
 となる.Levyの反転公式によると,特性関数と分布は一対一対応するので,\(\varphi _X(t) \varphi _Y(t)\)を特性関数とする分布を見つけることができれば,それは,\(\varphi _Z(t)\)の分布となる.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="確率変数列"><a class="header" href="#確率変数列">確率変数列</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率変数列"><a class="header" href="#確率変数列">確率変数列</a></h1>
 <p>多くの観測値を得たとき,その観測値から数値を得る確率変数が
 どのような分布に近いかを調べたい.そこで,多くの観測値得たときに,
 dどのように真の特性値に近づくかを調べるために,確率変数列を考える.
@@ -1695,7 +1756,8 @@ dどのように真の特性値に近づくかを調べるために,確率変数
 \[
 \{X_1,X_2,\dots\} := \{X_n\} _ {n=1,2,\dots} := \{X_n\}
 \]</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="確率変数列の収束"><a class="header" href="#確率変数列の収束">確率変数列の収束</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率変数列の収束"><a class="header" href="#確率変数列の収束">確率変数列の収束</a></h1>
 <p>確率変数列が確率変数に近づくという定義を考える.</p>
 <h2 id="確率収束"><a class="header" href="#確率収束">確率収束</a></h2>
 <p>確率測度はルベーグ測度なので,ルベーグ測度の収束の考えに当てはめることができる.</p>
@@ -1787,15 +1849,14 @@ X_n \xrightarrow{d} X
 \[
 \forall \varepsilon &gt; 0, \exists M &gt; 0, s.t. \:  \sup _n P(|X _n| \geq M) &lt; \varepsilon
 \]
-となっていることである.<br />
-緊密な確率変数列は\(|X _n|\)が大きな値を取ることが確率上低いということである.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="portmanteau定理"><a class="header" href="#portmanteau定理">Portmanteau定理</a></h2>
+となっていることである.<br>緊密な確率変数列は\(|X _n|\)が大きな値を取ることが確率上低いということである.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="portmanteau定理-2"><a href="#portmanteau定理-2" class="header">Portmanteau定理</a></h1>
+<h2 id="portmanteau定理"><a class="header" href="#portmanteau定理">Portmanteau定理</a></h2>
 <p>分布収束と同値な定義を示した定理を<strong>Portmanteau(両開き旅行かばん語)定理</strong>という.</p>
 <h3 id="portmanteau定理-1"><a class="header" href="#portmanteau定理-1">Portmanteau定理</a></h3>
 <p>確率変数\(X\),確率変数列 \( \{X _n \} _{n \in \mathbb{N} _+} \)を用意し,
-それそれに対応する分布関数を,\(F _X,F _{X_n}\)とする.<br />
-\(F _X\)に対応する確率測度を\(P\),\(F _{X_n}\)に対応する確率測度を\(P_n\)とする.<br />
-以下の定義は同値である.</p>
+それそれに対応する分布関数を,\(F _X,F _{X_n}\)とする.<br>\(F _X\)に対応する確率測度を\(P\),\(F _{X_n}\)に対応する確率測度を\(P_n\)とする.<br>以下の定義は同値である.</p>
 <ol>
 <li>\(X_n \xrightarrow{d} X\)</li>
 <li>任意の有界連続関数 \(f:\mathbb{R} \mapsto \mathbb{R}\)に対して
@@ -1811,10 +1872,7 @@ E[f(X _n)] \to E[f(X)]
 </ol>
 <ul>
 <li>
-<p>証明<br />
-\(2 \Rightarrow 3\)は,関数\(f\)が有界連続関数なら,有界一様連続関数なので成立.<br />
-\(4 \Leftrightarrow 5\)を示す. 任意の開集合\(A\)の補集合\(A^c\)は閉集合.<br />
-\[
+<p>証明<br>\(2 \Rightarrow 3\)は,関数\(f\)が有界連続関数なら,有界一様連続関数なので成立.<br>\(4 \Leftrightarrow 5\)を示す. 任意の開集合\(A\)の補集合\(A^c\)は閉集合.<br>\[
 \begin{align}
 \limsup_{n \to \infty} P_{n}(A^c) \leq P(A^c) &amp;\Leftrightarrow \\
 \limsup_{n \to \infty} (1-P_{n}(A)) \leq 1-P(A) &amp;\Leftrightarrow \\
@@ -1822,19 +1880,18 @@ E[f(X _n)] \to E[f(X)]
 \liminf_{n \to \infty} (P_{n}(A)) \geq P(A)
 \end{align}
 \]
-から,\(4 \Rightarrow 5\)が成立.\(5 \Rightarrow 4\)も同様.<br />
-\(4,5 \Rightarrow 1\)を示す. \(A = \{\omega| X(\omega) \leq x \}\)は閉集合で,
+から,\(4 \Rightarrow 5\)が成立.\(5 \Rightarrow 4\)も同様.<br>\(4,5 \Rightarrow 1\)を示す. \(A = \{\omega| X(\omega) \leq x \}\)は閉集合で,
 \[
 \limsup _{n \to \infty} F _{X _n}(x) = \limsup _{n \to \infty} P _n(A) \leq P(A) = F _X(x)
 \]</p>
-<p>任意の正数\(\varepsilon &gt; 0\)を用意して,\(\overline{A'} = \{\omega| X(\omega) \leq x-\varepsilon \}\)と,\(A' = \{\omega| X(\omega) &lt; x-\varepsilon/2 \}\)
-を作ることができる. \(\overline{A'} \subset A'\)から
+<p>任意の正数\(\varepsilon &gt; 0\)を用意して,\(\overline{A’} = \{\omega| X(\omega) \leq x-\varepsilon \}\)と,\(A’ = \{\omega| X(\omega) &lt; x-\varepsilon/2 \}\)
+を作ることができる. \(\overline{A’} \subset A’\)から
 \[
-F_X(x-\varepsilon) = P(\overline{A'}) \leq P(A') \leq \liminf _{n \to \infty} P _n(A')
+F_X(x-\varepsilon) = P(\overline{A’}) \leq P(A’) \leq \liminf _{n \to \infty} P _n(A’)
 \]
-\(A' \subset A\)から
+\(A’ \subset A\)から
 \[
-\liminf _{n \to \infty} P _n(A') \leq \liminf _{n \to \infty} P _n(A) = \liminf _{n \to \infty} F _{X_n}(x) \leq \limsup _{n \to \infty} F _{X_n}(x)
+\liminf _{n \to \infty} P _n(A’) \leq \liminf _{n \to \infty} P _n(A) = \liminf _{n \to \infty} F _{X_n}(x) \leq \limsup _{n \to \infty} F _{X_n}(x)
 \]
 なので,
 \[
@@ -1851,8 +1908,7 @@ F_X(x-\varepsilon) \leq \liminf _{n \to \infty} F _{X_n}(x) \leq \limsup _{n \to
 F_X(-M) &lt; \delta, 1-F_X(M) &lt; \delta
 \]
 として,\(M\)を十分大きくすると,\(\delta\)は十分小さくできる.
-\(F\)の不連続点は可算なので,\(-M,M\)は\(F\)の連続点に取ることができる.<br />
-閉区間\([-M,M]\)で,\(-M=m_0 &lt; m_1 &lt; \cdots &lt; m_{k-1} &lt; m_k = M\)なる分点\(\{m_i\} _{0 \leq i \leq k}\)を取る.
+\(F\)の不連続点は可算なので,\(-M,M\)は\(F\)の連続点に取ることができる.<br>閉区間\([-M,M]\)で,\(-M=m_0 &lt; m_1 &lt; \cdots &lt; m_{k-1} &lt; m_k = M\)なる分点\(\{m_i\} _{0 \leq i \leq k}\)を取る.
 分点\(\{m_i\} _{0 \leq i \leq k}\)も\(F\)の連続点に取ることができ,数列\(\{m_i\} _{0 \leq i \leq k}\)は\(\forall i \geq 1, |m _i - m _{i-1}| &lt; \delta\)となるように取ることができる.</p>
 <p>仮定で\(F_n\)が分布収束から,\(\lim _{n \to \infty} F_n(x) = F(x)\).なので,十分大きな\(N\)を取ってきて,
 \[
@@ -1883,7 +1939,7 @@ F_X(-M) &lt; \delta, 1-F_X(M) &lt; \delta
 \left| E[f(X_n)] - E[f(X)] - \left( \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right) \right| &lt; a \cdot 6 \delta
 \]</p>
 <p>\(\left| \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right|\)の区間を評価する.
-\(f\)は連続関数なので,閉区間\([-M,M]\)にて一様連続関数で, 
+\(f\)は連続関数なので,閉区間\([-M,M]\)にて一様連続関数で,
 \[
 \exists \delta |y - x| &lt; \delta \Rightarrow \forall \varepsilon |f(y) - f(x)| &lt; \varepsilon
 \]
@@ -1928,8 +1984,7 @@ g _{\varepsilon}(x) &amp;= \sum ^{k-1} _{i=0} a _i I _{m _{i} \leq x &lt; m _{i+
 \left| E[f(X_n)] - E[f(X)] - \left( \int^{M} _{-M} f(x) dF _{X_n}(x) - \int^{M} _{-M} f(x) dF _{X}(x)\right) \right| \to 0
 \]
 となり,\(n \to \infty\)とすると \(E[f(X_n)] \to E[f(X)]\).</p>
-<p>\(3 \Rightarrow 4\)を示す.<br />
-\(A \subset A_\varepsilon, P(A_\varepsilon)-P(A) \leq \varepsilon\)であるような,
+<p>\(3 \Rightarrow 4\)を示す.<br>\(A \subset A_\varepsilon, P(A_\varepsilon)-P(A) \leq \varepsilon\)であるような,
 事象\(A,A_\varepsilon\)を用意する. それに対して,次のような有界一様連続関数を用意する.
 \[
 f(x) = \left\{
@@ -1949,7 +2004,9 @@ f(x) = \left\{
 \limsup_{n \to \infty} P_{n}(A) = P(A)
 \]
 証明おわり.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="levyの収束定理"><a class="header" href="#levyの収束定理">Levyの収束定理</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="levyの収束定理-2"><a href="#levyの収束定理-2" class="header">Levyの収束定理</a></h1>
+<h2 id="levyの収束定理"><a class="header" href="#levyの収束定理">Levyの収束定理</a></h2>
 <p>Levyの連続性定理とも言う.</p>
 <h3 id="levyの収束定理-1"><a class="header" href="#levyの収束定理-1">Levyの収束定理</a></h3>
 <p>確率変数列\(\{X _n \} _{n \in \mathbb{N} _+} \)を用意して,
@@ -1977,11 +2034,13 @@ X _n \xrightarrow{d} X \Rightarrow \varphi _{X _n}(t) \to \varphi(t). (n \to \in
 X _n \xrightarrow{d} X \Rightarrow E[e^{itX_n}]] \to E[e^{itX}]] \; (n \to \infty)
 \]
 なので,題意は成立.</li>
-<li>難しい...</li>
+<li>難しい…</li>
 </ol>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="連続写像定理"><a class="header" href="#連続写像定理">連続写像定理</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="連続写像定理-2"><a href="#連続写像定理-2" class="header">連続写像定理</a></h1>
+<h2 id="連続写像定理"><a class="header" href="#連続写像定理">連続写像定理</a></h2>
 <h3 id="連続写像定理-1"><a class="header" href="#連続写像定理-1">連続写像定理</a></h3>
 <p>確率変数列\(\{X _i\} _{i \in \overline{\mathbb{N} _+}}\)と実数\(x\)に対して,
 \[
@@ -1995,9 +2054,29 @@ g(X _n) \xrightarrow{p} g(x)
 <ul>
 <li>証明</li>
 </ul>
+<p>確率変数列\(X _n\)は,確率収束するので,
+\[
+\lim _{n \to \infty} P(|X _n-x| &lt; \delta) = 1
+\]</p>
+<p>関数\(g\)が連続関数ということは,任意の正数\(\varepsilon,\delta\)に対して,</p>
+<p>\[
+|X _n - x| &lt; \delta ならば, |g(X _n) - g(x)| &lt; \varepsilon
+\]</p>
+<p>であるので,</p>
+<p>\[
+P(|X _n - x| &lt; \delta) &lt; P(|g(X _n) - g(x)| &lt; \varepsilon) &lt;= 1
+\]</p>
+<p>から,</p>
+<p>\[
+\lim_{n \to \infty} P(|g(X _n) - g(x)| &lt; \varepsilon) = 1
+\]
+が成立する.</p>
 <h3 id="スラツキーの定理"><a class="header" href="#スラツキーの定理">スラツキーの定理</a></h3>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="独立確率変数の和"><a class="header" href="#独立確率変数の和">独立確率変数の和</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h3 id="kolmogorovの不等式"><a class="header" href="#kolmogorovの不等式">Kolmogorovの不等式</a></h3>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="独立確率変数の和"><a class="header" href="#独立確率変数の和">独立確率変数の和</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="kolmogorovの不等式-1"><a href="#kolmogorovの不等式-1" class="header">Kolmogorovの不等式</a></h1>
+<h3 id="kolmogorovの不等式"><a class="header" href="#kolmogorovの不等式">Kolmogorovの不等式</a></h3>
 <p>\(\{X_i\}_{1 \leq i \leq n}\)を\((\Omega,\mathcal{F},P)\)上の独立な確率変数列とする. \(E[X_i] = 0,{\rm var}(X_i)&lt;\infty\)とすると,任意の\(\lambda &gt; 0\)に対して,
 \[
 P(\max _{1 \leq k \leq n}| \sum^{k} _{i=1} X _i| \geq \lambda) \leq \frac{1}{\lambda^2} \sum^{n} _{i=1} {\rm var}(X_i)
@@ -2005,55 +2084,52 @@ P(\max _{1 \leq k \leq n}| \sum^{k} _{i=1} X _i| \geq \lambda) \leq \frac{1}{\la
 が成立する.</p>
 <ul>
 <li>
-<p>証明<br />
-\(A_n=\{\omega \in \Omega| \max _{1 \leq k \leq n} | \sum^{k} _{i=1} X _i| \geq \lambda \} \) とする.
+<p>証明<br>\(A_n=\{\omega \in \Omega| \max _{1 \leq k \leq n} | \sum^{k} _{i=1} X _i| \geq \lambda \} \) とする.
 \[
 \begin{align}
 B _k &amp;= \left\{ \begin{array}{ll}
 \emptyset &amp; (k = 0) \\
 \{\omega \in \Omega| \max _{1 \leq j \leq k} | \sum^{j} _{i=1} X _i| \geq \lambda \} &amp; (k &gt; 0)
 \end{array}\right. \\
-B' _k &amp;= \{\omega \in \Omega| |\sum^{k} _{i=1} X _i| \geq \lambda \}
+B’ _k &amp;= \{\omega \in \Omega| |\sum^{k} _{i=1} X _i| \geq \lambda \}
 \end{align}
 \]
 とし
 \[
 \begin{align}
-A' _k &amp;= (\Omega \backslash B _{k-1} ) \cap B' _k\\
+A’ _k &amp;= (\Omega \backslash B _{k-1} ) \cap B’ _k\\
 &amp;= \{\omega \in \Omega| \max _{1 \leq j \leq k-1} | \sum^{j} _{i=1} X _i| &lt; \lambda \} \cap \{\omega \in \Omega| |\sum^{k} _{i=1} X _i| \geq \lambda \} \\
 &amp;= \{\omega \in \Omega| \max _{1 \leq j \leq k-1} | \sum^{j} _{i=1} X _i| &lt; \lambda \land |\sum ^{k} _{i=1} X _i| \geq \lambda \}
 \end{align}
 \]
-構成すると,\(A' _{k-1} \)までで\(\max _{1 \leq j \leq k-1} | \sum^{j} _{i=1} X _i| \geq \lambda\)を満たさなかった見本点\(\omega\)の中から,
-\(|\sum ^{k} _{i=1} X _i| \geq \lambda\)を満たす\(\omega\)を集めて\(A'_k\)を作るので\(A'_k\)は互いに排他で,\(A_n=\bigcup^{n} _{k=1} A'_k\)となる.<br />
-\[
-P(A _n) = \sum ^{n} _{k=1} P(A' _k)
+構成すると,\(A’ _{k-1} \)までで\(\max _{1 \leq j \leq k-1} | \sum^{j} _{i=1} X _i| \geq \lambda\)を満たさなかった見本点\(\omega\)の中から,
+\(|\sum ^{k} _{i=1} X _i| \geq \lambda\)を満たす\(\omega\)を集めて\(A’_k\)を作るので\(A’_k\)は互いに排他で,\(A_n=\bigcup^{n} _{k=1} A’_k\)となる.<br>\[
+P(A _n) = \sum ^{n} _{k=1} P(A’ _k)
 \]
-ここで,\(I _{A' _k}:\Omega \mapsto \{0,1\}\)なる指示関数を用意する.
-\(\{A' _k\}\)は互いに排他なので,\(I _{A' _j}(\omega)=1\)ならば,\(k \not = j\)の\(k\)については,\(I _{A' _k}(\omega)=0\).<br />
-Markovの不等式から\(A _k\)は\(|\sum ^{k} _{i=1} X _i| \geq \lambda\)なので,
+ここで,\(I _{A’ _k}:\Omega \mapsto \{0,1\}\)なる指示関数を用意する.
+\(\{A’ _k\}\)は互いに排他なので,\(I _{A’ _j}(\omega)=1\)ならば,\(k \not = j\)の\(k\)については,\(I _{A’ _k}(\omega)=0\).<br>Markovの不等式から\(A _k\)は\(|\sum ^{k} _{i=1} X _i| \geq \lambda\)なので,
 \[
-P(A' _k) \leq \frac{1}{\lambda^2} E[ (\sum ^{k} _{i=1} X _i)^2 I _{A' _k}]
+P(A’ _k) \leq \frac{1}{\lambda^2} E[ (\sum ^{k} _{i=1} X _i)^2 I _{A’ _k}]
 \]
 \[
-\sum ^{n} _{k=1} P(A' _k) \leq \sum ^{n} _{k=1} \frac{1}{\lambda^2} E[ (\sum ^{k} _{i=1} X _i)^2 I _{A' _k}]
+\sum ^{n} _{k=1} P(A’ _k) \leq \sum ^{n} _{k=1} \frac{1}{\lambda^2} E[ (\sum ^{k} _{i=1} X _i)^2 I _{A’ _k}]
 \]
-\(E[ (\sum ^{k} _{i=1} X _i)^2 I _{A' _k}]\)は
+\(E[ (\sum ^{k} _{i=1} X _i)^2 I _{A’ _k}]\)は
 \[
 \begin{align}
-E[(\sum ^{n} _{i=1} {X _i})^2 I _{A' _k}] &amp;= \int _{\Omega} (\sum ^{n} _{i=1} X _i(\omega))^2 I _{A' _k}(\omega) P(d\omega) \\
-&amp;= \int _{A' _k} (\sum ^{n} _{i=1} X _i(\omega))^2 P(d\omega) \\
-&amp;= E[(\sum ^{n} _{i=1} X _i)^2:A'_k]
+E[(\sum ^{n} _{i=1} {X _i})^2 I _{A’ _k}] &amp;= \int _{\Omega} (\sum ^{n} _{i=1} X _i(\omega))^2 I _{A’ _k}(\omega) P(d\omega) \\
+&amp;= \int _{A’ _k} (\sum ^{n} _{i=1} X _i(\omega))^2 P(d\omega) \\
+&amp;= E[(\sum ^{n} _{i=1} X _i)^2:A’_k]
 \end{align}
 \]</p>
-<p>\(E[(\sum ^{n} _{i=1} X _i(\omega))^2:A'_k]\)は互いに排他な\(\{A' _k\}\)事象で制限された期待値で,\( \Omega \supset A _n \supset A' _k \)なので,
+<p>\(E[(\sum ^{n} _{i=1} X _i(\omega))^2:A’_k]\)は互いに排他な\(\{A’ _k\}\)事象で制限された期待値で,\( \Omega \supset A _n \supset A’ _k \)なので,
 \[
 \begin{align}
 E[(\sum ^{n} _{i=1} X _i)^2] &amp;= \int _{\Omega} (\sum ^{n} _{i=1} {X _i(\omega)})^2 P(d\omega)\\
 &amp; \geq \int _{A_n} (\sum ^{n} _{i=1} {X _i(\omega)})^2 P(d\omega) \\
-&amp; = \sum ^{n} _{k=1} \int _{A' _k} (\sum ^{n} _{i=1} {X _i(\omega)})^2 P(d\omega) \\
-&amp; = \sum ^{n} _{k=1}E[(\sum ^{n} _{i=1} {X _i})^2:A' _k] \\
-&amp; = \sum ^{n} _{k=1} E[(\sum ^{n} _{i=1} {X _i})^2 I _{A' _k}]
+&amp; = \sum ^{n} _{k=1} \int _{A’ _k} (\sum ^{n} _{i=1} {X _i(\omega)})^2 P(d\omega) \\
+&amp; = \sum ^{n} _{k=1}E[(\sum ^{n} _{i=1} {X _i})^2:A’ _k] \\
+&amp; = \sum ^{n} _{k=1} E[(\sum ^{n} _{i=1} {X _i})^2 I _{A’ _k}]
 \end{align}
 \]
 \[
@@ -2065,23 +2141,23 @@ E[(\sum ^{n} _{i=1} X _i)^2] &amp;= \int _{\Omega} (\sum ^{n} _{i=1} {X _i(\omeg
 \]
 より,
 \[
-E[(\sum ^{n} _{i=1} {X _i})^2 I _{A' _k}] - E[(\sum ^{k} _{i=1} {X _i})^2 I _{A' _k}] \geq E[2(\sum ^{n} _{i=k+1} {X _i})(\sum ^{k} _{i=1} {X _i})I _{A' _k}]
+E[(\sum ^{n} _{i=1} {X _i})^2 I _{A’ _k}] - E[(\sum ^{k} _{i=1} {X _i})^2 I _{A’ _k}] \geq E[2(\sum ^{n} _{i=k+1} {X _i})(\sum ^{k} _{i=1} {X _i})I _{A’ _k}]
 \]
-ここで,\(\sum ^{n} _{i=k+1} {X _i}\)と\((\sum ^{k} _{i=1} {X _i})I _{A' _k}\)は独立しているので
+ここで,\(\sum ^{n} _{i=k+1} {X _i}\)と\((\sum ^{k} _{i=1} {X _i})I _{A’ _k}\)は独立しているので
 \[
-E[(\sum ^{n} _{i=1} {X _i})^2 I _{A' _k}] - E[(\sum ^{k} _{i=1} {X _i})^2 I _{A' _k}] \geq 2E[(\sum ^{n} _{i=k+1} {X _i})]E[(\sum ^{k} _{i=1} {X _i})I _{A' _k}]
+E[(\sum ^{n} _{i=1} {X _i})^2 I _{A’ _k}] - E[(\sum ^{k} _{i=1} {X _i})^2 I _{A’ _k}] \geq 2E[(\sum ^{n} _{i=k+1} {X _i})]E[(\sum ^{k} _{i=1} {X _i})I _{A’ _k}]
 \]
 \(E[X _i]=0\)なので,
 \[
-E[(\sum ^{n} _{i=1} {X _i})^2 I _{A' _k}] - E[(\sum ^{k} _{i=1} {X _i})^2 I _{A' _k}] \geq 0
+E[(\sum ^{n} _{i=1} {X _i})^2 I _{A’ _k}] - E[(\sum ^{k} _{i=1} {X _i})^2 I _{A’ _k}] \geq 0
 \]</p>
 </li>
 </ul>
 <p>\[
 \begin{align}
-P(A _n) &amp;= \sum ^{n} _{k=1} P(A' _k) \\
-&amp;\leq \sum ^{n} _{k=1} \frac{1}{\lambda^2} E[ (\sum ^{k} _{i=1} X _i)^2 I _{A' _k}] \\
-&amp;\leq \sum ^{n} _{k=1} \frac{1}{\lambda^2} E[(\sum ^{n} _{i=1} {X _i})^2 I _{A' _k}] \\
+P(A _n) &amp;= \sum ^{n} _{k=1} P(A’ _k) \\
+&amp;\leq \sum ^{n} _{k=1} \frac{1}{\lambda^2} E[ (\sum ^{k} _{i=1} X _i)^2 I _{A’ _k}] \\
+&amp;\leq \sum ^{n} _{k=1} \frac{1}{\lambda^2} E[(\sum ^{n} _{i=1} {X _i})^2 I _{A’ _k}] \\
 &amp; = \frac{1}{\lambda^2} E[(\sum ^{n} _{i=1} {X _i})^2]
 \end{align}
 \]
@@ -2090,13 +2166,14 @@ P(A _n) &amp;= \sum ^{n} _{k=1} P(A' _k) \\
 P(\max _{1 \leq k \leq n}| \sum^{k} _{i=1} X _i| \geq \lambda) \leq \frac{1}{\lambda^2} \sum^{n} _{i=1} {\rm var}(X_i)
 \]
 証明終わり.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="kolmogorovの定理"><a class="header" href="#kolmogorovの定理">Kolmogorovの定理</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="kolmogorovの定理-1"><a href="#kolmogorovの定理-1" class="header">Kolmogorovの定理</a></h1>
+<h2 id="kolmogorovの定理"><a class="header" href="#kolmogorovの定理">Kolmogorovの定理</a></h2>
 <p>\(\{X_i\}_{1 \leq i \leq \infty}\)を\((\Omega,\mathcal{F},P)\)上の独立な確率変数列とする.
 \(\sum ^{\infty} _{i=1} E[X _i] &lt; \infty,\sum ^{\infty} _{i=1} {\rm var}(X _i)&lt; \infty\)でともに収束するなら,
 \(\sum ^{\infty} _{i=1} X _i\)は概収束する.</p>
 <ul>
-<li>証明<br />
-Kolmogorovの不等式
+<li>証明<br>Kolmogorovの不等式
 \[
 P(\max _{1 \leq k \leq n}| \sum^{k} _{i=1} X _i| \geq \lambda) \leq \frac{1}{\lambda^2} \sum^{n} _{i=1} {\rm var}(X_i)
 \]
@@ -2150,7 +2227,9 @@ P( \lim _{n \to \infty} \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{
 \lim _{n \to \infty} \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{l+n} _{i=1} X _{i} | = 0 \; P \text{-a.s}
 \]
 となり,\(\sum ^{\infty} _{i=1} X _i\)が概収束することになる.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="確率分布"><a class="header" href="#確率分布">確率分布</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率分布-1"><a href="#確率分布-1" class="header">確率分布</a></h1>
+<h2 id="確率分布"><a class="header" href="#確率分布">確率分布</a></h2>
 <p>確率の特徴は各事象の発生回数の分布によってわかる.
 つまり,各事象の確率の分布がわかれば,特徴がわかる.
 <strong>確率分布</strong>は確率測度そのものである.
@@ -2161,7 +2240,9 @@ P( \lim _{n \to \infty} \sup _{1 \leq k,l} | \sum ^{k+n} _{i=1} X _{i} - \sum ^{
 \[
 \{X_i\}, {\scriptsize \mathit i.i.d.} \sim F
 \]</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="二項分布"><a class="header" href="#二項分布">二項分布</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="二項分布-2"><a href="#二項分布-2" class="header">二項分布</a></h1>
+<h2 id="二項分布"><a class="header" href="#二項分布">二項分布</a></h2>
 <h3 id="ベルヌーイ分布"><a class="header" href="#ベルヌーイ分布">ベルヌーイ分布</a></h3>
 <p>\(p\)の確率で興味がある事象,\(1-p\)の確率で興味がない事象が発生する試行をベルヌーイ試行(Bernoulli trial)という.
 この確率関数は,\(x=1\)を興味のある事象,\(x=0\)を興味のない事象とすると,この確率は
@@ -2203,7 +2284,7 @@ M_X(t) &amp;= E[e^{tX}] =\int_{\Omega} e^{tx} f_X(x) dx \\
 \end{align}
 \]</p>
 <h3 id="二項分布-1"><a class="header" href="#二項分布-1">二項分布</a></h3>
-<p>ベルヌーイ試行を独立に\(n\)回行ったときに,&quot;成功&quot;の回数を事象とすると,
+<p>ベルヌーイ試行を独立に\(n\)回行ったときに,“成功“の回数を事象とすると,
 その分布を<strong>二項分布</strong>(binomial distribution)という.
 まず単純に,\(n\)回の試行で最初の\(k\)回が成功する確率は,
 \(i\)回目に成功となる事象を\(A_i\)とすると,
@@ -2268,7 +2349,7 @@ G_X(t) &amp;= E[t^X] \\
 &amp;= (tp + (1-p))^n
 \end{align}
 \]</p>
-<h4 id="積率母関数-2"><a class="header" href="#積率母関数-2">積率母関数</a></h4>
+<h4 id="積率母関数-1-1"><a class="header" href="#積率母関数-1-1">積率母関数</a></h4>
 <p>\[
 \begin{align}
 M_X(t) &amp;= E[e^{Xt}] \\
@@ -2277,14 +2358,16 @@ M_X(t) &amp;= E[e^{Xt}] \\
 &amp;= (e^tp + (1-p))^n
 \end{align}
 \]</p>
-<h4 id="特性関数-3"><a class="header" href="#特性関数-3">特性関数</a></h4>
+<h4 id="特性関数-1-1"><a class="header" href="#特性関数-1-1">特性関数</a></h4>
 <p>\[
 \begin{align}
 \varphi_X(t) &amp;= E[e^{iXt}] \\
 &amp;= (e^{it}p + (1-p))^n
 \end{align}
 \]</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="ポアソン分布"><a class="header" href="#ポアソン分布">ポアソン分布</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ポアソン分布-1"><a href="#ポアソン分布-1" class="header">ポアソン分布</a></h1>
+<h2 id="ポアソン分布"><a class="header" href="#ポアソン分布">ポアソン分布</a></h2>
 <p>二項分布\(P(X:n,p) = { _n C _x } p^x (1-p)^{n-x}\)を\(np=\lambda\)として,
 \(n \to \infty\)とすると,</p>
 <p>\[
@@ -2308,7 +2391,7 @@ M_X(t) &amp;= E[e^{Xt}] \\
 <h3 id="平均-2"><a class="header" href="#平均-2">平均</a></h3>
 <p>まず,\(e^{-\lambda}\)のマクローリン展開から,
 \[
-e^{\lambda} = 1 + \frac{1}{2}\lambda + \frac{1}{3!}\lambda^2 + \cdots = \sum^{\infty} _{n = 0} \frac{\lambda^n}{n!} 
+e^{\lambda} = 1 + \frac{1}{2}\lambda + \frac{1}{3!}\lambda^2 + \cdots = \sum^{\infty} _{n = 0} \frac{\lambda^n}{n!}
 \]
 より,
 \[
@@ -2338,7 +2421,7 @@ G_X(t) &amp;= E[t^X] \\
 &amp;= e^{(t-1)\lambda}
 \end{align}
 \]</p>
-<h3 id="積率母関数-3"><a class="header" href="#積率母関数-3">積率母関数</a></h3>
+<h3 id="積率母関数-2"><a class="header" href="#積率母関数-2">積率母関数</a></h3>
 <p>\[
 \begin{align}
 M_X(t) &amp;= E[e^{Xt}] \\
@@ -2348,34 +2431,150 @@ M_X(t) &amp;= E[e^{Xt}] \\
 &amp;= e^{(e^{t}-1)\lambda}
 \end{align}
 \]</p>
-<h3 id="特性関数-4"><a class="header" href="#特性関数-4">特性関数</a></h3>
+<h3 id="特性関数-3"><a class="header" href="#特性関数-3">特性関数</a></h3>
 <p>\[
 \begin{align}
 \varphi_X(t) &amp;= E[e^{iXt}] \\
 &amp;= e^{(e^{it}-1)\lambda}
 \end{align}
 \]</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="超幾何分布"><a class="header" href="#超幾何分布">超幾何分布</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="幾何分布-1"><a href="#幾何分布-1" class="header">幾何分布</a></h1>
+<h2 id="幾何分布"><a class="header" href="#幾何分布">幾何分布</a></h2>
+<p>Xを確率\(p\)の事象がx回目に成功する確率の確率変数とする.
+この確率密度関数は,成功が1回,失敗がx-1回発生する確率なので,
+\[
+P(X=x) = p(1-p)^{x-1}
+\]
+となる.これを確率\(p\)の幾何分布といい.\(\mathcal{Geo}(p)\)と表す.</p>
+<h3 id="平均-3"><a class="header" href="#平均-3">平均</a></h3>
+<p>\[
+\begin{align}
+E[X] &amp;= \sum_{x=1}^{\infty} xp(1-p)^{x-1} \\
+&amp;= \sum_{x=1}^{\infty} xpq^{x-1} \quad (q=(1-p)) \\
+&amp;= p + 2pq + 3pq^2 + … + npq^{n-1} + …
+\end{align}
+\]
+\[
+\begin{align}
+S_n &amp;= \sum_{x=1}^{n} xp(1-p)^{x-1} \\
+&amp;= p + 2pq + 3pq^2 + … + npq^{n-1} \\
+qS_{n} &amp;= pq + 2pq^2 + 3pq^3 + … +(n-1)pq^{n-1} + npq^n  \\
+(1-q)S_{n} &amp;= p+pq+pq^2+pq^3 + … + pq^{n-1} - npq^n \\
+&amp;= \sum_{k=0}^{n-1} pq^{k} - npq^n \\
+T_{n} &amp;= \sum_{k=0}^{n} pq^{k}  = p+pq+pq^2+…+pq^n\\
+qT_{n} &amp;= \sum_{k=0}^{n} pq^{k+1} = pq+pq^2+…+pq^n+pq^{n+1} \\
+(1-q)T_{n} &amp;= p - pq^{n+1} \\
+T_{n} &amp;= \frac{p - pq^{n+1}}{1-q} \\
+(1-q)S_{n} &amp;= T_{n-1} - npq^n\\
+S_{n} &amp;= \frac{T_{n-1} - npq^n}{1-q} \\
+\end{align}
+\]
+\[
+\begin{align}
+\sum_{x=1}^{\infty} xp(1-p)^{x-1} &amp;= \lim_{n \to \infty} \sum_{x=1}^{n} xp(1-p)^{x-1} \\
+&amp;= \lim_{n \to \infty} S_{n} \\
+&amp;= \lim_{n \to \infty} \frac{T_{n-1} - npq^n}{1-q} \\
+&amp;= \frac{p}{1-q}\frac{1}{1-q} \\
+&amp;= \frac{1}{p}
+\end{align}
+\]
+より
+\[
+E[X] = \frac{1}{p}
+\]</p>
+<h3 id="分散-3"><a class="header" href="#分散-3">分散</a></h3>
+<p>\[
+V[X] = E[X(X-1)]+E[X]-E[X]^2
+\]
+\[
+\begin{align}
+E[X(X-1)] &amp;= \sum_{x=1}^{\infty} x(x-1)p(1-p)^{x-1} \\
+&amp;= \sum_{x=2}^{\infty} x(x-1)pq^{x-1} \quad (q=(1-p)) \\
+S_n &amp;= 	\sum_{x=1}^{n} xp(1-p)^{x-1} \\
+&amp;= \sum_{x=1}^{n} x(1-q)q^{x-1} \\
+&amp;= \sum_{x=1}^{n} xq^{x-1} - \sum_{x=1}^{n} xq^x \\
+\frac{d}{dq} S_n &amp;= \sum_{x=1}^{n} x(x-1)q^{x-2} - \sum_{x=1}^{n} x^2q^{x-1}
+\end{align}
+\]</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="超幾何分布-1"><a href="#超幾何分布-1" class="header">超幾何分布</a></h1>
+<h2 id="超幾何分布"><a class="header" href="#超幾何分布">超幾何分布</a></h2>
 <p>\(N\)個の要素からなる母集団の内,\(M\)個(\(M \leq N\))が\(1\)で,他が\(0\)だとする.
 これから,\(K\)個(\(K \leq N\))を<strong>非復元抽出</strong>(sampling without replacement)した時,
-その合計が\(X\)((K\)個取り出した内\(1\)が\(X\)個である)の確率を考える.</p>
+その合計が\(X\)(\(K\)個取り出した内\(1\)が\(X\)個である)の確率を考える.</p>
 <p>まず,\(N\)個の要素から\(K\)個取り出したときの組み合わせは,\(_N C _K\).
 \(1\)の\(M\)個内\(X\)を取り出す組み合わせは,\( _M C _X\).
 \(0\)の\(N-M\)個内\(K-X\)を取り出す組み合わせは,\( _{N-M} C _{K-X}\).
 から,
 \[
-P(X=x:N,M,K) = \frac{\left(\begin{array}{c} M \\ x \end{array}\right)\left(\begin{array}{c} N-M \\ K-x \end{array}\right)}{\left( \begin{array}{c} N \\ K \end{array} \right)}, x=0,1,...,K
+P(X=x:N,M,K) = \frac{\left(\begin{array}{c} M \\ x \end{array}\right)\left(\begin{array}{c} N-M \\ K-x \end{array}\right)}{\left( \begin{array}{c} N \\ K \end{array} \right)}, x=0,1,…,K
 \]
 となりこれを<strong>超幾何分布</strong>(hypergeometric distribution)と言う.</p>
 <p>まず,\(\sum^{K} _{x=0} P(X=x:N,M,K) = 1\)を確かめる.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="一様分布"><a class="header" href="#一様分布">一様分布</a></h2>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="正規分布"><a class="header" href="#正規分布">正規分布</a></h2>
+<p>\[
+(a+b)^N = (a+b)^{N-M}(a+b)^M
+\]</p>
+<p>から</p>
+<p>\[
+\begin{align}
+\sum_{x=0}^N \left(\begin{array}{c} N \\ x \end{array}\right) a^xb^{x-N} &amp;= \sum_{y=0}^{N-M} \left(\begin{array}{c} N-M-y \\ y \end{array}\right) a^y b^{N-M-y} \sum_{z=0}^{M} \left(\begin{array}{c} M \\ z \end{array}\right) a^z b^{M-z} \\
+\sum_{y=0}^{N-M} \left(\begin{array}{c} N-M-y \\ y \end{array}\right) a^y b^{N-M-y} \sum_{z=0}^{M} \left(\begin{array}{c} M \\ z \end{array}\right) a^z b^{M-z} &amp;=
+\left(\left(\begin{array}{c} N-M \\ 0 \end{array}\right)a^0 b^{N-M-0} +
+\left(\begin{array}{c} N-M \\ 1 \end{array}\right)a^1 b^{N-M-1} +
+\left(\begin{array}{c} N-M \\ 2 \end{array}\right)a^2 b^{N-M-2} +
+… +
+\left(\begin{array}{c} N-M \\ N-(M-2) \end{array}\right)a^{N-(M-2)} b^{2} +
+\left(\begin{array}{c} N-M \\ N-(M-1) \end{array}\right)a^{N-(M-1)} b^{1} +
+\left(\begin{array}{c} N-M \\ N-M \end{array}\right)a^{N-M} b^{0} \right)
+\left( \left(\begin{array}{c} M \\ 0 \end{array}\right)a^0 b^{M-0} +
+\left(\begin{array}{c} M \\ 1 \end{array}\right)a^1 b^{M-1} +
+\left(\begin{array}{c} M \\ 2 \end{array}\right)a^2 b^{M-2} +
+… +
+\left(\begin{array}{c} M \\ M-2 \end{array}\right)a^{M-2} b^{2} +
+\left(\begin{array}{c} M \\ M-1 \end{array}\right)a^{M-1} b^{1} +
+\left(\begin{array}{c} M \\ M \end{array}\right)a^{M} b^{0} \right) \\
+&amp;=\left(\left(\begin{array}{c} N-M \\ 0 \end{array}\right)a^0 b^{N-M-0}\right)\left( \left(\begin{array}{c} M \\ 0 \end{array}\right)a^0 b^{M-0} \right)
++\left(\left(\begin{array}{c} N-M \\ 1 \end{array}\right)a^1 b^{N-M-1} \right)\left( \left(\begin{array}{c} M \\ 0 \end{array}\right)a^0 b^{M-0} \right)
++\left(\left(\begin{array}{c} N-M \\ 0 \end{array}\right)a^0 b^{N-M-0}\right)\left(\left(\begin{array}{c} M \\ 1 \end{array}\right)a^1 b^{M-1} \right)
++\left(\left(\begin{array}{c} N-M \\ 0 \end{array}\right)a^0 b^{N-M-0}\right)\left(\left(\begin{array}{c} M \\ 2 \end{array}\right)a^2 b^{M-2}\right)
++\left(\left(\begin{array}{c} N-M \\ 1 \end{array}\right)a^1 b^{N-M-1}\right)\left(\left(\begin{array}{c} M \\ 1 \end{array}\right)a^1 b^{M-1}\right)
++\left(\left(\begin{array}{c} N-M \\ 2 \end{array}\right)a^2 b^{N-M-2}\right)\left(\left(\begin{array}{c} M \\ 0 \end{array}\right)a^0 b^{M-0}\right)+…\\
+&amp;=\left(\left(\begin{array}{c} N-M \\ 0 \end{array}\right)\left(\begin{array}{c} M \\ 0 \end{array}\right)\right)a^0 b^{N-0}+
+\left(\left(\begin{array}{c} N-M \\ 1 \end{array}\right)\left(\begin{array}{c} M \\ 0 \end{array}\right)+\left(\begin{array}{c} N-M \\ 0 \end{array}\right)\left(\begin{array}{c} M \\ 1 \end{array}\right)\right)a^1 b^{N-1}+
+\left(\left(\begin{array}{c} N-M \\ 2 \end{array}\right)\left(\begin{array}{c} M \\ 0 \end{array}\right)+\left(\begin{array}{c} N-M \\ 1 \end{array}\right)\left(\begin{array}{c} M \\ 1 \end{array}\right)+\left(\begin{array}{c} N-M \\ 0 \end{array}\right)\left(\begin{array}{c} M \\ 1 \end{array}\right)\right)a^2 b^{N-2} +
+…+
+\left(\left(\begin{array}{c} N-M \\ N-(M-1) \end{array}\right)\left(\begin{array}{c} M \\ M \end{array}\right)+\left(\begin{array}{c} N-M \\ N-M \end{array}\right)\left(\begin{array}{c} M \\ M-1 \end{array}\right)\right)a^{N-1} b^1+
+\left(\left(\begin{array}{c} N-M \\ N-M \end{array}\right)\left(\begin{array}{c} M \\ M \end{array}\right)\right)a^N b^0 \\
+&amp;= \left(\sum^0_{x=0}\left(\begin{array}{c} N-M \\ 0-x \end{array}\right)\left(\begin{array}{c} M \\ x \end{array}\right)\right)a^0b^{N-0}+
+\left(\sum^1_{x=0}\left(\begin{array}{c} N-M \\ 1-x \end{array}\right)\left(\begin{array}{c} M \\ x \end{array}\right)\right)a^1b^{N-1}+
+\left(\sum^2_{x=0}\left(\begin{array}{c} N-M \\ 2-x \end{array}\right)\left(\begin{array}{c} M \\ x \end{array}\right)\right)a^2b^{N-2}+
+…+
+\left(\sum^M_{x=0}\left(\begin{array}{c} N-M \\ M-x \end{array}\right)\left(\begin{array}{c} M \\ x \end{array}\right)\right)a^Nb^{N-N}
+\end{align}
+\]</p>
+<p>項の係数を比較して,</p>
+<p>\[
+\left(\begin{array}{c} N \\ x \end{array}\right) = \sum^x_{k=0}\left(\begin{array}{c} N-M \\ x-k \end{array}\right)\left(\begin{array}{c} M \\ k \end{array}\right)
+\]</p>
+<p>改めて\(x=K,k=x\)とおいて</p>
+<p>\[
+\left(\begin{array}{c} N \\ K \end{array}\right) = \sum^K_{k=0}\left(\begin{array}{c} N-M \\ K-x \end{array}\right)\left(\begin{array}{c} M \\ x \end{array}\right) \\
+1 = \frac{\sum^K_{k=0}\left(\begin{array}{c} N-M \\ K-x \end{array}\right)\left(\begin{array}{c} M \\ x \end{array}\right)}{ \left(\begin{array}{c} N \\ K \end{array}\right)}
+\]
+より,\(\sum^{K} _{x=0} P(X=x:N,M,K) = 1\)</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="一様分布-1"><a href="#一様分布-1" class="header">一様分布</a></h1>
+<h2 id="一様分布"><a class="header" href="#一様分布">一様分布</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="正規分布-1"><a href="#正規分布-1" class="header">正規分布</a></h1>
+<h2 id="正規分布"><a class="header" href="#正規分布">正規分布</a></h2>
 <p>Gauss分布とも言う.確率変数\(X\)が平均\(\mu\),分散\(\sigma^2\)の<strong>正規分布</strong>(normal distribution)に従うとは,確率変数\(X\)の確率密度関数が,
 \[
 f_X(x:\mu,\sigma^2) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right), (x \in \overline{\mathbb{R}})
 \]
 で与えられることであり,\(\mathcal{N}(\mu,\sigma^2)\)と表す.</p>
-<h3 id="平均-3"><a class="header" href="#平均-3">平均</a></h3>
+<h3 id="平均-4"><a class="header" href="#平均-4">平均</a></h3>
 <p>\[
 E[X] = \int^{\infty}_{-\infty} \frac{x}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right) dx
 \]</p>
@@ -2405,7 +2604,7 @@ E[X] = \int^{\infty}_{-\infty} \frac{x}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-
 \[
 E[X] = \int^{\infty} _{-\infty} \frac{x}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right) dx = \frac{1}{\sqrt{2\pi}\sigma} \cdot \mu \sigma \sqrt{2\pi} = \mu
 \]</p>
-<h3 id="分散-3"><a class="header" href="#分散-3">分散</a></h3>
+<h3 id="分散-4"><a class="header" href="#分散-4">分散</a></h3>
 <p>\[
 E[(X-\mu)^2] = \int^{\infty}_{-\infty} \frac{(x-\mu)^2}{\sqrt{2\pi}\sigma} \exp\left( -\frac{(x-\mu)^2}{2\sigma^2}\right) dx
 \]
@@ -2417,7 +2616,7 @@ E[(X-\mu)^2] = \int^{\infty}_{-\infty} \frac{(x-\mu)^2}{\sqrt{2\pi}\sigma} \exp\
 &amp;= \sigma^2
 \end{align}
 \]</p>
-<h3 id="積率母関数-4"><a class="header" href="#積率母関数-4">積率母関数</a></h3>
+<h3 id="積率母関数-3"><a class="header" href="#積率母関数-3">積率母関数</a></h3>
 <p>\[
 \begin{align}
 M_X(t) &amp;= E[e^{tX}] \\
@@ -2451,11 +2650,13 @@ M_X(t) &amp;= E[e^{tX}] \\
 &amp;= \sigma^2 + \mu^2
 \end{align}
 \]</p>
-<h3 id="特性関数-5"><a class="header" href="#特性関数-5">特性関数</a></h3>
+<h3 id="特性関数-4"><a class="header" href="#特性関数-4">特性関数</a></h3>
 <p>\[
 \varphi_X(t) = E[e^{itX}] = e^{i \mu t - \left( \frac{\sigma t}{\sqrt{2}} \right)^2}
 \]</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="指数分布"><a class="header" href="#指数分布">指数分布</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="指数分布-1"><a href="#指数分布-1" class="header">指数分布</a></h1>
+<h2 id="指数分布"><a class="header" href="#指数分布">指数分布</a></h2>
 <p>ポアソン分布は,所定時間内に平均\(\lambda\)回発生する確率分布であるが,
 逆に所定時間内に平均\(\lambda\)回発生する事象が,指定された時間内に1回事象が
 発生する確率を考える.</p>
@@ -2504,7 +2705,7 @@ f _T(t) = \frac{1}{\theta} e^{-\frac{t}{\theta}}
 \mathcal{Ex}(\lambda) = f _T(t:\lambda) = \lambda e^{-\lambda t}
 \]
 という,確率密度関数として表される.</p>
-<h3 id="平均-4"><a class="header" href="#平均-4">平均</a></h3>
+<h3 id="平均-5"><a class="header" href="#平均-5">平均</a></h3>
 <p>\[
 \begin{align}
 E[T] &amp;= \int ^{\infty} _{0} t f _T(t) dt \\
@@ -2516,12 +2717,12 @@ E[T] &amp;= \int ^{\infty} _{0} t f _T(t) dt \\
 \begin{align}
 \int ^{\infty} _{0} t \lambda e^{-\lambda t} dt &amp;= \int ^{\infty} _{0} x e^{-x} \frac{1}{\lambda} dx \\
 &amp;= \frac{1}{\lambda} \left\{ \int ^{\infty} _{0} x e^{-x} dx \right\} \\
-&amp;= \frac{1}{\lambda} \left\{ \int ^{\infty} _{0} x (-e^{-x})' dx \right\} \\
+&amp;= \frac{1}{\lambda} \left\{ \int ^{\infty} _{0} x (-e^{-x})’ dx \right\} \\
 &amp;= \frac{1}{\lambda} \left\{ \left[ -xe^{-x} \right] ^{\infty} _{0} - \int ^{\infty} _{0} (-e^{-x}) dx \right\} \\
 &amp;= \frac{1}{\lambda} \left\{ \left[ -xe^{-x} \right] ^{\infty} _{0} - [ e^{-x} ]^{\infty} _{0} \right\} = \frac{1}{\lambda}
 \end{align}
 \]</p>
-<h3 id="分散-4"><a class="header" href="#分散-4">分散</a></h3>
+<h3 id="分散-5"><a class="header" href="#分散-5">分散</a></h3>
 <p>\[
 E[T^2] = \int ^{\infty} _{0} t^2 \lambda e^{-\lambda t} dt
 \]
@@ -2530,7 +2731,7 @@ E[T^2] = \int ^{\infty} _{0} t^2 \lambda e^{-\lambda t} dt
 \begin{align}
 \int ^{\infty} _{0} t^2 \lambda e^{-\lambda t} dt &amp;= \int ^{\infty} _{0} \left(\frac{x}{\lambda}\right)^2 \lambda e^{-x} \frac{1}{\lambda} dx \\
 &amp;= \frac{1}{\lambda^2} \int ^{\infty} _{0} x^2 e^{-x} dx \\
-&amp;= \frac{1}{\lambda^2} \int ^{\infty} _{0} x^2 (-e^{-x})' dx \\
+&amp;= \frac{1}{\lambda^2} \int ^{\infty} _{0} x^2 (-e^{-x})’ dx \\
 &amp;= \frac{1}{\lambda^2} \left\{ \left[ -x^2 e^{-x} \right]^{\infty} _{0} - \int ^{\infty} _{0} 2x (-e^{-x}) dx \right\} \\
 &amp;= \frac{1}{\lambda^2} \left\{  2 \int ^{\infty} _{0} x e^{-x} dx \right\} = \frac{2}{\lambda^2}
 \end{align}
@@ -2539,7 +2740,7 @@ E[T^2] = \int ^{\infty} _{0} t^2 \lambda e^{-\lambda t} dt
 \[
 {\rm var}(T) = E[T^2] - E[T]^2 = \frac{2}{\lambda^2} - \frac{1}{\lambda^2} = \frac{1}{\lambda^2}
 \]</p>
-<h3 id="積率母関数-5"><a class="header" href="#積率母関数-5">積率母関数</a></h3>
+<h3 id="積率母関数-4"><a class="header" href="#積率母関数-4">積率母関数</a></h3>
 <p>\[
 \begin{align}
 M_X(t) &amp;= E[e^{tX}] =\int ^{\infty} _{0} e^{tx} \lambda e^{-\lambda x} dx \\
@@ -2554,7 +2755,7 @@ M_X(t) &amp;= E[e^{tX}] =\int ^{\infty} _{0} e^{tx} \lambda e^{-\lambda x} dx \\
 &amp;= \frac{\lambda}{(\lambda-t)}
 \end{align}
 \]</p>
-<h3 id="特性関数-6"><a class="header" href="#特性関数-6">特性関数</a></h3>
+<h3 id="特性関数-5"><a class="header" href="#特性関数-5">特性関数</a></h3>
 <p>\[
 \begin{align}
 \varphi_X(t) = E[e^{itX}] = \frac{\lambda}{(\lambda-it)}
@@ -2567,7 +2768,9 @@ M_X(t) &amp;= E[e^{tX}] =\int ^{\infty} _{0} e^{tx} \lambda e^{-\lambda x} dx \\
 \]
 が得られる.これは,<strong>ハザード関数</strong>,<strong>故障率関数</strong>(hazard function)といい,
 \(t\)時間まで事象が発生せず,\(t\)時間に故障が発生する確率になる.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="ガンマ分布"><a class="header" href="#ガンマ分布">ガンマ分布</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ガンマ分布-2"><a href="#ガンマ分布-2" class="header">ガンマ分布</a></h1>
+<h2 id="ガンマ分布"><a class="header" href="#ガンマ分布">ガンマ分布</a></h2>
 <p>指数分布は所定時間内に平均(\lambda)回発生する事象が,指定された時間内に1回事象が発生する確率であったが,
 所定時間内に平均(\lambda)回発生する事象が,指定された時間内にn回発生する確率を考える.</p>
 <p>上記\(\lambda\)を単位時間内に事象が発生する平均回数(単位時間内の発生割合)とすると,
@@ -2616,28 +2819,28 @@ f _{T|X \geq x}(t) = \frac{t^{\alpha-1}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{t
 \]
 として,ガンマ分布を表す.\(\alpha\)は<strong>形状母数</strong>(shape parameter),\(\beta\)は<strong>尺度母数</strong>(scale parameter)と呼ばれる.
 ともに,形状母数は発生回数,尺度母数は発生間隔を元にするので,\(\alpha &gt; 0,\beta &gt; 0\)である.</p>
-<p><img src="probability/probability_distribution/./gamma_dist_graph_1.png" alt="gamma_dist_graph_1" />
-<img src="probability/probability_distribution/./gamma_dist_graph_2.png" alt="gamma_dist_graph_2" /></p>
-<h3 id="平均-5"><a class="header" href="#平均-5">平均</a></h3>
+<p><img src="probability/probability_distribution/gamma_dist_graph_1.png" alt="gamma_dist_graph_1">
+<img src="probability/probability_distribution/gamma_dist_graph_2.png" alt="gamma_dist_graph_2"></p>
+<h3 id="平均-6"><a class="header" href="#平均-6">平均</a></h3>
 <p>\[
 \begin{align}
 E[X] &amp;= \int ^{\infty} _{0} \frac{x^{\alpha}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{x}{\beta}} dx \\
 &amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha}e^{-\frac{x}{\beta}} dx \\
-&amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha}\left\{ \int ^{\infty} _{0} x^{\alpha} \left(-\beta e^{-\frac{x}{\beta}} \right)' dx \right\} \\
+&amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha}\left\{ \int ^{\infty} _{0} x^{\alpha} \left(-\beta e^{-\frac{x}{\beta}} \right)’ dx \right\} \\
 &amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha}\left\{ \left[ x^{\alpha}\left(-\beta e^{-\frac{x}{\beta}} \right) \right] ^{\infty} _{0} + \int ^{\infty} _{0} \alpha x^{\alpha-1} \beta e^{-\frac{x}{\beta}} dx \right\} \\
-&amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha}\left\{ \alpha\beta \int ^{\infty} _{0} x^{\alpha-1} \left(-\beta e^{-\frac{x}{\beta}} \right)' dx \right\} \\
+&amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha}\left\{ \alpha\beta \int ^{\infty} _{0} x^{\alpha-1} \left(-\beta e^{-\frac{x}{\beta}} \right)’ dx \right\} \\
 &amp;\vdots \\
 &amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha}\left\{ \alpha!\beta^{\alpha} \int ^{\infty} _{0} e^{-\frac{x}{\beta}} dx \right\} \\
 &amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \alpha!\beta^{\alpha + 1} = \alpha\beta
 \end{align}
 \]</p>
-<h3 id="分散-5"><a class="header" href="#分散-5">分散</a></h3>
+<h3 id="分散-6"><a class="header" href="#分散-6">分散</a></h3>
 <p>\[
 \begin{align}
 E[X^2] &amp;= \int ^{\infty} _{0} \frac{x^2 x^{\alpha-1}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{x}{\beta}} dx \\
 &amp;= \int ^{\infty} _{0} \frac{x^{\alpha+1}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{x}{\beta}} dx \\
 &amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha+1} e^{-\frac{x}{\beta}} dx \\
-&amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \left\{ \int ^{\infty} _{0} x^{\alpha+1} \left( -\beta e^{-\frac{x}{\beta}} \right)' dx \right\} \\
+&amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \left\{ \int ^{\infty} _{0} x^{\alpha+1} \left( -\beta e^{-\frac{x}{\beta}} \right)’ dx \right\} \\
 &amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \left\{ \left[ x^{\alpha+1} \left( -\beta e^{-\frac{x}{\beta}} \right) \right] ^{\infty} _{0} + (\alpha+1)\beta \int ^{\infty} _{0}  x^{\alpha} e^{-\frac{x}{\beta}} dx \right\} \\
 &amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \{ (\alpha+1)\beta \alpha!\beta^{\alpha + 1} \} = (\alpha+1)\alpha\beta^2
 \end{align}
@@ -2646,14 +2849,14 @@ E[X^2] &amp;= \int ^{\infty} _{0} \frac{x^2 x^{\alpha-1}}{\Gamma(\alpha) \beta^\
 \[
 {\rm var}(X) = E[X^2] - E[X]^2 = (\alpha+1)\alpha\beta^2 - \alpha^2\beta^2 = (\alpha^2+\alpha - \alpha^2) \beta^2 = \alpha\beta^2
 \]</p>
-<h3 id="積率母関数-6"><a class="header" href="#積率母関数-6">積率母関数</a></h3>
+<h3 id="積率母関数-5"><a class="header" href="#積率母関数-5">積率母関数</a></h3>
 <p>\[
 \begin{align}
 M_X(t) = E[e^{tX}] &amp;= \int ^{\infty} _{0} \frac{e^{tx} x^{\alpha-1}}{\Gamma(\alpha) \beta^\alpha}e^{-\frac{x}{\beta}} dx \\
 &amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha-1} e^{\left(t-\frac{1}{\beta}\right)x} dx \\
 &amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha-1} e^{-\left(\frac{1-\beta t}{\beta}\right)x} dx \\
-&amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha-1} \left( -\frac{\beta}{1-\beta t} e^{-\left(\frac{1-\beta t}{\beta}\right)x} \right)' dx \\
-&amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} (\alpha-1)! \left( \frac{\beta}{1-\beta t} \right)^{\alpha-1} \int ^{\infty} _{0} \left( -\frac{\beta}{1-\beta t} e^{-\left(\frac{1-\beta t}{\beta}\right)x} \right)' dx \\
+&amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} \int ^{\infty} _{0} x^{\alpha-1} \left( -\frac{\beta}{1-\beta t} e^{-\left(\frac{1-\beta t}{\beta}\right)x} \right)’ dx \\
+&amp;= \frac{1}{\Gamma(\alpha) \beta^\alpha} (\alpha-1)! \left( \frac{\beta}{1-\beta t} \right)^{\alpha-1} \int ^{\infty} _{0} \left( -\frac{\beta}{1-\beta t} e^{-\left(\frac{1-\beta t}{\beta}\right)x} \right)’ dx \\
 &amp;= \frac{1}{\beta^\alpha} \left( \frac{\beta}{1-\beta t} \right)^{\alpha-1} \left[-\frac{\beta}{1-\beta t} e^{-\left(\frac{1-\beta t}{\beta}\right)x}\right] ^{\infty} _{0} \\
 &amp;= \frac{1}{\beta^\alpha} \left( \frac{\beta}{1-\beta t} \right)^\alpha = \left(\frac{1}{1-\beta t}\right)^\alpha
 \end{align}
@@ -2669,13 +2872,16 @@ M_X(t) = E[e^{tX}] &amp;= \int ^{\infty} _{0} \frac{e^{tx} x^{\alpha-1}}{\Gamma(
 &amp;= \prod^{k} _{i=0}(\alpha+i) \beta^k
 \end{align}
 \]</p>
-<h3 id="特性関数-7"><a class="header" href="#特性関数-7">特性関数</a></h3>
+<h3 id="特性関数-6"><a class="header" href="#特性関数-6">特性関数</a></h3>
 <p>\[
 \varphi_X(t) = E[e^{itX}] = \left(\frac{1}{1 - i \beta t}\right)^\alpha
 \]</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="大数の法則"><a class="header" href="#大数の法則">大数の法則</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="大数の法則"><a class="header" href="#大数の法則">大数の法則</a></h1>
 <p>試行の回数が多く取ると平均が真の平均に近づくことを保証したのが,大数の法則である.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="大数の弱法則"><a class="header" href="#大数の弱法則">大数の弱法則</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="大数の弱法則-1"><a href="#大数の弱法則-1" class="header">大数の弱法則</a></h1>
+<h2 id="大数の弱法則"><a class="header" href="#大数の弱法則">大数の弱法則</a></h2>
 <p>平均\(\mu &lt; \infty\),分散\(\sigma^2 &lt; \infty\)とし,\(\{X_i\}\)が\((\mu,\sigma^2)\)に従うとする.
 このとき,<strong>算術平均</strong>(標本平均)
 \[
@@ -2687,8 +2893,7 @@ M_X(t) = E[e^{tX}] &amp;= \int ^{\infty} _{0} \frac{e^{tx} x^{\alpha-1}}{\Gamma(
 \]
 と平均に確率収束する.</p>
 <ul>
-<li>証明<br />
-\[
+<li>証明<br>\[
 \begin{align}
 E[(\overline{X}-\mu)^2] &amp;=  E[(\frac{1}{n} \sum^{n} _ {i=1} X_i-\mu)^2] \\
 &amp;=  E[\frac{1}{n^2}(\sum^{n} _ {i=1} X_i- n\mu)^2] \\
@@ -2702,7 +2907,9 @@ E[(\overline{X}-\mu)^2] &amp;=  E[(\frac{1}{n} \sum^{n} _ {i=1} X_i-\mu)^2] \\
 \]
 平均収束ならば,Chebyshevの不等式より確率収束する.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="大数の強法則kolmogrovの大数の強法則"><a class="header" href="#大数の強法則kolmogrovの大数の強法則">大数の強法則(Kolmogrovの大数の強法則)</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="大数の強法則"><a href="#大数の強法則" class="header">大数の強法則</a></h1>
+<h2 id="大数の強法則kolmogrovの大数の強法則"><a class="header" href="#大数の強法則kolmogrovの大数の強法則">大数の強法則(Kolmogrovの大数の強法則)</a></h2>
 <p>平均\(\mu &lt; \infty\),分散\(\sigma^2 &lt; \infty\)とし,互いに独立な確率変数\(\{X_i\}\)が\((\mu,\sigma^2)\)に従うとする.
 ならば
 \[
@@ -2716,8 +2923,7 @@ E[(\overline{X}-\mu)^2] &amp;=  E[(\frac{1}{n} \sum^{n} _ {i=1} X_i-\mu)^2] \\
 \sum ^{\infty} _{i=1} \frac{x _i}{b _i}が収束するならば,\frac{1}{b _i} \sum ^{i} _{k=1} x _k \to 0
 \]</p>
 <ul>
-<li>証明<br />
-\(i \in \overline{\mathbb{N}} \)に対し,
+<li>証明<br>\(i \in \overline{\mathbb{N}} \)に対し,
 \[
 s _0 = 0, \; s _i = \sum ^{i} _{k=1} \frac{x _k}{b _k}
 \]
@@ -2787,8 +2993,7 @@ x _i = b _i (s _i - s _{i-1})
 \]</p>
 <ul>
 <li>
-<p>証明<br />
-まず,\(\sum {\rm var}(X_i)\)が収束するなら,Kolmogorovの定理から,題意は満たされる.</p>
+<p>証明<br>まず,\(\sum {\rm var}(X_i)\)が収束するなら,Kolmogorovの定理から,題意は満たされる.</p>
 <p>次に,\(\sum {\rm var}(X_i)\)が発散する場合,\(\sum _{i=1} ^{n} {\rm var}(X_i)\)が有界かを考える.
 仮定で\( {\rm var}(X_i) &lt; \infty \)であるので,\({\rm var}(X_i)\)には上界があり,\( a = \sup {\rm var}(X_i) \)とすると,
 \(\sum _{i=1} ^{n} {\rm var}(X_i) \leq na \).なので,
@@ -2798,8 +3003,7 @@ x _i = b _i (s _i - s _{i-1})
 であると,題意が満たされる.</p>
 <ul>
 <li>
-<p>補題1<br />
-\(\{X_i\} \subset L^2\)を互いに独立な確率変数とし,\(\{b _i\} _{1 \leq i \leq \infty}\)を\( \infty \)に発散する増加正数列とする.
+<p>補題1<br>\(\{X_i\} \subset L^2\)を互いに独立な確率変数とし,\(\{b _i\} _{1 \leq i \leq \infty}\)を\( \infty \)に発散する増加正数列とする.
 \[
 \sum ^{\infty} _{i=1} \frac{{\rm var}(X_i)}{{b _i}^2} &lt; \infty
 \]
@@ -2808,8 +3012,7 @@ x _i = b _i (s _i - s _{i-1})
 \frac{\sum _{i=1} ^{n} X _i - E[\sum _{i=1} ^{n} X _i]}{b_n} = \frac{\sum _{i=1} ^{n} (X _i - E[X _i])}{b_n} \xrightarrow{P \text{-a.s}} 0
 \]</p>
 <ul>
-<li>証明<br />
-\(Y _i = (X _i - E[X _i])/b _i \)と置く.
+<li>証明<br>\(Y _i = (X _i - E[X _i])/b _i \)と置く.
 \[
 E[Y _i] = E\left[\frac{X _i - E[X _i]}{b _i}\right] = \frac{E[X _i] - E[X _i]}{b _i} = 0
 \]
@@ -2831,14 +3034,12 @@ E[Y _i] = E\left[\frac{X _i - E[X _i]}{b _i}\right] = \frac{E[X _i] - E[X _i]}{b
 </ul>
 </li>
 <li>
-<p>補題2<br />
-\(\{X_i\} \subset L^2\)を互いに独立な確率変数とする.\(\sum ^{\infty} _{i=1} {\rm var}(X _i)\)が発散するならば,\(\varepsilon &gt; 0\)に対して,
+<p>補題2<br>\(\{X_i\} \subset L^2\)を互いに独立な確率変数とする.\(\sum ^{\infty} _{i=1} {\rm var}(X _i)\)が発散するならば,\(\varepsilon &gt; 0\)に対して,
 \[
 \frac{\sum ^{n} _{i=1} (X _i - E[X _i])}{(\sum^{n} _{i=1} {\rm var}(X _i))^{1/2+\varepsilon}} \xrightarrow{P \text{-a.s}} 0. \;(n \to \infty)
 \]</p>
 <ul>
-<li>証明<br />
-補題1で\(b _i = (\sum^{i} _{j=1} {\rm var}(X _j))^{1/2+\varepsilon} \)とおくと,
+<li>証明<br>補題1で\(b _i = (\sum^{i} _{j=1} {\rm var}(X _j))^{1/2+\varepsilon} \)とおくと,
 \[
 \sum ^{\infty} _{i=1} \frac{{\rm var}(X_i)}{{b _i}^2} = \sum ^{\infty} _{i=1} \frac{{\rm var}(X_i)}{((\sum^{i} _{j=1} {\rm var}(X _j))^{1/2+\varepsilon})^2}&lt; \infty
 \]
@@ -2850,7 +3051,7 @@ E[Y _i] = E\left[\frac{X _i - E[X _i]}{b _i}\right] = \frac{E[X _i] - E[X _i]}{b
 \( {\rm var}(X _i) = \sum ^{i} _{j=1} {\rm var}(X _j) - \sum ^{i-1} _{j=1} {\rm var}(X _j),\;i&gt;1 \)なので
 \[
 \begin{align}
-\sum ^{\infty} _{i=2} \frac{{\rm var}(X_i)}{((\sum^{i} _{j=1} {\rm var}(X _j))^{1/2+\varepsilon})^2} &amp;= 
+\sum ^{\infty} _{i=2} \frac{{\rm var}(X_i)}{((\sum^{i} _{j=1} {\rm var}(X _j))^{1/2+\varepsilon})^2} &amp;=
 \sum ^{\infty} _{i=2} \frac{\sum ^{i} _{j=1} {\rm var}(X _j) - \sum ^{i-1} _{j=1} {\rm var}(X _j)}{(\sum^{i} _{j=1} {\rm var}(X _j))^{1+2\varepsilon}} \\
 &amp;\leq \sum ^{\infty} _{i=2} \int^{\sum ^{i} _{j=1} {\rm var}(X _j)} _{\sum ^{i-1} _{j=1} {\rm var}(X _j)} \frac{dx}{x^{1+2\varepsilon}} \\
 &amp;= \int ^{\infty} _{{\rm var}(X _1)} \frac{dx}{x^{1+2\varepsilon}} = \left[ \frac{1}{-2\varepsilon} \frac{1}{x^{2\varepsilon}}\right]^{\infty} _{{\rm var}(X _1)}&lt; \infty
@@ -2864,7 +3065,9 @@ E[Y _i] = E\left[\frac{X _i - E[X _i]}{b _i}\right] = \frac{E[X _i] - E[X _i]}{b
 </li>
 </ul>
 <h3 id="同分布でのkolmogrovの大数の強法則"><a class="header" href="#同分布でのkolmogrovの大数の強法則">同分布でのKolmogrovの大数の強法則</a></h3>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="中心極限定理"><a class="header" href="#中心極限定理">中心極限定理</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="中心極限定理-2"><a href="#中心極限定理-2" class="header">中心極限定理</a></h1>
+<h2 id="中心極限定理"><a class="header" href="#中心極限定理">中心極限定理</a></h2>
 <p>試行によって得られた事象の平均を得る作業を繰り返しおこなったとき,
 その平均の分布は正規分布に近づくことを示したのが,<strong>中心極限定理</strong>(Central limit theorem)である.</p>
 <h3 id="中心極限定理-1"><a class="header" href="#中心極限定理-1">中心極限定理</a></h3>
@@ -2874,8 +3077,7 @@ E[Y _i] = E\left[\frac{X _i - E[X _i]}{b _i}\right] = \frac{E[X _i] - E[X _i]}{b
 \]
 が成立する.</p>
 <ul>
-<li>証明<br />
-\(\displaystyle Z_n = \frac{\sqrt{n}}{\sigma} \left( \frac{\sum^n _{i=1} X_i}{n} -\mu \right)\)とおく,
+<li>証明<br>\(\displaystyle Z_n = \frac{\sqrt{n}}{\sigma} \left( \frac{\sum^n _{i=1} X_i}{n} -\mu \right)\)とおく,
 \[
 \begin{align}
 E[{Z _n}^2] &amp;= E\left[ \left( \frac{\sqrt{n}}{\sigma} \left( \frac{\sum^n _{i=1} X_i}{n} -\mu \right) \right)^2 \right] \\
@@ -2909,17 +3111,17 @@ E[{Z _n}^2] &amp;= E\left[ \left( \frac{\sqrt{n}}{\sigma} \left( \frac{\sum^n _{
 </ul>
 <p>\(\varphi _{Z_i} \left( \frac{t}{\sqrt{n}} \right)\)をマクローリン展開すると,
 \[
-\varphi _{Z _i} \left( \frac{t}{\sqrt{n}} \right) = \varphi _{Z _i}(0) + {\varphi _{Z _i}}'(0)\left(\frac{t}{\sqrt{n}}\right) + {\varphi _{Z _i}}''(0)\frac{1}{2!}\left(\frac{t}{\sqrt{n}}\right)^2 + {\varphi _{Z _i}}'''(0)\frac{1}{3!}\left(\frac{t}{\sqrt{n}}\right)^3 + \cdots
+\varphi _{Z _i} \left( \frac{t}{\sqrt{n}} \right) = \varphi _{Z _i}(0) + {\varphi _{Z _i}}‘(0)\left(\frac{t}{\sqrt{n}}\right) + {\varphi _{Z _i}}’‘(0)\frac{1}{2!}\left(\frac{t}{\sqrt{n}}\right)^2 + {\varphi _{Z _i}}’‘’(0)\frac{1}{3!}\left(\frac{t}{\sqrt{n}}\right)^3 + \cdots
 \]
 \[
 \begin{align}
 \varphi _{Z _i}(0) &amp;= \left. E\left[ \exp \left( i \frac{t}{\sqrt{n}} Z _i \right) \right] \right| _{\frac{t}{\sqrt{n}}=0} = \left. \int _{\Omega} \exp \left( i \frac{t}{\sqrt{n}} z _i \right) dP(z_i) \right| _{\frac{t}{\sqrt{n}}=0} = 1 \\
-\varphi _{Z _i}'(0) &amp;= \left. \frac{d}{d(\frac{t}{\sqrt{n}})} \left\{ E\left[ \exp \left( i \frac{t}{\sqrt{n}} Z _i \right) \right] \right\} \right| _{\frac{t}{\sqrt{n}}=0} \\
+\varphi _{Z _i}‘(0) &amp;= \left. \frac{d}{d(\frac{t}{\sqrt{n}})} \left\{ E\left[ \exp \left( i \frac{t}{\sqrt{n}} Z _i \right) \right] \right\} \right| _{\frac{t}{\sqrt{n}}=0} \\
 &amp;= \left. \frac{d}{d(\frac{t}{\sqrt{n}})} \int _{\Omega} \exp \left( i \frac{t}{\sqrt{n}} z _i \right) dP(z_i) \right| _{\frac{t}{\sqrt{n}}=0} \\
 &amp;= \int _{\Omega} \left. \frac{\partial}{\partial (\frac{t}{\sqrt{n}})} \exp \left( i \frac{t}{\sqrt{n}} z _i \right) \right| _{\frac{t}{\sqrt{n}}=0} dP(z_i) \\
 &amp;= \int _{\Omega} \left. i z_i  \exp \left( i \frac{t}{\sqrt{n}} z _i \right) \right| _{\frac{t}{\sqrt{n}}=0} dP(z_i) \\
 &amp;= i \int _{\Omega} z_i dP(z_i) = i E[Z_i] = i E\left[\frac{X_i - \mu}{\sigma}\right] = \frac{i}{\sigma}(E[X_i] - \mu) = 0 \\
-\varphi _{Z _i}''(0) &amp;= \left. \frac{d^2}{d^2(\frac{t}{\sqrt{n}})} \left\{ E\left[ \exp \left( i \frac{t}{\sqrt{n}} Z _i \right) \right] \right\} \right| _{\frac{t}{\sqrt{n}}=0} \\
+\varphi _{Z _i}’‘(0) &amp;= \left. \frac{d^2}{d^2(\frac{t}{\sqrt{n}})} \left\{ E\left[ \exp \left( i \frac{t}{\sqrt{n}} Z _i \right) \right] \right\} \right| _{\frac{t}{\sqrt{n}}=0} \\
 &amp;= \left. \frac{d}{d(\frac{t}{\sqrt{n}})} \int _{\Omega} \exp \left( i \frac{t}{\sqrt{n}} z _i \right) dP(z_i) \right| _{\frac{t}{\sqrt{n}}=0} \\
 &amp;= \int _{\Omega} \left. \frac{\partial^2}{\partial^2 (\frac{t}{\sqrt{n}})} \exp \left( i \frac{t}{\sqrt{n}} z _i \right) \right| _{\frac{t}{\sqrt{n}}=0} dP(z_i) \\
 &amp;= \int _{\Omega} \left. \frac{\partial}{\partial (\frac{t}{\sqrt{n}})} i z_i  \exp \left( i \frac{t}{\sqrt{n}} z _i \right) \right| _{\frac{t}{\sqrt{n}}=0} dP(z_i) \\
@@ -2930,18 +3132,18 @@ E[{Z _n}^2] &amp;= E\left[ \left( \frac{\sqrt{n}}{\sigma} \left( \frac{\sum^n _{
 から,
 \[
 \begin{align}
-\varphi _{Z _i} \left( \frac{t}{\sqrt{n}} \right) &amp;= \varphi _{Z _i}(0) + {\varphi _{Z _i}}'(0)\left(\frac{t}{\sqrt{n}}\right) + {\varphi _{Z _i}}''(0)\frac{1}{2!}\left(\frac{t}{\sqrt{n}}\right)^2 + {\varphi _{Z _i}}'''(0)\frac{1}{3!}\left(\frac{t}{\sqrt{n}}\right)^3 + \cdots \\
-&amp;= 1 - \frac{t^2}{2n} + {\varphi _{Z _i}}'''(0) \frac{t^3}{6n^{\frac{3}{2}}} + \cdots
+\varphi _{Z _i} \left( \frac{t}{\sqrt{n}} \right) &amp;= \varphi _{Z _i}(0) + {\varphi _{Z _i}}’(0)\left(\frac{t}{\sqrt{n}}\right) + {\varphi _{Z _i}}‘’(0)\frac{1}{2!}\left(\frac{t}{\sqrt{n}}\right)^2 + {\varphi _{Z _i}}‘’‘(0)\frac{1}{3!}\left(\frac{t}{\sqrt{n}}\right)^3 + \cdots \\
+&amp;= 1 - \frac{t^2}{2n} + {\varphi _{Z _i}}’‘’(0) \frac{t^3}{6n^{\frac{3}{2}}} + \cdots
 \end{align}
 \]
 なので,\(\varphi _{Z _n}(t)\)は,
 \[
-\varphi _{Z _n}(t) = \prod ^n _{i=1} \varphi _{Z_i} \left( \frac{t}{\sqrt{n}} \right) = \left(1 - \frac{t^2}{2n} + {\varphi _{Z _i}}'''(0) \frac{t^3}{6n^{\frac{3}{2}}} + \cdots \right)^n
+\varphi _{Z _n}(t) = \prod ^n _{i=1} \varphi _{Z_i} \left( \frac{t}{\sqrt{n}} \right) = \left(1 - \frac{t^2}{2n} + {\varphi _{Z _i}}‘’‘(0) \frac{t^3}{6n^{\frac{3}{2}}} + \cdots \right)^n
 \]
 \(n \to \infty\)とした時,第3項以降は,\(\frac{1}{n}\)より早く\(0\)に近づくので,
 \[
 \begin{align}
-\lim _{n \to \infty} \varphi _{Z _n}(t) &amp;= \lim _{n \to \infty} \left(1 - \frac{t^2}{2n} + {\varphi _{Z _i}}'''(0) \frac{t^3}{6n^{\frac{3}{2}}} + \cdots \right)^n \\
+\lim _{n \to \infty} \varphi _{Z _n}(t) &amp;= \lim _{n \to \infty} \left(1 - \frac{t^2}{2n} + {\varphi _{Z _i}}’‘’(0) \frac{t^3}{6n^{\frac{3}{2}}} + \cdots \right)^n \\
 &amp;= \lim _{n \to \infty} \left(1 - \frac{t^2}{2n} \right)^n = e^{-\frac{t^2}{2}}
 \end{align}
 \]
@@ -2954,9 +3156,9 @@ Levyの収束定理より,
 \displaystyle \frac{\sqrt{n}}{\sigma} \left( \frac{\sum ^n _{i=1} X _i}{n} - \mu \right) \xrightarrow{d} \mathcal{N}(0, 1)
 \]
 となる.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="統計"><a class="header" href="#統計">統計</a></h1>
-<p>統計の目的は<strong>母集団</strong>から得た<strong>標本</strong>から母集団と特徴づける<strong>パラメータ</strong>(母数)を得て,母集団の性質を調べるにある.<br />
-標本は集合であり,標本の要素は<strong>標本点</strong>である.
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="統計"><a class="header" href="#統計">統計</a></h1>
+<p>統計の目的は<strong>母集団</strong>から得た<strong>標本</strong>から母集団と特徴づける<strong>パラメータ</strong>(母数)を得て,母集団の性質を調べるにある.<br>標本は集合であり,標本の要素は<strong>標本点</strong>である.
 標本点から得られる数値を<strong>データ</strong>と言い,その集まりを<strong>データセット</strong>と言う.
 データセットを処理,整理を行いデータセットの特徴を得る<strong>記述統計</strong>と
 データセットから母集団のパラメータを推測する<strong>推測統計</strong>がある.</p>
@@ -3018,19 +3220,25 @@ E[\sum ^{n} _{i=1} (X_i - \overline{X})^2] &amp;= E[\sum^{n} _{i=1} (X_i - \mu +
 と言う. 標本平均,標本分散を得る関数は,統計量である.</p>
 <p>確率分布の形を決定するパラメータ\(\theta\)を確率変数\(X\)のパラメータとした時,
 その確率を\(P(\cdot:\theta)\)と書き,\(X\)の確率密度関数を\(f_X(x:\theta)\)と書く.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="標本分布"><a class="header" href="#標本分布">標本分布</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="標本分布"><a class="header" href="#標本分布">標本分布</a></h1>
 <p>統計量の確率分布を<strong>標本分布</strong>という.
 具体的には,標本平均,標本分散の確率分布になる.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="標本平均標本分散の性質"><a class="header" href="#標本平均標本分散の性質">標本平均・標本分散の性質</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="標本平均標本分散の性質-1"><a href="#標本平均標本分散の性質-1" class="header">標本平均・標本分散の性質</a></h1>
+<h2 id="標本平均標本分散の性質"><a class="header" href="#標本平均標本分散の性質">標本平均・標本分散の性質</a></h2>
 <h3 id="標本平均標本分散"><a class="header" href="#標本平均標本分散">標本平均・標本分散</a></h3>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="統計的推定"><a class="header" href="#統計的推定">統計的推定</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="統計的推定"><a class="header" href="#統計的推定">統計的推定</a></h1>
 <p>母集団がパラメータ \(\theta\) に従った確率分布 \(f_X(x:\theta)\)であるとする.
 \(\{X_i\} _{i \in \mathbb{N} _+,i \leq n}\)であるサイズ\(n\)の確率変数をこの母集団から得た標本とする.
 母集団のパラメータ \(\theta\) が未知な時,標本から \(\theta\) を推し量ることを,<strong>推定</strong>(estimation)と言う.
 とある<strong>仮説</strong>を母集団のパラメータで設定した時,この仮説が成立するかどうかを判断することを,<strong>統計的仮説検定</strong>と言う.
 また,推定されたパラメータから未来の確率変数を推測することを<strong>予測</strong>という.
 此のように標本から母集団の確率分布を推測することを<strong>統計的推測</strong>という.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="十分統計量"><a class="header" href="#十分統計量">十分統計量</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="十分統計量-2"><a href="#十分統計量-2" class="header">十分統計量</a></h1>
+<h2 id="十分統計量"><a class="header" href="#十分統計量">十分統計量</a></h2>
 <p>確率分布 \(f_X(x:\theta)\)から得られた無作為標本\(\{X_i\} _{i \in \mathbb{N} _+,i \leq n}\)を値域にとる
 関数\(T:\mathbb{R}^d \mapsto \mathbb{R}\)を統計量とする.この統計量から\(f_X(x:\theta)\)が再現できるのであれば,
 使い勝手が良い.</p>
@@ -3058,8 +3266,7 @@ f _{\mathbf{X}}(\mathbf{x}:\theta) = h(\mathbf{x}) g(T({\mathbf x}) = t:\theta)
 </ul>
 <ol>
 <li>
-<p>統計量\(T\)がパラメータ\(\theta\)の十分統計量ならば, \(f _{\mathbf{X}}(\mathbf{x}:\theta) = h(\mathbf{x}) g(T({\mathbf x}) = t:\theta)\)<br />
-まず定義より,
+<p>統計量\(T\)がパラメータ\(\theta\)の十分統計量ならば, \(f _{\mathbf{X}}(\mathbf{x}:\theta) = h(\mathbf{x}) g(T({\mathbf x}) = t:\theta)\)<br>まず定義より,
 \[
 \begin{align}
 P({\mathbf X} = {\mathbf x}|T({\mathbf X}) = t:\theta) &amp;= \frac{P({\mathbf X} = {\mathbf x},T({\mathbf X}) = t:\theta)}{P(T({\mathbf X}) = t:\theta)} \\
@@ -3125,38 +3332,26 @@ P({\mathbf X} = {\mathbf x}|T({\mathbf X}) = t:\theta) &amp;= \frac{P({\mathbf X
 となり,\(\theta\)に依存しない形になり,\(T({\mathbf X})\)が十分統計量となる.</p>
 </li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="推定の方法"><a class="header" href="#推定の方法">推定の方法</a></h2>
-<p>母集団として, \(f(x|\boldsymbol{\theta}=(\theta_1,\dots,\theta_k))\)を想定し,
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="推定の方法-1"><a href="#推定の方法-1" class="header">推定の方法</a></h1>
+<h2 id="推定の方法"><a class="header" href="#推定の方法">推定の方法</a></h2>
+<p>母集団として, \(f _X(x:\boldsymbol{\theta}=(\theta_1,\dots,\theta_k))\)を想定し,
 そこから得られる無作為標本\(\{X_i\} _{i \in \mathbb{N} _+,i \leq n}\)から,
 \({\mathbf \theta}\)を推定する方法を考える.\(\{X_i\}\)から\(\boldsymbol{\theta}\)を推定する関数を,
 \(\hat{\boldsymbol{\theta}}: \mathbb{R}^n \mapsto \mathbb{R}^k\)を\(\mathbf{\theta}\)の推定量(estimator)という.
 実際に\({\mathbf X} = (X_1,\dots,X_n)\)の実現値\({\mathbf x} = (x_1,\dots,x_n)\)を推定量に代入した,
 \(\hat{\boldsymbol{\theta}}({\mathbf x})\)を推定値(estimate)と言う.</p>
-<h3 id="モーメント法"><a class="header" href="#モーメント法">モーメント法</a></h3>
-<p>\(f(x;\boldsymbol{\theta})\)なる確率変数\(X\)に対して,\(E[X^k]={\mu_k}'(\boldsymbol{\theta})\)と表されるとする.
-\(\{X _i\} _{i \in \mathbb{N} _+,i \leq n}   i,i,d \sim f(x;\boldsymbol{\theta})\)なる無作為標本について,
-大数の弱法則より\(\frac{1}{n} \sum ^{n} _{i=1} {X_i}^r \xrightarrow{p} E[X^r] \)となることを利用して,</p>
-<p>\[
-\left\{
-\begin{array}{ll}
-\frac{1}{n} \sum ^{n} _{i=1} {X_i} \xrightarrow{p} E[X] &amp;= {\mu_1}'(\boldsymbol{\theta}) \\
-\frac{1}{n} \sum ^{n} _{i=1} {X_i} \xrightarrow{p} E[X^2] &amp;= {\mu_2}'(\boldsymbol{\theta}) \\
-&amp;\vdots \\
-\frac{1}{n} \sum ^{n} _{i=1} {X_i} \xrightarrow{p} E[X^k] &amp;= {\mu_k}'(\boldsymbol{\theta})
-\end{array}
-\right.
-\]
-となる同時方程式を,\(\theta_1,\dots,\theta_k\)について解くことにより,推定量\(\hat{\boldsymbol{\theta}}\)を得る.
-これを<strong>モーメント推定量</strong>(moment estimator)という.</p>
-<h3 id="最尤法"><a class="header" href="#最尤法">最尤法</a></h3>
-<h3 id="ベイズ法"><a class="header" href="#ベイズ法">ベイズ法</a></h3>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="推定量の評価"><a class="header" href="#推定量の評価">推定量の評価</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="推定量の評価-1"><a href="#推定量の評価-1" class="header">推定量の評価</a></h1>
+<h2 id="推定量の評価"><a class="header" href="#推定量の評価">推定量の評価</a></h2>
 <p>推定量の良さを評価するための指標を考える.
 確率分布 \(\{X_i\} _{i \in \mathbb{N} _+,i \leq n}\)を\(f_X(x:\theta)\)から得られた無作為標本とし,
 \(\mathbf{X}=(X_1,\dots,X_n)\)を表記する.
 母数\(\theta\)がとりうる値全体がなる集合を\(\Theta\)で表す.\(\Theta\)は\(f_X(x:\theta)\)が確率密度関数の定義を満たすような,
-\(\theta\)からなる集合でなくては行けない.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="各種評価値"><a class="header" href="#各種評価値">各種評価値</a></h2>
+\(\theta\)からなる集合でなくてはいけない.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="各種評価値-1"><a href="#各種評価値-1" class="header">各種評価値</a></h1>
+<h2 id="各種評価値"><a class="header" href="#各種評価値">各種評価値</a></h2>
 <h3 id="不偏性"><a class="header" href="#不偏性">不偏性</a></h3>
 <p>任意の\(\theta \in \Theta\)に対して,推定量\(\hat{\theta}\)の平均値の\(\theta\)の近さを,
 <strong>不偏性</strong>(unbiasedness)と言う.
@@ -3263,7 +3458,9 @@ Bias(\hat{\mu} _c) = E[\hat{\mu} _c] - \mu = \sum ^{n} _{i=1} c _i \mu - \mu = (
 \hat{\mu} _c = \sum ^{n} _{i=1} c _i X _i = \sum ^{n} _{i=1} \frac{1}{n} X _i = \overline{X}
 \]
 となり,標本平均が最良線形不偏推定量となる.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="不偏推定量の分散の下限"><a class="header" href="#不偏推定量の分散の下限">不偏推定量の分散の下限</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="不偏推定量の分散の下限-1"><a href="#不偏推定量の分散の下限-1" class="header">不偏推定量の分散の下限</a></h1>
+<h2 id="不偏推定量の分散の下限"><a class="header" href="#不偏推定量の分散の下限">不偏推定量の分散の下限</a></h2>
 <p>不偏推定量は分散が小さい程良い.なので,その下限を調べる.</p>
 <p>\(\{X_i\}\)を確率密度関数 \(f(x:\theta)\)に従う,無作為標本とする.
 まず,母数が1次元の場合を考える.</p>
@@ -3283,7 +3480,7 @@ E[(\hat{\theta}(\mathbf{X})-\theta)^2]E[(g(\mathbf{X}))^2] \geq E[(\hat{\theta}(
 E[(\hat{\theta}(\mathbf{X})-\theta)^2] \geq \frac{E[(\hat{\theta}(\mathbf{X})-\theta) \cdot g(\mathbf{X})]^2}{E[(g(\mathbf{X}))^2]}
 \]
 となり,下限が得られる.であるので,この\(g(\mathbf{X})\)を得たい.
-この下限を得るための定理が<strong>クラメール-ラオの不等式</strong>(Cramer-Rao's inequality)である.</p>
+この下限を得るための定理が<strong>クラメール-ラオの不等式</strong>(Cramer-Rao’s inequality)である.</p>
 <h3 id="クラメール-ラオの不等式"><a class="header" href="#クラメール-ラオの不等式">クラメール-ラオの不等式</a></h3>
 <p>以下を仮定する.</p>
 <ol>
@@ -3384,8 +3581,7 @@ E[(\hat{\theta}(\mathbf{X})-\theta)^2] \geq \frac{1}{E\left[\left(\displaystyle 
 </ol>
 <ul>
 <li>
-<p>証明<br />
-1,2はクラメール-ラオの不等式の証明で得られる.</p>
+<p>証明<br>1,2はクラメール-ラオの不等式の証明で得られる.</p>
 <p>3は,
 \[
 \begin{align}
@@ -3413,14 +3609,98 @@ E\left[ \left(\frac{\partial}{\partial \theta} \log f_X(X:\theta) \right)^2 \rig
 \]</p>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="推定量の導出"><a class="header" href="#推定量の導出">推定量の導出</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="統計的仮説検定"><a class="header" href="#統計的仮説検定">統計的仮説検定</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="推定量の導出-1"><a href="#推定量の導出-1" class="header">推定量の導出</a></h1>
+<h2 id="推定量の導出"><a class="header" href="#推定量の導出">推定量の導出</a></h2>
+<h3 id="モーメント法"><a class="header" href="#モーメント法">モーメント法</a></h3>
+<p>\(f(x;\boldsymbol{\theta})\)なる確率変数\(X\)に対して,\(E[X^k]={\mu_k}’(\boldsymbol{\theta})\)と表されるとする.
+\(\{X _i\} _{i \in \mathbb{N} _+,i \leq n}   i,i,d \sim f(x;\boldsymbol{\theta})\)なる無作為標本について,
+大数の弱法則より\(\frac{1}{n} \sum ^{n} _{i=1} {X_i}^r \xrightarrow{p} E[X^r] \)となることを利用して,</p>
+<p>\[
+\left\{
+\begin{array}{ll}
+\frac{1}{n} \sum ^{n} _{i=1} {X_i} \xrightarrow{p} E[X] &amp;= {\mu_1}‘(\boldsymbol{\theta}) \\
+\frac{1}{n} \sum ^{n} _{i=1} {X_i} \xrightarrow{p} E[X^2] &amp;= {\mu_2}’(\boldsymbol{\theta}) \\
+&amp;\vdots \\
+\frac{1}{n} \sum ^{n} _{i=1} {X_i} \xrightarrow{p} E[X^k] &amp;= {\mu_k}’(\boldsymbol{\theta})
+\end{array}
+\right.
+\]
+となる同時方程式を,\(\theta_1,\dots,\theta_k\)について解くことにより,推定量\(\hat{\boldsymbol{\theta}}\)を得る.
+これを<strong>モーメント推定量</strong>(moment estimator)という.</p>
+<h3 id="最尤法"><a class="header" href="#最尤法">最尤法</a></h3>
+<p>確率変数ベクトル\(\mathbf{X}=(X_1,\dots,X_n)\)を同時確率密度関数\(f_{X}(x:\boldsymbol{\theta})\)からの無作為標本とする.
+\[
+L(\boldsymbol{\theta}:\mathbf{x}) = \prod^{n} _{i=1} f _{X}(x_i:\boldsymbol{\theta})
+\]
+とおく.関数\(L\)は\(\mathbf{x}\)が特徴を決める(依存する)\(\boldsymbol{\theta}\)の関数となる.
+この関数を<strong>尤度関数</strong>(likelihood function),<strong>尤度</strong>(likelihood)という.
+この関数の対数をとった関数を対数尤度関数と言う.
+\[
+l(\boldsymbol{\theta}:\mathbf{x}) = \sum^{n} _{i=1} \log f _{X}(x_i:\boldsymbol{\theta})
+\]</p>
+<h4 id="最尤推定量"><a class="header" href="#最尤推定量">最尤推定量</a></h4>
+<p>尤度関数を最大にする\(\boldsymbol{\theta}\)の解\(\hat{\boldsymbol{\theta}} = \hat{\boldsymbol{\theta}}(\mathbf{X})\)を<strong>最尤推定量</strong>(maximum likelihood estimator)といい,<strong>MLE</strong>と略す.</p>
+<p>\(\hat{\boldsymbol{\theta}}\)が最尤推定量とは,
+\[
+\hat{\boldsymbol{\theta}} = \sup _{\boldsymbol{\theta}} L(\boldsymbol{\theta}:\mathbf{x})
+\]
+であることである. 尤度関数は確率密度関数なので,最尤推定量\(\hat{\boldsymbol{\theta}}\)は,
+この母数をとる確率分布が一番母集団に尤もらしい(一番高い確率で似ている)確率分布となる推定量ということである.
+尤度関数は確率密度関数なので,
+\[
+\frac{\partial}{\partial \theta _i} L(\boldsymbol{\theta}:\mathbf{x}) = 0 , i=1,\dots,k
+\]
+を満たす,\(\boldsymbol{\theta}\)がMLEの候補であり,これを<strong>尤度方程式</strong>(likelihood equation)という.
+もし,対数尤度関数が各\(\boldsymbol{\theta}\)の成分で偏微分可能なら,
+\[
+\frac{\partial}{\partial \theta _i} l(\boldsymbol{\theta}:\mathbf{x}) = \sum ^k _{i=1} \frac{\partial}{\partial \theta _i} \log f _{X}(x_i:\boldsymbol{\theta})
+\]
+となり扱いやすい.これを数値計算により解いて,最尤推定量を得る.</p>
+<h3 id="ベイズ法"><a class="header" href="#ベイズ法">ベイズ法</a></h3>
+<p>同時確率密度関数\(f(\boldsymbol{x}|\boldsymbol{\theta})\)にて\(\boldsymbol{\theta}\)を確率変数とみなして,確率分布を仮定する.
+この確率分布を\(\pi(\boldsymbol{\theta}|\boldsymbol{\xi})\)と書いて,\(\boldsymbol{\theta}\)の事前分布(priordistribution)という.
+\(\boldsymbol{\xi}\)は事前分布の母数\(\boldsymbol{\theta}\)の母数なので,<strong>超母数</strong>(hyper parameter)という.
+確率変数\(\boldsymbol{X}|\boldsymbol{\Theta},\boldsymbol{\Theta}\)は上述の確率分布に従うので,
+\[
+\left\{
+\begin{array}{ll}
+\boldsymbol{X}|\boldsymbol{\Theta} &amp;\sim f(\boldsymbol{x}|\boldsymbol{\theta}) \\
+\boldsymbol{\Theta} &amp;\sim \pi(\boldsymbol{\theta}|\boldsymbol{\xi})
+\end{array}
+\right.
+\]
+と表現できる.このとき,\(\boldsymbol{X}=\boldsymbol{x}\)を与えたときの\(\boldsymbol{\theta}\)の条件付き分布を\(\boldsymbol{\theta}\)の<strong>事後分布</strong>(posterior distribution)といい,
+\[
+\pi(\boldsymbol{\theta}|\boldsymbol{x},\boldsymbol{\xi})=f(\boldsymbol{\theta}|\boldsymbol{x})\pi(\boldsymbol{\theta}|\boldsymbol{\xi})/f_{\Pi}(\boldsymbol{x}|\boldsymbol{\xi})
+\]
+で与えられる.ここで,\(f_{\Pi}(\boldsymbol{x}|\boldsymbol{\xi})\)は\(\boldsymbol{X}\)の周辺分布を表し,
+\[
+f_{\Pi}(\boldsymbol{x}|\boldsymbol{\xi}) = \int f(\boldsymbol{x}|\boldsymbol{\theta})\pi(\boldsymbol{\theta}|\boldsymbol{\xi})d\boldsymbol{\theta}
+\]
+で与えられる.すなわち,\((\boldsymbol{X},\boldsymbol{\Theta})\)の同時確率密度関数は,
+\[
+f(\boldsymbol{\theta}|\boldsymbol{x})\pi(\boldsymbol{\theta}|\boldsymbol{\xi}) = \pi(\boldsymbol{\theta}|\boldsymbol{x},\boldsymbol{\xi})f_{\Pi}(\boldsymbol{x}|\boldsymbol{\xi})
+\]</p>
+<p>ベイズ法は事後分布をから推定量を導く方法で,ここでは事後分布の平均\(E[\boldsymbol{\Theta}|\boldsymbol{X}]\)を<strong>ベイズ推定量</strong>(Bayes estimator)という.
+事後分布\(\pi(\boldsymbol{\theta}|\boldsymbol{x},\boldsymbol{\xi})\)のモードを<strong>ベイズ的最尤推定量</strong>(Bayesian maximun likelihood estimator)という.
+\(\theta\)に対する十分統計量を\(T(\boldsymbol{X})\)とすると,
+\(f(\boldsymbol{x}|\boldsymbol{\theta})=h(\boldsymbol{x})g(T(\boldsymbol{x}|\boldsymbol{\theta}))\)と書けるので,
+\[
+\pi(\boldsymbol{\theta}|\boldsymbol{x},\boldsymbol{\xi}) =\frac{h(\boldsymbol{x})g(T(\boldsymbol{x}|\boldsymbol{\theta}))\pi(\boldsymbol{\theta}|\boldsymbol{\xi})}{\int h(\boldsymbol{x})g(T(\boldsymbol{x}|\boldsymbol{\theta}))\pi(\boldsymbol{\theta}|\boldsymbol{\xi})d\boldsymbol{\theta}} = \frac{g(T(\boldsymbol{x}|\boldsymbol{\theta}))\pi(\boldsymbol{\theta}|\boldsymbol{\xi})}{\int g(T(\boldsymbol{x}|\boldsymbol{\theta}))\pi(\boldsymbol{\theta}|\boldsymbol{\xi})d\boldsymbol{\theta}}
+\]
+となる</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="最尤推定量-1"><a class="header" href="#最尤推定量-1">最尤推定量</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="統計的仮説検定-1"><a href="#統計的仮説検定-1" class="header">統計的仮説検定</a></h1>
+<h2 id="統計的仮説検定"><a class="header" href="#統計的仮説検定">統計的仮説検定</a></h2>
 <p><strong>仮説検定</strong>(hypothesis testing)とは,関心のある仮説が発生事象に
 因果関係があるかどうかを判定することである.
 ここで,仮説は標本の母集団の母数や確率分布である.
 仮説検定の要点は,検証したい仮説と排他な仮説を設定して,
 これを検証し,関心のある仮説が成立するかを判断する.
-数学で&quot;何かが成立する&quot;を証明する際に,&quot;反例がある&quot;と証明が成立しないのと同じ考えで,
+数学で“何かが成立する“を証明する際に,“反例がある“と証明が成立しないのと同じ考えで,
 排他な仮説の確率が高いということは,仮説に反例があるという確率が高いと判断して,
 対象の仮説が成立しないと考える.</p>
 <h3 id="無帰仮説と対立仮説"><a class="header" href="#無帰仮説と対立仮説">無帰仮説と対立仮説</a></h3>
@@ -3446,7 +3726,7 @@ E\left[ \left(\frac{\partial}{\partial \theta} \log f_X(X:\theta) \right)^2 \rig
 \(\theta \in \Theta _1\)ととなる仮説を対立仮説とし,\(H_1 : \theta \in \Theta _1\)と表す.
 \(\Theta _0, \Theta _1\)が一つの要素(シングルトン)のときは,<strong>単純仮説</strong>(simple hypothesis)といい,
 複数の要素から構成されるときは,<strong>複合仮説</strong>(composite hypothesis)という.</p>
-<p><img src="statistics/hypothesis_testing/./test_graph_s1.png" alt="test_graph_s1" /></p>
+<p><img src="statistics/hypothesis_testing/test_graph_s1.png" alt="test_graph_s1"></p>
 <p>帰無仮説のパラメータに従う確率密度関数を \(f_X(x:\theta_0)\),
 対立仮説のパラメータに従う確率密度関数を \(f_X(x:\theta_1)\)とする.
 ここで,標本\(X_i\)から\(\theta\)が,\(\Theta _0, \Theta _1\)どちらに属するかを判定する問題が仮説検定である.</p>
@@ -3472,7 +3752,7 @@ A = \Omega \backslash R = \{x \in \Omega | H_0を受容する \}
 \]
 と棄却域に関しての指示関数を<strong>検定関数</strong>(testing function)と言う.</p>
 <h3 id="設定された検出の評価"><a class="header" href="#設定された検出の評価">設定された検出の評価</a></h3>
-<p><img src="statistics/hypothesis_testing/./test_graph_s2.png" alt="test_graph_s2" /></p>
+<p><img src="statistics/hypothesis_testing/test_graph_s2.png" alt="test_graph_s2"></p>
 <p>上の図にて,\(H_0:\theta_0\)の帰無仮説が正しいにもかかわらず,
 \(H_1:\theta_1\)の対立仮説が正しいと判断するという誤りを<strong>第一種の誤り</strong>(タイプ1エラー:type \({\rm I}\) error)という.第一種の誤りを犯す確率は,上図の\(\alpha\)が指す面積になる.
 \[
@@ -3511,7 +3791,9 @@ A = \Omega \backslash R = \{x \in \Omega | H_0を受容する \}
 <p>次に,第二種の誤り\(\beta\)を有意水準の範囲で小さくしたい.
 有意水準\(\alpha\)の検定で,第二種の誤りが最も小さいものを,
 有意水準\(\alpha\)の<strong>最強力検定</strong>(most powerful test)という.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="検定の評価"><a class="header" href="#検定の評価">検定の評価</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="検定の評価-1"><a href="#検定の評価-1" class="header">検定の評価</a></h1>
+<h2 id="検定の評価"><a class="header" href="#検定の評価">検定の評価</a></h2>
 <p>設定された検定を評価する方法を考える.
 その際検出力関数\(\beta(\theta)\)を使って評価を行う.
 \(\Theta_0\)を帰無仮説\(H_0\)の母数の集合,\(\Theta_1=\Theta_0^c\)を対立仮説\(H_1\)の母数の集合とすると,
@@ -3543,9 +3825,14 @@ A = \Omega \backslash R = \{x \in \Omega | H_0を受容する \}
 <li>\(\beta _T (\theta)\)を\(T\)の検出力関数とすると,\(\forall \theta \in \Theta_0\)に対して,\(\; \beta _T (\theta) &lt; \alpha \).</li>
 <li>\(\forall S \in \mathcal{T} _{\alpha}\)の検出力関数\(\beta _{S}(\theta)\)とすると,すべての\(\theta \in \Theta ^{c} _{0}\)に対して,\(\beta _{T}(\theta) \geq \beta _{S}(\theta)\).</li>
 </ol>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="ネイマンピアソンの補題"><a class="header" href="#ネイマンピアソンの補題">ネイマン・ピアソンの補題</a></h2>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="付録"><a class="header" href="#付録">付録</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="二項定理"><a class="header" href="#二項定理">二項定理</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ネイマンピアソンの補題-1"><a href="#ネイマンピアソンの補題-1" class="header">ネイマン・ピアソンの補題</a></h1>
+<h2 id="ネイマンピアソンの補題"><a class="header" href="#ネイマンピアソンの補題">ネイマン・ピアソンの補題</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="付録"><a class="header" href="#付録">付録</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="二項定理-1"><a href="#二項定理-1" class="header">二項定理</a></h1>
+<h2 id="二項定理"><a class="header" href="#二項定理">二項定理</a></h2>
 <p>\[
 (a+b)^n
 \]
@@ -3574,7 +3861,7 @@ k-1
 &amp;= \frac{n!}{(n-k)!k!} + \frac{n!}{(n-k+1)!(k-1)!} \\
 &amp;= (n-k+1)\frac{n!}{(n-k+1)!k!} + k \frac{n!}{(n-k+1)!k!} \\
 &amp;= (n+1)\frac{n!}{(n+1-k)!k!} \\
-&amp;= \frac{(n+1)!}{(n+1-k)!k!} = 
+&amp;= \frac{(n+1)!}{(n+1-k)!k!} =
 \left(  \begin{array}{c}
 n+1 \\
 k
@@ -3597,7 +3884,7 @@ k
 \end{array} \right) a^k b^{1-k} = \left(  \begin{array}{l}
 1 \\
 0
-\end{array} \right)a^0 b^1 + 
+\end{array} \right)a^0 b^1 +
 \left(  \begin{array}{l}
 1 \\
 1
@@ -3716,7 +4003,9 @@ k
 \]
 から,  \(n=l+1\)のときも成立し,二項定理が成立することが証明された.</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="ガウス積分"><a class="header" href="#ガウス積分">ガウス積分</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ガウス積分-1"><a href="#ガウス積分-1" class="header">ガウス積分</a></h1>
+<h2 id="ガウス積分"><a class="header" href="#ガウス積分">ガウス積分</a></h2>
 <h3 id="int-e-ax2-dx"><a class="header" href="#int-e-ax2-dx">\(\int e^{-ax^2} dx\)</a></h3>
 <p>\[
 \begin{align}
@@ -3725,8 +4014,7 @@ k
 \end{align}
 \]</p>
 <ul>
-<li>証明<br />
-\(I = \int ^{\infty} _{-\infty} e^{-ax^2} dx\)と置く,
+<li>証明<br>\(I = \int ^{\infty} _{-\infty} e^{-ax^2} dx\)と置く,
 \[
 \begin{align}
 I^2 &amp;= \left(\int ^{\infty} _{-\infty} e^{-ax^2} dx\right)^2 \\
@@ -3773,8 +4061,7 @@ I^2 &amp;= \left(\int ^{\infty} _{-\infty} e^{-ax^2} dx\right)^2 \\
 \end{align}
 \]</p>
 <ul>
-<li>証明<br />
-\[
+<li>証明<br>\[
 \int ^{\infty} _{-\infty} xe^{-ax^2} dx = \left[ -\frac{e^{-ax^2}}{2a} \right] ^{\infty} _{-\infty} = 0
 \]
 \[
@@ -3813,7 +4100,9 @@ I_2(a) = -\frac{1}{da} \sqrt{\frac{\pi}{a}} = \frac{1}{2}\sqrt{\frac{\pi}{a^3}}
 \[
 \int ^{\infty} _{0} x^2 e^{-ax^2} dx = \frac{1}{2} \int ^{\infty} _{-\infty} x^2 e^{-ax^2} dx = \frac{1}{4}\sqrt{\frac{\pi}{a^3}}
 \]</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="ラグランジュの未定乗数法"><a class="header" href="#ラグランジュの未定乗数法">ラグランジュの未定乗数法</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ラグランジュの未定乗数法-1"><a href="#ラグランジュの未定乗数法-1" class="header">ラグランジュの未定乗数法</a></h1>
+<h2 id="ラグランジュの未定乗数法"><a class="header" href="#ラグランジュの未定乗数法">ラグランジュの未定乗数法</a></h2>
 <p>拘束条件がある関数の極値を調べるにはどうすればいいだろうか?
 単純に考えれば,実数値関数の微分をとって0になる点を求めれば極値である.
 しかし,拘束条件がある場合では単純ではない.
@@ -3831,8 +4120,7 @@ I_2(a) = -\frac{1}{da} \sqrt{\frac{\pi}{a}} = \frac{1}{2}\sqrt{\frac{\pi}{a^3}}
 が成立する場合,\((x,y,\lambda) = (a, b, l)\)で\(f(x,y)\)は,\(g(x,y) = 0\)の拘束条件で極値を取る.</p>
 <ul>
 <li>
-<p>証明<br />
-連立方程式は,
+<p>証明<br>連立方程式は,
 \[
 \left\{
 \begin{array}{ll}
@@ -3881,7 +4169,9 @@ I_2(a) = -\frac{1}{da} \sqrt{\frac{\pi}{a}} = \frac{1}{2}\sqrt{\frac{\pi}{a^3}}
 となる. \(\left.\frac{\partial g(x,y)}{\partial x}\right| _{(a,b)}  \not = 0\)のときも同様.</p>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="ガンマ関数"><a class="header" href="#ガンマ関数">ガンマ関数</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ガンマ関数-1"><a href="#ガンマ関数-1" class="header">ガンマ関数</a></h1>
+<h2 id="ガンマ関数"><a class="header" href="#ガンマ関数">ガンマ関数</a></h2>
 <p><strong>ガンマ関数</strong>(gamma function)は階乗の一般化である.
 まず,
 \[
@@ -3927,8 +4217,7 @@ I_2(a) = -\frac{1}{da} \sqrt{\frac{\pi}{a}} = \frac{1}{2}\sqrt{\frac{\pi}{a^3}}
 \]
 はガンマ関数の無限積表示と同値である.</p>
 <ul>
-<li>証明<br />
-\[
+<li>証明<br>\[
 \begin{align}
 \Gamma(x) &amp;= \int ^{\infty} _{0} t^{x-1} e^{-t} dt \\
 &amp;= \lim _{n \to \infty} \int ^{n} _{0} t^{x-1} e^{-t} dt \\
@@ -3940,11 +4229,11 @@ I_2(a) = -\frac{1}{da} \sqrt{\frac{\pi}{a}} = \frac{1}{2}\sqrt{\frac{\pi}{a^3}}
 \begin{align}
 \lim _{n \to \infty} \int ^{n} _{0} t^{x-1} \left(1 - \frac{t}{n} \right)^n dt &amp;= \lim _{n \to \infty} \int ^{1} _{0} (un)^{x-1} (1 - u)^n n du \\
 &amp;= \lim _{n \to \infty} n^x \int ^{1} _{0} u^{x-1} (1 - u)^n du \\
-&amp;= \lim _{n \to \infty} n^x \int ^{1} _{0} \left( \frac{1}{x} u^x \right)' (1 - u)^n du \\
-&amp;= \lim _{n \to \infty} n^x \left\{ \int ^{1} _{0} \left( \frac{1}{x} u^x \right)' (1 - u)^n du \right\} \\
+&amp;= \lim _{n \to \infty} n^x \int ^{1} _{0} \left( \frac{1}{x} u^x \right)’ (1 - u)^n du \\
+&amp;= \lim _{n \to \infty} n^x \left\{ \int ^{1} _{0} \left( \frac{1}{x} u^x \right)’ (1 - u)^n du \right\} \\
 &amp;= \lim _{n \to \infty} n^x \left\{ \left[ \frac{1}{x} u^x (1 - u)^n \right] ^1 _0 + \int ^{1} _{0} \frac{u^x}{x} n(1 - u)^{n-1} du \right\} \\
-&amp;= \lim _{n \to \infty} n^x \left\{  \frac{n}{x} \int ^{1} _{0} \left( \frac{u^{x+1}}{x+1} \right)' (1 - u)^{n-1} du \right\} \\
-&amp;= \lim _{n \to \infty} n^x \frac{n}{x} \left\{ \int ^{1} _{0} \left( \frac{u^{x+1}}{x+1} \right)' (1 - u)^{n-1} du \right\} \\
+&amp;= \lim _{n \to \infty} n^x \left\{  \frac{n}{x} \int ^{1} _{0} \left( \frac{u^{x+1}}{x+1} \right)’ (1 - u)^{n-1} du \right\} \\
+&amp;= \lim _{n \to \infty} n^x \frac{n}{x} \left\{ \int ^{1} _{0} \left( \frac{u^{x+1}}{x+1} \right)’ (1 - u)^{n-1} du \right\} \\
 &amp;= \lim _{n \to \infty} n^x \frac{n}{x} \left\{ \left[\frac{u^{x+1}}{x+1} (1 - u)^{n-1} \right] ^1 _0 + \int ^{1} _{0} \frac{u^{x+1}}{x+1} (n-1)(1 - u)^{n-2} du \right\} \\
 &amp;= \lim _{n \to \infty} n^x \frac{n(n-1)}{x(x+1)} \left\{\int ^{1} _{0} u^{x+1} (1 - u)^{n-2} du \right\} \\
 &amp;\vdots \\
@@ -3954,15 +4243,9 @@ I_2(a) = -\frac{1}{da} \sqrt{\frac{\pi}{a}} = \frac{1}{2}\sqrt{\frac{\pi}{a^3}}
 \end{align}
 \]</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="参考文献"><a class="header" href="#参考文献">参考文献</a></h1>
-<p>伊藤清(1991) 確率論 岩波書店 (ISBN4-00-007816-X)<br />
-伊藤清(2004) 確率論の基礎[新版] 岩波書店 (ISBN4-00-005194-6)<br />
-黒木学(2020) 数理統計学 共立出版 (ISBN978-4-320-11429-6)<br />
-久保川達也(2017) 現代数理統計学の基礎 共立出版 (ISBN978-4-320-11166-0)<br />
-小倉久直(1978) 物理・工学のための確率過程論 コロナ社 (ISBN4-339-00422-7)<br />
-吉田伸生(2021) [新装版]ルベーグ積分入門 日本評論社 (ISBN978-4-535-78941-8)<br />
-齋藤正彦(2002) 数学の基礎 集合・数・位相 東京大学出版 (ISBN4-13-062909-3)<br />
-Achim Klenke(2014) Probability Theory. A Comprehensive Course. Springer.(ISBN978-1-4471-5360-3)</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="参考文献"><a class="header" href="#参考文献">参考文献</a></h1>
+<p>伊藤清(1991) 確率論 岩波書店 (ISBN4-00-007816-X)<br>伊藤清(2004) 確率論の基礎[新版] 岩波書店 (ISBN4-00-005194-6)<br>黒木学(2020) 数理統計学 共立出版 (ISBN978-4-320-11429-6)<br>久保川達也(2017) 現代数理統計学の基礎 共立出版 (ISBN978-4-320-11166-0)<br>小倉久直(1978) 物理・工学のための確率過程論 コロナ社 (ISBN4-339-00422-7)<br>吉田伸生(2021) [新装版]ルベーグ積分入門 日本評論社 (ISBN978-4-535-78941-8)<br>齋藤正彦(2002) 数学の基礎 集合・数・位相 東京大学出版 (ISBN4-13-062909-3)<br>Achim Klenke(2014) Probability Theory. A Comprehensive Course. Springer.(ISBN978-1-4471-5360-3)</p>
 
                     </main>
 
@@ -3981,25 +4264,46 @@ Achim Klenke(2014) Probability Theory. A Comprehensive Course. Springer.(ISBN978
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
-
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
 
 
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 
-        <script type="text/javascript">
+        <script>
         window.addEventListener('load', function() {
             MathJax.Hub.Register.StartupHook('End', function() {
                 window.setTimeout(window.print, 100);
@@ -4007,5 +4311,7 @@ Achim Klenke(2014) Probability Theory. A Comprehensive Course. Springer.(ISBN978
         });
         </script>
 
+
+    </div>
     </body>
 </html>

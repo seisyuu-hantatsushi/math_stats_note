@@ -46,6 +46,7 @@
   - [確率分布](./probability/probability_distribution/probability_distribution.md)
     - [二項分布](./probability/probability_distribution/binomial_distribution.md)
     - [ポアソン分布](./probability/probability_distribution/poisson_distribution.md)
+	- [幾何分布](./probability/probability_distribution/geometric_distribution.md)
     - [超幾何分布](./probability/probability_distribution/hypergeometric_distribution.md)
     - [一様分布](./probability/probability_distribution/uniform_distribution.md)
     - [正規分布](./probability/probability_distribution/normal_distribution.md)
