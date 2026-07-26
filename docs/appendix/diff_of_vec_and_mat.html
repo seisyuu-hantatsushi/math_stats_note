@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>大数の法則 - 数理統計学ノート</title>
+        <title>ベクトル・行列の微分 - 数理統計学ノート</title>
 
 
         <!-- Custom HTML head -->
@@ -176,18 +176,140 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="大数の法則"><a class="header" href="#大数の法則">大数の法則</a></h1>
-<p>試行の回数が多く取ると平均が真の平均に近づくことを保証したのが,大数の法則である.</p>
+                        <h2 id="ベクトルと行列の微分"><a class="header" href="#ベクトルと行列の微分">ベクトルと行列の微分</a></h2>
+<h3 id="定義と表記"><a class="header" href="#定義と表記">定義と表記</a></h3>
+<h4 id="ベクトルと行列の表記"><a class="header" href="#ベクトルと行列の表記">ベクトルと行列の表記</a></h4>
+<p>\(\boldsymbol{x}=\begin{pmatrix}x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}\)</p>
+<p>\(\boldsymbol{A}=\begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}  \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}  \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nm} \end{pmatrix}\)</p>
+<h4 id="転置記号"><a class="header" href="#転置記号">転置記号</a></h4>
+<p>\(\boldsymbol{x}^T=(x_1,x_2,\cdots,x_n) \)</p>
+<p>\(\boldsymbol{A}^T=\begin{pmatrix} a_{11} &amp; a_{21} &amp; \cdots &amp; a_{n1}  \\
+a_{12} &amp; a_{22} &amp; \cdots &amp; a_{n1}  \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+a_{1n} &amp; a_{2n} &amp; \cdots &amp; a_{mn} \end{pmatrix}\)</p>
+<h2 id="演算"><a class="header" href="#演算">演算</a></h2>
+<h3 id="行列の積"><a class="header" href="#行列の積">行列の積</a></h3>
+<p>\[
+\boldsymbol{A}=\begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1m}  \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2m}  \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nm} \end{pmatrix} \
+\]
+\[
+\boldsymbol{B}=\begin{pmatrix} b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1l}  \\
+b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2l}  \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+b_{m1} &amp; b_{m2} &amp; \cdots &amp; b_{ml} \end{pmatrix}
+\]
+と\(n \times m\)行列と\(m \times l\)行列を用意する.<br>行列の積を
+\[
+\boldsymbol{A}\boldsymbol{B}=\begin{pmatrix}
+\sum^m_{i=1} a_{1i}b_{i1} &amp; \sum^m_{i=1} a_{1i}b_{i2} &amp; \sum^m_{i=1} a_{1i}b_{i3} &amp; \cdots &amp; \sum^m_{i=1} a_{1i}b_{il} \\
+\sum^m_{i=1} a_{2i}b_{i1} &amp; \sum^m_{i=1} a_{2i}b_{i2} &amp; \sum^m_{i=1} a_{2i}b_{i3} &amp; \cdots &amp; \sum^m_{i=1} a_{2i}b_{il} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+\sum^m_{i=1} a_{ni}b_{i1} &amp; \sum^m_{i=1} a_{ni}b_{i2} &amp; \sum^m_{i=1} a_{ni}b_{i3} &amp; \cdots &amp; \sum^m_{i=1} a_{ni}b_{il}
+\end{pmatrix} \
+\]
+と定義する. 可換性は無い. 被乗数側の列数と乗数側の行数が一致しないと行けない.</p>
+<h3 id="ベクトルの内積"><a class="header" href="#ベクトルの内積">ベクトルの内積</a></h3>
+<p>\(\boldsymbol{x}^T=(x_1,x_2,\cdots,x_n) \)
+\(\boldsymbol{y}^T=(y_1,y_2,\cdots,y_n) \)
+とn列ベクトルを用意する.<br>ベクトルの内積(ドット積)は以下のように定義する.<br>\[ \boldsymbol{x} \cdot \boldsymbol{y}\ = x_1y_1 + x_2y_2 + \cdots + x_ny_n \]
+縦ベクトルを\(1 \times n\)の横ベクトルを\(n \times 1\)の行列と見なすと,
+\[ \boldsymbol{x} \cdot \boldsymbol{y}\ = \boldsymbol{x}^T\boldsymbol{y} = \boldsymbol{y}^T\boldsymbol{x} \]
+と表せる.</p>
+<h3 id="転置に関する公式"><a class="header" href="#転置に関する公式">転置に関する公式</a></h3>
+<p>\[
+\begin{align}
+\boldsymbol{x}^T \boldsymbol{A} &amp;= \begin{pmatrix} x_{1} &amp; x_{2} &amp; \cdots &amp; x_{n} \end{pmatrix} \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1m}  \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2m}  \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nm} \\
+\end{pmatrix} \\
+&amp;= \begin{pmatrix} a_{11}x_{1} + a_{21}x_{2} + \cdots + a_{n1}x_{n} &amp; a_{12}x_{1} + a_{22}x_{2} + \cdots + a_{n2}x_{n} &amp; \cdots &amp; a_{1m}x_{1} + a_{2m}x_{2} + \cdots + a_{nm}x_{n}  \end{pmatrix} \\
+&amp;= \begin{pmatrix} a_{11} &amp; a_{21} &amp; \cdots &amp; a_{n1}  \\
+a_{12} &amp; a_{22} &amp; \cdots &amp; a_{n2}  \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+a_{1m} &amp; a_{2m} &amp; \cdots &amp; a_{nm} \\
+\end{pmatrix} \begin{pmatrix} x_1 \\  x_2 \\ \vdots \\  x_n \end{pmatrix} \\
+&amp;= \boldsymbol{A}^T \boldsymbol{x}
+\end{align}
+\]</p>
+<h3 id="微分演算"><a class="header" href="#微分演算">微分演算</a></h3>
+<p>微分演算子を以下のように定義する.
+\[ \frac{\partial}{\partial\boldsymbol{x}}=\begin{pmatrix} \frac{\partial}{\partial x_1} \\ \frac{\partial}{\partial x_2} \\ \vdots \\ \frac{\partial}{\partial x_n} \end{pmatrix}\]</p>
+<h4 id="演算定義"><a class="header" href="#演算定義">演算定義</a></h4>
+<p>\[
+\boldsymbol{f}(\boldsymbol{x}) = \begin{pmatrix} f_1(\boldsymbol{x}) &amp;  f_2(\boldsymbol{x}) &amp; \cdots &amp; f_m(\boldsymbol{x}) \end{pmatrix}
+\]
+として,
+\[
+\frac{\partial \boldsymbol{f}(\boldsymbol{x})}{\partial\boldsymbol{x}} = \begin{pmatrix} \frac{\partial f_1(\boldsymbol{x}) }{\partial x_1}  &amp; \frac{\partial f_1(\boldsymbol{x}) }{\partial x_2} &amp; \cdots &amp; \frac{\partial f_1(\boldsymbol{x}) }{\partial x_n} \\
+\frac{\partial f_2(\boldsymbol{x}) }{\partial x_1}  &amp; \frac{\partial f_2(\boldsymbol{x}) }{\partial x_2} &amp; \cdots &amp; \frac{\partial f_2(\boldsymbol{x}) }{\partial x_n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+\frac{\partial f_m(\boldsymbol{x}) }{\partial x_1}  &amp; \frac{\partial f_m(\boldsymbol{x}) }{\partial x_2} &amp; \cdots &amp; \frac{\partial f_m(\boldsymbol{x}) }{\partial x_n}
+\end{pmatrix}
+\]</p>
+<h4 id="公式"><a class="header" href="#公式">公式</a></h4>
+<p>\[
+\frac{\partial \boldsymbol{x}}{\partial\boldsymbol{x}} = \begin{pmatrix} 1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 \\
+0 &amp; 0 &amp; \ddots &amp; 0 \\
+0 &amp; 0 &amp; \cdots &amp; 1 \end{pmatrix} = \boldsymbol{I}
+\]</p>
+<p>\[
+\begin{align}
+\frac{\partial \boldsymbol{A} \boldsymbol{x}}{\partial\boldsymbol{x}} &amp;=
+\begin{pmatrix} \frac{\partial}{\partial x_1} \\ \frac{\partial}{\partial x_2} \\ \vdots \\ \frac{\partial}{\partial x_n} \end{pmatrix} \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}  \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \end{pmatrix} \begin{pmatrix}x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix} \\
+&amp;= \begin{pmatrix} \frac{\partial}{\partial x_1} \\ \frac{\partial}{\partial x_2} \\ \vdots \\ \frac{\partial}{\partial x_n} \end{pmatrix} \begin{pmatrix} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n
+\end{pmatrix} \\
+&amp;= \begin{pmatrix} a_{11} &amp;  a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp;  a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots \\
+a_{m1} &amp;  a_{m2} &amp; \cdots &amp; a_{mn}
+\end{pmatrix} = \boldsymbol{A}
+\end{align}
+\]
+\[
+\begin{align}
+\frac{\partial \boldsymbol{x}^T \boldsymbol{A} }{\partial\boldsymbol{x}} &amp;= \frac{\partial}{\partial \boldsymbol{x}} \begin{pmatrix} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \\
+\vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n
+\end{pmatrix} \\
+&amp;= \begin{pmatrix} a_{11} &amp;  a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp;  a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots \\
+a_{m1} &amp;  a_{m2} &amp; \cdots &amp; a_{mn}
+\end{pmatrix} = \boldsymbol{A}
+\end{align}
+\]
+\[
+\begin{align}
+\frac{\partial \boldsymbol{x}^T \boldsymbol{A} \boldsymbol{x} }{\partial\boldsymbol{x}} &amp;= \boldsymbol{A} \boldsymbol{x} + \boldsymbol{x}^T \boldsymbol{A} \\
+&amp;= \boldsymbol{A} \boldsymbol{x} + \boldsymbol{A}^T \boldsymbol{x} \\
+&amp;= (\boldsymbol{A} + \boldsymbol{A}^T) \boldsymbol{x}
+\end{align}
+\]</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../probability/probability_distribution/gamma_distribution.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../appendix/gamma_function.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../probability/law_of_large_number/weak_law_of_large_number.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../reference.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -197,11 +319,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../probability/probability_distribution/gamma_distribution.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../appendix/gamma_function.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../probability/law_of_large_number/weak_law_of_large_number.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../reference.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
