@@ -75,4 +75,5 @@
   - [ガウス積分](./appendix/gauss_integral.md)
   - [ラグランジュの未定乗数法](./appendix/method_of_lagrange_multiplier.md)
   - [ガンマ関数](./appendix/gamma_function.md)
+  - [ベクトル・行列の微分](./appendix/diff_of_vec_and_mat.md)
 - [参考文献](./reference.md)
