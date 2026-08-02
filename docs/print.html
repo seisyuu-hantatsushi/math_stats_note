@@ -38,10 +38,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-b3571e9f.js";
+            window.path_to_searchindex_js = "searchindex-6e0105c7.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-7ca63ea5.js"></script>
+        <script src="toc-44d9b19b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -3735,6 +3735,184 @@ A = \Omega \backslash R = \{x \in \Omega | H_0を受容する \}
 有意水準\(\alpha\)の検定で,第二種の誤りが最も小さいものを,
 有意水準\(\alpha\)の<strong>最強力検定</strong>(most powerful test)という.</p>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="検定方式の立て方-1"><a href="#検定方式の立て方-1" class="header">検定方式の立て方</a></h1>
+<h2 id="検定方式の立て方"><a class="header" href="#検定方式の立て方">検定方式の立て方</a></h2>
+<h3 id="単純仮説問題"><a class="header" href="#単純仮説問題">単純仮説問題</a></h3>
+<p>帰無仮説\(H_0\)に対して,対立仮説\(H_1\)が一つの要素で構成されるものを単純仮説という
+\[
+H_0:\theta=\theta_0 \; \mathrm{vs} \; H_1:\theta=\theta_1
+\]</p>
+<h3 id="複合仮説問題"><a class="header" href="#複合仮説問題">複合仮説問題</a></h3>
+<p>帰無仮説\(H_0\)に対して,対立仮説\(H_1\)が複数の要素で構成されるものを複合仮説という
+\[
+H_0:\theta=\theta_0 \; \mathrm{vs} \; H_1:\theta \neq \theta_0
+\]
+上記の仮説を両側検定という.
+\[
+H_0:\theta=\theta_0 \; \mathrm{vs} \; H_1:\theta &gt; \theta_0 \\
+H_0:\theta=\theta_0 \; \mathrm{vs} \; H_1:\theta &lt; \theta_0
+\]
+上記の仮説を片側検定といい前者を右片側検定,後者を左片側検定と言う.
+検定統計量\(T\)として,有意水準\(\alpha\)としたとき,棄却域と受容域の境界値を棄却限界値いう.
+棄却限界値\(t_{\alpha}\)は以下の条件を満たす値である.</p>
+<p>\[
+\begin{align}
+&amp; P(T \geq t_{\alpha}) = \alpha &amp; \; 右片側検定 \\
+&amp; P(T \leq t_{\alpha}) = \alpha &amp; \; 左片側検定 \\
+&amp; P(T \leq t_{\alpha_{lower}}) = \frac{\alpha}{2}, \: P(T \geq t_{\alpha_{upper}}) = \frac{\alpha}{2} &amp; \; 両側検定
+\end{align}
+\]</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="正規分布に従う母集団の検定-1"><a href="#正規分布に従う母集団の検定-1" class="header">正規分布に従う母集団の検定</a></h1>
+<h3 id="正規分布に従う母集団の検定"><a class="header" href="#正規分布に従う母集団の検定">正規分布に従う母集団の検定</a></h3>
+<p>標本が正規分布に従っているとする.正規分布のパラメータは平均と分散である.
+なので,標本から得た平均と分散が帰無仮説で設定した正規分布からどれくらいの確率で違っているを検定する.
+以降,\(\{X_i\} _{i,n \in \mathbb{N} _+,i \leq n} .i.i.d \sim \mathcal{N}(\mu,\sigma^2)\)であるとする.</p>
+<h4 id="1標本の平均の検定"><a class="header" href="#1標本の平均の検定">1標本の平均の検定</a></h4>
+<p>標本の平均を対象とする仮説は,</p>
+<p>\[
+\begin{align}
+&amp; H_0:\mu=\mu_0 \; \mathrm{vs} \; H_1:\mu \neq \mu_0 &amp; \; 両側検定 \\
+&amp; H_0:\mu=\mu_0 \; \mathrm{vs} \; H_1:\mu &gt; \mu_0 &amp; \; 右片側検定 \\
+&amp; H_0:\mu=\mu_0 \; \mathrm{vs} \; H_1:\mu &lt; \mu_0 &amp; \; 左片側検定
+\end{align}
+\]</p>
+<h5 id="分散が既知の場合"><a class="header" href="#分散が既知の場合">分散が既知の場合</a></h5>
+<p>もし,帰無仮設に標本が従っているとするならば,\(\bar{X} = \frac{1}{n}\sum^n_{i=1} X_i \sim \mathcal{N}(\mu_0,\sigma^2/n)\)なので,
+\[
+Z = \frac{\bar{X} - \mu_0}{\sqrt{\sigma^2/n}} \sim \mathcal{N}(0,1)
+\]
+\(Z\)を検定統計量とする.有意水準を\(\alpha\)とし,棄却域と受容域の境界値を棄却限界値いう.
+片側検定の場合,有意水準\(\alpha\)の棄却限界値を\(z_{\alpha}\)は,
+\[
+\begin{align}
+&amp; P(Z \geq z_{\alpha}) = \alpha &amp; \; 右側検定 \\
+&amp; P(Z \leq -z_{\alpha}) = \alpha &amp; \; 左側検定
+\end{align}
+\]
+となり,両側検定の場合は,
+\[
+P(Z \geq z_{\alpha/2}) + P(Z \leq -z_{\alpha/2}) = \alpha
+\]
+となる.
+なので,\(\bar{X}\)の観測値を\(\bar{x}\)とし
+\[
+z = \frac{\bar{x} - \mu_0}{\sqrt{\sigma^2/n}}
+\]
+で得られて値が,片側検定ならば\(z \geq z_{\alpha}, z \leq z_{\alpha}\), 両側検定ならば\(z \geq -z_{\alpha/2} または z \leq z_{\alpha/2} \)の場合,帰無仮説を棄却する.</p>
+<h5 id="分散が未知の場合"><a class="header" href="#分散が未知の場合">分散が未知の場合</a></h5>
+<p>分散の推定量として不偏分散\(V^2 = \frac{1}{n-1}\sum^n_{i=1}(X_i-\bar{X})^2\)を使用する.<br>\(\frac{(n-1)V^2}{\sigma^2} \sim \chi^2_{n-1} \)なので,
+\[
+Z = \frac{\bar{X} - \mu_0}{\sqrt{\sigma^2/n}} \sim \mathcal{N}(0,1) \\
+\begin{align}
+\frac{Z}{\sqrt{\frac{\frac{(n-1)V^2}{\sigma^2}}{n-1}}} &amp;= \frac{Z}{\sqrt{\frac{V^2}{\sigma^2}}} \\
+&amp;= \frac{\sqrt{\sigma^2}\frac{\bar{X} - \mu_0}{\sqrt{\sigma^2/n}}}{\sqrt{V^2}} \\
+&amp;= \frac{\sqrt{n}(\bar{X} - \mu_0)}{\sqrt{V^2}} \sim T_{n-1}
+\end{align}
+\]
+改めて
+\[
+T_{n-1} = \frac{\sqrt{n}(\bar{X} - \mu_0)}{\sqrt{V^2}}
+\]
+を検定推定量とする.検定推定値は,
+\[
+v^2 = \frac{1}{n-1}\sum^n_{i=1}(x_i-\bar{x})^2 \\
+t_{n-1} = \frac{\sqrt{n}(\bar{x} - \mu_0)}{\sqrt{v^2}}
+\]
+有意水準\(\alpha\)とすると,それぞれの棄却域は,
+\[
+P(T_{n-1} \geq t_{n-1,\alpha}) = \alpha \\
+P(T_{n-1} \leq t_{n-1,\alpha}) = \alpha \\
+P(T_{n-1} \leq -t_{n-1,\alpha/2}) + P(T_{n-1} \geq t_{n-1,\alpha/2}) = \alpha
+\]
+を見みたす,\( t_{n-1,\alpha}, t_{n-1,\alpha/2}\)片側検定ならば\(t_{n-1} \leq -t_{n-1,\alpha}, t_{n-1} \geq t_{n-1,\alpha}\), 両側検定ならば\(t_{n-1} \geq -t_{n-1, \alpha/2} または t_{n-1} \leq t_{n-1,\alpha/2} \)の場合,帰無仮説を棄却する.</p>
+<h4 id="1標本の分散の検定"><a class="header" href="#1標本の分散の検定">1標本の分散の検定</a></h4>
+<p>標本の平均を対象とする仮説は,
+\[
+\begin{align}
+&amp; H_0:\sigma^2=\sigma_0^2 \; \mathrm{vs} \; H_1:\sigma^2 \neq \sigma_0^2 &amp; \; 両側検定 \\
+&amp; H_0:\sigma^2=\sigma_0^2 \; \mathrm{vs} \; H_1:\sigma^2 &gt; \sigma_0^2 &amp; \; 右片側検定 \\
+&amp; H_0:\sigma^2=\sigma_0^2 \; \mathrm{vs} \; H_1:\sigma^2 &lt; \sigma_0^2 &amp; \; 左片側検定
+\end{align}
+\]</p>
+<h5 id="平均が既知の場合"><a class="header" href="#平均が既知の場合">平均が既知の場合</a></h5>
+<p>\(H_0:\sigma^2=\sigma_0^2\)の\(\bar{X}\)分布は,\( X_i \sim \mathcal{N}(\mu,\sigma_0^2)\)なので,
+\[
+Z_i = \frac{X_i-\mu}{\sigma_0} \sim \mathcal{N}(0, 1)
+\]
+\(Z_i^2 \sim \chi^2_1\)
+\[
+Z_i^2 = \frac{(\bar{X} - \mu)^2}{\sigma_0^2}
+\]
+より,
+\[
+Q_{n} = \sum^n_{i=1} Z_i^2 = \sum^n_{i=1}\frac{(X_i - \mu)^2}{\sigma_0^2} \sim \chi^2_n
+\]
+これを検定推定量とする.
+観測値から検定推定値は
+\[
+q_{n} = \sum^n_{i=1}\frac{(x_i - \mu)^2}{\sigma_0^2}
+\]
+有意水準\(\alpha\)とすると,それぞれの棄却域は,
+\[
+P(Q_n \geq q_{n,\alpha}) = \alpha \\
+P(Q_n \leq q_{n,\alpha}) = \alpha \\
+P(Q_n \leq q_{n,\alpha_{lower}}) + P(Q_n \geq q_{n,\alpha_{upper}}) = \alpha
+\]</p>
+<h5 id="平均が未知の場合"><a class="header" href="#平均が未知の場合">平均が未知の場合</a></h5>
+<p>平均の推定量として,標本平均\( \bar{X}=\frac{1}{n} \sum^n_{i=1} X_i \)を利用する.
+検定推定量として,分散の不偏推定量の不偏分散を使う.
+\[
+V^2 = \frac{1}{n-1} \sum^n_{i=1} (X_i - \bar{X})^2 \\
+Q_{n-1} = \frac{(n-1)V^2}{\sigma_0^2} = \sum^n_{i=1} \frac{(X_i - \bar{X})^2}{\sigma_0^2} \sim \chi^2_{n-1}
+\]
+観測値から検定推定値は
+\[
+q_{n-1} = \sum^n_{i=1} \frac{(x_i - \bar{x})^2}{\sigma_0^2}
+\]
+有意水準\(\alpha\)とすると,それぞれの棄却域は,
+\[
+P(Q_{n-1} \geq q_{n-1,\alpha}) = \alpha \\
+P(Q_{n-1} \leq q_{n-1,\alpha}) = \alpha \\
+P(Q_{n-1} \leq q_{n-1,\alpha_{lower}}) + P(Q_{n-1} \geq q_{n-1,\alpha_{upper}}) = \alpha
+\]</p>
+<h4 id="2標本の平均の検定"><a class="header" href="#2標本の平均の検定">2標本の平均の検定</a></h4>
+<p>2標本の平均がどれくらい違うかの検定を考える.標本\(A,B\)を用意して,それぞれの標本が
+\[
+\{{X_A}_i\} _{i,n_A \in \mathbb{N} _+,i \leq n_A} .i.i.d \sim \mathcal{N}(\mu_A,\sigma_A^2) \\
+\{{X_B}_i\} _{i,n_B \in \mathbb{N} _+,i \leq n_B} .i.i.d \sim \mathcal{N}(\mu_B,\sigma_B^2)
+\]
+に従うとする.仮説は,
+\[
+\begin{align}
+&amp; H_0:\mu_A=\mu_B \; \mathrm{vs} \; H_1:\mu_A \neq \mu_B &amp; \; 両側検定 \\
+&amp; H_0:\mu_A=\mu_B \; \mathrm{vs} \; H_1:\mu_A &gt; \mu_B &amp; \; 右片側検定 \\
+&amp; H_0:\mu_A=\mu_B \; \mathrm{vs} \; H_1:\mu_A &lt; \mu_B &amp; \; 左片側検定
+\end{align}
+\]
+\(\delta = \mu_A-\mu_B\)とすると,
+\begin{align}
+&amp; H_0:\delta=\delta_0 \; \mathrm{vs} \; H_1:\delta \neq \delta_0 &amp; \; 両側検定 \\
+&amp; H_0:\delta=\delta_0 \; \mathrm{vs} \; H_1:\delta &gt; \delta_0 &amp; \; 右片側検定 \\
+&amp; H_0:\delta=\delta_0 \; \mathrm{vs} \; H_1:\delta &lt; \delta_0 &amp; \; 左片側検定
+\end{align}</p>
+<h5 id="分散既知で標本abの分散が等しい場合"><a class="header" href="#分散既知で標本abの分散が等しい場合">分散既知で,標本\(A,B\)の分散が等しい場合</a></h5>
+<p>\[
+\{{X_A}_i\} _{i,n_A \in \mathbb{N} _+,i \leq n_A} .i.i.d \sim \mathcal{N}(\mu_A,\sigma^2) \\
+\{{X_B}_i\} _{i,n_B \in \mathbb{N} _+,i \leq n_B} .i.i.d \sim \mathcal{N}(\mu_B,\sigma^2)
+\]</p>
+<p>から</p>
+<p>\[
+\bar{X_A} = \frac{1}{n} \sum^{n_A}_{i=1} {X_A}_i \sim \mathcal{N}(\mu_A,\frac{\sigma^2}{n_A}) \\
+\bar{X_B} = \frac{1}{n} \sum^{n_B}_{i=1} {X_B}_i \sim \mathcal{N}(\mu_B,\frac{\sigma^2}{n_B}) \\
+\bar{X_A} - \bar{X_B} \sim \mathcal{N}(\mu_A-\mu_B, \frac{\sigma^2}{n_A} + \frac{\sigma^2}{n_B})
+\]</p>
+<p>より</p>
+<p>\[
+Z = \frac{\bar{X_A} - \bar{X_B} - \delta}{\sqrt{\frac{\sigma^2}{n_A} + \frac{\sigma^2}{n_B}}} \sim \mathcal{N}(0,1)
+\]
+を統計検定量とする.</p>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="検定の評価-1"><a href="#検定の評価-1" class="header">検定の評価</a></h1>
 <h2 id="検定の評価"><a class="header" href="#検定の評価">検定の評価</a></h2>
 <p>設定された検定を評価する方法を考える.
@@ -3771,6 +3949,110 @@ A = \Omega \backslash R = \{x \in \Omega | H_0を受容する \}
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="ネイマンピアソンの補題-1"><a href="#ネイマンピアソンの補題-1" class="header">ネイマン・ピアソンの補題</a></h1>
 <h2 id="ネイマンピアソンの補題"><a class="header" href="#ネイマンピアソンの補題">ネイマン・ピアソンの補題</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="回帰解析"><a class="header" href="#回帰解析">回帰解析</a></h1>
+<p>とある観測値\(y\)と関連する複数の観測値\(x_i,i=1,2,…,k\)が組として得られているとする.
+\(y\)が\(x_i,i=1,2,…,k\)から得られる値として,以下の様な式,モデルを考える.
+\[
+y = \beta_{0} + \beta_{1}x_1 + \beta_{2}x_2 + \cdots + \beta_{k}x_k
+\]
+\(\beta_i\)の真の値はわからないが,観測値を多数集めれば,\(\beta_i\)の値を推定できて,\(x_i,i=1,2,…,k\)から\(y\)を推定する根拠が得られる.
+この様な手法を回帰解析という.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="モデルの行列表現-1"><a href="#モデルの行列表現-1" class="header">モデルの行列表現</a></h1>
+<h2 id="モデルの行列表現"><a class="header" href="#モデルの行列表現">モデルの行列表現</a></h2>
+<p>真の値が,以下のようなモデルであったとする.\(y\)を応答変数,\(x_i\)を説明変数という.
+\[
+y = \beta_{0} + \beta_{1}x_1 + \beta_{2}x_2 + \cdots + \beta_{k}x_k
+\]
+しかし,実際の観測値には誤差が伴う.n個の標本を取得したとし,その時伴う誤差を\(\epsilon_i\)として,
+\[
+y_i = \beta_{0} + \beta_{1}x_{i1} + \beta_2x_{i2} + \cdots + \beta_{k}x_{ik} + \varepsilon_i
+\]
+と表現する.
+\(\varepsilon_i\)は正規性を仮定し,\(\{E_i\} _{i \in \mathbb{N} _+,i \leq n} \sim N(0,\sigma^2) \)の実現値とすると,確率変数</p>
+<p>\[
+Y_i = \beta_{0} + \beta_{1}x_{i1} + \beta_2x_{i2} + \cdots + \beta_{k}x_{ik} + E_i
+\]
+と表現できる. \(\beta_i\)は偏回帰係数という.
+各実現値や誤差,偏回帰係数をベクトルと行列で表現すると.
+\[
+\begin{pmatrix}Y_1 \\ Y_2 \\ \vdots \\ Y_n \end{pmatrix} = \begin{pmatrix} 1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1k}  \\
+1 &amp; x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2k}  \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+1 &amp; x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nk} \end{pmatrix}
+\begin{pmatrix}\beta_0 \\ \beta_1 \\ \beta_2 \\ \vdots \\ \beta_k \end{pmatrix} + \begin{pmatrix}E_1 \\ E_2 \\ \vdots \\ E_n \end{pmatrix}
+\]
+それぞれを対応するベクトルと行列を,\(\boldsymbol{y},\mathbf{X},\boldsymbol{\beta},\boldsymbol{E}\)とし,
+\[
+\boldsymbol{y}=\mathbf{X}\boldsymbol{\beta}+\boldsymbol{E}
+\]
+と表現する.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="回帰係数の推定-1"><a href="#回帰係数の推定-1" class="header">回帰係数の推定</a></h1>
+<h2 id="回帰係数の推定"><a class="header" href="#回帰係数の推定">回帰係数の推定</a></h2>
+<p>もっとも都合が良い偏回帰係数は
+\[
+| \boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta} |
+\]
+を最も小さくする\(\boldsymbol{\beta}\)である.
+これは,
+\[
+\begin{align}
+h(\boldsymbol{\beta}) &amp;= \sum^n_{i=1} (Y_i - (\beta_{0} + \beta_{1}x_{i1} + \beta_2x_{i2} + \cdots + \beta_{k}x_{ik}))^2 \\
+&amp;= (\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})^T(\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})
+\end{align}
+\]
+を最小にする\(\boldsymbol{\beta}\)を求めることであり,これを最小二乗推定量と言う.
+\(h(\boldsymbol{\beta}) \geq 0\)なので,\(\frac{\partial h(\boldsymbol{\beta})}{\partial \boldsymbol{\beta}} = 0\)を満たす\(\boldsymbol{\beta}\)が,推定量\(\hat{\boldsymbol{\beta}}\)である.</p>
+<p>\[
+\begin{align}
+h(\boldsymbol{\beta}) &amp;= (\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})^T(\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta}) \\
+&amp;= \boldsymbol{Y}^T\boldsymbol{Y}-(\mathbf{X}\boldsymbol{\beta})^T\boldsymbol{Y}-\boldsymbol{Y}^T(\mathbf{X}\boldsymbol{\beta})+(\mathbf{X}\boldsymbol{\beta})^T(\mathbf{X}\boldsymbol{\beta}) \\
+&amp;= \boldsymbol{Y}^T\boldsymbol{Y}-2\boldsymbol{\beta}^T\mathbf{X}^T\boldsymbol{Y}+\boldsymbol{\beta}^T\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}
+\end{align}
+\]</p>
+<p>\[
+\begin{align}
+\frac{\partial h(\boldsymbol{\beta})}{\partial \boldsymbol{\beta}} &amp;= -2\mathbf{X}^T\boldsymbol{Y} + ((\mathbf{X}^T\mathbf{X})^T+\mathbf{X}^T\mathbf{X})\boldsymbol{\beta} \\
+&amp;= -2\mathbf{X}^T\boldsymbol{Y} + 2(\mathbf{X}^T\mathbf{X})\boldsymbol{\beta} = 0
+\end{align}
+\]</p>
+<p>\(\mathbf{X}^T\mathbf{X}\)は\((\mathbf{X}^T\mathbf{X})^{-1}\)が存在するとして,</p>
+<p>\[
+\begin{align}
+&amp; -2\mathbf{X}^T\boldsymbol{Y} + 2(\mathbf{X}^T\mathbf{X})\boldsymbol{\beta} = 0 \\
+&amp; (\mathbf{X}^T\mathbf{X})\boldsymbol{\beta} = \mathbf{X}^T\boldsymbol{Y} \\
+&amp; (\mathbf{X}^T\mathbf{X})^{-1}(\mathbf{X}^T\mathbf{X})\boldsymbol{\beta} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{Y} \\
+&amp; \boldsymbol{\beta} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{Y}
+\end{align}
+\]
+となり,最小二乗推定量は改めて,
+\[
+\hat{\boldsymbol{\beta}} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{Y}
+\]
+では,改めて\(\boldsymbol{\beta}\)の分布を考える.
+\[
+\begin{align}
+\hat{\boldsymbol{\beta}} &amp;= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{Y} \\
+&amp;= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T(\mathbf{X}\boldsymbol{\beta} + \boldsymbol{E}) \\
+&amp;= \boldsymbol{\beta} + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E}
+\end{align}
+\]</p>
+<p>\(\boldsymbol{E} \sim N_n(0,\sigma^2\mathbf{I}) \)なので,
+\[
+\begin{align}
+\mathrm{E}[\hat{\boldsymbol{\beta}}] &amp;= \mathrm{E}[\boldsymbol{\beta} + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E}] \\
+&amp;= \boldsymbol{\beta} + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathrm{E}[\boldsymbol{E}] \\
+&amp;= \boldsymbol{\beta}
+\end{align}
+\]</p>
+<p>\[
+\begin{align}
+\mathrm{Cov}(\hat{\boldsymbol{\beta}}) &amp;= \mathrm{E}[(\hat{\boldsymbol{\beta}} - \boldsymbol{\beta})(\hat{\boldsymbol{\beta}} - \boldsymbol{\beta})^T] \\
+&amp;= \mathrm{E}[((\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E} - \boldsymbol{\beta})((\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E} - \boldsymbol{\beta})^T]
+\end{align}
+\]</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="付録"><a class="header" href="#付録">付録</a></h1>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -4226,13 +4508,27 @@ b_{m1} &amp; b_{m2} &amp; \cdots &amp; b_{ml} \end{pmatrix}
 \end{pmatrix} \
 \]
 と定義する. 可換性は無い. 被乗数側の列数と乗数側の行数が一致しないと行けない.</p>
-<h3 id="ベクトルの内積"><a class="header" href="#ベクトルの内積">ベクトルの内積</a></h3>
+<h3 id="ベクトルの内積と外積"><a class="header" href="#ベクトルの内積と外積">ベクトルの内積と外積</a></h3>
+<h4 id="内積"><a class="header" href="#内積">内積</a></h4>
 <p>\(\boldsymbol{x}^T=(x_1,x_2,\cdots,x_n) \)
 \(\boldsymbol{y}^T=(y_1,y_2,\cdots,y_n) \)
 とn列ベクトルを用意する.<br>ベクトルの内積(ドット積)は以下のように定義する.<br>\[ \boldsymbol{x} \cdot \boldsymbol{y}\ = x_1y_1 + x_2y_2 + \cdots + x_ny_n \]
 縦ベクトルを\(1 \times n\)の横ベクトルを\(n \times 1\)の行列と見なすと,
 \[ \boldsymbol{x} \cdot \boldsymbol{y}\ = \boldsymbol{x}^T\boldsymbol{y} = \boldsymbol{y}^T\boldsymbol{x} \]
 と表せる.</p>
+<h4 id="外積"><a class="header" href="#外積">外積</a></h4>
+<p>\(\boldsymbol{x}^T=(x_1,x_2,\cdots,x_n) \)
+\(\boldsymbol{y}^T=(y_1,y_2,\cdots,y_m) \)
+\(\boldsymbol{x}\boldsymbol{y}^T\)としたとき,それぞれを\(n \times 1\)行列,\(1 \times m\)行列とみなすと,演算の結果は,\(n \times m\)行列となるのが自然である.
+\[
+\boldsymbol{x}\boldsymbol{y}^T = \begin{pmatrix}
+x_{1}y_{1} &amp; x_{1}y_{2} &amp; x_{1}y_{3} &amp; \cdots &amp; x_{1}y_{m} \\
+x_{2}y_{1} &amp; x_{2}y_{2} &amp; x_{2}y_{3} &amp; \cdots &amp; x_{2}y_{m} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots  \\
+x_{n}y_{1} &amp; x_{n}y_{2} &amp; x_{n}y_{3} &amp; \cdots &amp; x_{n}y_{m} \\
+\end{pmatrix}
+\]
+として外積と言う.</p>
 <h3 id="転置に関する公式"><a class="header" href="#転置に関する公式">転置に関する公式</a></h3>
 <p>\[
 \begin{align}
@@ -4339,6 +4635,22 @@ a_{m1} &amp;  a_{m2} &amp; \cdots &amp; a_{mn}
         <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
         <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
         <script>

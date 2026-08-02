@@ -40,7 +40,8 @@ b_{m1} & b_{m2} & \cdots & b_{ml} \end{pmatrix}
 \\]
 と定義する. 可換性は無い. 被乗数側の列数と乗数側の行数が一致しないと行けない.
 
-### ベクトルの内積
+### ベクトルの内積と外積
+#### 内積
 \\(\boldsymbol{x}^T=(x_1,x_2,\cdots,x_n) \\)
 \\(\boldsymbol{y}^T=(y_1,y_2,\cdots,y_n) \\)
 とn列ベクトルを用意する.  
@@ -49,6 +50,19 @@ b_{m1} & b_{m2} & \cdots & b_{ml} \end{pmatrix}
 縦ベクトルを\\(1 \times n\\)の横ベクトルを\\(n \times 1\\)の行列と見なすと,
 \\[ \boldsymbol{x} \cdot \boldsymbol{y}\\ = \boldsymbol{x}^T\boldsymbol{y} = \boldsymbol{y}^T\boldsymbol{x} \\]
 と表せる.
+#### 外積
+\\(\boldsymbol{x}^T=(x_1,x_2,\cdots,x_n) \\)
+\\(\boldsymbol{y}^T=(y_1,y_2,\cdots,y_m) \\)
+\\(\boldsymbol{x}\boldsymbol{y}^T\\)としたとき,それぞれを\\(n \times 1\\)行列,\\(1 \times m\\)行列とみなすと,演算の結果は,\\(n \times m\\)行列となるのが自然である.
+\\[
+\boldsymbol{x}\boldsymbol{y}^T = \begin{pmatrix} 
+x_{1}y_{1} & x_{1}y_{2} & x_{1}y_{3} & \cdots & x_{1}y_{m} \\\\ 
+x_{2}y_{1} & x_{2}y_{2} & x_{2}y_{3} & \cdots & x_{2}y_{m} \\\\ 
+\vdots & \vdots & \vdots & \ddots & \vdots  \\\\
+x_{n}y_{1} & x_{n}y_{2} & x_{n}y_{3} & \cdots & x_{n}y_{m} \\\\ 
+\end{pmatrix}
+\\]
+として外積と言う.
 
 ### 転置に関する公式
 \\[
