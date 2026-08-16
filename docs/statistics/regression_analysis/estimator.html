@@ -37,10 +37,10 @@
             const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-6e0105c7.js";
+            window.path_to_searchindex_js = "../../searchindex-998e8a12.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-44d9b19b.js"></script>
+        <script src="../../toc-4e977eca.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,6 +177,7 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h2 id="回帰係数の推定"><a class="header" href="#回帰係数の推定">回帰係数の推定</a></h2>
+<h3 id="最小二乗推定量"><a class="header" href="#最小二乗推定量">最小二乗推定量</a></h3>
 <p>もっとも都合が良い偏回帰係数は
 \[
 | \boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta} |
@@ -197,8 +198,8 @@ h(\boldsymbol{\beta}) &amp;= (\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})^T(\
 &amp;= \boldsymbol{Y}^T\boldsymbol{Y}-(\mathbf{X}\boldsymbol{\beta})^T\boldsymbol{Y}-\boldsymbol{Y}^T(\mathbf{X}\boldsymbol{\beta})+(\mathbf{X}\boldsymbol{\beta})^T(\mathbf{X}\boldsymbol{\beta}) \\
 &amp;= \boldsymbol{Y}^T\boldsymbol{Y}-2\boldsymbol{\beta}^T\mathbf{X}^T\boldsymbol{Y}+\boldsymbol{\beta}^T\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}
 \end{align}
-\]</p>
-<p>\[
+\]
+\[
 \begin{align}
 \frac{\partial h(\boldsymbol{\beta})}{\partial \boldsymbol{\beta}} &amp;= -2\mathbf{X}^T\boldsymbol{Y} + ((\mathbf{X}^T\mathbf{X})^T+\mathbf{X}^T\mathbf{X})\boldsymbol{\beta} \\
 &amp;= -2\mathbf{X}^T\boldsymbol{Y} + 2(\mathbf{X}^T\mathbf{X})\boldsymbol{\beta} = 0
@@ -225,7 +226,7 @@ h(\boldsymbol{\beta}) &amp;= (\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})^T(\
 &amp;= \boldsymbol{\beta} + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E}
 \end{align}
 \]</p>
-<p>\(\boldsymbol{E} \sim N_n(0,\sigma^2\mathbf{I}) \)なので,
+<p>\(\boldsymbol{E} \sim \mathcal{N}_n(0,\sigma^2\mathbf{I}_n) \)なので,
 \[
 \begin{align}
 \mathrm{E}[\hat{\boldsymbol{\beta}}] &amp;= \mathrm{E}[\boldsymbol{\beta} + (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E}] \\
@@ -236,9 +237,60 @@ h(\boldsymbol{\beta}) &amp;= (\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})^T(\
 <p>\[
 \begin{align}
 \mathrm{Cov}(\hat{\boldsymbol{\beta}}) &amp;= \mathrm{E}[(\hat{\boldsymbol{\beta}} - \boldsymbol{\beta})(\hat{\boldsymbol{\beta}} - \boldsymbol{\beta})^T] \\
-&amp;= \mathrm{E}[((\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E} - \boldsymbol{\beta})((\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E} - \boldsymbol{\beta})^T]
+&amp;= \mathrm{E}[((\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E})((\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E})^T]\\
+&amp;= \mathrm{E}[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{E}\boldsymbol{E}^T\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}] \\
+&amp;= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathrm{E}[\boldsymbol{E}\boldsymbol{E}^T]\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\\
+&amp; = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\sigma^2\mathbf{I}\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
+&amp; = \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}
 \end{align}
 \]</p>
+<h3 id="最尤推定量"><a class="header" href="#最尤推定量">最尤推定量</a></h3>
+<p>\(\boldsymbol{x}_i=(1,x_{i1},x_{i2},\cdots,x_{ik})^T\)とする,</p>
+<p>\[
+\mathbf{X} =\begin{pmatrix}
+\boldsymbol{x}_1^T \\
+\boldsymbol{x}_2^T \\
+\vdots \\
+\boldsymbol{x}_n^T
+\end{pmatrix}
+\]</p>
+<p>\(Y_i \sim \mathcal{N}(\boldsymbol{x}_i^T \boldsymbol{\beta}, \sigma^2)\)より,
+\[
+f_{Y_i}(y_i|\boldsymbol{\beta}) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp(-\frac{1}{2\sigma^2}(y_i-\boldsymbol{x}_i^T \boldsymbol{\beta})^2)
+\]
+同時確率密度関数は,</p>
+<p>\[
+\begin{align}
+f_{\boldsymbol{Y}}(\boldsymbol{y}|\boldsymbol{\beta}) &amp;= \prod^n_{i=1} \Bigl\lbrace \frac{1}{\sqrt{2\pi\sigma^2}}\exp(-\frac{1}{2\sigma^2}(y_i-\boldsymbol{x}_i^T \boldsymbol{\beta})^2) \Bigr\rbrace \\
+&amp;= \Biggl(\frac{1}{\sqrt{2\pi\sigma^2}}\Biggr)^n\exp(-\frac{1}{2\sigma^2}\sum^n_{i=1}(y_i-\boldsymbol{x}_i^T \boldsymbol{\beta})^2) \\
+&amp;= \Biggl(\frac{1}{\sqrt{2\pi\sigma^2}}\Biggr)^n\exp(-\frac{1}{2\sigma^2}\sum^n_{i=1}(y_i-\boldsymbol{x}_i^T \boldsymbol{\beta})^2) \\
+&amp;= \Biggl(\frac{1}{\sqrt{2\pi\sigma^2}}\Biggr)^n\exp\Bigl(-\frac{1}{2\sigma^2}(\boldsymbol{y} - \mathbf{X}\boldsymbol{\beta})^T(\boldsymbol{y} - \mathbf{X}\boldsymbol{\beta})\Bigr)
+\end{align}
+\]</p>
+<p>尤度関数は,
+\[
+L(\boldsymbol{\beta}|\boldsymbol{Y}) = f_{\boldsymbol{Y}}(\boldsymbol{Y}|\boldsymbol{\beta})
+\]</p>
+<p>最尤推定量\(\hat{\boldsymbol{\beta}}^{MLE}\)は\(L\)を最大にする,\(\boldsymbol{\beta}\)
+なので,
+\[
+\begin{align}
+l(\boldsymbol{\beta}|\boldsymbol{Y})&amp;=\log L(\boldsymbol{\beta}|\boldsymbol{Y}) \\
+&amp;=-\frac{n}{2}(\log 2\pi + \log \sigma^2) -\frac{1}{2\sigma^2} (\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})^T(\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})
+\end{align}
+\]
+\(\hat{\boldsymbol{\beta}}^{MLE}\)は\(\frac{\partial}{\partial \boldsymbol{\beta}}l(\boldsymbol{\beta}|\boldsymbol{Y}) = 0\)をみたす\(\boldsymbol{\beta}\)</p>
+<p>\[
+\begin{align}
+\frac{\partial}{\partial \boldsymbol{\beta}}l(\boldsymbol{\beta}|\boldsymbol{Y}) &amp;= -\frac{1}{2\sigma^2}\frac{\partial}{\partial \boldsymbol{\beta}}(\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})^T(\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta}) \\
+&amp;= -\frac{1}{2\sigma^2}(-2\mathbf{X}^T\boldsymbol{Y} + 2(\mathbf{X}^T\mathbf{X})\boldsymbol{\beta}) = 0
+\end{align}
+\]</p>
+<p>から,</p>
+<p>\[
+\hat{\boldsymbol{\beta}}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{Y}
+\]</p>
+<p>となり,最小二乗推定量と同じになる.</p>
 
                     </main>
 
@@ -248,7 +300,7 @@ h(\boldsymbol{\beta}) &amp;= (\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})^T(\
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../appendix/appendix.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../statistics/regression_analysis/estimator_chara.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -262,7 +314,7 @@ h(\boldsymbol{\beta}) &amp;= (\boldsymbol{Y} - \mathbf{X}\boldsymbol{\beta})^T(\
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../appendix/appendix.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../statistics/regression_analysis/estimator_chara.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
