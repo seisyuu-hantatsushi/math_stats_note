@@ -38,10 +38,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-998e8a12.js";
+            window.path_to_searchindex_js = "searchindex-96b1f3e4.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-4e977eca.js"></script>
+        <script src="toc-c8086531.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -3154,6 +3154,74 @@ Levyの収束定理より,
 \]
 となる.</p>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="確率過程-1"><a href="#確率過程-1" class="header">確率過程</a></h1>
+<h2 id="確率過程"><a class="header" href="#確率過程">確率過程</a></h2>
+<p>\(X(\omega, t),\omega \in \Omega,t \geq 0, t \in T, T \in \mathbb{R}\)と確率変数を定義する.
+確率変数\(X\)は事象\(\omega\)と,値\(t\)が決定したときに,値が得られる関数である.<br>\(t\)を時間とみなし,時間とともに値が変化する確率を扱えるようにする.
+\(t\)を固定したとき,\(X(\omega, t)\)を\(X_t(\omega)\)と書き,\(X_t\)とも書く.<br>実際,時間の変化対しての観測値は,連続に取ることができないので,\(X_t,t \geq 0, t \in \mathbb{N}\)
+とし,\(X_t,X_{t+1},X_{t+2},…\)と固定した時間について,確率変数を表記する.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="マルコフ過程-1"><a href="#マルコフ過程-1" class="header">マルコフ過程</a></h1>
+<h3 id="マルコフ過程"><a class="header" href="#マルコフ過程">マルコフ過程</a></h3>
+<p>とある確率変数の確率が,現在（直前の過去)の確率変数にのみ依存する確率過程を<strong>マルコフ過程</strong>という.
+\[
+\mathrm{P}(…,X_{t-2},X_{t-1},X_t,X_{t+1}=x,X_{t+2},…) = \mathrm{P}(X_{t+1} = x | X_t)
+\]</p>
+<h4 id="マルコフ連鎖"><a class="header" href="#マルコフ連鎖">マルコフ連鎖</a></h4>
+<p>\(X_t\)が\( i,j,n \in \mathbb{N}^+, i,j \leq n \)として,\(X_t \in S=\{x| x \in i\}\)とする.
+\(X_t\)が取りうる値を<strong>状態</strong>といい.\(S\)は状態の集合である.</p>
+<p>\[
+\mathrm{P}(X_{s+t} = j | X_s = i) = p_{ij}(t) \;\; s \in T
+\]</p>
+<p>と確率を定義したとき,\(X_t = i\)のとき,\(X_{s+t} = j\)が発生する確率を行列で表したものを<strong>推移確率行列</strong>という.
+\[
+\mathbf{P}(t) = (p_{ij}(t)) = \begin{pmatrix}
+p_{11}(t) &amp; p_{12}(t) &amp; \cdots &amp; p_{1n}(t) \\
+p_{21}(t) &amp; p_{22}(t) &amp; \cdots &amp; p_{2n}(t) \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+p_{n1}(t) &amp; p_{n2}(t) &amp; \cdots &amp; p_{nn}(t) \\
+\end{pmatrix}, \sum^{n}_{j=1} p_{ij}(t) = 1
+\]
+推移確率行列は時刻\(s\)から時間\(t\)経過したとき,状態\(i\)が,状態\(j\)に移る確率の表である.</p>
+<p>更に,経過時間が一定なら\(X_t = i\)のとき,\(X_{t+1} = j\)として,
+\[
+\mathrm{P}(X_{t+1} = j | X_t = i) = p_{ij}
+\]</p>
+<p>と書き,
+\[
+\mathbf{P} = (p_{ij}) = \begin{pmatrix}
+p_{11} &amp; p_{12} &amp; \cdots &amp; p_{1n} \\
+p_{21} &amp; p_{22} &amp; \cdots &amp; p_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+p_{n1} &amp; p_{n2} &amp; \cdots &amp; p_{nn} \\
+\end{pmatrix} , \sum^{n}_{j=1} p_{ij} = 1
+\]</p>
+<p>\(\mathrm{P}(X_t=i)=p^{(t)}_i\)として,時刻\(t\)に状態\(i\)である確率であることを示す.
+これを,状態について並べたベクトルを状態確率ベクトルという.
+\[
+\boldsymbol{\pi}_t = \begin{pmatrix} p^{(t)}_0 \\ p^{(t)}_1 \\ \vdots \\ p^{(t)}_n \end{pmatrix}, \sum^n_{i=1} p^{(t)}_i = 1
+\]
+\(\boldsymbol{\pi}_0\)として,<strong>初期状態確率ベクトル</strong>という.時刻\(t=0\)の時点で,状態\(i\)であった場合,<br>\(\boldsymbol{\pi}_0 = (0,0,…,\underbrace{1}_{i-th},0,…,0)^{\mathsf{T}}\)と\(i\)番目の要素が1になる.
+また,状態\(i\)であることを示すベクトルを\(\boldsymbol{e}_i = (0,0,…,\underbrace{1}_{i-th},0,…,0)^{\mathsf{T}} \)と書く.</p>
+<p>これらの記法を使うと,状態\(i\)が次の時刻でどの状態になっているかの確率を求めることができる.
+\[
+\boldsymbol{e}_i^{\mathsf{T}} \mathbf{P} =  (p_{i1},p_{i2},…,p_{in})^{\mathsf{T}}
+\]
+更に,状態\(i\)が次の時刻に状態\(j\)となっている確率は,
+\[
+\boldsymbol{e}_i^{\mathsf{T}} \mathbf{P} \boldsymbol{e}_j = p_{ij} = \mathrm{P}(X_{t+1} = j | X_t = i)
+\]</p>
+<p>一定の経過時間をステップと言ううことにするとsステップ後に状態\(i\)が状態\(j\)がなっている確率は,
+\[
+\begin{align}
+\boldsymbol{e}_i^{\mathsf{T}} \mathbf{P}^s \boldsymbol{e}_j &amp;= \mathrm{P}(X_{t+s} = j | X_t=i) \\
+&amp;= \sum^n_{k_{s-1}=1}\mathrm{P}(X_{t+s} = j| X _{t+s-1}=k_{s-1})\mathrm{P}(X_{t+s-1}=k_{s-1}|X_t=i) \\
+&amp;= \sum^n_{k_{s-1},k_{s-2},…,k_{1}=1}\mathrm{P}(X_{t+s} = j| X _{t+s-1}=k_{s-1})\mathrm{P}(X_{t+s-1}=k_{s-1}|X_{t+s-2}=k_{s-2})\cdots\mathrm{P}(X_{t+2}=k_{2} | X_{t+1}=k_{1})\mathrm{P}(X_{t+1}=k_{1} | X_{t}=i)
+\end{align}
+\]</p>
+<p>となる.</p>
+<h4 id="定常状態"><a class="header" href="#定常状態">定常状態</a></h4>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="統計"><a class="header" href="#統計">統計</a></h1>
 <p>統計の目的は<strong>母集団</strong>から得た<strong>標本</strong>から母集団と特徴づける<strong>パラメータ</strong>(母数)を得て,母集団の性質を調べるにある.<br>標本は集合であり,標本の要素は<strong>標本点</strong>である.
 標本点から得られる数値を<strong>データ</strong>と言い,その集まりを<strong>データセット</strong>と言う.
@@ -4160,8 +4228,10 @@ l(\boldsymbol{\beta}|\boldsymbol{Y})&amp;=\log L(\boldsymbol{\beta}|\boldsymbol{
 \]</p>
 <p>となり,最小二乗推定量と同じになる.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="回帰係数の推定値の性質-1"><a href="#回帰係数の推定値の性質-1" class="header">回帰係数の推定値の性質</a></h1>
+<h1 id="回帰係数の推定量の性質"><a href="#回帰係数の推定量の性質" class="header">回帰係数の推定量の性質</a></h1>
 <h2 id="回帰係数の推定値の性質"><a class="header" href="#回帰係数の推定値の性質">回帰係数の推定値の性質</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="残差平方和-1"><a href="#残差平方和-1" class="header">残差平方和</a></h1>
 <h3 id="残差平方和"><a class="header" href="#残差平方和">残差平方和</a></h3>
 <p>測定値と予測値の差を<strong>残差</strong>という.
 \[
@@ -4281,6 +4351,10 @@ RSS_{k+1} = \boldsymbol{R}^2 = (\boldsymbol{Y} - \mathbf{X}\hat{\boldsymbol{\bet
 \hat{\sigma}^2 = \frac{1}{n-k-1}RSS
 \]</p>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="回帰係数の推定量の分布-1"><a href="#回帰係数の推定量の分布-1" class="header">回帰係数の推定量の分布</a></h1>
+<h4 id="回帰係数の推定量の分布"><a class="header" href="#回帰係数の推定量の分布">回帰係数の推定量の分布</a></h4>
+<p>\(\boldsymbol{E} \sim N(0,\mathbf{I}_n \sigma^2)\)とすると,\(\hat{\boldsymbol{\beta}}\)は以下のような</p>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="多変量解析"><a class="header" href="#多変量解析">多変量解析</a></h1>
 <p>一つの対象について,複数の変数,特性を値として取得し,それらを組としてデータを集めその値の関係性を見出したり,
 別の対象に対して,同じ変数,特性の値を集め,その共通性,違いを見出したりする手法が,多変量解析である.
@@ -4347,6 +4421,70 @@ r_{k,1} &amp; r_{k,2} &amp; \cdots &amp; 1
 \end{pmatrix}
 \]
 として\(\mathbf{R}\)を<strong>標本相関係数行列</strong>という.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="時系列解析"><a class="header" href="#時系列解析">時系列解析</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="マルコフ連鎖のパラメータ推定-1"><a href="#マルコフ連鎖のパラメータ推定-1" class="header">マルコフ連鎖のパラメータ推定</a></h1>
+<h3 id="マルコフ連鎖のパラメータ推定"><a class="header" href="#マルコフ連鎖のパラメータ推定">マルコフ連鎖のパラメータ推定</a></h3>
+<p>以下のような状態が\(n \in \mathbb{N}^+\)ある推移確率行列を持つ,マルコフ連鎖を考える.</p>
+<p>\[
+\mathbf{Q} = \begin{pmatrix}
+\theta_{11} &amp; \theta_{12} &amp; \cdots &amp; \theta_{1n} \\
+\theta_{21} &amp; \theta_{22} &amp; \cdots &amp; \theta_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\theta_{n1} &amp; \theta_{n2} &amp; \cdots &amp; \theta_{nn} \\
+\end{pmatrix}, \sum^n_{j=1} \theta_{ij} = 1
+\]</p>
+<p>この行列に従う確率変数を\(X_t, t \geq 0, t \in \mathbb{N}\)として,\(t\)に関しての実現値を観察できたとする.<br>では,実現値が状態\(i\)から状態\(j\)に変わった回数をそれぞれ数えてそこから\(\theta_{ij}\)を推定する.<br>例えば状態\(i\)からの変化の回数を\(N_{i}\)として,状態\(i\)から状態\(j\)に変わった回数を\(N_{ij}\)とする.
+\(\sum^n_{j=1} N_{ij} = N_{i} \)である.<br>状態\(i\)からの変化が何回起こるかの確率分布\(\mathrm{P}(N_{i1}=n_{i1},N_{i2}=n_{i2},…,N_{in}=n_{in})\)は多項分布\(Multi(N_i,\theta_{i1},\theta_{i2},…,\theta_{in})\)に従う.
+\[
+\mathrm{P}(N_{i1}=n_{i1},N_{i2}=n_{i2},…,N_{in}=n_{in}) = \frac{N_i!}{n_{i1}!n_{i2}!\cdots n_{in}!} \prod^n_{j=1} \theta_{ij}^{n_{ij}}
+\]</p>
+<p>から,\(\boldsymbol{\theta} = (\theta_{11}, \theta_{12}, …, \theta_{nn})\)として,尤度関数は,
+\[
+\mathrm{L}(\boldsymbol{\theta}|\boldsymbol{N})=\prod^n_{i=1}\mathrm{P}(N_{i1}=n_{i1},N_{i2}=n_{i2},…,N_{in}=n_{in})
+\]
+\(\mathrm{L}(\boldsymbol{\theta}|\boldsymbol{N})\)を最大にする\(\theta_{ij}\)が,\(\theta_{ij}\)の最尤推定量\(\hat{\theta}_{ij}\).
+\[
+\begin{align}
+\mathrm{l}(\boldsymbol{\theta}|\boldsymbol{N})&amp;=\log\mathrm{L}(\boldsymbol{\theta}|\boldsymbol{N}) \\
+&amp;=\sum^n_{i=1}\log \Bigl(\frac{N_i!}{n_{i1}!n_{i2}!\cdots n_{in}!} \prod^n_{j=1} \theta_{ij}^{n_{ij}} \Bigr)
+\end{align}
+\]</p>
+<p>\(\sum^n_{j=1} \theta_{ij} = 1\)という制約があり,それが\(i\)列のみの制約なので,ラグランジュの未定乗数法を使い,
+\[
+\mathrm{H}(\theta_{i1},\theta_{i2},…,\theta_{in},\lambda |\boldsymbol{N}) = \log \Bigl(\frac{N_i!}{n_{i1}!n_{i2}!\cdots n_{in}!} \prod^n_{j=1} \theta_{ij}^{n_{ij}} \Bigr) - \lambda( 1 - \sum^n_{j=1} \theta_{ij} ) \\
+\]
+として,
+\[
+\frac{\partial \mathrm{H}}{\partial \theta_{ij}} = 0
+\]
+を満たす,\(\theta_{ij}\)が\(\mathrm{L}\)を最大化する\(\theta_{ij}\).</p>
+<p>\[
+\begin{align}
+\frac{\partial \mathrm{H}}{\partial \theta_{ij}} &amp;= \frac{n_{ij}}{\theta_{ij}} + \lambda \\
+&amp;=0
+\end{align}
+\]
+から,</p>
+<p>\[
+\lambda = - \frac{n_{ij}}{\theta_{ij}}
+\]</p>
+<p>制約条件に当てはめて,
+\[
+\begin{align}
+\sum^n_{j=1} {\theta_{ij}} &amp;= \sum^n_{j=1} - \frac{\lambda}{n_{ij}} = 1 \\
+\lambda &amp;= - \sum^n_{j=1} {n_{ij}} = -N_i
+\end{align}
+\]</p>
+<p>より,
+\[
+\theta_{ij} = -\frac{n_{ij}}{\lambda} = \frac{n_{ij}}{N_i}
+\]</p>
+<p>となり,最尤推定量は
+\[
+\hat{\theta}_{ij} = \frac{n_{ij}}{N_i}
+\]</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="付録"><a class="header" href="#付録">付録</a></h1>
 <div style="break-before: page; page-break-before: always;"></div>
