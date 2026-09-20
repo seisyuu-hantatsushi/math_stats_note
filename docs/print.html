@@ -38,10 +38,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-afd22f81.js";
+            window.path_to_searchindex_js = "searchindex-99518817.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-98c06d70.js"></script>
+        <script src="toc-123e8ec3.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -5470,6 +5470,13 @@ X_t = X(\omega,t)
 \mathrm{Corr}(X_t, X_{t-s}) = \frac{\mathrm{Cov}(X_t, X_{t-s})}{\sqrt{\mathrm{V}[X_t],\mathrm{V}[X_{t-s}]}} = \rho_{t,s}
 \]
 として,これを<strong>自己相関係数</strong>という.</p>
+<p>更に,\(\mathrm{Corr}(X_t, X_{t-s})\)から,\(X_{t-1},X_{t-2},…,X_{t-(s-1)}\)の影響を取り除いた,相関を<strong>偏自己相関係数</strong>という.
+\[
+\begin{align}
+\psi_{t,s} &amp;= \mathrm{Corr}(X_t, X_{t-s}|X_{t-1},X_{t-2},…,X_{t-(s-1)}) \\
+&amp;= \frac{\mathrm{Cov}(X_t, X_{t-s}|X_{t-1},X_{t-2},…,X_{t-(s-1)})}{\sqrt{\mathrm{V}[X_t|X_{t-1},X_{t-2},…,X_{t-(s-1)}]\mathrm{V}[X_{t-s}|X_{t-1},X_{t-2},…,X_{t-(s-1)}]}}\\
+\end{align}
+\]</p>
 <h4 id="定常性"><a class="header" href="#定常性">定常性</a></h4>
 <p>もし,\(X_t\)の平均が,
 \[
@@ -5479,8 +5486,10 @@ X_t = X(\omega,t)
 <strong>定常過程</strong>,<strong>定常時系列</strong>という.
 更に,
 \[
-\mathrm{V}[X_t] = \sigma^2 \\
-\mathrm{Cov}[X_t,X_{t-s}] = \gamma_{|s|}
+\mathrm{V}[X_t] = \mathrm{V}[X_{t-s}] = \sigma^2 \\
+\mathrm{Cov}[X_t,X_{t-s}] = \gamma_{|s|} = \gamma(s) \\
+\gamma(0) = \mathrm{V}[X_t] \\
+\mathrm{Corr}(X_t, X_{t-s}) = \frac{\gamma(s)}{\sqrt{\mathrm{V}[X_t] \mathrm{V}[X_{t-s}]}} = \frac{\gamma(s)}{\gamma(0)} = \rho(s)
 \]
 を満たすならば,<strong>弱定常過程</strong>,<strong>弱定常時系列</strong>,という.
 \(X_t\)の確率密度関数を\(f_{X_t}(x_t)\)として,\(t\)から\(t+h\)までの,
@@ -5527,6 +5536,7 @@ X_t = c + \phi_1 X_{t-1} + W_t \\
 \mathrm{E}[W_t] = 0 \\
 \mathrm{V}[W_t] = \sigma^2 \\
 \mathrm{Cov}[W_t,W_{t-s}] = 0 \\
+\mathrm{Cov}[X_t,W_s] = 0 \\
 \]
 について考察する.
 \[
@@ -5548,6 +5558,106 @@ X_t &amp;= c + \phi_1 X_{t-1} + W_t\\
 &amp;= {\phi_1}^t \mathrm{E}[X_{0}] + \sum^{t}_{s=1} {\phi_1}^{t-s}c
 \end{align}
 \]</p>
+<p>定常過程の場合,\(\mathrm{E}[X_t] = \mu\)なので,
+\[
+\begin{align}
+\mu &amp;= c + \phi_1 \mu \\
+\mu &amp;= \frac{c}{1-\phi_1}
+\end{align}
+\]</p>
+<p>弱定常過程の場合,\(\mathrm{V}[X_t] = \gamma(0), \mathrm{Cov}[X_t,X_{t-s}] = \gamma_{|s|} = \gamma(s)\)なので,
+\[
+\begin{align}
+\mathrm{V}[X_t] &amp;= \mathrm{V}[c + \phi_1 X_{t-1} + W_t] \\
+&amp;= {\phi_1}^2\mathrm{V}[X_{t-1}] + \sigma^2 \\
+\gamma(0) &amp;= {\phi_1}^2\gamma(0) + \sigma^2 \\
+\gamma(0) &amp;= \frac{\sigma^2}{1-{\phi_1}^2}
+\end{align}
+\]
+\(\gamma(0) &gt; 0 \)なので,AR(1)過程が弱定常過程ならば,\({\phi_1}^2 &lt; 1,|\phi_1| &lt; 1,\)
+\[
+\begin{align}
+\mathrm{Cov}[X_t,X_{t-1}] &amp;= \mathrm{Cov}[c + \phi_1 X_{t-1} + W_t,X_{t-1}] \\
+&amp;= \mathrm{Cov}[\phi_1 X_{t-1} + W_t,X_{t-1}] \\
+&amp;= \mathrm{E}[(\phi_1 X_{t-1} + W_t - \mathrm{E}[\phi_1 X_{t-1} + W_t])(X_{t-1} - \mu)] \\
+&amp;= \mathrm{E}[\phi_1 X_{t-1}(X_{t-1} - \mu)] \\
+&amp;= \mathrm{E}[(\phi_1 X_{t-1} - \phi_1\mu + \phi_1 \mu)(X_{t-1} - \mu)] \\
+&amp;= \phi_1\mathrm{V}[X_{t-1}] \\
+&amp;= \phi_1\frac{\sigma^2}{1-{\phi_1}^2}
+\end{align}
+\]
+\[
+\begin{align}
+\mathrm{Cov}[X_t,X_{t-s}] &amp;= \mathrm{Cov}[ X_{t-s} + \sum^{s}_{u=1} {\phi_1}^{t-u} (W_{u} + c),X_{t-s}] \\
+&amp;= {\phi_1}^s \mathrm{V}[X_{t-s}] \\
+&amp;= {\phi_1}^s \frac{\sigma^2}{1-{\phi_1}^2} \\
+\end{align}
+\]
+なので,
+\[\gamma(s) = {\phi_1}^s \frac{\sigma^2}{1-{\phi_1}^2}\]
+\[\rho(s) = \frac{\gamma(s)}{\gamma(0)} = \frac{{\phi_1}^s \frac{\sigma^2}{1-{\phi_1}^2}}{\frac{\sigma^2}{1-{\phi_1}^2}} = {\phi_1}^s \].</p>
+<h4 id="ar2過程"><a class="header" href="#ar2過程">AR(2)過程</a></h4>
+<p>2次のAR過程のを考察する.
+\[
+X_t = c + \phi_1 X_{t-1} + \phi_2 X_{t-2} + W_t
+\]</p>
+<p>定常過程の場合,\(\mathrm{E}[X_t] = \mu\)なので,
+\[
+\begin{align}
+\mathrm{E}[X_t] &amp;= \mathrm{E}[c + \phi_1 X_{t-1} + \phi_2 X_{t-2} + W_t] \\
+&amp;= c + \phi_1\mathrm{E}[X_{t-1}] + \phi_2\mathrm{E}[X_{t-2}] \\
+\mu &amp;= c + \phi_1\mu + \phi_2\mu \\
+\mu &amp;= \frac{c}{1 - \phi_1 - \phi_2}
+\end{align}
+\]
+ここで,\(c=0\)とすると,\(\mu=0\). なので,これは,\(X’_t = X_t-\mu\)として,
+\[
+X_t-\mu = \phi_1 (X_{t-1}-\mu) + \phi_2 (X_{t-1}-\mu) + W_t \\
+X’_t = \phi_1 X’_{t-1} + \phi_2 X’_{t-2} + W_t \\
+\]
+とすることをできる.\(X’_t\)は\(X_t\)の平均を0に標準化したものとみなせる.<br>共分散の時間発展を考察するのは,平均を0に標準化でも同じなので,
+\[
+X_t = \phi_1 X_{t-1} + \phi_2 X_{t-2} + W_t \\
+\]
+で考察を続ける.</p>
+<p>行列で表すと,
+\[
+\begin{pmatrix}
+X_t \\
+X_{t-1}
+\end{pmatrix} =
+\begin{pmatrix}
+\phi_1 &amp; \phi_2 \\
+1  &amp; 0
+\end{pmatrix}
+\begin{pmatrix}
+X_{t-1} \\
+X_{t-2}
+\end{pmatrix} +
+\begin{pmatrix}
+1 \\
+0
+\end{pmatrix} W_t
+\]
+\[
+\boldsymbol{X}_t = 	\begin{pmatrix}
+X_t \\
+X_{t-1}
+\end{pmatrix},\;
+\mathbf{A} = \begin{pmatrix}
+\phi_1 &amp; \phi_2 \\
+1  &amp; 0
+\end{pmatrix},\;
+\mathbf{B} = \begin{pmatrix}
+1 \\
+0
+\end{pmatrix}
+\]
+として,
+\[
+\mathbf{X}_t = \mathbf{A}\mathbf{X}_{t-1} + \mathbf{B}W_t
+\]
+と表せる.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="付録"><a class="header" href="#付録">付録</a></h1>
 <div style="break-before: page; page-break-before: always;"></div>

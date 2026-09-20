@@ -37,10 +37,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-afd22f81.js";
+            window.path_to_searchindex_js = "../searchindex-99518817.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-98c06d70.js"></script>
+        <script src="../toc-123e8ec3.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -197,6 +197,13 @@ X_t = X(\omega,t)
 \mathrm{Corr}(X_t, X_{t-s}) = \frac{\mathrm{Cov}(X_t, X_{t-s})}{\sqrt{\mathrm{V}[X_t],\mathrm{V}[X_{t-s}]}} = \rho_{t,s}
 \]
 として,これを<strong>自己相関係数</strong>という.</p>
+<p>更に,\(\mathrm{Corr}(X_t, X_{t-s})\)から,\(X_{t-1},X_{t-2},…,X_{t-(s-1)}\)の影響を取り除いた,相関を<strong>偏自己相関係数</strong>という.
+\[
+\begin{align}
+\psi_{t,s} &amp;= \mathrm{Corr}(X_t, X_{t-s}|X_{t-1},X_{t-2},…,X_{t-(s-1)}) \\
+&amp;= \frac{\mathrm{Cov}(X_t, X_{t-s}|X_{t-1},X_{t-2},…,X_{t-(s-1)})}{\sqrt{\mathrm{V}[X_t|X_{t-1},X_{t-2},…,X_{t-(s-1)}]\mathrm{V}[X_{t-s}|X_{t-1},X_{t-2},…,X_{t-(s-1)}]}}\\
+\end{align}
+\]</p>
 <h4 id="定常性"><a class="header" href="#定常性">定常性</a></h4>
 <p>もし,\(X_t\)の平均が,
 \[
@@ -206,8 +213,10 @@ X_t = X(\omega,t)
 <strong>定常過程</strong>,<strong>定常時系列</strong>という.
 更に,
 \[
-\mathrm{V}[X_t] = \sigma^2 \\
-\mathrm{Cov}[X_t,X_{t-s}] = \gamma_{|s|}
+\mathrm{V}[X_t] = \mathrm{V}[X_{t-s}] = \sigma^2 \\
+\mathrm{Cov}[X_t,X_{t-s}] = \gamma_{|s|} = \gamma(s) \\
+\gamma(0) = \mathrm{V}[X_t] \\
+\mathrm{Corr}(X_t, X_{t-s}) = \frac{\gamma(s)}{\sqrt{\mathrm{V}[X_t] \mathrm{V}[X_{t-s}]}} = \frac{\gamma(s)}{\gamma(0)} = \rho(s)
 \]
 を満たすならば,<strong>弱定常過程</strong>,<strong>弱定常時系列</strong>,という.
 \(X_t\)の確率密度関数を\(f_{X_t}(x_t)\)として,\(t\)から\(t+h\)までの,
