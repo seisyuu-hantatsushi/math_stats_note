@@ -37,10 +37,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-a46bde0c.js";
+            window.path_to_searchindex_js = "../searchindex-afd22f81.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-123e8ec3.js"></script>
+        <script src="../toc-98c06d70.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,7 +180,7 @@
 <h4 id="ar1過程"><a class="header" href="#ar1過程">AR(1)過程</a></h4>
 <p>AR過程の一番単純なモデル.
 \[
-Y_t = \phi_1 Y_{t-1} + W_t \\
+X_t = c + \phi_1 X_{t-1} + W_t \\
 \mathrm{E}[W_t] = 0 \\
 \mathrm{V}[W_t] = \sigma^2 \\
 \mathrm{Cov}[W_t,W_{t-s}] = 0 \\
@@ -188,17 +188,23 @@ Y_t = \phi_1 Y_{t-1} + W_t \\
 について考察する.
 \[
 \begin{align}
-Y_t &amp;= \phi_1 Y_{t-1} + W_t \\
-&amp;= \phi_1(\phi_1 Y_{t-2} + W_{t-1}) + W_t \\
-&amp;= {\phi_1}^2 Y_{t-2} + \phi_1  W_{t-1} + W_t \\
-&amp;= {\phi_1}^2 (\phi_1 Y_{t-3} + W_{t-2}) + \phi_1  W_{t-1} + W_t \\
-&amp;= {\phi_1}^3 Y_{t-3} + {\phi_1}^2 W_{t-2} + \phi_1  W_{t-1} + W_t \\
-&amp;= {\phi_1}^t Y_{0} + \sum^{t}_{s=1} {\phi_1}^{t-s} W_{s}
+X_t &amp;= c + \phi_1 X_{t-1} + W_t\\
+&amp;= \phi_1(c + \phi_1 X_{t-2} + W_{t-1}) + W_t + c\\
+&amp;= {\phi_1}^2 X_{t-2} + \phi_1(c+W_{t-1}) + W_t + c\\
+&amp;= {\phi_1}^2 (c + \phi_1 X_{t-3} + W_{t-2}) + \phi_1  (W_{t-1}+c) + W_t + c\\
+&amp;= {\phi_1}^3 X_{t-3} + {\phi_1}^2 (W_{t-2}+c) + \phi_1  (W_{t-1}+c) + W_t + c \\
+&amp;= {\phi_1}^t X_{0} + \sum^{t}_{s=1} {\phi_1}^{t-s} (W_{s} + c)
 \end{align}
 \]
 なので,\(|\phi_1| &lt; 1\)の時は,過去遡るほどその影響は小さくなり,
 \(\phi_1 = 1\)の場合は,同じように影響し,
 \(|\phi_1| &gt; 1\)の場合は,過去遡るほど現在に影響する.</p>
+<p>\[
+\begin{align}
+\mathrm{E}[X_t] &amp;= {\phi_1}^t \mathrm{E}[X_{0}] + \sum^{t}_{s=1} {\phi_1}^{t-s} \mathrm{E}[W_{s}+c] \\
+&amp;= {\phi_1}^t \mathrm{E}[X_{0}] + \sum^{t}_{s=1} {\phi_1}^{t-s}c
+\end{align}
+\]</p>
 
                     </main>
 

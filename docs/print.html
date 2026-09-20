@@ -38,10 +38,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a46bde0c.js";
+            window.path_to_searchindex_js = "searchindex-afd22f81.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-123e8ec3.js"></script>
+        <script src="toc-98c06d70.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -5500,21 +5500,21 @@ f_{\{X_t\}^{t+h}_{t}}(x_t,x_{t+1},…,x_{t+h})=f_{\{X_t\}^{t+s+h}_{t+s}}(x_{t+s}
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="arma系列-1"><a href="#arma系列-1" class="header">ARMA系列</a></h1>
 <h3 id="arma系列"><a class="header" href="#arma系列">ARMA系列</a></h3>
-<p>\(\{Y_t\}\)が過去の値とホワイトノイズが影響し合ったモデルを考える.
+<p>\(\{X_t\}\)が過去の値とホワイトノイズが影響し合ったモデルを考える.
 \[
-Y_t = \sum^{s}_{s=1} \phi_s Y_{t-s} + W_t
+X_t = c + \sum^{s}_{s=1} \phi_s X_{t-s} + W_t
 \]
 \(\phi_s\)が過去の値が現在の値に与える影響の大きさで, \(W_t\)が現在に与える影響(ショック)と解釈できる.
 これを,**自己回帰過程(AR過程)<strong>という.
 または,過去のホワイトノイズの影響のみが,現在に影響するモデルも考えることができる.
 \[
-Y_t = \mu + W_t + \sum^{s}_{s=1} \theta_s W_{t-s}
+X_t = c + W_t + \sum^{s}_{s=1} \theta_s W_{t-s}
 \]
 \(\theta_s\)が過去のホワイトノイズが現在の値に与える影響の大きさである.
 これを</strong>移動平均過程(MA過程)<strong>という.
 この２つの和で表されるモデルも考えることができる.
 \[
-Y_t = \sum^{s}_{s=1} \phi_s Y_{t-s} + \mu + W_t + \sum^{r}_{r=1} \theta_s W_{t-r}
+X_t = \sum^{s}_{s=1} \phi_s X_{t-s} + c + W_t + \sum^{r}_{r=1} \theta_s W_{t-r}
 \]
 これを</strong>自己回帰移動平均過程(ARMA過程)**という.</p>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -5523,7 +5523,7 @@ Y_t = \sum^{s}_{s=1} \phi_s Y_{t-s} + \mu + W_t + \sum^{r}_{r=1} \theta_s W_{t-r
 <h4 id="ar1過程"><a class="header" href="#ar1過程">AR(1)過程</a></h4>
 <p>AR過程の一番単純なモデル.
 \[
-Y_t = \phi_1 Y_{t-1} + W_t \\
+X_t = c + \phi_1 X_{t-1} + W_t \\
 \mathrm{E}[W_t] = 0 \\
 \mathrm{V}[W_t] = \sigma^2 \\
 \mathrm{Cov}[W_t,W_{t-s}] = 0 \\
@@ -5531,17 +5531,23 @@ Y_t = \phi_1 Y_{t-1} + W_t \\
 について考察する.
 \[
 \begin{align}
-Y_t &amp;= \phi_1 Y_{t-1} + W_t \\
-&amp;= \phi_1(\phi_1 Y_{t-2} + W_{t-1}) + W_t \\
-&amp;= {\phi_1}^2 Y_{t-2} + \phi_1  W_{t-1} + W_t \\
-&amp;= {\phi_1}^2 (\phi_1 Y_{t-3} + W_{t-2}) + \phi_1  W_{t-1} + W_t \\
-&amp;= {\phi_1}^3 Y_{t-3} + {\phi_1}^2 W_{t-2} + \phi_1  W_{t-1} + W_t \\
-&amp;= {\phi_1}^t Y_{0} + \sum^{t}_{s=1} {\phi_1}^{t-s} W_{s}
+X_t &amp;= c + \phi_1 X_{t-1} + W_t\\
+&amp;= \phi_1(c + \phi_1 X_{t-2} + W_{t-1}) + W_t + c\\
+&amp;= {\phi_1}^2 X_{t-2} + \phi_1(c+W_{t-1}) + W_t + c\\
+&amp;= {\phi_1}^2 (c + \phi_1 X_{t-3} + W_{t-2}) + \phi_1  (W_{t-1}+c) + W_t + c\\
+&amp;= {\phi_1}^3 X_{t-3} + {\phi_1}^2 (W_{t-2}+c) + \phi_1  (W_{t-1}+c) + W_t + c \\
+&amp;= {\phi_1}^t X_{0} + \sum^{t}_{s=1} {\phi_1}^{t-s} (W_{s} + c)
 \end{align}
 \]
 なので,\(|\phi_1| &lt; 1\)の時は,過去遡るほどその影響は小さくなり,
 \(\phi_1 = 1\)の場合は,同じように影響し,
 \(|\phi_1| &gt; 1\)の場合は,過去遡るほど現在に影響する.</p>
+<p>\[
+\begin{align}
+\mathrm{E}[X_t] &amp;= {\phi_1}^t \mathrm{E}[X_{0}] + \sum^{t}_{s=1} {\phi_1}^{t-s} \mathrm{E}[W_{s}+c] \\
+&amp;= {\phi_1}^t \mathrm{E}[X_{0}] + \sum^{t}_{s=1} {\phi_1}^{t-s}c
+\end{align}
+\]</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="付録"><a class="header" href="#付録">付録</a></h1>
 <div style="break-before: page; page-break-before: always;"></div>
