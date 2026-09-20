@@ -21,6 +21,14 @@ X_t = X(\omega,t)
 \\]
 として,これを**自己相関係数**という.
 
+更に,\\(\mathrm{Corr}(X_t, X_{t-s})\\)から,\\(X_{t-1},X_{t-2},...,X_{t-(s-1)}\\)の影響を取り除いた,相関を**偏自己相関係数**という.
+\\[
+\begin{align}
+\psi_{t,s} &= \mathrm{Corr}(X_t, X\_{t-s}|X\_{t-1},X\_{t-2},...,X\_{t-(s-1)}) \\\\
+           &= \frac{\mathrm{Cov}(X\_t, X\_{t-s}|X\_{t-1},X\_{t-2},...,X\_{t-(s-1)})}{\sqrt{\mathrm{V}[X\_t|X\_{t-1},X\_{t-2},...,X\_{t-(s-1)}]\mathrm{V}[X\_{t-s}|X\_{t-1},X\_{t-2},...,X_{t-(s-1)}]}}\\\\
+\end{align}
+\\]
+
 #### 定常性
 もし,\\(X_t\\)の平均が,
 \\[
@@ -30,8 +38,10 @@ X_t = X(\omega,t)
 **定常過程**,**定常時系列**という.
 更に,
 \\[
-	\mathrm{V}[X_t] = \sigma^2 \\\\ 
-	\mathrm{Cov}[X_t,X_{t-s}] = \gamma_{|s|} 
+	\mathrm{V}[X_t] = \mathrm{V}[X_{t-s}] = \sigma^2 \\\\ 
+	\mathrm{Cov}[X_t,X_{t-s}] = \gamma_{|s|} = \gamma(s) \\\\
+	\gamma(0) = \mathrm{V}[X_t] \\\\
+	\mathrm{Corr}(X_t, X\_{t-s}) = \frac{\gamma(s)}{\sqrt{\mathrm{V}[X_t] \mathrm{V}[X\_{t-s}]}} = \frac{\gamma(s)}{\gamma(0)} = \rho(s)
 \\]
 を満たすならば,**弱定常過程**,**弱定常時系列**,という.
 \\(X_t\\)の確率密度関数を\\(f_{X_t}(x_t)\\)として,\\(t\\)から\\(t+h\\)までの,
